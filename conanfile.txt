@@ -1,0 +1,25 @@
+[requires]
+sfml/2.5.1
+asio/1.20.0
+boost/1.77.0
+
+[options]
+sfml:shared=True
+sfml:graphics=True
+sfml:window=True
+sfml:audio=True
+sfml:network=True
+
+[imports]
+lib, *.so* -> lib
+bin, *.dll -> ./bin @ root_package=sfml
+bin, *d.dll -> ./bin @ root_package=sfml
+bin, *.dll -> ./bin @ root_package=asio
+bin, *d.dll -> ./bin @ root_package=asio
+bin, *.dll -> ./bin @ root_package=boost
+bin, *d.dll -> ./bin @ root_package=boost
+
+[generators]
+cmake
+cmake_paths
+cmake_find_package
