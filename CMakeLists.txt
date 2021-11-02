@@ -4,6 +4,11 @@ project(rtype)
 
 set(CMAKE_AUTOMOC ON)
 
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost REQUIRED COMPONENTS thread system)
+
 include(build/conanbuildinfo.cmake)
 conan_basic_setup(KEEP_RPATHS)
 

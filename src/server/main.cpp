@@ -6,8 +6,26 @@
 */
 
 #include <iostream>
+#include "Server.hpp"
+#include "TcpServer.hpp"
 
 int main(int ac, char **av)
 {
-    std::cout << "server" << std::endl;
+    constexpr bool multi_threading = true;
+
+    srand(time(nullptr));
+    try {
+        boost::asio::io_service io_service;
+        TcpServer server(io_service);
+        if constexpr (multi_threading) {
+            //TODO uncomment this line (Task 04)
+            //enable_multi_threading(10, io_service);
+        }
+        io_service.run();
+    }
+    catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return 0;
 }
