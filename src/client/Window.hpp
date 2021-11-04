@@ -9,6 +9,7 @@
 #define WINDOW_HPP_
 
 #include <SFML/Graphics.hpp>
+#include "parallax/Parallax.hpp"
 
 class Window {
     public:
@@ -20,9 +21,12 @@ class Window {
     protected:
     private:
         void event();
+        void update();
+        void draw();
 
         sf::RenderWindow _window;
         sf::Event _event;
+        Parallax _parallax;
 };
 
 #endif /* !WINDOW_HPP_ */

@@ -23,10 +23,24 @@ void Window::event()
         _window.close();
 }
 
+void Window::update()
+{
+    _parallax.moveLayers();
+}
+
+void Window::draw()
+{
+    _parallax.drawLayers(&_window);
+}
+
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
         while (_window.pollEvent(_event))
             event();
+        _window.clear();
+        update();
+        draw();
+        _window.display();
     }
 }
