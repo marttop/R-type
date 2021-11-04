@@ -5,6 +5,8 @@
 ** main
 */
 
+/*
+
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
@@ -49,4 +51,17 @@ int main(int argc, char* argv[])
     }
 
     return 0;
+}
+
+*/
+
+#include "Window.hpp"
+
+int main(void)
+{
+    Window window("R-TYPE");
+
+    window.gameLoop();
+
+    return EXIT_SUCCESS;
 }

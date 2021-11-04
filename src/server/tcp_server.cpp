@@ -7,7 +7,6 @@
 
 #include "tcp_server.hpp"
 
-
 void enable_multi_threading(size_t nb, boost::asio::io_service &io_service) {
     //TODO implement multi-threading (Task 04)
 }
