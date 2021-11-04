@@ -21,14 +21,18 @@ Parallax::Parallax()
     add(1.0, NEBULA_RED, false);
     add(2.0, BIG_STARS1, true);
     add(2.0, SMALL_STARS1, true);
-    add(20.0, BIG_STARS2, true);
-    add(20.0, SMALL_STARS2, true);
+    add(3.0, BIG_STARS2, true);
+    add(3.0, SMALL_STARS2, true);
 
     _multiplier = 40;
 }
 
 Parallax::~Parallax()
 {
+    for (auto iter : _layersVec) {
+        delete iter.second.first;
+        delete iter.second.second;
+    }
 }
 
 void Parallax::add(const float &speed, const Layers &type, const bool &active)
@@ -37,8 +41,8 @@ void Parallax::add(const float &speed, const Layers &type, const bool &active)
         make_pair(
             speed,
             make_pair(
-                Layer(_layerTextures[type], sf::Vector2f{0, 0}, active),
-                Layer(_layerTextures[type], sf::Vector2f{0, -float(_layerTextures[type].getSize().y)}, active)
+                new Layer(_layerTextures[type], sf::Vector2f{0, 0}, active),
+                new Layer(_layerTextures[type], sf::Vector2f{0, -float(_layerTextures[type].getSize().y)}, active)
             )
         )
     );
@@ -47,14 +51,14 @@ void Parallax::add(const float &speed, const Layers &type, const bool &active)
 void Parallax::move()
 {
     for (auto iter : _layersVec) {
-        if (iter.second.first.isActive() == true) {
-            iter.second.first.setPos(sf::Vector2f(iter.second.first.getPos().x, iter.second.first.getPos().y + (iter.first * iter.second.first.getElapsedTime() * _multiplier)));
-            iter.second.second.setPos(sf::Vector2f(iter.second.second.getPos().x, iter.second.second.getPos().y + (iter.first * iter.second.first.getElapsedTime() * _multiplier)));
-            if (iter.second.first.getPos().y >= iter.second.first.getSize().y)
-                iter.second.first.setPos(sf::Vector2f(iter.second.first.getPos().x, iter.second.first.getPos().y - iter.second.first.getSize().y * 2));
-            if (iter.second.second.getPos().y >= iter.second.second.getSize().y)
-                iter.second.second.setPos(sf::Vector2f(iter.second.second.getPos().x, iter.second.second.getPos().y - iter.second.second.getSize().y * 2));
-            iter.second.first.restartClock();
+        if (iter.second.first->isActive() == true) {
+            iter.second.first->setPos(sf::Vector2f(iter.second.first->getPos().x, iter.second.first->getPos().y + (iter.first * iter.second.first->getElapsedTime() * _multiplier)));
+            iter.second.second->setPos(sf::Vector2f(iter.second.second->getPos().x, iter.second.second->getPos().y + (iter.first * iter.second.first->getElapsedTime() * _multiplier)));
+            if (iter.second.first->getPos().y >= iter.second.first->getSize().y)
+                iter.second.first->setPos(sf::Vector2f(iter.second.first->getPos().x, iter.second.first->getPos().y - iter.second.first->getSize().y * 2));
+            if (iter.second.second->getPos().y >= iter.second.second->getSize().y)
+                iter.second.second->setPos(sf::Vector2f(iter.second.second->getPos().x, iter.second.second->getPos().y - iter.second.second->getSize().y * 2));
+            iter.second.first->restartClock();
         }
     }
 }
@@ -63,9 +67,9 @@ void Parallax::move()
 void Parallax::draw(sf::RenderWindow &window)
 {
     for (auto iter : _layersVec) {
-        if (iter.second.first.isActive() == true) {
-            iter.second.first.draw(window);
-            iter.second.second.draw(window);
+        if (iter.second.first->isActive() == true) {
+            iter.second.first->draw(window);
+            iter.second.second->draw(window);
         }
     }
 }

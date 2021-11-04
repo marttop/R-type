@@ -35,7 +35,7 @@ class Parallax {
 
     protected:
     private:
-        vector<pair<float, pair<Layer, Layer>>> _layersVec;
+        vector<pair<float, pair<Layer *, Layer *>>> _layersVec;
         sf::Texture _layerTextures[7];
         int _multiplier;
 
