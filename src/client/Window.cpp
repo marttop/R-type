@@ -17,13 +17,16 @@ Window::~Window()
 {
 }
 
+void Window::event()
+{
+    if (_event.type == sf::Event::Closed)
+        _window.close();
+}
+
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
-        sf::Event event;
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                _window.close();
-        }
+        while (_window.pollEvent(_event))
+            event();
     }
 }

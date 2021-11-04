@@ -9,7 +9,6 @@
 #define WINDOW_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 class Window {
     public:
@@ -20,7 +19,10 @@ class Window {
 
     protected:
     private:
-        sf::Window _window;
+        void event();
+
+        sf::RenderWindow _window;
+        sf::Event _event;
 };
 
 #endif /* !WINDOW_HPP_ */
