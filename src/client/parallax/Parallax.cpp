@@ -45,9 +45,9 @@ void Parallax::addLayer(float speed, Layers type, bool active)
 void Parallax::moveLayers()
 {
     for (auto iter : _layersVec) {
-        if (iter.second.first->getElapsedTime() > 0.05 && iter.second.first->isActive() == true) {
-            iter.second.first->setPos(sf::Vector2f(iter.second.first->getPos().x, iter.second.first->getPos().y + iter.first));
-            iter.second.second->setPos(sf::Vector2f(iter.second.second->getPos().x, iter.second.second->getPos().y + iter.first));
+        if (iter.second.first->isActive() == true) {
+            iter.second.first->setPos(sf::Vector2f(iter.second.first->getPos().x, iter.second.first->getPos().y + (iter.first * iter.second.first->getElapsedTime() * 35)));
+            iter.second.second->setPos(sf::Vector2f(iter.second.second->getPos().x, iter.second.second->getPos().y + (iter.first * iter.second.first->getElapsedTime() * 35)));
             if (iter.second.first->getPos().y >= iter.second.first->getSize().y)
                 iter.second.first->setPos(sf::Vector2f(iter.second.first->getPos().x, iter.second.first->getPos().y - iter.second.first->getSize().y * 2));
             if (iter.second.second->getPos().y >= iter.second.second->getSize().y)
