@@ -24,7 +24,7 @@ Parallax::Parallax()
     add(20.0, BIG_STARS2, true);
     add(20.0, SMALL_STARS2, true);
 
-    _multiplier = 35;
+    _multiplier = 40;
 }
 
 Parallax::~Parallax()
