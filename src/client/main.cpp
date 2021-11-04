@@ -56,21 +56,9 @@ int main(int argc, char* argv[])
 */
 
 #include "Window.hpp"
-// #include "SFML/Graphics.hpp"
 
 int main(void)
 {
-    // sf::Window _window;
-    // _window.create(sf::VideoMode::getDesktopMode(), "title");
-    // _window.setFramerateLimit(60);
-
-    // sf::Event event;
-    // while (_window.isOpen()) {
-    //     while (_window.pollEvent(event)) {
-    //         if (event.type == sf::Event::Closed)
-    //             _window.close();
-    //     }
-    // }
     Window window("R-TYPE");
 
     window.gameLoop();

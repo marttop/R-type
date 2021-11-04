@@ -12,7 +12,7 @@ conan_basic_setup(KEEP_RPATHS)
 include_directories(${CONAN_INCLUDE_DIRS})
 link_directories(${CONAN_LIBRARIES_DIRS})
 
-file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp")
+file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/parallax/*.cpp" "src/client/parallax/*.hpp")
 
 file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
@@ -24,6 +24,7 @@ add_executable (rtype_client ${CLIENT_SRC} ${COMMON})
 
 target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
 target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
+# target_link_libraries(rtype_client sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
 
 add_executable (rtype_server ${SERVER_SRC} ${COMMON})
 
