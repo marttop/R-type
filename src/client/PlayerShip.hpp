@@ -8,7 +8,7 @@
 #ifndef PLAYERSHIP_HPP_
 #define PLAYERSHIP_HPP_
 
-#include "../interface/IEntity.hpp"
+#include "IEntity.hpp"
 
 class PlayerShip : virtual public IEntity {
     public:

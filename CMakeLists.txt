@@ -27,6 +27,11 @@ target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
 
 add_executable (rtype_server ${SERVER_SRC} ${COMMON})
 
+include_directories("src/interface")
+include_directories("src/common")
+include_directories("src/client")
+include_directories("src/server")
+
 target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
 target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
 
