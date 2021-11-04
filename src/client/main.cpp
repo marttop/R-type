@@ -6,8 +6,10 @@
 */
 
 #include <iostream>
+#include "../interface/IEntity.hpp"
 
 int main(int ac, char **av)
 {
+
     std::cout << "client" << std::endl;
 }
