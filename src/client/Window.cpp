@@ -17,18 +17,30 @@ Window::~Window()
 {
 }
 
+void Window::event()
+{
+    if (_event.type == sf::Event::Closed)
+        _window.close();
+}
+
+void Window::update()
+{
+    _parallax.moveLayers();
+}
+
+void Window::draw()
+{
+    _parallax.drawLayers(&_window);
+}
+
 void Window::gameLoop()
 {
-        sf::Event event;
-
     while (_window.isOpen()) {
+        while (_window.pollEvent(_event))
+            event();
         _window.clear();
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                _window.close();
-        }
-        _parallax.drawLayers(&_window);
-        _parallax.moveLayers();
+        update();
+        draw();
         _window.display();
     }
 }
