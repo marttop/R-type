@@ -7,7 +7,7 @@
 
 #include "Layer.hpp"
 
-Layer::Layer(sf::Texture *texture, sf::Vector2f pos, bool active) : Entity(texture, pos)
+Layer::Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active) : Entity(texture, pos)
 {
     _isActive = active;
 }
@@ -16,17 +16,17 @@ Layer::~Layer()
 {
 }
 
-void Layer::setColor(sf::Color color)
+void Layer::setColor(const sf::Color &color)
 {
-    _sprite->setColor(color);
+    _sprite.setColor(color);
 }
 
 sf::Color Layer::getColor() const
 {
-    return (_sprite->getColor());
+    return (_sprite.getColor());
 }
 
-void Layer::setActive(bool activation)
+void Layer::setActive(const bool &activation)
 {
     _isActive = activation;
 }

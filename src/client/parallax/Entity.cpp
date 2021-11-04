@@ -7,37 +7,39 @@
 
 #include "Entity.hpp"
 
-Entity::Entity(sf::Texture *texture, sf::Vector2f pos)
+Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos)
 {
     _texture = texture;
     _pos = pos;
-    _sprite = new sf::Sprite(*_texture);
-    _sprite->setPosition(pos);
+    _sprite.setTexture(_texture);
+    _sprite.setPosition(_pos);
     _clock.restart();
 }
 
-bool Entity::isMouseOnSprite(sf::RenderWindow *w) const
+Entity::~Entity()
 {
-    sf::Vector2i pos = sf::Mouse::getPosition(*w);
-    if (_sprite->getGlobalBounds().contains(sf::Vector2f(pos))) {
+}
+
+bool Entity::isMouseOnSprite(sf::RenderWindow *window) const
+{
+    sf::Vector2i pos = sf::Mouse::getPosition(*window);
+    if (_sprite.getGlobalBounds().contains(sf::Vector2f(pos)))
         return (true);
-    }
     return (false);
 }
 
-bool Entity::isColliding(Entity *other)
+sf::FloatRect Entity::getGlobalBounds() const
 {
-    sf::FloatRect rect1 = _sprite->getGlobalBounds();
-    sf::FloatRect rect2 = other->getSprite().getGlobalBounds();
-    if (rect1.intersects(rect2)) {
-        return (true);
-    }
-    return (false);
+    return (_sprite.getGlobalBounds());
 }
 
-sf::Sprite &Entity::getSprite() const
+bool Entity::isColliding(const Entity &other) const
 {
-    return (*_sprite);
+    sf::FloatRect rect1 = getGlobalBounds();
+    sf::FloatRect rect2 = other.getGlobalBounds();
+    if (rect1.intersects(rect2))
+        return (true);
+    return (false);
 }
 
 float Entity::getElapsedTime() const
@@ -57,27 +59,26 @@ sf::Vector2f Entity::getPos() const
 
 sf::Vector2f Entity::getSize() const
 {
-    return (sf::Vector2f{_sprite->getGlobalBounds().width, _sprite->getGlobalBounds().height});
+    return (sf::Vector2f{getGlobalBounds().width, getGlobalBounds().height});
 }
 
-void Entity::setPos(sf::Vector2f pos)
+void Entity::setPos(const sf::Vector2f &pos)
 {
     _pos = pos;
-    _sprite->setPosition(_pos);
+    _sprite.setPosition(_pos);
 }
 
-void Entity::setColor(sf::Color color)
+void Entity::setColor(const sf::Color &color)
 {
-    _sprite->setColor(color);
+    _sprite.setColor(color);
 }
 
-void Entity::setRotation(float angle)
+void Entity::setRotation(const float &angle)
 {
-    _sprite->rotate(angle);
+    _sprite.rotate(angle);
 }
 
-Entity::~Entity()
+void Entity::draw(sf::RenderWindow &window)
 {
-    if (_sprite)
-        delete _sprite;
+    window.draw(_sprite);
 }

@@ -16,7 +16,7 @@ int main(int ac, char **av)
         boost::asio::io_service io_service;
 
         tcp_server server(io_service);
-        if constexpr (multi_threading) {
+        if (multi_threading) {
             //TODO uncomment this line (Task 04)
             //enable_multi_threading(10, io_service);
         }

@@ -29,14 +29,15 @@ class Parallax {
         Parallax();
         ~Parallax();
 
-        void moveLayers();
-        void drawLayers(sf::RenderWindow *w);
-        void addLayer(float speed, Layers type, bool active);
+        void move();
+        void draw(sf::RenderWindow &window);
+        void add(const float &speed, const Layers &type, const bool &active);
 
     protected:
     private:
-        vector<pair<float, pair<Layer *, Layer *>>> _layersVec;
+        vector<pair<float, pair<Layer, Layer>>> _layersVec;
         sf::Texture _layerTextures[7];
+        int _multiplier;
 
 };
 

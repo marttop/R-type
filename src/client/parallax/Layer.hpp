@@ -12,11 +12,11 @@
 
 class Layer : public Entity {
     public:
-        Layer(sf::Texture *texture, sf::Vector2f pos, bool active);
+        Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active);
         ~Layer();
 
-        void setActive(bool activation);
-        void setColor(sf::Color color);
+        void setActive(const bool &activation);
+        void setColor(const sf::Color &color);
         sf::Color getColor() const;
         bool isActive() const;
 

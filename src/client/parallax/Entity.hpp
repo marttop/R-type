@@ -16,24 +16,28 @@
 
 class Entity {
     public:
-        Entity(sf::Texture *texture, sf::Vector2f pos);
+        Entity(const sf::Texture &texture, const sf::Vector2f &pos);
         ~Entity();
 
-        sf::Sprite &getSprite() const;
         float getElapsedTime() const;
         sf::Vector2f getPos() const;
         sf::Vector2f getSize() const;
-        void setPos(sf::Vector2f pos);
+        sf::FloatRect getGlobalBounds() const;
+        void setPos(const sf::Vector2f &pos);
+        void setRotation(const float &angle);
+        void setColor(const sf::Color &color);
+
         void restartClock();
-        void setRotation(float angle);
-        bool isMouseOnSprite(sf::RenderWindow *w) const;
-        bool isColliding(Entity *other);
-        void setColor(sf::Color color);
+        bool isMouseOnSprite(sf::RenderWindow *window) const;
+        bool isColliding(const Entity &other) const;
+        void draw(sf::RenderWindow &window);
+
     protected:
-        sf::Texture *_texture;
-        sf::Sprite *_sprite;
+        sf::Texture _texture;
+        sf::Sprite _sprite;
         sf::Vector2f _pos;
         sf::Clock _clock;
+
     private:
 };
 

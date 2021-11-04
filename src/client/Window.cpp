@@ -25,12 +25,14 @@ void Window::event()
 
 void Window::update()
 {
-    _parallax.moveLayers();
+    _parallax.move();
 }
 
 void Window::draw()
 {
-    _parallax.drawLayers(&_window);
+    _window.clear();
+    _parallax.draw(_window);
+    _window.display();
 }
 
 void Window::gameLoop()
@@ -38,9 +40,7 @@ void Window::gameLoop()
     while (_window.isOpen()) {
         while (_window.pollEvent(_event))
             event();
-        _window.clear();
         update();
         draw();
-        _window.display();
     }
 }
