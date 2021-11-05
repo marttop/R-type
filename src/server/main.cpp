@@ -19,8 +19,7 @@ int main(int ac, char **av)
         AsioTcpServ server(io_context, std::atoi(av[1]));
 
         if constexpr (multi_threading) {
-            //TODO uncomment this line (Task 04)
-            //enable_multi_threading(10, io_service);
+            // std::thread shell(AsioTcpServ::shell_send);
         }
         io_context.run();
     }

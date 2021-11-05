@@ -26,12 +26,21 @@ void AsioTcpServ::start_accept()
                                     std::placeholders::_1));
 }
 
+void AsioTcpServ::shell_send() const
+{
+    std::string message;
+    while(true) {
+        std::cin >> message;
+
+    }
+}
+
 void AsioTcpServ::handle_connexion(TcpConnection::pointer new_connection,
                                     const asio::error_code &error)
 {
     std::cout << "client accepter" << std::endl;
     if (!error)
-    {
+    {   
         new_connection->startComunication();
     }
 

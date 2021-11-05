@@ -10,8 +10,9 @@
 
 #include "TcpConnection.hpp"
 #include "IServer.hpp"
+#include <vector>
 
-class AsioTcpServ
+class AsioTcpServ : public IServer
 {
 public:
     AsioTcpServ(asio::io_context& io_context, const int port);
@@ -26,11 +27,15 @@ public:
 
     void    start_accept();
 
+    void    shell_send() const;
+
 protected:
 private:
     void    handle_connexion(TcpConnection::pointer new_connection, const asio::error_code& error);
 
-    asio::io_context& _io_context;
+    std::vector<User *>     _listUser; 
+
+    asio::io_context&       _io_context;
     asio::ip::tcp::acceptor _acceptor;
 };
 
