@@ -9,7 +9,7 @@
 #define WINDOW_HPP_
 
 #include <SFML/Graphics.hpp>
-#include "parallax/Parallax.hpp"
+#include "Parallax.hpp"
 
 class Window {
     public:

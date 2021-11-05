@@ -9,10 +9,6 @@
 #define ENTITY_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <string>
 
 class Entity {
     public:

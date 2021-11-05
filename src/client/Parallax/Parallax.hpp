@@ -9,8 +9,9 @@
 #ifndef PARALLAX_HPP_
 #define PARALLAX_HPP_
 
-#include "Layer.hpp"
 #include <vector>
+
+#include "Layer.hpp"
 
 using namespace std;
 
