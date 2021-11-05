@@ -12,7 +12,7 @@ conan_basic_setup(KEEP_RPATHS)
 include_directories(${CONAN_INCLUDE_DIRS})
 link_directories(${CONAN_LIBRARIES_DIRS})
 
-file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp")
+file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/Parallax/*.cpp" "src/client/Parallax/*.hpp" "src/client/Entity/*.cpp" "src/client/Entity/*.hpp" "src/client/Window/*.cpp" "src/client/Window/*.hpp")
 
 file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
@@ -24,6 +24,7 @@ add_executable (rtype_client ${CLIENT_SRC} ${COMMON})
 
 target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
 target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
+# target_link_libraries(rtype_client sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
 
 add_executable (rtype_server ${SERVER_SRC} ${COMMON})
 
@@ -31,6 +32,9 @@ include_directories("src/interface")
 include_directories("src/common")
 include_directories("src/client")
 include_directories("src/server")
+include_directories("src/client/Parallax")
+include_directories("src/client/Entity")
+include_directories("src/client/Window")
 
 target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
 target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
