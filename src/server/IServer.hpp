@@ -13,10 +13,11 @@
 class IServer {
     public:
 
+        virtual ~IServer(){};
         virtual void initServ() = 0;
         virtual void startServ() = 0;
 
-        virtual void wrtieDataToUser(int userId) = 0;
+        virtual void writeDataToUser(int userId) = 0;
         virtual void writeDataToAll() = 0;
 
         virtual void addUser(User user) = 0;

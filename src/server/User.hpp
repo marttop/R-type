@@ -10,10 +10,11 @@
 
 #include <string>
 #include <asio.hpp>
+// #include <TcpConnection.cpp>
 
 class User {
     public:
-        User(short port, std::string ip);
+        User(short port);
         ~User();
 
         short getPort() const;
@@ -21,9 +22,7 @@ class User {
 
     protected:
     private:
-        short _port;
-        std::string _ip;
-
+        
 };
 
 #endif /* !USER_HPP_ */
