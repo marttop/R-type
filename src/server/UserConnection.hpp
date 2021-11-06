@@ -8,27 +8,35 @@
 #ifndef TCPCONNECTION_HPP
 #define TCPCONNECTION_HPP
 
+
 #include <ctime>
 #include <iostream>
 #include <string>
 #include <asio.hpp>
+#include "AsioTcpServ.hpp"
+
+class AsioTcpServ;
+class UserConnection;
+
+typedef std::shared_ptr<UserConnection> userConnectionPointer;
 
 class UserConnection : public std::enable_shared_from_this<UserConnection>
 {
 public:
-    typedef std::shared_ptr<UserConnection> pointer;
 
-    static pointer create(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id) {
-        return pointer(new UserConnection(io_context, userList, id));
+    static userConnectionPointer create(asio::io_context &io_context, AsioTcpServ &servRef, int id) {
+        return userConnectionPointer(new UserConnection(io_context, servRef, id));
     }
 
     asio::ip::tcp::socket &getSocket();
+    int getId() const;
 
     void startCommunication();
 
+
 protected:
 private:
-    UserConnection(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id);
+    UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id);
 
     void handleWrite(const asio::error_code &err, size_t size);
     void handleRead(const asio::error_code &error, size_t size);
@@ -39,8 +47,7 @@ private:
     std::string _finalMessage;
 
     int _id;
-
-    std::vector<UserConnection::pointer> *_userList;
+    AsioTcpServ *_servRef;
 };
 
 #endif /* !TCPCONNECTION_HPP */

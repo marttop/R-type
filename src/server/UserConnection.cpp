@@ -5,10 +5,10 @@
 ** Babel singelton
 */
 
-#include "TcpConnection.hpp"
+#include "UserConnection.hpp"
 
-UserConnection::UserConnection(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id)
-    : _socket(io_context), _userList(userList), _id(id)
+UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id)
+    : _socket(io_context), _servRef(&servRef), _id(id)
 {
 }
 
@@ -17,29 +17,18 @@ asio::ip::tcp::socket &UserConnection::getSocket()
     return _socket;
 }
 
-void testFunc()
+int UserConnection::getId() const
 {
-    // SEPCommands test= {0};
-    // test.code = 100;
-    // test.arg1 = "well done !";
-    // test.arg2 = "";
-    // test.arg3 = "";
-
-    // char buff[sizeof(test) + 1];
-    // std::memset(buff, '\0', sizeof(test) + 1);
-
-    // std::memcpy(buff, &test, sizeof(test));
-
-    // asio::mutable_buffer m = Serializer::serialize(test);
-    // SEPCommands *coucou = Serializer::unSerialize((char *)m.data());
-    // std::cout << coucou->arg1 << std::endl;
+    return (_id);
 }
 
 void UserConnection::startCommunication()
 {
 
+    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+
     for (auto user : *_userList) {
-        if (&user->getSocket() != &_socket) {
+        if (user->getId() != _id) {
             user->getSocket().write_some(asio::buffer("User connected with id: " + std::to_string(_id) + "\r\n"));
         }
     }
@@ -48,8 +37,6 @@ void UserConnection::startCommunication()
                         std::bind(&UserConnection::handleWrite, shared_from_this(),
                             std::placeholders::_1,
                             std::placeholders::_2));
-
-    // _socket.write_some(asio::buffer("ass\r\n", 5));
 }
 
 void UserConnection::handleWrite(const asio::error_code &error, size_t size)
@@ -78,24 +65,24 @@ void UserConnection::checkCode(std::string &data)
 void UserConnection::handleRead(const asio::error_code &error, size_t size)
 {
     std::string sendMessage = "";
-    // std::cout << _message.;
     std::istream is(&_message);
     std::string line;
     std::getline(is, line);
 
+    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
 
     std::cout << "size: " << _userList->size() << std::endl;
     if (line != "") {
         for (auto user : *_userList) {
-            if (&user->getSocket() != &_socket) {
+            if (user->getId() != _id) {
                 user->getSocket().write_some(asio::buffer("a fion has written\r\n"));
             }
         }
         std::cout << "line: " + line << std::endl;
     } else {
-        int tmp = 0, i = 0;;
+        int tmp = -1, i = 0;;
         for (auto user : *_userList) {
-            if (&user->getSocket() != &_socket) {
+            if (user->getId() != _id) {
                 user->getSocket().write_some(asio::buffer("a fion has disconnected with id: " + std::to_string(_id) + "\r\n"));
             }
             else {
@@ -103,7 +90,7 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
             }
             i++;
         }
-        if (tmp != 0) {
+        if (tmp != -1) {
             _userList->erase(_userList->begin() + tmp);
         } else {
             _userList->clear();
@@ -111,10 +98,7 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
         return;
     }
 
-
     sendMessage = "hahahaha!\r\n";
-
-
 
     asio::async_write(_socket, asio::buffer(sendMessage),
                       std::bind(&UserConnection::handleWrite, shared_from_this(),
