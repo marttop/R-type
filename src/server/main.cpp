@@ -6,7 +6,19 @@
 */
 
 #include <iostream>
+#include "RtypeException.hpp"
 #include "AsioTcpServ.hpp"
+#include "ValidateIp.hpp"
+
+int arg_check(int ac, char *argv[])
+{
+    ValidateIp validator;
+    if (ac < 2)
+        throw rtype::RtypeException("./rtype_server port");
+    if (std::atoi(argv[1]) < 1 || std::atoi(argv[1]) > 65535)
+        throw rtype::RtypeException("Please provide a valid port (1025 to 65535).");
+    return (0);
+}
 
 int main(int ac, char **av)
 {

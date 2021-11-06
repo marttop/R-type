@@ -5,11 +5,11 @@
 ** main
 */
 
-/*
-
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
+       #include <sys/types.h>
+       #include <unistd.h>
 
 using boost::asio::ip::tcp;
 
@@ -26,30 +26,41 @@ int main(int argc, char* argv[])
         boost::asio::io_context io_context;
         tcp::resolver resolver(io_context);
         std::cout << argv[1] << std::endl;
-        auto endpoints = tcp::endpoint( boost::asio::ip::address::from_string(argv[1]), 4242);
+        auto endpoints = tcp::endpoint( boost::asio::ip::address::from_string(argv[1]), 8888);
         tcp::socket socket(io_context);
-
-        socket.connect( endpoints);
-        for (;;)
-        {
             boost::array<char, 128> buf;
             boost::system::error_code error;
+        pid_t eric;
 
-            size_t len = socket.read_some(boost::asio::buffer(buf), error);
+        socket.connect( endpoints);
+            eric = fork();
+        for (;;)
+        {
 
-            std::cout.write(buf.data(), len);
-            if (error == boost::asio::error::eof)
-                break; // Connection closed cleanly by peer.
-            else if (error)
-                throw boost::system::system_error(error); // Some other error.
 
-            std::string test = "";
 
-            std::cin >> test;
+            if (eric == 0) {
 
-            test += "/r/n";
+                size_t len = socket.read_some(boost::asio::buffer(buf), error);
+                std::cout.write(buf.data(), len);
+            }
+            else {
 
-            socket.write_some(boost::asio::buffer(test), error);
+                if (error == boost::asio::error::eof)
+                    break; // Connection closed cleanly by peer.
+                else if (error)
+                    throw boost::system::system_error(error); // Some other error.
+
+                std::string test = "";
+
+                std::cout << "msg: ";
+                std::cin >> test;
+
+                test += "\r\n";
+
+                socket.write_some(boost::asio::buffer(test), error);
+
+            }
         }
     }
     catch (std::exception& e)
@@ -60,17 +71,15 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-*/
+// #include "Window.hpp"
 
-#include "Window.hpp"
+// typedef  int (Window::*func)(void);
 
-typedef  int (Window::*func)(void);
+// int main(void)
+// {
+//     Window window("R-TYPE");
 
-int main(void)
-{
-    Window window("R-TYPE");
+//     window.gameLoop();
 
-    window.gameLoop();
-
-    return EXIT_SUCCESS;
-}
+//     return EXIT_SUCCESS;
+// }

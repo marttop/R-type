@@ -22,7 +22,6 @@ public:
     void startServ() {};
     void writeDataToUser(int userId) {};
     void writeDataToAll() {};
-    void addUser(User user) {};
     void disconnectUser(int userId) {};
 
     void    start_accept();
@@ -33,10 +32,9 @@ protected:
 private:
     void    handle_connexion(TcpConnection::pointer new_connection, const asio::error_code& error);
 
-    std::vector<User *>     _listUser; 
-
     asio::io_context&       _io_context;
     asio::ip::tcp::acceptor _acceptor;
+    std::vector<TcpConnection::pointer> _userList;
 };
 
 #endif /* !ASIOTCPSERV_HPP */

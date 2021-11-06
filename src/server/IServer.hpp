@@ -8,8 +8,6 @@
 #ifndef ISERVER_HPP_
 #define ISERVER_HPP_
 
-#include "User.hpp"
-
 class IServer {
     public:
 
@@ -20,7 +18,6 @@ class IServer {
         virtual void writeDataToUser(int userId) = 0;
         virtual void writeDataToAll() = 0;
 
-        virtual void addUser(User user) = 0;
         virtual void disconnectUser(int userId) = 0;
 
     protected:
