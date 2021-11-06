@@ -30,11 +30,11 @@ public:
 
 protected:
 private:
-    void    handle_connexion(TcpConnection::pointer new_connection, const asio::error_code& error);
+    void    handle_connexion(UserConnection::pointer new_connection, const asio::error_code& error);
 
     asio::io_context&       _io_context;
     asio::ip::tcp::acceptor _acceptor;
-    std::vector<TcpConnection::pointer> _userList;
+    std::vector<UserConnection::pointer> _userList;
 };
 
 #endif /* !ASIOTCPSERV_HPP */

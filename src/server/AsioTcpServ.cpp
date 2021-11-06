@@ -22,7 +22,7 @@ void AsioTcpServ::start_accept()
     static int id = 0;
     id++;
 
-    TcpConnection::pointer new_connection = TcpConnection::create(_io_context, &_userList, id);
+    UserConnection::pointer new_connection = UserConnection::create(_io_context, &_userList, id);
 
     _acceptor.async_accept(new_connection->getSocket(),
                             std::bind(&AsioTcpServ::handle_connexion, this, new_connection,
@@ -38,7 +38,7 @@ void AsioTcpServ::shell_send() const
     }
 }
 
-void AsioTcpServ::handle_connexion(TcpConnection::pointer new_connection,
+void AsioTcpServ::handle_connexion(UserConnection::pointer new_connection,
                                     const asio::error_code &error)
 {
     std::cout << "client accepted" << std::endl;

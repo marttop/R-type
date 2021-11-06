@@ -13,13 +13,13 @@
 #include <string>
 #include <asio.hpp>
 
-class TcpConnection : public std::enable_shared_from_this<TcpConnection>
+class UserConnection : public std::enable_shared_from_this<UserConnection>
 {
 public:
-    typedef std::shared_ptr<TcpConnection> pointer;
+    typedef std::shared_ptr<UserConnection> pointer;
 
-    static pointer create(asio::io_context &io_context, std::vector<TcpConnection::pointer> *userList, int id) {
-        return pointer(new TcpConnection(io_context, userList, id));
+    static pointer create(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id) {
+        return pointer(new UserConnection(io_context, userList, id));
     }
 
     asio::ip::tcp::socket &getSocket();
@@ -28,7 +28,7 @@ public:
 
 protected:
 private:
-    TcpConnection(asio::io_context &io_context, std::vector<TcpConnection::pointer> *userList, int id);
+    UserConnection(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id);
 
     void handleWrite(const asio::error_code &err, size_t size);
     void handleRead(const asio::error_code &error, size_t size);
@@ -40,7 +40,7 @@ private:
 
     int _id;
 
-    std::vector<TcpConnection::pointer> *_userList;
+    std::vector<UserConnection::pointer> *_userList;
 };
 
 #endif /* !TCPCONNECTION_HPP */

@@ -7,12 +7,12 @@
 
 #include "TcpConnection.hpp"
 
-TcpConnection::TcpConnection(asio::io_context &io_context, std::vector<TcpConnection::pointer> *userList, int id)
+UserConnection::UserConnection(asio::io_context &io_context, std::vector<UserConnection::pointer> *userList, int id)
     : _socket(io_context), _userList(userList), _id(id)
 {
 }
 
-asio::ip::tcp::socket &TcpConnection::getSocket()
+asio::ip::tcp::socket &UserConnection::getSocket()
 {
     return _socket;
 }
@@ -35,7 +35,7 @@ void testFunc()
     // std::cout << coucou->arg1 << std::endl;
 }
 
-void TcpConnection::startCommunication()
+void UserConnection::startCommunication()
 {
 
     for (auto user : *_userList) {
@@ -45,23 +45,23 @@ void TcpConnection::startCommunication()
     }
 
     asio::async_write(_socket, asio::buffer("Welcomeeeeeeeeeeeeeee !\r\n"),
-                        std::bind(&TcpConnection::handleWrite, shared_from_this(),
+                        std::bind(&UserConnection::handleWrite, shared_from_this(),
                             std::placeholders::_1,
                             std::placeholders::_2));
 
     // _socket.write_some(asio::buffer("ass\r\n", 5));
 }
 
-void TcpConnection::handleWrite(const asio::error_code &error, size_t size)
+void UserConnection::handleWrite(const asio::error_code &error, size_t size)
 {
     asio::async_read_until(_socket, _message, "\n",
-                            std::bind(&TcpConnection::handleRead, shared_from_this(),
+                            std::bind(&UserConnection::handleRead, shared_from_this(),
                                     std::placeholders::_1,
                                     std::placeholders::_2));
 
 }
 
-void TcpConnection::checkCode(std::string &data)
+void UserConnection::checkCode(std::string &data)
 {
     int len = data.length();
     char local_data[len + 1];
@@ -75,7 +75,7 @@ void TcpConnection::checkCode(std::string &data)
     }
 }
 
-void TcpConnection::handleRead(const asio::error_code &error, size_t size)
+void UserConnection::handleRead(const asio::error_code &error, size_t size)
 {
     std::string sendMessage = "";
     // std::cout << _message.;
@@ -117,7 +117,7 @@ void TcpConnection::handleRead(const asio::error_code &error, size_t size)
 
 
     asio::async_write(_socket, asio::buffer(sendMessage),
-                      std::bind(&TcpConnection::handleWrite, shared_from_this(),
+                      std::bind(&UserConnection::handleWrite, shared_from_this(),
                                 std::placeholders::_1,
                                 std::placeholders::_2));
 }
