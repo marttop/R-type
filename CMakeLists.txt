@@ -18,15 +18,24 @@ file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
 
+file(GLOB TESTCLIENT_SRC "src/testclient/*.cpp")
+
 file(GLOB INTERFACE "src/interface/*.hpp")
 
 add_executable (rtype_client ${CLIENT_SRC} ${COMMON})
 
-target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
-target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
-# target_link_libraries(rtype_client sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
+add_executable (rtype_testclient ${TESTCLIENT_SRC} ${COMMON})
 
 add_executable (rtype_server ${SERVER_SRC} ${COMMON})
+
+target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
+target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
+
+target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
+target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
+
+target_include_directories(rtype_testclient PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
+target_link_libraries(rtype_testclient PUBLIC ${CONAN_LIBS})
 
 include_directories("src/interface")
 include_directories("src/common")
@@ -36,8 +45,6 @@ include_directories("src/client/Parallax")
 include_directories("src/client/Entity")
 include_directories("src/client/Window")
 
-target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
-target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
 
 if(CMAKE_COMPILER_IS_GNUCXX)
 	list(APPEND CLIENT_COMPILE_OPTIONS "-std=c++14 -W -Wall -Wextra")
