@@ -7,8 +7,6 @@
 
 #include "Window.hpp"
 
-typedef  int (Window::*func)(void);
-
 int main(void)
 {
     Window window("R-TYPE");

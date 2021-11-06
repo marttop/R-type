@@ -10,6 +10,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "InputBox.hpp"
+
 class Menu {
     public:
         Menu();
@@ -21,6 +23,7 @@ class Menu {
     protected:
     private:
         sf::RectangleShape _background;
+        InputBox _nameBox;
 };
 
 #endif /* !MENU_HPP_ */
