@@ -8,7 +8,7 @@
 #ifndef ASIOTCPSERV_HPP
 #define ASIOTCPSERV_HPP
 
-#include "TcpConnection.hpp"
+#include "UserConnection.hpp"
 #include "IServer.hpp"
 #include <vector>
 
