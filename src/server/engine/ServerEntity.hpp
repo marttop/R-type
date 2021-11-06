@@ -12,16 +12,19 @@
 
 class ServerEntity : public IEntity {
     public:
-        ServerEntity() = default;
+        ServerEntity();
+        ~ServerEntity();
 
         void sendData();
         void update() = 0;
         bool isAlive() const;
 
-        void checkCollision();
+        bool isColliding(const std::shared_ptr<IEntity> &other) const;
+        CustomRect getRect() const;
 
     protected:
         bool _isAlive;
+        CustomRect *_rect;
         std::string _type;
     private:
 };

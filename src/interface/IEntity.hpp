@@ -10,6 +10,8 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
+#include "CustomRect.hpp"
 
 class IEntity {
     public:
@@ -18,7 +20,8 @@ class IEntity {
         virtual void update() = 0;
         virtual void sendData() = 0;
         virtual bool isAlive() const = 0;
-        virtual bool isColliding() const = 0;
+        virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
+        virtual CustomRect getRect() const = 0;
 
     protected:
     private:

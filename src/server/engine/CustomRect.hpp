@@ -18,7 +18,7 @@ class CustomRect {
         ~CustomRect();
 
         void setPosition(double x, double y);
-        bool isColliding(CustomRect &rect);
+        bool isColliding(const CustomRect &rect) const;
 
         point tr;
         point tl;

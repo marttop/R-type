@@ -7,13 +7,18 @@
 
 #include "ServerEntity.hpp"
 
-void ServerEntity::sendData()
+ServerEntity::ServerEntity()
 {
+    _rect = new CustomRect(10, 10);
 }
 
-void ServerEntity::update()
+ServerEntity::~ServerEntity()
 {
-    std::cout << "I'm Entity" << std::endl;
+    delete _rect;
+}
+
+void ServerEntity::sendData()
+{
 }
 
 bool ServerEntity::isAlive() const
@@ -21,7 +26,12 @@ bool ServerEntity::isAlive() const
     return true;
 }
 
-void ServerEntity::checkCollision()
+CustomRect ServerEntity::getRect() const
 {
+    return (*_rect);
+}
 
+bool ServerEntity::isColliding(const std::shared_ptr<IEntity> &other) const
+{
+    return (_rect->isColliding(other->getRect()));
 }

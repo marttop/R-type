@@ -29,7 +29,7 @@ void CustomRect::setPosition(double x, double y)
 
 }
 
-bool CustomRect::isColliding(CustomRect &rect)
+bool CustomRect::isColliding(const CustomRect &rect) const
 {
     if (tl.x == br.x || tl.y == br.y || rect.tl.x == rect.br.x
         || rect.tl.y == rect.br.y) {
