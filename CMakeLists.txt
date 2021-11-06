@@ -14,19 +14,28 @@ link_directories(${CONAN_LIBRARIES_DIRS})
 
 file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/parallax/*.cpp" "src/client/parallax/*.hpp" "src/client/entity/*.cpp" "src/client/entity/*.hpp" "src/client/window/*.cpp" "src/client/window/*.hpp" "src/client/menu/*.cpp" "src/client/menu/*.hpp")
 
-file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
+file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp" "src/server/engine/*.cpp" "src/server/engine/*.hpp")
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
+
+file(GLOB TESTCLIENT_SRC "src/testclient/*.cpp")
 
 file(GLOB INTERFACE "src/interface/*.hpp")
 
 add_executable (rtype_client ${CLIENT_SRC} ${COMMON})
 
-target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
-target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
-# target_link_libraries(rtype_client sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
+add_executable (rtype_testclient ${TESTCLIENT_SRC} ${COMMON})
 
 add_executable (rtype_server ${SERVER_SRC} ${COMMON})
+
+target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
+target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
+
+target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
+target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
+
+target_include_directories(rtype_testclient PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
+target_link_libraries(rtype_testclient PUBLIC ${CONAN_LIBS})
 
 include_directories("src/interface")
 include_directories("src/common")
@@ -36,9 +45,8 @@ include_directories("src/client/parallax")
 include_directories("src/client/entity")
 include_directories("src/client/window")
 include_directories("src/client/menu")
+include_directories("src/server/engine")
 
-target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
-target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
 
 if(CMAKE_COMPILER_IS_GNUCXX)
 	list(APPEND CLIENT_COMPILE_OPTIONS "-std=c++14 -W -Wall -Wextra")

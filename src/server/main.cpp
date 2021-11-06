@@ -5,22 +5,39 @@
 ** main
 */
 
-#include "tcp_server.hpp"
+#include <iostream>
+#include "RtypeException.hpp"
+#include "AsioTcpServ.hpp"
+#include "ValidateIp.hpp"
+#include "ServerPlayer.hpp"
+
+int arg_check(int ac, char *argv[])
+{
+    ValidateIp validator;
+    if (ac < 2)
+        throw rtype::RtypeException("./rtype_server port");
+    if (std::atoi(argv[1]) < 1 || std::atoi(argv[1]) > 65535)
+        throw rtype::RtypeException("Please provide a valid port (1025 to 65535).");
+    return (0);
+}
 
 int main(int ac, char **av)
 {
     constexpr bool multi_threading = true;
 
+    std::shared_ptr<IEntity> ass = std::make_shared<ServerPlayer>();
+    ass->update();
+
     srand(time(nullptr));
     try {
-        boost::asio::io_service io_service;
+        asio::io_context io_context;
 
-        tcp_server server(io_service);
-        if (multi_threading) {
-            //TODO uncomment this line (Task 04)
-            //enable_multi_threading(10, io_service);
+        AsioTcpServ server(io_context, std::atoi(av[1]));
+
+        if constexpr (multi_threading) {
+            // std::thread shell(AsioTcpServ::shell_send);
         }
-        io_service.run();
+        io_context.run();
     }
     catch (std::exception &e) {
         std::cerr << e.what() << std::endl;

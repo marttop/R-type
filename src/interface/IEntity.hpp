@@ -9,6 +9,7 @@
 #define IENTITY_HPP_
 
 #include <string>
+#include <iostream>
 
 class IEntity {
     public:
@@ -16,6 +17,8 @@ class IEntity {
         virtual ~IEntity() = default;
         virtual void update() = 0;
         virtual void sendData() = 0;
+        virtual bool isAlive() const = 0;
+        virtual bool isColliding() const = 0;
 
     protected:
     private:
