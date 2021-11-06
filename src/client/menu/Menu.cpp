@@ -20,12 +20,15 @@ void Menu::create(const sf::RenderWindow &window)
     _background.setSize(sf::Vector2f(window.getSize().x / 1.5, window.getSize().y / 1.5));
     _background.setFillColor(sf::Color(0, 0, 0, 150));
     _background.setOutlineColor(sf::Color::White);
-    _background.setOutlineThickness(6.0);
+    _background.setOutlineThickness(4.0);
     _background.setPosition(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
+
+    _nameBox.create(sf::Vector2f(_background.getSize().x / 3, _background.getSize().y / 10), sf::Vector2f(_background.getPosition().x, _background.getPosition().y), "Choose your name");
 }
 
 void Menu::draw(sf::RenderWindow &window)
 {
     window.draw(_background);
+    _nameBox.draw(window);
 }
