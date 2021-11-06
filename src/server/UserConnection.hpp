@@ -47,6 +47,7 @@ private:
     std::string _finalMessage;
 
     int _id;
+    std::string _userName;
     AsioTcpServ *_servRef;
 };
 

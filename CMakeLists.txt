@@ -14,7 +14,7 @@ link_directories(${CONAN_LIBRARIES_DIRS})
 
 file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/Parallax/*.cpp" "src/client/Parallax/*.hpp" "src/client/Entity/*.cpp" "src/client/Entity/*.hpp" "src/client/Window/*.cpp" "src/client/Window/*.hpp")
 
-file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
+file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp" "src/server/engine/*.cpp" "src/server/engine/*.hpp")
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
 
@@ -41,6 +41,7 @@ include_directories("src/interface")
 include_directories("src/common")
 include_directories("src/client")
 include_directories("src/server")
+include_directories("src/server/engine")
 include_directories("src/client/Parallax")
 include_directories("src/client/Entity")
 include_directories("src/client/Window")

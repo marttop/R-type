@@ -9,6 +9,7 @@
 #include "RtypeException.hpp"
 #include "AsioTcpServ.hpp"
 #include "ValidateIp.hpp"
+#include "ServerPlayer.hpp"
 
 int arg_check(int ac, char *argv[])
 {
@@ -23,6 +24,9 @@ int arg_check(int ac, char *argv[])
 int main(int ac, char **av)
 {
     constexpr bool multi_threading = true;
+
+    std::shared_ptr<IEntity> ass = std::make_shared<ServerPlayer>();
+    ass->update();
 
     srand(time(nullptr));
     try {
