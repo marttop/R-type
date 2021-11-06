@@ -7,7 +7,7 @@
 
 #include "ServerPlayer.hpp"
 
-ServerPlayer::ServerPlayer() : ServerEntity()
+ServerPlayer::ServerPlayer(const CustomRect &rect) : ServerEntity(rect)
 {
 }
 

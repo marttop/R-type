@@ -12,7 +12,7 @@
 
 class ServerEntity : public IEntity {
     public:
-        ServerEntity();
+        ServerEntity(const CustomRect &customRect);
         ~ServerEntity();
 
         void sendData();
@@ -24,7 +24,7 @@ class ServerEntity : public IEntity {
 
     protected:
         bool _isAlive;
-        CustomRect *_rect;
+        CustomRect _rect;
         std::string _type;
     private:
 };

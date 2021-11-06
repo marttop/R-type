@@ -7,14 +7,12 @@
 
 #include "ServerEntity.hpp"
 
-ServerEntity::ServerEntity()
+ServerEntity::ServerEntity(const CustomRect &rect) : _rect(rect)
 {
-    _rect = new CustomRect(10, 10);
 }
 
 ServerEntity::~ServerEntity()
 {
-    delete _rect;
 }
 
 void ServerEntity::sendData()
@@ -28,10 +26,10 @@ bool ServerEntity::isAlive() const
 
 CustomRect ServerEntity::getRect() const
 {
-    return (*_rect);
+    return (_rect);
 }
 
 bool ServerEntity::isColliding(const std::shared_ptr<IEntity> &other) const
 {
-    return (_rect->isColliding(other->getRect()));
+    return (_rect.isColliding(other->getRect()));
 }

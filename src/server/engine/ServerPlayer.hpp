@@ -12,7 +12,7 @@
 
 class ServerPlayer : public ServerEntity {
     public:
-        ServerPlayer();
+        ServerPlayer(const CustomRect &rect);
         ~ServerPlayer();
 
         void update() override;

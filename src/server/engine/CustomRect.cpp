@@ -7,8 +7,8 @@
 
 #include "CustomRect.hpp"
 
-CustomRect::CustomRect(double width, double height, double x, double y) : _x(x), _y(y), tl((point){x, y}), tr((point){x + width, y}),
-                                                                        bl((point){x, y + height}), br((point){x + width, y + height})
+CustomRect::CustomRect(double width, double height, double x, double y) : _x(x), _y(y), tl((point){x, y + height}), tr((point){x + width, y + height}),
+                                                                        bl((point){x, y}), br((point){x + width, y})
 {
 
 }
@@ -22,10 +22,10 @@ void CustomRect::setPosition(double x, double y)
     _x = x;
     _y = y;
 
-    tl = (point){x, y};
-    tr = (point){x + _width, y};
-    bl = (point){x, y + _height};
-    br = (point){x + _width, y + _height};
+    tl = (point){x, y + _height};
+    tr = (point){x + _width, y + _height};
+    bl = (point){x, y};
+    br = (point){x + _width, y};
 
 }
 
@@ -35,10 +35,8 @@ bool CustomRect::isColliding(const CustomRect &rect) const
         || rect.tl.y == rect.br.y) {
         return false;
     }
-
     if (tl.x >= rect.br.x || rect.tl.x >= br.x)
         return false;
-
     if (br.y >= rect.tl.y || rect.br.y >= tl.y)
         return false;
 
