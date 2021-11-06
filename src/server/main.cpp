@@ -23,7 +23,7 @@ int arg_check(int ac, char *argv[])
 
 int main(int ac, char **av)
 {
-    constexpr bool multi_threading = true;
+    bool multi_threading = true;
 
     std::shared_ptr<IEntity> player1 = std::make_shared<ServerPlayer>(CustomRect(10, 10));
     std::shared_ptr<IEntity> player2 = std::make_shared<ServerPlayer>(CustomRect(10, 10, 10, 10));
@@ -36,7 +36,7 @@ int main(int ac, char **av)
 
         AsioTcpServ server(io_context, std::atoi(av[1]));
 
-        if constexpr (multi_threading) {
+        if (multi_threading) {
             // std::thread shell(AsioTcpServ::shell_send);
         }
         io_context.run();
