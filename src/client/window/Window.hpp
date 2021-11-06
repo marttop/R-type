@@ -10,9 +10,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "Parallax.hpp"
+#include "Menu.hpp"
 
 class Window {
     public:
+        enum Scene {
+            MENU,
+        };
+
         Window(const std::string &title);
         ~Window();
 
@@ -23,10 +28,13 @@ class Window {
         void event();
         void update();
         void draw();
+        void parallaxDirection();
 
         sf::RenderWindow _window;
         sf::Event _event;
         Parallax _parallax;
+        Menu _menu;
+        Scene _scene;
 };
 
 #endif /* !WINDOW_HPP_ */
