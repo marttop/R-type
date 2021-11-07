@@ -24,6 +24,16 @@ bool ServerEntity::isAlive() const
     return true;
 }
 
+int ServerEntity::getId() const
+{
+    return (_id);
+}
+
+void ServerEntity::setId(int id)
+{
+    _id = id;
+}
+
 CustomRect ServerEntity::getRect() const
 {
     return (_rect);

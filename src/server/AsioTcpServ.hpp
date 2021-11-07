@@ -37,7 +37,7 @@ protected:
 private:
     void handle_connexion(userConnectionPointer new_connection, const asio::error_code& error);
 
-    asio::io_context&       _io_context;
+    asio::io_context &_io_context;
     asio::ip::tcp::acceptor _acceptor;
     std::vector<userConnectionPointer> _userList;
 };
