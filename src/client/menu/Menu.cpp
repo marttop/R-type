@@ -24,7 +24,12 @@ void Menu::create(const sf::RenderWindow &window)
     _background.setPosition(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
-    _nameBox.create(sf::Vector2f(_background.getSize().x / 3, _background.getSize().y / 10), sf::Vector2f(_background.getPosition().x, _background.getPosition().y), "Choose your name");
+    _nameBox.create(sf::Vector2f(_background.getSize().x / 3, _background.getSize().y / 16), sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 3), "Choose your name", sf::Vector2f(1, 1), false);
+}
+
+void Menu::update(const sf::Event &event, const sf::RenderWindow &window)
+{
+    _nameBox.update(event, window);
 }
 
 void Menu::draw(sf::RenderWindow &window)

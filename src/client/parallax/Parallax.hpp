@@ -38,7 +38,7 @@ class Parallax {
         void create(const int &speed, const Direction &direction);
         void move();
         void draw(sf::RenderWindow &window);
-        void setDirection(const Direction &direction);
+        void setDirection(const sf::Event &event);
 
     protected:
     private:

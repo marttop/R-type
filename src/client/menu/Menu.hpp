@@ -19,6 +19,7 @@ class Menu {
 
         void draw(sf::RenderWindow &window);
         void create(const sf::RenderWindow &window);
+        void update(const sf::Event &event, const sf::RenderWindow &window);
 
     protected:
     private:

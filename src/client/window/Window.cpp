@@ -20,26 +20,15 @@ Window::~Window()
 {
 }
 
-void Window::parallaxDirection()
-{
-    if (_scene == MENU) {
-        if (_event.key.code == sf::Keyboard::Down)
-            _parallax.setDirection(Parallax::DOWN);
-        if (_event.key.code == sf::Keyboard::Left)
-            _parallax.setDirection(Parallax::LEFT);
-        if (_event.key.code == sf::Keyboard::Right)
-            _parallax.setDirection(Parallax::RIGHT);
-        if (_event.key.code == sf::Keyboard::Up)
-            _parallax.setDirection(Parallax::UP);
-    }
-}
-
 void Window::event()
 {
     if (_event.type == sf::Event::Closed)
         _window.close();
-    if (_event.type == sf::Event::KeyPressed)
-        parallaxDirection();
+    if (_scene == MENU) {
+        if (_event.type == sf::Event::KeyPressed)
+            _parallax.setDirection(_event);
+        _menu.update(_event, _window);
+    }
 }
 
 void Window::update()

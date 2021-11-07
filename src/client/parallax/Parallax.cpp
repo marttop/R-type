@@ -57,9 +57,16 @@ void Parallax::add(const float &speed, const Layers &type, const bool &active)
     );
 }
 
-void Parallax::setDirection(const Direction &direction)
+void Parallax::setDirection(const sf::Event &event)
 {
-    _direction = direction;
+    if (event.key.code == sf::Keyboard::Down)
+        _direction = Parallax::UP;
+    if (event.key.code == sf::Keyboard::Left)
+        _direction = Parallax::RIGHT;
+    if (event.key.code == sf::Keyboard::Right)
+        _direction = Parallax::LEFT;
+    if (event.key.code == sf::Keyboard::Up)
+       _direction = Parallax::DOWN;
 }
 
 void Parallax::setPosition(struct std::pair<float, std::pair<std::pair<Layer *, Layer *>, std::pair<Layer *, Layer *>>> iter)

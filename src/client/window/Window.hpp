@@ -28,7 +28,6 @@ class Window {
         void event();
         void update();
         void draw();
-        void parallaxDirection();
 
         sf::RenderWindow _window;
         sf::Event _event;
