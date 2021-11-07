@@ -62,6 +62,36 @@ void UserConnection::checkCode(std::string &data)
     }
 }
 
+void UserConnection::broadcastTCP(const std::string &msg) const
+{
+    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+    for (auto user : *_userList) {
+        if (user->getId() != _id) {
+            user->getSocket().write_some(asio::buffer("msg\r\n"));
+        }
+    }
+}
+
+void UserConnection::checkDisconnection() const
+{
+    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+    int tmp = -1, i = 0;
+    for (auto user : *_userList) {
+        if (user->getId() != _id) {
+            user->getSocket().write_some(asio::buffer("a fion has disconnected with id: " + std::to_string(_id) + "\r\n"));
+        }
+        else {
+            tmp = i;
+        }
+        i++;
+    }
+    if (tmp != -1) {
+        _userList->erase(_userList->begin() + tmp);
+    } else {
+        _userList->clear();
+    }
+}
+
 void UserConnection::handleRead(const asio::error_code &error, size_t size)
 {
     std::string sendMessage = "";
@@ -69,32 +99,11 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
     std::string line;
     std::getline(is, line);
 
-    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
-
-    std::cout << "size: " << _userList->size() << std::endl;
     if (line != "") {
-        for (auto user : *_userList) {
-            if (user->getId() != _id) {
-                user->getSocket().write_some(asio::buffer("a fion has written\r\n"));
-            }
-        }
+        broadcastTCP("a fion has written\r\n");
         std::cout << "line: " + line << std::endl;
     } else {
-        int tmp = -1, i = 0;;
-        for (auto user : *_userList) {
-            if (user->getId() != _id) {
-                user->getSocket().write_some(asio::buffer("a fion has disconnected with id: " + std::to_string(_id) + "\r\n"));
-            }
-            else {
-                tmp = i;
-            }
-            i++;
-        }
-        if (tmp != -1) {
-            _userList->erase(_userList->begin() + tmp);
-        } else {
-            _userList->clear();
-        }
+        checkDisconnection();
         return;
     }
 

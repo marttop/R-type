@@ -41,6 +41,8 @@ private:
     void handleWrite(const asio::error_code &err, size_t size);
     void handleRead(const asio::error_code &error, size_t size);
     void checkCode(std::string &data);
+    void broadcastTCP(const std::string &msg) const;
+    void checkDisconnection() const;
 
     asio::ip::tcp::socket _socket;
     asio::streambuf _message;
