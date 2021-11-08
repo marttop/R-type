@@ -16,12 +16,9 @@ class SEPParsor {
     public:
         SEPParsor();
         ~SEPParsor();
-        std::vector<std::string> parseCommands(std::string command) const;
+        static std::vector<std::string> parseCommands(std::string command);
     protected:
     private:
-        typedef std::string (SEPParsor::*factoryF)(const std::vector<std::string> &arg);
-
-        std::map<int, factoryF> _cmd;
 };
 
 #endif /* !SEPPARSOR_HPP_ */
