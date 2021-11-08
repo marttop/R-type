@@ -17,6 +17,7 @@ public:
     ~ValidateIp();
 
     bool validateIpAddress(const std::string &ipAddress);
+    bool validatePort(const int &port);
 
 protected:
 private:

@@ -15,7 +15,7 @@ InputBox::~InputBox()
 {
 }
 
-void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title, const sf::Vector2f &factors, const bool &dot)
+void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title, const std::string &defaultInput, const bool &ip, const bool &num, const bool &alpha, const sf::Vector2f &factors)
 {
     _background.setSize(sf::Vector2f(size.x, size.y));
     _background.setFillColor(sf::Color::Black);
@@ -27,50 +27,56 @@ void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const s
     _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
 
     _title = title;
-
     _titleText.setString(_title);
     _titleText.setScale(factors);
     _titleText.setFont(_font);
-    _titleText.setOrigin(sf::Vector2f(_titleText.getGlobalBounds().width / 2, _titleText.getGlobalBounds().height / 2));
+    _titleText.setOrigin(sf::Vector2f(_titleText.getGlobalBounds().left + _titleText.getGlobalBounds().width / 2, _titleText.getGlobalBounds().top + _titleText.getGlobalBounds().height / 2));
     _titleText.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 2 - _titleText.getGlobalBounds().height));
+
+    _input = defaultInput;
+    if (_input == "")
+        _input = "INIT";
+    _inputText.setString(_input);
+    _inputText.setFont(_font);
+    _inputText.setOrigin(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width / 2, _inputText.getGlobalBounds().top + _inputText.getGlobalBounds().height / 2));
+    _inputText.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
+    if (_input == "INIT") {
+        _input = "";
+        _inputText.setString(_input);
+    }
 
     _cursor.setSize(sf::Vector2f(2.0, size.y / 1.4));
     _cursor.setFillColor(sf::Color::White);
     _cursor.setOrigin(sf::Vector2f(_cursor.getSize().x / 2, _cursor.getSize().y / 2));
-    _cursor.setPosition(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + 10, _background.getPosition().y));
-
+    _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 5, _inputText.getGlobalBounds().top + _inputText.getGlobalBounds().height / 2));
     _cursorClock.restart();
-
-    _input = "";
-
-    _inputText.setString(_input);
-    _inputText.setFont(_font);
-    _inputText.setOrigin(sf::Vector2f(0, _inputText.getGlobalBounds().height / 2 + 5));
-    _inputText.setPosition(sf::Vector2f(_cursor.getPosition().x, _cursor.getPosition().y - _cursor.getSize().y / 2));
 
     _isFocus = false;
 
-    _dot = dot;
+    _ip = ip;
+    _num = num;
+    _alpha = alpha;
 }
 
-void InputBox::update(const sf::Event &event, const sf::RenderWindow &window)
+void InputBox::update()
+{
+    if (_cursorClock.getElapsedTime().asSeconds() >= 0.8)
+        _cursorClock.restart();
+}
+
+void InputBox::event(const sf::Event &event, const sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed) {
-        printf("ass\n");
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
             _isFocus = true;
-            _background.setOutlineColor(sf::Color::Yellow);
-        }
-        else {
+        else
             _isFocus = false;
-            _background.setOutlineColor(sf::Color::White);
-        }
     }
     if (event.type == sf::Event::TextEntered && _isFocus == true) {
-        if ((event.text.unicode >= 'a' && event.text.unicode <= 'z')
-        || (event.text.unicode >= 'A' && event.text.unicode <= 'Z')
-        || (event.text.unicode >= '0' && event.text.unicode <= '9')
-        || (event.text.unicode == '.' && _dot == true)) {
+        if ((_alpha == true && ((event.text.unicode >= 'a' && event.text.unicode <= 'z')
+        || (event.text.unicode >= 'A' && event.text.unicode <= 'Z')))
+        || (_num == true && (event.text.unicode >= '0' && event.text.unicode <= '9'))
+        || (_ip == true && event.text.unicode == '.')) {
             if (_input.size() > 15)
             return;
             _input += event.text.unicode;
@@ -78,21 +84,31 @@ void InputBox::update(const sf::Event &event, const sf::RenderWindow &window)
         if (event.text.unicode == 8 && _input.size() > 0)
             _input.pop_back();
         _inputText.setString(_input);
-        _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 4, _cursor.getPosition().y));
+        _inputText.setOrigin(sf::Vector2f(_inputText.getGlobalBounds().width / 2, _inputText.getOrigin().y));
+        _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 5, _cursor.getPosition().y));
+    }
+    if (event.type == sf::Event::MouseMoved) {
+        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+            _background.setOutlineColor(sf::Color::Yellow);
+        }
+        else {
+            _background.setOutlineColor(sf::Color::White);
+        }
     }
 }
 
-void InputBox::draw(sf::RenderWindow &window)
+void InputBox::draw(sf::RenderWindow &window) const
 {
     window.draw(_background);
-    if (_isFocus == true) {
-        if (_cursorClock.getElapsedTime().asSeconds() >= 0.8)
-            _cursorClock.restart();
-        else if (_cursorClock.getElapsedTime().asSeconds() >= 0.4)
-            window.draw(_cursor);
-    }
+    if (_isFocus == true && _cursorClock.getElapsedTime().asSeconds() >= 0.4)
+        window.draw(_cursor);
     if (_titleText.getString() != "")
         window.draw(_titleText);
     if (_inputText.getString() != "")
         window.draw(_inputText);
+}
+
+std::string InputBox::getInputString() const
+{
+    return (_inputText.getString());
 }

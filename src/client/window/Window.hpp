@@ -9,6 +9,7 @@
 #define WINDOW_HPP_
 
 #include <SFML/Graphics.hpp>
+
 #include "Parallax.hpp"
 #include "Menu.hpp"
 

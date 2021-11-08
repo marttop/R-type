@@ -21,10 +21,13 @@ Parallax::~Parallax()
     }
 }
 
-void Parallax::create(const int &speed, const Direction &direction)
+void Parallax::create(const int &speed)
 {
     _speed = speed;
-    _direction = direction;
+    for (int i = 0; i < 4; i++)
+        _direction[i] = false;
+    _direction[DOWN] = true;
+    _direction[LEFT] = true;
 
     _layerTextures[BACKGROUND].loadFromFile("assets/parallax/BKG 2/Bkg 2 Nebula.png");
     _layerTextures[FARTHEST].loadFromFile("assets/parallax/OLD/small_stars1.png");
@@ -34,8 +37,8 @@ void Parallax::create(const int &speed, const Direction &direction)
     add(1.0, BACKGROUND, true);
     add(1.2, FARTHEST, true);
     add(1.4, FAR, true);
-    add(1.6, CLOSE, true);
-    add(1.8, CLOSEST, true);
+    add(1.7, CLOSE, true);
+    add(2.0, CLOSEST, true);
 }
 
 void Parallax::add(const float &speed, const Layers &type, const bool &active)
@@ -57,40 +60,51 @@ void Parallax::add(const float &speed, const Layers &type, const bool &active)
     );
 }
 
-void Parallax::setDirection(const sf::Event &event)
+void Parallax::event(const sf::Event &event)
 {
-    if (event.key.code == sf::Keyboard::Down)
-        _direction = Parallax::UP;
-    if (event.key.code == sf::Keyboard::Left)
-        _direction = Parallax::RIGHT;
-    if (event.key.code == sf::Keyboard::Right)
-        _direction = Parallax::LEFT;
-    if (event.key.code == sf::Keyboard::Up)
-       _direction = Parallax::DOWN;
+    if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::Down)
+            _direction[DOWN] = true;
+        if (event.key.code == sf::Keyboard::Left)
+            _direction[LEFT] = true;
+        if (event.key.code == sf::Keyboard::Right)
+            _direction[RIGHT] = true;
+        if (event.key.code == sf::Keyboard::Up)
+           _direction[UP] = true;
+    } else if (event.type == sf::Event::KeyReleased) {
+        if (event.key.code == sf::Keyboard::Down)
+            _direction[DOWN] = false;
+        if (event.key.code == sf::Keyboard::Left)
+            _direction[LEFT] = false;
+        if (event.key.code == sf::Keyboard::Right)
+            _direction[RIGHT] = false;
+        if (event.key.code == sf::Keyboard::Up)
+           _direction[UP] = false;
+    }
 }
 
 void Parallax::setPosition(struct std::pair<float, std::pair<std::pair<Layer *, Layer *>, std::pair<Layer *, Layer *>>> iter)
 {
     float elapsedTime = iter.second.first.first->getElapsedTime();
-    if (_direction == RIGHT) {
+    if (_direction[RIGHT]) {
         iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x + iter.first * elapsedTime * _speed, iter.second.first.first->getPos().y));
         iter.second.first.second->setPos(sf::Vector2f(iter.second.first.second->getPos().x + iter.first * elapsedTime * _speed, iter.second.first.second->getPos().y));
         iter.second.second.first->setPos(sf::Vector2f(iter.second.second.first->getPos().x + iter.first * elapsedTime * _speed, iter.second.second.first->getPos().y));
         iter.second.second.second->setPos(sf::Vector2f(iter.second.second.second->getPos().x + iter.first * elapsedTime * _speed, iter.second.second.second->getPos().y));
     }
-    if (_direction == LEFT) {
+    if (_direction[LEFT]) {
         iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x - iter.first * elapsedTime * _speed, iter.second.first.first->getPos().y));
         iter.second.first.second->setPos(sf::Vector2f(iter.second.first.second->getPos().x - iter.first * elapsedTime * _speed, iter.second.first.second->getPos().y));
         iter.second.second.first->setPos(sf::Vector2f(iter.second.second.first->getPos().x - iter.first * elapsedTime * _speed, iter.second.second.first->getPos().y));
         iter.second.second.second->setPos(sf::Vector2f(iter.second.second.second->getPos().x - iter.first * elapsedTime * _speed, iter.second.second.second->getPos().y));
     }
-    if (_direction == UP) {
+    if (_direction[UP]) {
         iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x, iter.second.first.first->getPos().y - iter.first * elapsedTime * _speed));
         iter.second.first.second->setPos(sf::Vector2f(iter.second.first.second->getPos().x, iter.second.first.second->getPos().y - iter.first * elapsedTime * _speed));
         iter.second.second.first->setPos(sf::Vector2f(iter.second.second.first->getPos().x, iter.second.second.first->getPos().y - iter.first * elapsedTime * _speed));
         iter.second.second.second->setPos(sf::Vector2f(iter.second.second.second->getPos().x, iter.second.second.second->getPos().y - iter.first * elapsedTime * _speed));
     }
-    if (_direction == DOWN) {
+    if (_direction[DOWN]) {
         iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x, iter.second.first.first->getPos().y + iter.first * elapsedTime * _speed));
         iter.second.first.second->setPos(sf::Vector2f(iter.second.first.second->getPos().x, iter.second.first.second->getPos().y + iter.first * elapsedTime * _speed));
         iter.second.second.first->setPos(sf::Vector2f(iter.second.second.first->getPos().x, iter.second.second.first->getPos().y + iter.first * elapsedTime * _speed));
@@ -100,7 +114,7 @@ void Parallax::setPosition(struct std::pair<float, std::pair<std::pair<Layer *, 
 
 void Parallax::fillEmptySpace(struct std::pair<float, std::pair<std::pair<Layer *, Layer *>, std::pair<Layer *, Layer *>>> iter)
 {
-    if (_direction == RIGHT) {
+    if (_direction[RIGHT]) {
         if (iter.second.first.first->getPos().x >= iter.second.first.first->getSize().x)
             iter.second.first.first->setPos(sf::Vector2f(iter.second.first.second->getPos().x - iter.second.first.second->getSize().x, iter.second.first.first->getPos().y));
         if (iter.second.first.second->getPos().x >= iter.second.first.second->getSize().x)
@@ -110,7 +124,7 @@ void Parallax::fillEmptySpace(struct std::pair<float, std::pair<std::pair<Layer 
         if (iter.second.second.second->getPos().x >= iter.second.second.second->getSize().x)
             iter.second.second.second->setPos(sf::Vector2f(iter.second.second.first->getPos().x - iter.second.second.second->getSize().x, iter.second.second.second->getPos().y));
     }
-    if (_direction == LEFT) {
+    if (_direction[LEFT]) {
         if (iter.second.first.first->getPos().x <= -iter.second.first.first->getSize().x)
             iter.second.first.first->setPos(sf::Vector2f(iter.second.first.second->getPos().x + iter.second.first.second->getSize().x, iter.second.first.first->getPos().y));
         if (iter.second.first.second->getPos().x <= -iter.second.first.second->getSize().x)
@@ -120,7 +134,7 @@ void Parallax::fillEmptySpace(struct std::pair<float, std::pair<std::pair<Layer 
         if (iter.second.second.second->getPos().x <= -iter.second.second.second->getSize().x)
             iter.second.second.second->setPos(sf::Vector2f(iter.second.second.first->getPos().x + iter.second.second.second->getSize().x, iter.second.second.second->getPos().y));
     }
-    if (_direction == UP) {
+    if (_direction[UP]) {
         if (iter.second.first.first->getPos().y <= -iter.second.first.first->getSize().y)
             iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x, iter.second.second.first->getPos().y + iter.second.first.first->getSize().y));
         if (iter.second.first.second->getPos().y <= -iter.second.first.second->getSize().y)
@@ -130,7 +144,7 @@ void Parallax::fillEmptySpace(struct std::pair<float, std::pair<std::pair<Layer 
         if (iter.second.second.second->getPos().y <= -iter.second.second.second->getSize().y)
             iter.second.second.second->setPos(sf::Vector2f(iter.second.second.second->getPos().x, iter.second.first.second->getPos().y + iter.second.second.second->getSize().y));
     }
-    if (_direction == DOWN) {
+    if (_direction[DOWN]) {
         if (iter.second.first.first->getPos().y >= iter.second.first.first->getSize().y)
             iter.second.first.first->setPos(sf::Vector2f(iter.second.first.first->getPos().x, iter.second.second.first->getPos().y - iter.second.first.first->getSize().y));
         if (iter.second.first.second->getPos().y >= iter.second.first.second->getSize().y)
@@ -142,7 +156,7 @@ void Parallax::fillEmptySpace(struct std::pair<float, std::pair<std::pair<Layer 
     }
 }
 
-void Parallax::move()
+void Parallax::update()
 {
     for (auto iter : _layersVec) {
         if (iter.second.first.first->isActive() == true) {
@@ -154,7 +168,7 @@ void Parallax::move()
 }
 
 
-void Parallax::draw(sf::RenderWindow &window)
+void Parallax::draw(sf::RenderWindow &window) const
 {
     for (auto iter : _layersVec) {
         if (iter.second.first.first->isActive() == true) {
