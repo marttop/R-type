@@ -24,6 +24,7 @@ class Button {
         sf::RectangleShape _background;
         sf::Text *_text;
         sf::Font _font;
+        sf::Color _outline;
 };
 
 #endif /* !BUTTON_HPP_ */
