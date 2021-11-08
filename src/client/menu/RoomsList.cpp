@@ -52,17 +52,10 @@ void RoomsList::create(const sf::RectangleShape &background)
     _scrollArrow[1].setPosition(sf::Vector2f(_scroller.getPosition().x, _scroller.getPosition().y + _scroller.getSize().y / 2 - _scrollArrowTexture[0].getSize().y / 1.5));
     _scrollArrow[1].rotate(180.0);
 
-    int cardNb = 8;
-    _displayedIdx = std::make_pair(0, cardNb);
+    _cardNb = 8;
+    _displayedIdx = std::make_pair(0, _cardNb);
 
     _thickness = 1.0;
-
-    /*_rooms.push_back(new RoomCard);
-    _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x, _background.getSize().y / cardNb), "0", 0, _thickness);
-
-    _rooms.push_back(new RoomCard);
-    _rooms.back()->create(sf::Vector2f(_rooms.at(_rooms.size() - 2)->getPosition().x, _rooms.at(_rooms.size() - 2)->getPosition().y + _rooms.at(_rooms.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x - _scroller.getSize().x, _background.getSize().y / cardNb), std::to_string(i), 0, _thickness);
-    */
 }
 
 void RoomsList::draw(sf::RenderWindow &window) const
@@ -89,8 +82,21 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
     return (true);
 }
 
-void RoomsList::update(const sf::Event &event, const sf::RenderWindow &window)
+void RoomsList::update(char *buf)
 {
+    std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
+    if (cmd.size() == 0)
+        return;
+    if (cmd.size() == 2 && cmd[0] == "310") {
+        std::string roomId = cmd[1];
+        if (_rooms.size() == 0) {
+            _rooms.push_back(new RoomCard);
+            _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x, _background.getSize().y / _cardNb), "Room " + roomId, 0, _thickness);
+        } else {
+            _rooms.push_back(new RoomCard);
+            _rooms.back()->create(sf::Vector2f(_rooms.at(_rooms.size() - 2)->getPosition().x, _rooms.at(_rooms.size() - 2)->getPosition().y + _rooms.at(_rooms.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x - _scroller.getSize().x, _background.getSize().y / _cardNb), "Room " + roomId, 0, _thickness);
+        }
+    }
 }
 
 void RoomsList::scrollerEvent(const sf::Event &event, const sf::RenderWindow &window)
@@ -139,11 +145,12 @@ void RoomsList::scrollerEvent(const sf::Event &event, const sf::RenderWindow &wi
     }
 }
 
-void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window)
+void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
 {
     _disconnect.event(event, window);
     _join.event(event, window);
-    _create.event(event, window);
+    if (_create.event(event, window))
+        socket.send(boost::asio::buffer("300\n"));
     for (int i = 0; i < _rooms.size(); i++) {
         if (i >= _displayedIdx.first && i < _displayedIdx.second)
             _rooms[i]->event(event, window);

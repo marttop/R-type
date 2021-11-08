@@ -15,7 +15,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::create(const sf::RenderWindow &window, const boost::array<char, 1024> &buf)
+void Menu::create(const sf::RenderWindow &window, char *buf)
 {
     _background.setSize(sf::Vector2f(window.getSize().x / 1.5, window.getSize().y / 1.5));
     _background.setFillColor(sf::Color(0, 0, 0, 150));
@@ -28,6 +28,8 @@ void Menu::create(const sf::RenderWindow &window, const boost::array<char, 1024>
     _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
 
     _connected = false;
+
+    _buf = buf;
 
     _rooms.create(_background);
 
@@ -44,7 +46,7 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::
             _connection.event(event, window);
             _connected = _connection.connect(event, window, endpoint, socket, _alert);
         } else {
-            _rooms.event(event, window);
+            _rooms.event(event, window, socket);
             _connected = _rooms.disconnect(event, window, socket);
         }
     } else
@@ -54,6 +56,7 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::
 void Menu::update()
 {
     _connection.update();
+    _rooms.update(_buf);
 }
 
 void Menu::draw(sf::RenderWindow &window) const

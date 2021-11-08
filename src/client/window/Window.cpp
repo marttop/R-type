@@ -12,6 +12,7 @@ Window::Window(const std::string &title)
     _window.create(sf::VideoMode::getDesktopMode(), title);
     _window.setFramerateLimit(60);
 
+    std::memset(_buf, '\0', 1024);
     _resolver = new boost::asio::ip::tcp::resolver(_io_context);
     _socket = new boost::asio::ip::tcp::socket(_io_context);
 
@@ -59,19 +60,20 @@ void Window::draw()
 void Window::read()
 {
     if (_socket->is_open()) {
+        std::memset(_buf, '\0', 1024);
         _socket->non_blocking(true);
         size_t len = 0;
         len = _socket->receive(boost::asio::buffer(_buf), 0, _error);
-        std::cout.write(_buf.data(), len);
+        std::cout << _buf;
     }
 }
 
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
+        read();
         while (_window.pollEvent(_event))
             event();
-        read();
         update();
         draw();
     }

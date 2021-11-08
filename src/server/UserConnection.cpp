@@ -44,6 +44,7 @@ void UserConnection::startCommunication()
 
 void UserConnection::handleWrite(const asio::error_code &error, size_t size)
 {
+    _message.consume(1024);
     asio::async_read_until(_socket, _message, "\n",
                             std::bind(&UserConnection::handleRead, shared_from_this(),
                                     std::placeholders::_1,
