@@ -25,9 +25,11 @@ int main(int ac, char **av)
 {
     bool multi_threading = true;
 
+
     srand(time(nullptr));
     try {
         asio::io_context io_context;
+        arg_check(ac, av);
 
         AsioTcpServ server(io_context, std::atoi(av[1]));
 

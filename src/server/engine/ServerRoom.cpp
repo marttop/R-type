@@ -20,6 +20,7 @@ void ServerRoom::addUser(int id, const std::string &username)
     std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context));
     sp->setId(id);
     sp->setUsername(username);
+    sp->startUDP();
     _playerList.push_back(sp);
 }
 

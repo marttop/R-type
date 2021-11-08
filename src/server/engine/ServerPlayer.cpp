@@ -8,13 +8,36 @@
 #include "ServerPlayer.hpp"
 
 ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context)
-                            : ServerEntity(rect), _io_context(io_context), _socket(io_context)
+                            : ServerEntity(rect), _io_context(io_context),
+                            _socket(io_context, asio::ip::udp::endpoint(asio::ip::udp::v4(), 8888))
 {
     _userName = "";
+    std::memset(_buffer, '\0', 1024);
 }
 
 ServerPlayer::~ServerPlayer()
 {
+}
+
+void ServerPlayer::startUDP()
+{
+    _socket.async_receive(asio::buffer(_buffer),
+                            std::bind(&ServerPlayer::handleReceive, this,
+                                    std::placeholders::_1));
+}
+
+void ServerPlayer::handleReceive(const asio::error_code &error)
+{
+    std::cout << "udp line: " << _buffer;
+
+    _socket.async_receive(asio::buffer(_buffer),
+                            std::bind(&ServerPlayer::handleReceive, this,
+                                    std::placeholders::_1));
+}
+
+asio::ip::udp::socket &ServerPlayer::getSocket()
+{
+    return (_socket);
 }
 
 void ServerPlayer::update()

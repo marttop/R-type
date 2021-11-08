@@ -22,6 +22,7 @@ class ServerRoom {
     private:
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
+        asio::ip::udp::endpoint remote_endpoint_;
 };
 
 #endif /* !SERVERROOM_HPP_ */

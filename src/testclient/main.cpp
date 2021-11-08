@@ -13,7 +13,7 @@
 #include "RtypeException.hpp"
 #include "ValidateIp.hpp"
 
-using boost::asio::ip::tcp;
+using boost::asio::ip::udp;
 
 int arg_check(int ac, char *argv[])
 {
@@ -34,10 +34,10 @@ int main(int ac, char* av[])
         arg_check(ac, av);
 
         boost::asio::io_context io_context;
-        tcp::resolver resolver(io_context);
+        udp::resolver resolver(io_context);
         std::cout << av[1] << std::endl;
-        auto endpoints = tcp::endpoint( boost::asio::ip::address::from_string(av[1]), 8888);
-        tcp::socket socket(io_context);
+        auto endpoints = udp::endpoint( boost::asio::ip::address::from_string(av[1]), 8888);
+        udp::socket socket(io_context);
             boost::array<char, 128> buf;
             boost::system::error_code error;
         pid_t eric;
@@ -51,7 +51,7 @@ int main(int ac, char* av[])
 
             if (eric == 0) {
 
-                size_t len = socket.read_some(boost::asio::buffer(buf), error);
+                size_t len = socket.receive_from(boost::asio::buffer(buf), endpoints);
                 std::cout.write(buf.data(), len);
             }
             else {
@@ -66,9 +66,9 @@ int main(int ac, char* av[])
                 std::cout << "msg: ";
                 std::cin >> test;
 
-                test += "\r\n";
+                test += "\n";
 
-                socket.write_some(boost::asio::buffer(test), error);
+                socket.send_to(boost::asio::buffer(test), endpoints);
 
             }
         }

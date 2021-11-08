@@ -11,16 +11,18 @@ Shitty Epitech Protocol
                 are separated by a space)
 
                 Server->Client
-                    000 + room_id + nb_player + room_id2 + nb_player + ... (At connection to serv)
+                    000 + user_id (At connection to serv)
                     100 (Command ok)
                     150 + user_id (user connected)
                     250 + user_id (user disconnected)
                     500 (Unspecified error)
 
                 Client->Server
-                    210 + username + room_id (request room join)
-                      ->  220 + username1 + username2 + ... (room joined)
+                    210 + username (after connection)
+                      ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
+                    220 + user_id (request join)
+                      ->  230 + username1 + username2 + ...
                     300 (request room creation)
                       ->  200 + room_id (creation ok)
                       ->  500 (Error)
