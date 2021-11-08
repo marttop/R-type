@@ -19,6 +19,7 @@ class Parallax {
     public:
         enum Layers {
             BACKGROUND,
+            PLANET,
             FARTHEST,
             FAR,
             CLOSE,
@@ -47,7 +48,7 @@ class Parallax {
         void add(const float &speed, const Layers &type, const bool &active);
 
         vector<pair<float, pair<pair<Layer *, Layer *>, pair<Layer *, Layer *>>>> _layersVec;
-        sf::Texture _layerTextures[7];
+        sf::Texture _layerTextures[6];
         bool _direction[4];
         int _speed;
 

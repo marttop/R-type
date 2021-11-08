@@ -11,9 +11,11 @@
 
 #include <ctime>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <asio.hpp>
 #include "AsioTcpServ.hpp"
+#include "SEPParsor.hpp"
 
 class AsioTcpServ;
 class UserConnection;
@@ -37,12 +39,22 @@ public:
 protected:
 private:
     UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id);
+    typedef void (UserConnection::*factoryF)(const std::vector<std::string> &arg);
 
     void handleWrite(const asio::error_code &err, size_t size);
     void handleRead(const asio::error_code &error, size_t size);
     void checkCode(std::string &data);
+    void sendError(const std::string &msg);
     void broadcastTCP(const std::string &msg) const;
+    void broadcastTCPNotUser(const std::string &msg) const;
     void checkDisconnection() const;
+
+    void cmdConnection(const std::vector<std::string> &arg);
+    void cmdRoomCreate(const std::vector<std::string> &arg);
+    void cmdJoinRoom(const std::vector<std::string> &arg);
+    void cmdQuitRoom(const std::vector<std::string> &arg);
+
+    std::map<int, factoryF> _cmd;
 
     asio::ip::tcp::socket _socket;
     asio::streambuf _message;

@@ -7,7 +7,7 @@
 
 #include "ServerRoom.hpp"
 
-ServerRoom::ServerRoom(asio::io_context& io_context) : _io_context(io_context)
+ServerRoom::ServerRoom(asio::io_context& io_context, int id) : _io_context(io_context), _id(id)
 {
 }
 
@@ -27,4 +27,39 @@ void ServerRoom::addUser(int id, const std::string &username)
 int ServerRoom::getNbUsers() const
 {
     return (_playerList.size());
+}
+
+void ServerRoom::removeUser(int id)
+{
+    int tmp = -1, i = 0;
+    for (auto user : _playerList) {
+        if (user->getId() != _id) {
+            user->getSocket().send(asio::buffer("250 " + std::to_string(_id) + "\n"));
+        }
+        else {
+            tmp = i;
+        }
+        i++;
+    }
+    if (tmp != -1) {
+        _playerList.erase(_playerList.begin() + tmp);
+    } else {
+        _playerList.clear();
+    }
+}
+
+int ServerRoom::getId() const
+{
+    return (_id);
+}
+
+std::string ServerRoom::getPlayersName() const
+{
+    std::stringstream ss;
+    ss << "";
+    for (auto itr : _playerList) {
+        ss << itr->getUsername();
+        ss << " ";
+    }
+    return (ss.str());
 }

@@ -10,19 +10,34 @@ Shitty Epitech Protocol
                 Transfer parameters (every code and argument
                 are separated by a space)
 
+                THIS IS TCP ONLY
+
                 Server->Client
-                    000 + user_id (At connection to serv)
+                    000 + user_id (At connection to serv) this is not used
                     100 (Command ok)
                     150 + user_id (user connected)
                     250 + user_id (user disconnected)
+                    280 + room_id (user joined room)
+                    290 + room_id (user quitted room)
                     500 (Unspecified error)
 
                 Client->Server
                     210 + username (after connection)
                       ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
-                    220 + user_id (request join)
+                    225 + room_id (request join)
                       ->  230 + username1 + username2 + ...
-                    300 (request room creation)
-                      ->  200 + room_id (creation ok)
+                    230 + room_id (request quit room)
+                      ->  100
                       ->  500 (Error)
+                    300 (request room creation)
+                      ->  310 + room_id (creation ok)
+                      ->  500 (Error)
+
+                THIS IS UDP ONLY
+
+                Server->Client
+                    001 + username (user joined the room)
+                    002 + username (user left the room)
+
+                Client->Server

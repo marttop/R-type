@@ -17,6 +17,8 @@ ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context)
 
 ServerPlayer::~ServerPlayer()
 {
+    std::cout << "Server UDP socket destroyed" << std::endl;
+    _socket.close();
 }
 
 void ServerPlayer::startUDP()
