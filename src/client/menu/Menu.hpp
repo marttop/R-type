@@ -20,7 +20,7 @@ class Menu {
         Menu();
         ~Menu();
 
-        void create(const sf::RenderWindow &window);
+        void create(const sf::RenderWindow &window, const boost::array<char, 1024> &buf);
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket);
         void update();

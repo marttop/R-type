@@ -16,7 +16,7 @@ Window::Window(const std::string &title)
     _socket = new boost::asio::ip::tcp::socket(_io_context);
 
     _parallax.create(100);
-    _menu.create(_window);
+    _menu.create(_window, _buf);
     _scene = MENU;
 }
 

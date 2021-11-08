@@ -20,8 +20,10 @@ Button::~Button()
 
 void Button::create(const sf::Vector2f &pos, const std::string &text, const sf::Vector2f &factors)
 {
+    _outline = sf::Color::White;
+
     _background.setFillColor(sf::Color::Black);
-    _background.setOutlineColor(sf::Color::White);
+    _background.setOutlineColor(_outline);
     _background.setOutlineThickness(2.0);
     _background.setPosition(sf::Vector2f(pos.x, pos.y));
 
@@ -49,10 +51,12 @@ bool Button::event(const sf::Event &event, const sf::RenderWindow &window)
     bool clicked = false;
     if (event.type == sf::Event::MouseMoved) {
         if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-            _background.setOutlineColor(sf::Color::Yellow);
+            _outline = sf::Color::Yellow;
+            _background.setOutlineColor(_outline);
         }
         else {
-            _background.setOutlineColor(sf::Color::White);
+            _outline = sf::Color::White;
+            _background.setOutlineColor(_outline);
         }
     }
     if (event.type == sf::Event::MouseButtonPressed) {

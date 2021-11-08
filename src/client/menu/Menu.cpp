@@ -15,7 +15,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::create(const sf::RenderWindow &window)
+void Menu::create(const sf::RenderWindow &window, const boost::array<char, 1024> &buf)
 {
     _background.setSize(sf::Vector2f(window.getSize().x / 1.5, window.getSize().y / 1.5));
     _background.setFillColor(sf::Color(0, 0, 0, 150));
