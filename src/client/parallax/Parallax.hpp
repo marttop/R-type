@@ -35,10 +35,10 @@ class Parallax {
         Parallax();
         ~Parallax();
 
-        void create(const int &speed, const Direction &direction);
-        void move();
-        void draw(sf::RenderWindow &window);
-        void setDirection(const sf::Event &event);
+        void create(const int &speed);
+        void update();
+        void draw(sf::RenderWindow &window) const;
+        void event(const sf::Event &event);
 
     protected:
     private:
@@ -48,7 +48,7 @@ class Parallax {
 
         vector<pair<float, pair<pair<Layer *, Layer *>, pair<Layer *, Layer *>>>> _layersVec;
         sf::Texture _layerTextures[7];
-        Direction _direction;
+        bool _direction[4];
         int _speed;
 
 };

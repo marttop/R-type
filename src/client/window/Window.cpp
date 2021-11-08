@@ -11,7 +11,7 @@ Window::Window(const std::string &title)
 {
     _window.create(sf::VideoMode::getDesktopMode(), title);
     _window.setFramerateLimit(60);
-    _parallax.create(200, Parallax::DOWN);
+    _parallax.create(100);
     _menu.create(_window);
     _scene = MENU;
 }
@@ -25,16 +25,16 @@ void Window::event()
     if (_event.type == sf::Event::Closed)
         _window.close();
     if (_scene == MENU) {
-        if (_event.type == sf::Event::KeyPressed)
-            _parallax.setDirection(_event);
-        _menu.update(_event, _window);
+        //_parallax.event(_event);
+        _menu.event(_event, _window);
     }
 }
 
 void Window::update()
 {
     if (_scene == MENU) {
-        _parallax.move();
+        _parallax.update();
+        _menu.update();
     }
 }
 

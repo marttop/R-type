@@ -15,9 +15,11 @@ class InputBox {
         InputBox();
         ~InputBox();
 
-        void create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title = "", const sf::Vector2f &factors = {1, 1}, const bool &dot = false);
-        void draw(sf::RenderWindow &window);
-        void update(const sf::Event &event, const sf::RenderWindow &window);
+        void create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title = "", const std::string &defaultInput = "", const bool &ip = false, const bool &num = false, const bool &alpha = true, const sf::Vector2f &factors = {1, 1});
+        void draw(sf::RenderWindow &window) const;
+        void event(const sf::Event &event, const sf::RenderWindow &window);
+        void update();
+        std::string getInputString() const;
 
     protected:
     private:
@@ -30,7 +32,9 @@ class InputBox {
         sf::Text _inputText;
         sf::Font _font;
         bool _isFocus;
-        bool _dot;
+        bool _ip;
+        bool _num;
+        bool _alpha;
 };
 
 #endif /* !INPUTBOX_HPP_ */

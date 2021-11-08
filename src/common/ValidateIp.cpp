@@ -19,5 +19,12 @@ bool ValidateIp::validateIpAddress(const std::string &ipAddress)
 {
     struct sockaddr_in sa;
     int result = inet_pton(AF_INET, ipAddress.c_str(), &(sa.sin_addr));
-    return result != 0;
+    return (result != 0);
+}
+
+bool ValidateIp::validatePort(const int &port)
+{
+    if (port < 1025 || port > 65535)
+        return (false);
+    return (true);
 }

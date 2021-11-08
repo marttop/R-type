@@ -13,5 +13,5 @@ int main(void)
 
     window.gameLoop();
 
-    return EXIT_SUCCESS;
+    return (EXIT_SUCCESS);
 }
