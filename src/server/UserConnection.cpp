@@ -11,7 +11,7 @@ UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRe
     : _socket(io_context), _servRef(&servRef), _id(id)
 {
     _cmd.emplace(210, &UserConnection::cmdConnection);
-    _cmd.emplace(220, &UserConnection::cmdJoinRoom);
+    _cmd.emplace(225, &UserConnection::cmdJoinRoom);
     _cmd.emplace(300, &UserConnection::cmdRoomCreate);
 }
 
