@@ -30,15 +30,18 @@ void Parallax::create(const int &speed)
     _direction[LEFT] = true;
 
     _layerTextures[BACKGROUND].loadFromFile("assets/parallax/BKG 2/Bkg 2 Nebula.png");
+    _layerTextures[PLANET].loadFromFile("assets/parallax/BKG 2/Bkg 2 Planet.png");
     _layerTextures[FARTHEST].loadFromFile("assets/parallax/OLD/small_stars1.png");
     _layerTextures[FAR].loadFromFile("assets/parallax/OLD/small_stars2.png");
     _layerTextures[CLOSE].loadFromFile("assets/parallax/BKG 2/Bkg 2 Middle Stars NO.png");
     _layerTextures[CLOSEST].loadFromFile("assets/parallax/BKG 2/Bkg 2 Meteors.png");
+
     add(1.0, BACKGROUND, true);
-    add(1.2, FARTHEST, true);
-    add(1.4, FAR, true);
-    add(1.7, CLOSE, true);
-    add(2.0, CLOSEST, true);
+    add(1.2, PLANET, true);
+    add(1.4, FARTHEST, true);
+    add(1.6, FAR, true);
+    add(1.9, CLOSE, true);
+    add(2.2, CLOSEST, true);
 }
 
 void Parallax::add(const float &speed, const Layers &type, const bool &active)

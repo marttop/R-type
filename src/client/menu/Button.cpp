@@ -34,7 +34,7 @@ void Button::create(const sf::Vector2f &pos, const std::string &text, const sf::
     _text->setOrigin(sf::Vector2f(_text->getGlobalBounds().left + _text->getGlobalBounds().width / 2, _text->getGlobalBounds().top + _text->getGlobalBounds().height / 2));
     _text->setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
 
-    _background.setSize(sf::Vector2f(_text->getGlobalBounds().width * 2, _text->getGlobalBounds().height * 2));
+    _background.setSize(sf::Vector2f(_text->getGlobalBounds().width * 1.6, _text->getGlobalBounds().height * 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 }
 
