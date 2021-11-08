@@ -17,6 +17,7 @@ class ServerRoom {
         ~ServerRoom();
         void addUser(int id, const std::string &username);
         int getNbUsers() const;
+        std::string getPlayersName() const;
         int getId() const;
 
     protected:

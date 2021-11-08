@@ -70,3 +70,13 @@ std::vector<std::shared_ptr<ServerRoom>> &AsioTcpServ::getRoomList()
 {
     return (_roomList);
 }
+
+std::shared_ptr<ServerRoom> AsioTcpServ::getRoomById(int id)
+{
+    for (auto itr : _roomList) {
+        if (id == itr->getId()) {
+            return (itr);
+        }
+    }
+    return (nullptr);
+}

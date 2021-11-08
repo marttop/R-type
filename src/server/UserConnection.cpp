@@ -11,6 +11,7 @@ UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRe
     : _socket(io_context), _servRef(&servRef), _id(id)
 {
     _cmd.emplace(210, &UserConnection::cmdConnection);
+    _cmd.emplace(220, &UserConnection::cmdJoinRoom);
     _cmd.emplace(300, &UserConnection::cmdRoomCreate);
 }
 
@@ -177,7 +178,23 @@ void UserConnection::cmdRoomCreate(const std::vector<std::string> &arg)
 
 void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
 {
+    if (arg.size() >= 2) {
+        std::stringstream ss;
+        std::shared_ptr<ServerRoom> room = _servRef->getRoomById(std::atoi(arg[1].c_str()));
+        if (room != nullptr) {
+            room->addUser(_id, _userName);
+            ss << "230 ";
+            ss << room->getPlayersName();
+            ss << "\n";
+            _socket.send(asio::buffer(ss.str()));
+            broadcastTCPNotUser("280 " + std::to_string(room->getId()) + "\n");
 
+        } else {
+            sendError("'id' of room does not exist");
+        }
+    } else {
+        sendError("Missing arg in command");
+    }
 }
 
 void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)

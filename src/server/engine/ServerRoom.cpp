@@ -33,3 +33,14 @@ int ServerRoom::getId() const
 {
     return (_id);
 }
+
+std::string ServerRoom::getPlayersName() const
+{
+    std::stringstream ss;
+    ss << "";
+    for (auto itr : _playerList) {
+        ss << itr->getUsername();
+        ss << " ";
+    }
+    return (ss.str());
+}

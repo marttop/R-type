@@ -11,10 +11,11 @@ Shitty Epitech Protocol
                 are separated by a space)
 
                 Server->Client
-                    000 + user_id (At connection to serv)
+                    000 + user_id (At connection to serv) this is not used
                     100 (Command ok)
                     150 + user_id (user connected)
                     250 + user_id (user disconnected)
+                    280 + room_id (user joined room)
                     290 + room_id (user quitted room)
                     500 (Unspecified error)
 
