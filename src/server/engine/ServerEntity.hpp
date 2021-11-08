@@ -17,15 +17,20 @@ class ServerEntity : public IEntity {
 
         void sendData();
         void update() = 0;
+
+        void setId(int id);
+
         bool isAlive() const;
+        int getId() const;
+        CustomRect getRect() const;
 
         bool isColliding(const std::shared_ptr<IEntity> &other) const;
-        CustomRect getRect() const;
 
     protected:
         bool _isAlive;
         CustomRect _rect;
         std::string _type;
+        int _id;
     private:
 };
 

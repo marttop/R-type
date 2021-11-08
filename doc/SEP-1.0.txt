@@ -1,0 +1,26 @@
+                        SHITTY EPITECH PROTOCOL (SEP)
+
+Status of this Memo
+
+   This memo is the official specification of the Shitty Epitech
+   Protocol (SEP).  Distribution of this memo is unlimited.
+
+Shitty Epitech Protocol
+
+                Transfer parameters (every code and argument
+                are separated by a space)
+
+                Server->Client
+                    000 + room_id + nb_player + room_id2 + nb_player + ... (At connection to serv)
+                    100 (Command ok)
+                    150 + user_id (user connected)
+                    250 + user_id (user disconnected)
+                    500 (Unspecified error)
+
+                Client->Server
+                    210 + username + room_id (request room join)
+                      ->  220 + username1 + username2 + ... (room joined)
+                      ->  500 (Error)
+                    300 (request room creation)
+                      ->  200 + room_id (creation ok)
+                      ->  500 (Error)

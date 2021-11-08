@@ -25,11 +25,6 @@ int main(int ac, char **av)
 {
     bool multi_threading = true;
 
-    std::shared_ptr<IEntity> player1 = std::make_shared<ServerPlayer>(CustomRect(10, 10));
-    std::shared_ptr<IEntity> player2 = std::make_shared<ServerPlayer>(CustomRect(10, 10, 10, 10));
-
-    std::cout << player1->isColliding(player2) << std::endl;
-
     srand(time(nullptr));
     try {
         asio::io_context io_context;
