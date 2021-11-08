@@ -29,6 +29,25 @@ int ServerRoom::getNbUsers() const
     return (_playerList.size());
 }
 
+void ServerRoom::removeUser(int id)
+{
+    int tmp = -1, i = 0;
+    for (auto user : _playerList) {
+        if (user->getId() != _id) {
+            user->getSocket().send(asio::buffer("250 " + std::to_string(_id) + "\n"));
+        }
+        else {
+            tmp = i;
+        }
+        i++;
+    }
+    if (tmp != -1) {
+        _playerList.erase(_playerList.begin() + tmp);
+    } else {
+        _playerList.clear();
+    }
+}
+
 int ServerRoom::getId() const
 {
     return (_id);
