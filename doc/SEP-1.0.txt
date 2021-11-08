@@ -15,14 +15,18 @@ Shitty Epitech Protocol
                     100 (Command ok)
                     150 + user_id (user connected)
                     250 + user_id (user disconnected)
+                    290 + room_id (user quitted room)
                     500 (Unspecified error)
 
                 Client->Server
                     210 + username (after connection)
                       ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
-                    220 + user_id (request join)
+                    220 + room_id (request join)
                       ->  230 + username1 + username2 + ...
+                    230 (request quit room)
+                      ->  100
+                      ->  500 (Error)
                     300 (request room creation)
-                      ->  200 + room_id (creation ok)
+                      ->  310 + room_id (creation ok)
                       ->  500 (Error)

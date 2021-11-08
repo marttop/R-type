@@ -7,7 +7,7 @@
 
 #include "ServerRoom.hpp"
 
-ServerRoom::ServerRoom(asio::io_context& io_context) : _io_context(io_context)
+ServerRoom::ServerRoom(asio::io_context& io_context, int id) : _io_context(io_context), _id(id)
 {
 }
 
@@ -27,4 +27,9 @@ void ServerRoom::addUser(int id, const std::string &username)
 int ServerRoom::getNbUsers() const
 {
     return (_playerList.size());
+}
+
+int ServerRoom::getId() const
+{
+    return (_id);
 }

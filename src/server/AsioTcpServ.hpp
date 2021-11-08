@@ -31,10 +31,11 @@ public:
 
     void start_accept();
     void shell_send() const;
-    void addRoom();
+    int addRoom();
 
     //Not const because need to modify the getted vector.
     std::vector<userConnectionPointer> &getUserList();
+    std::vector<std::shared_ptr<ServerRoom>> &getRoomList();
 
 protected:
 private:

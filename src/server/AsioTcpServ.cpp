@@ -17,10 +17,15 @@ AsioTcpServ::~AsioTcpServ()
 {
 }
 
-void AsioTcpServ::addRoom()
+int AsioTcpServ::addRoom()
 {
-    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context));
+    static int id = 0;
+    id++;
+
+    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context, id));
     _roomList.push_back(room);
+
+    return (id);
 }
 
 void AsioTcpServ::start_accept()
@@ -59,4 +64,9 @@ void AsioTcpServ::handle_connexion(userConnectionPointer new_connection,
 std::vector<userConnectionPointer> &AsioTcpServ::getUserList()
 {
     return (_userList);
+}
+
+std::vector<std::shared_ptr<ServerRoom>> &AsioTcpServ::getRoomList()
+{
+    return (_roomList);
 }

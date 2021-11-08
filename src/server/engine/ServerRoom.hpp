@@ -13,16 +13,18 @@
 
 class ServerRoom {
     public:
-        ServerRoom(asio::io_context& io_context);
+        ServerRoom(asio::io_context& io_context, int id);
         ~ServerRoom();
         void addUser(int id, const std::string &username);
         int getNbUsers() const;
+        int getId() const;
 
     protected:
     private:
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
         asio::ip::udp::endpoint remote_endpoint_;
+        int _id;
 };
 
 #endif /* !SERVERROOM_HPP_ */
