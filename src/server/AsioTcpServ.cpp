@@ -17,6 +17,12 @@ AsioTcpServ::~AsioTcpServ()
 {
 }
 
+void AsioTcpServ::addRoom()
+{
+    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context));
+    _roomList.push_back(room);
+}
+
 void AsioTcpServ::start_accept()
 {
     static int id = 0;

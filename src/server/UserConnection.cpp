@@ -29,7 +29,7 @@ void UserConnection::startCommunication()
 
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("User connected with id: " + std::to_string(_id) + "\r\n"));
+            user->getSocket().write_some(asio::buffer("User connected with id: " + std::to_string(_id) + "\n"));
         }
     }
 
@@ -54,10 +54,10 @@ void UserConnection::checkCode(std::string &data)
     char local_data[len + 1];
     char *token = NULL;
     std::strcpy(local_data, data.c_str());
-    token = std::strtok(local_data, " \r\n");
+    token = std::strtok(local_data, " \n");
     std::cout << data << std::endl;
     while (token != NULL) {
-        token = std::strtok(NULL, " \r\n");
+        token = std::strtok(NULL, " \n");
         std::cout << token << std::endl;
     }
 }
@@ -67,7 +67,7 @@ void UserConnection::broadcastTCP(const std::string &msg) const
     std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("msg\r\n"));
+            user->getSocket().write_some(asio::buffer("msg\n"));
         }
     }
 }
@@ -78,7 +78,7 @@ void UserConnection::checkDisconnection() const
     int tmp = -1, i = 0;
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("a fion has disconnected with id: " + std::to_string(_id) + "\r\n"));
+            user->getSocket().write_some(asio::buffer("a fion has disconnected with id: " + std::to_string(_id) + "\n"));
         }
         else {
             tmp = i;
@@ -100,14 +100,15 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
     std::getline(is, line);
 
     if (line != "") {
-        broadcastTCP("a fion has written\r\n");
-        std::cout << "line: " + line << std::endl;
+        if (line == "new") _servRef->addRoom();
+        broadcastTCP("a fion has written\n");
+        std::cout << "tcp line: " + line << std::endl;
     } else {
         checkDisconnection();
         return;
     }
 
-    sendMessage = "hahahaha!\r\n";
+    sendMessage = "hahahaha!\n";
 
     asio::async_write(_socket, asio::buffer(sendMessage),
                       std::bind(&UserConnection::handleWrite, shared_from_this(),

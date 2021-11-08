@@ -11,8 +11,10 @@
 #include "UserConnection.hpp"
 #include "IServer.hpp"
 #include <vector>
+#include "ServerRoom.hpp"
 
 class UserConnection;
+class ServerRoom;
 typedef std::shared_ptr<UserConnection> userConnectionPointer;
 
 class AsioTcpServ : public IServer
@@ -29,6 +31,7 @@ public:
 
     void start_accept();
     void shell_send() const;
+    void addRoom();
 
     //Not const because need to modify the getted vector.
     std::vector<userConnectionPointer> &getUserList();
@@ -40,6 +43,7 @@ private:
     asio::io_context &_io_context;
     asio::ip::tcp::acceptor _acceptor;
     std::vector<userConnectionPointer> _userList;
+    std::vector<std::shared_ptr<ServerRoom>> _roomList;
 };
 
 #endif /* !ASIOTCPSERV_HPP */
