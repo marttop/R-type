@@ -7,9 +7,10 @@
 
 SRC			=	ServerBasicMob1.cpp					\
 				../../engine/ServerEntity.cpp		\
-				../../engine/CustomRect.cpp		\
+				../../engine/CustomRect.cpp			\
+				../../EntityLoad.cpp				\
 
-CXXFLAGS 	=	-Wall -Wextra -I../../engine -I../../../interface  -fPIC
+CXXFLAGS 	=	-Wall -Wextra -I../../engine -I../../../interface -fPIC
 NAME 		= 	basicMob1.so
 
 OBJ = $(SRC:.cpp=.o)
@@ -18,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	g++ -o $(NAME) $(OBJ) -shared $(CXXFLAGS)
-	g++ main.cpp -I../../engine/ -I../../../interface -ldl -g3
+	g++ -o a.out  $(OBJ) main.cpp -I../../engine/ -I../../../interface -I../../ -ldl -g3
 	rm -f $(OBJ)
 
 clean:
