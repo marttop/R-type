@@ -14,6 +14,7 @@
 
 #include "Button.hpp"
 #include "RoomCard.hpp"
+#include "SEPParsor.hpp"
 
 class RoomsList {
     public:
@@ -22,8 +23,8 @@ class RoomsList {
 
         void create(const sf::RectangleShape &background);
         void draw(sf::RenderWindow &window) const;
-        void update(const sf::Event &event, const sf::RenderWindow &window);
-        void event(const sf::Event &event, const sf::RenderWindow &window);
+        void update(char *buf);
+        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
         void scrollerEvent(const sf::Event &event, const sf::RenderWindow &window);
 
@@ -37,6 +38,7 @@ class RoomsList {
         sf::RectangleShape _scroller;
         std::pair<int, int> _displayedIdx;
         int _thickness;
+        int _cardNb;
         sf::Sprite _scrollArrow[2];
         sf::Texture _scrollArrowTexture[2];
         sf::Color _outline;

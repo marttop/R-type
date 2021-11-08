@@ -20,7 +20,7 @@ class Menu {
         Menu();
         ~Menu();
 
-        void create(const sf::RenderWindow &window, const boost::array<char, 1024> &buf);
+        void create(const sf::RenderWindow &window, char *buf);
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket);
         void update();
@@ -37,6 +37,7 @@ class Menu {
         bool _connected;
         sf::Texture _logoTexture;
         sf::Sprite _logo;
+        char *_buf;
 };
 
 #endif /* !MENU_HPP_ */

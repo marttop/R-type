@@ -32,7 +32,7 @@ void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const s
     _title.setString(text);
     _title.setScale(factors);
     _title.setFont(_font);
-    _title.setOrigin(sf::Vector2f(_title.getOrigin().x, _title.getGlobalBounds().top + _title.getGlobalBounds().height / 2));
+    _title.setOrigin(sf::Vector2f(_title.getOrigin().x, _title.getGlobalBounds().height / 3));
     _title.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 20, _background.getPosition().y + _background.getSize().y / 2));
 }
 
