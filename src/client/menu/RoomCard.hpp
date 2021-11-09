@@ -27,6 +27,8 @@ class RoomCard {
         void decrementPosition();
         void cleanHover();
         std::string getId() const;
+        void incrementPlayer();
+        void decrementPlayer();
 
     protected:
     private:

@@ -14,6 +14,7 @@
 #include "WarningBox.hpp"
 #include "Connection.hpp"
 #include "RoomsList.hpp"
+#include "Room.hpp"
 
 class Menu {
     public:
@@ -29,6 +30,7 @@ class Menu {
     private:
         void connect(const sf::Event &event, const sf::RenderWindow &window);
         void getDefaultInput();
+        void joinRoom();
         void openAlert();
 
         sf::RectangleShape _background;
@@ -36,9 +38,11 @@ class Menu {
         Connection _connection;
         RoomsList _rooms;
         bool _connected;
+        bool _inRoom;
         sf::Texture _logoTexture;
         sf::Sprite _logo;
         char *_buf;
+        Room _room;
 };
 
 #endif /* !MENU_HPP_ */

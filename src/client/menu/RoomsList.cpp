@@ -150,12 +150,42 @@ void RoomsList::cleanHover()
         it->cleanHover();
 }
 
+void RoomsList::userJoinedRoom(const std::vector<std::string> &cmd)
+{
+    if (cmd.size() == 2 && cmd[0] == "280") {
+        std::string roomId = cmd[1];
+        roomId.pop_back();
+        for (auto it : _rooms) {
+            if (it->getId() == roomId) {
+                it->incrementPlayer();
+                break;
+            }
+        }
+    }
+}
+
+void RoomsList::userLeftRoom(const std::vector<std::string> &cmd)
+{
+    if (cmd.size() == 2 && cmd[0] == "290") {
+        std::string roomId = cmd[1];
+        roomId.pop_back();
+        for (auto it : _rooms) {
+            if (it->getId() == roomId) {
+                it->decrementPlayer();
+                break;
+            }
+        }
+    }
+}
+
 void RoomsList::update(char *buf)
 {
     std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
     loadRooms(cmd);
     createRoom(cmd);
     deleteRoom(cmd);
+    userJoinedRoom(cmd);
+    userLeftRoom(cmd);
 }
 
 void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &window)

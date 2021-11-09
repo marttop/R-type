@@ -37,6 +37,8 @@ void Menu::create(const sf::RenderWindow &window, char *buf)
     _logo.setTexture(_logoTexture);
     _logo.setOrigin(sf::Vector2f(_logo.getTextureRect().width / 2, _logo.getTextureRect().height / 2));
     _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
+
+    _room.create(_background);
 }
 
 void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket)
@@ -45,9 +47,11 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::
         if (!_connected) {
             _connection.event(event, window);
             _connected = _connection.connect(event, window, endpoint, socket, _alert);
-        } else {
+        } else if (!_inRoom) {
             _rooms.event(event, window, socket);
             _connected = _rooms.disconnect(event, window, socket);
+        } else {
+            _room.event(event, window, socket);
         }
     } else
         _alert.event(event, window);
@@ -66,11 +70,24 @@ void Menu::openAlert()
     }
 }
 
+void Menu::joinRoom()
+{
+    std::vector<std::string> cmd = SEPParsor::parseCommands(_buf);
+    if (_connected && cmd.size() > 1 && cmd[0] == "230") {
+        if (cmd.back().find('\n') != std::string::npos)
+            cmd.back().pop_back();
+        _inRoom = true;
+        _room.setId(cmd[1]);
+    }
+}
+
 void Menu::update()
 {
     openAlert();
+    joinRoom();
     _connection.update();
     _rooms.update(_buf);
+    _room.update();
 }
 
 void Menu::draw(sf::RenderWindow &window) const
@@ -80,8 +97,10 @@ void Menu::draw(sf::RenderWindow &window) const
         window.draw(_logo);
         if (!_connected)
             _connection.draw(window);
-        else
+        else if (!_inRoom)
             _rooms.draw(window);
+        else
+            _room.draw(window);
     }
     _alert.draw(window);
 }

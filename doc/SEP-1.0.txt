@@ -13,7 +13,6 @@ Shitty Epitech Protocol
                 THIS IS TCP ONLY
 
                 Server->Client
-                    000 + user_id (At connection to serv) this is not used
                     100 (Command ok)
                     150 + user_id (user connected)
                     250 + user_id (user disconnected)
@@ -26,8 +25,8 @@ Shitty Epitech Protocol
                       ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
                     225 + room_id (request join)
-                      ->  230 + username1 + username2 + ...
-                    230 + room_id (request quit room)
+                      ->  230 + room_id + username1 + username2 + ...
+                    235 + room_id (request quit room)
                       ->  100
                       ->  500 (Error)
                     300 (request room creation)
@@ -35,7 +34,7 @@ Shitty Epitech Protocol
                       ->  500 (Error)
                     350 + room_id (request room deletion)
                       ->  380 + room_id (id of the room deleted)
-                      ->  550 (room not empty)
+                      ->  500 (Error)
 
                 THIS IS UDP ONLY
 

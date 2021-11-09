@@ -12,7 +12,7 @@ UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRe
 {
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
-    _cmd.emplace(230, &UserConnection::cmdQuitRoom);
+    _cmd.emplace(235, &UserConnection::cmdQuitRoom);
     _cmd.emplace(300, &UserConnection::cmdCreateRoom);
     _cmd.emplace(350, &UserConnection::cmdDeleteRoom);
 }
@@ -199,6 +199,8 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
 
             room->addUser(_id, _userName);
             ss << "230 ";
+            ss << room->getId();
+            ss << " ";
             ss << room->getPlayersName();
             ss << "\n";
             _socket.send(asio::buffer(ss.str()));

@@ -94,6 +94,24 @@ sf::Vector2f RoomCard::getSize() const
     return (_background.getSize());
 }
 
+void RoomCard::decrementPlayer()
+{
+    std::string count = _playerCount.getString();
+    if (count[0] == '0')
+        return;
+    count[0]--;
+    _playerCount.setString(count);
+}
+
+void RoomCard::incrementPlayer()
+{
+    std::string count = _playerCount.getString();
+    if (count[0] == '4')
+        return;
+    count[0]++;
+    _playerCount.setString(count);
+}
+
 void RoomCard::hover(const sf::Event &event, const sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseMoved) {
