@@ -31,7 +31,6 @@ class RoomsList {
     protected:
     private:
         Button _disconnect;
-        Button _join;
         Button _create;
         std::vector<RoomCard *> _rooms;
         sf::RectangleShape _background;
