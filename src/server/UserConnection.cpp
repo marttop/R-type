@@ -234,6 +234,7 @@ void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
 
         if (room->isPlayerInRoom(_id)) {
             sendError(500, "You are already in the room idiot.");
+            return;
         }
 
         int ret = _servRef->deleteRoomById(std::atoi(arg[1].c_str()));
