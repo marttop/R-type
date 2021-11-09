@@ -126,7 +126,7 @@ void RoomsList::deleteRoom(const std::vector<std::string> &cmd)
 {
     if (cmd.size() == 2 && cmd[0] == "380") {
         std::string roomId = cmd[1];
-        if (roomId.size() > 0 && roomId.find('\n') > 0)
+        if (roomId.size() > 0 && roomId.find('\n') != std::string::npos)
             roomId.pop_back();
         RoomCard *to_delete = nullptr;
         bool check = false;
