@@ -35,6 +35,7 @@ Shitty Epitech Protocol
                       ->  500 (Error)
                     350 + room_id (request room deletion)
                       ->  380 + room_id (id of the room deleted)
+                      ->  550 (room not empty)
 
                 THIS IS UDP ONLY
 
