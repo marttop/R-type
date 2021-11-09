@@ -75,14 +75,37 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
     if (_disconnect.event(event, window)) {
         socket.close();
         _disconnect.cleanHover();
+        for (auto it : _rooms)
+            delete it;
+        _rooms.clear();
         return (false);
     }
     return (true);
 }
 
+#include <iostream>
+
 void RoomsList::update(char *buf)
 {
     std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
+    if (cmd.size() > 0 && cmd[0] == "220") {
+        bool check = false;
+        std::string roomId;
+        std::string playerCount;
+        for (auto it : cmd) {
+            if (check == false) roomId = it, check = true;
+            else playerCount = it, check = false;
+            if (check == true) {
+                if (_rooms.size() == 0) {
+                    _rooms.push_back(new RoomCard);
+                    _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), "Room " + roomId, std::atoi(playerCount.c_str()), _thickness);
+                } else {
+                    _rooms.push_back(new RoomCard);
+                    _rooms.back()->create(sf::Vector2f(_rooms.at(_rooms.size() - 2)->getPosition().x, _rooms.at(_rooms.size() - 2)->getPosition().y + _rooms.at(_rooms.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), "Room " + roomId, std::atoi(playerCount.c_str()), _thickness);
+                }
+            }
+        }
+    }
     if (cmd.size() == 2 && cmd[0] == "310") {
         std::string roomId = cmd[1];
         if (_rooms.size() == 0) {
