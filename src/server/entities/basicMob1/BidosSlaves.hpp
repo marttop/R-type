@@ -10,11 +10,11 @@
 
 #include "ServerEntity.hpp"
 
-class ServerBasicMob1 : public ServerEntity
+class BidosSlaves : public ServerEntity
 {
 public:
-    ServerBasicMob1();
-    ~ServerBasicMob1();
+    BidosSlaves();
+    ~BidosSlaves();
 
     void update();
 

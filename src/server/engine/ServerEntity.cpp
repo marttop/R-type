@@ -7,7 +7,11 @@
 
 #include "ServerEntity.hpp"
 
-ServerEntity::ServerEntity(const CustomRect &rect) : _rect(rect)
+ServerEntity::ServerEntity(const CustomRect &rect,
+                            const std::string &type,
+                            int id,
+                            int health)
+    :   _isAlive(true),  _rect(rect), _type(type), _id(id), _health(health)
 {
 }
 
@@ -22,6 +26,11 @@ void ServerEntity::sendData()
 bool ServerEntity::isAlive() const
 {
     return true;
+}
+
+void ServerEntity::addLifeEntity(int lifeAdded)
+{
+    _health += lifeAdded;
 }
 
 int ServerEntity::getId() const

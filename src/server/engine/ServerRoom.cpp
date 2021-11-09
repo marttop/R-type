@@ -17,7 +17,10 @@ ServerRoom::~ServerRoom()
 
 void ServerRoom::addUser(int id, const std::string &username)
 {
-    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this));
+    static int port = 11999;
+    port++;
+
+    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this, port));
     sp->setId(id);
     sp->setUsername(username);
     sp->startUDP();
@@ -51,6 +54,14 @@ void ServerRoom::removeUser(int id)
     } else {
         _playerList.clear();
     }
+}
+
+bool ServerRoom::isPlayerInRoom(int id) const
+{
+    for (auto itr : _playerList) {
+        if (itr->getId() == id) return (true);
+    }
+    return (false);
 }
 
 int ServerRoom::getId() const
