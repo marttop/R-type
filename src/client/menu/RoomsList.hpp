@@ -26,12 +26,15 @@ class RoomsList {
         void update(char *buf);
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
-        void scrollerEvent(const sf::Event &event, const sf::RenderWindow &window);
 
     protected:
     private:
+        void scrollerEvents(const sf::Event &event, const sf::RenderWindow &window);
+        void loadRooms(const std::vector<std::string> &cmd);
+        void createRoom(const std::vector<std::string> &cmd);
+        void mouseWheelScroll(const sf::Event &event, const sf::RenderWindow &window);
+
         Button _disconnect;
-        Button _join;
         Button _create;
         std::vector<RoomCard *> _rooms;
         sf::RectangleShape _background;
