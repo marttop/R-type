@@ -17,11 +17,19 @@ class IEntity {
     public:
         IEntity() = default;
         virtual ~IEntity() = default;
-        virtual void update() = 0;
-        virtual void sendData() = 0;
-        virtual bool isAlive() const = 0;
-        virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
-        virtual CustomRect getRect() const = 0;
+
+        virtual void        update() = 0;
+        virtual void        sendData() = 0;
+
+        /**
+         *  @brief add life to an entity, this function can handle negative add
+         *  @param lifeAdded number of life point sum to the actual life
+         */
+        virtual void        addLifeEntity(int lifeAdded) = 0;
+
+        virtual bool        isAlive() const = 0;
+        virtual bool        isColliding(const std::shared_ptr<IEntity> &other) const = 0;
+        virtual CustomRect  getRect() const = 0;
 
     protected:
     private:

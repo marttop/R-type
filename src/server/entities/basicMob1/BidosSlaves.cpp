@@ -5,12 +5,12 @@
 ** ServerBasicMob1
 */
 
-#include "ServerBasicMob1.hpp"
+#include "BidosSlaves.hpp"
 
 #if defined(__linux__) || defined(__APPLE__)
 extern "C" IEntity *allocator()
 {
-    return new ServerBasicMob1;
+    return new BidosSlaves;
 }
 #endif
 
@@ -29,16 +29,16 @@ extern "C" IEntity *allocator()
 // }
 // #endif
 
-ServerBasicMob1::ServerBasicMob1()
+BidosSlaves::BidosSlaves()
     : ServerEntity(CustomRect(20, 20))
 {
 }
 
-ServerBasicMob1::~ServerBasicMob1()
+BidosSlaves::~BidosSlaves()
 {
 }
 
-void ServerBasicMob1::update()
+void BidosSlaves::update()
 {
     std::cout << "tas mére la pute j'update" << std::endl;
 }
