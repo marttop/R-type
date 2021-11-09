@@ -17,7 +17,7 @@ ServerRoom::~ServerRoom()
 
 void ServerRoom::addUser(int id, const std::string &username)
 {
-    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context));
+    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this));
     sp->setId(id);
     sp->setUsername(username);
     sp->startUDP();
@@ -26,7 +26,7 @@ void ServerRoom::addUser(int id, const std::string &username)
 
 void ServerRoom::startGame()
 {
-    
+
 }
 
 int ServerRoom::getNbUsers() const
