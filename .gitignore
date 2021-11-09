@@ -2,4 +2,5 @@ c_cpp_properties.json
 settings.json
 build/
 .vs
+/client/menu/save.txt
 .idea

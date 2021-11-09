@@ -33,6 +33,8 @@ Shitty Epitech Protocol
                     300 (request room creation)
                       ->  310 + room_id (creation ok)
                       ->  500 (Error)
+                    350 + room_id (request room deletion)
+                      ->  380 + room_id (id of the room deleted)
 
                 THIS IS UDP ONLY
 
