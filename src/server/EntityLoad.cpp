@@ -13,12 +13,9 @@ EntityLoad::EntityLoad()
 
 EntityLoad::~EntityLoad()
 {
-}
-
-EntityLoad &EntityLoad::getEntityLoader()
-{
-    static EntityLoad instance;
-    return instance;
+    for (auto it : dlOpens) {
+        close(it);
+    }
 }
 
 std::string EntityLoad::error()
@@ -26,39 +23,43 @@ std::string EntityLoad::error()
     return (dlerror());
 }
 
-void EntityLoad::open(const char *filepath)
+void *EntityLoad::open(const char *filepath)
 {
-    _handle = dlopen(filepath, RTLD_LOCAL | RTLD_LAZY);
-    if (!_handle) {
+    void *handle = dlopen(filepath, RTLD_LOCAL | RTLD_LAZY);
+    if (!handle) {
         throw std::invalid_argument(this->error());
     }
+    return handle;
 }
 
-int EntityLoad::close()
+int EntityLoad::close(void *handle)
 {
-   return (dlclose(_handle));
+   return (dlclose(handle));
 }
 
-void *EntityLoad::sym(const std::string &name)
+void *EntityLoad::sym(const std::string &name, void *handle)
 {
-    return (dlsym(_handle, name.c_str()));
+    return (dlsym(handle, name.c_str()));
 }
 
-IEntity *EntityLoad::loadEntityWithPath(const std::string &path)
+void EntityLoad::loadEntityWithPath(const std::string &path, const std::string &name)
 {
-    open(path.c_str());
+    void *handle = open(path.c_str());
 
-    IEntity* (*create)();
-    void (*destroy)(IEntity*);
+    IEntity *(*create)();
+    void (*destroy)(std::shared_ptr<IEntity>);
 
-    create = (IEntity* (*)())sym("allocator");
-    destroy = (void (*)(IEntity*))sym("deleter");
+    create = (IEntity *(*)())sym("allocator", handle);
 
-    IEntity* myClass = (IEntity*)create();
-    std::cout << "coucou" << std::endl;
-    // destroy(myClass);
-    // close();
-    // il faudrait pouvoir les passé au IEntity pour qu'il destroy ca classe et close le dlOpen.
+    std::shared_ptr<IEntity> test(create());
 
-    return myClass;
+    creates.insert(std::pair<const std::string, EntityLoad::create>(name, create));
+    destroys.insert(std::pair<const std::string, EntityLoad::destroy>(name, destroy));
+    dlOpens.push_back(handle);
+}
+
+std::shared_ptr<IEntity> EntityLoad::createEntityWithName(const std::string &name)
+{
+    std::shared_ptr<IEntity> entity(creates[name]());
+    return entity;
 }

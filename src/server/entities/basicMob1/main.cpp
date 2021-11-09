@@ -20,14 +20,20 @@ int main()
   // myClass->update();
   // destroy( myClass );
 
-  IEntity *mob1;
+  EntityLoad loader = EntityLoad();
 
-  EntityLoad &loader = EntityLoad::getEntityLoader();
+  loader.loadEntityWithPath("./basicMob1.so", "basicMob1");
 
-  mob1 = loader.loadEntityWithPath("./basicMob1.so");
+  auto mob1 = loader.createEntityWithName("basicMob1");
 
-  mob1->update();
+  // mob1->update();
 
+  // std::cout << mob1->isColliding(mob1) << std::endl;
+
+
+  // loader.close(loader.dlOpens[0]);
+
+  // loader.destroyEntityWithName("basicMob1", mob1);
 
   return 0;
 }

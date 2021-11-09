@@ -15,7 +15,7 @@ RoomCard::~RoomCard()
 {
 }
 
-void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const std::string &text, const int &users, const double &thickness, const sf::Vector2f &factors)
+void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const std::string &id, const int &users, const double &thickness, const sf::Vector2f &factors)
 {
     _outline = sf::Color::White;
 
@@ -29,7 +29,9 @@ void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const s
 
     _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
 
-    _title.setString(text);
+    _id = id;
+
+    _title.setString("Room " + _id);
     _title.setScale(factors);
     _title.setFont(_font);
     _title.setOrigin(sf::Vector2f(_title.getOrigin().x, _title.getGlobalBounds().height / 3));
@@ -50,6 +52,12 @@ void RoomCard::draw(sf::RenderWindow &window) const
     window.draw(_title);
     window.draw(_playerCount);
     _delete.draw(window);
+}
+
+void RoomCard::cleanHover()
+{
+    _outline = sf::Color::White;
+    _background.setOutlineColor(_outline);
 }
 
 sf::Vector2f RoomCard::getPosition() const
@@ -78,10 +86,8 @@ sf::Vector2f RoomCard::getSize() const
     return (_background.getSize());
 }
 
-bool RoomCard::event(const sf::Event &event, const sf::RenderWindow &window)
+void RoomCard::hover(const sf::Event &event, const sf::RenderWindow &window)
 {
-    bool clicked = false;
-    _delete.event(event, window);
     if (event.type == sf::Event::MouseMoved) {
         if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             _outline = sf::Color::Yellow;
@@ -92,6 +98,10 @@ bool RoomCard::event(const sf::Event &event, const sf::RenderWindow &window)
             _background.setOutlineColor(_outline);
         }
     }
+}
+
+void RoomCard::join(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+{
     if (!_delete.isMouseHovering(window)) {
         if (event.type == sf::Event::MouseButtonPressed) {
             if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
@@ -104,8 +114,15 @@ bool RoomCard::event(const sf::Event &event, const sf::RenderWindow &window)
             _title.setFillColor(sf::Color::White);
             _playerCount.setFillColor(sf::Color::White);
             if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
-                clicked = true;
+                socket.send(boost::asio::buffer("225 " + _id + "\n"));
         }
     }
-    return (clicked);
+}
+
+void RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+{
+    if (_delete.event(event, window))
+        socket.send(boost::asio::buffer("350 " + _id + "\n"));
+    hover(event, window);
+    join(event, window, socket);
 }
