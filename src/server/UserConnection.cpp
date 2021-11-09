@@ -37,7 +37,7 @@ void UserConnection::startCommunication()
         }
     }
 
-    asio::async_write(_socket, asio::buffer(""),
+    asio::async_write(_socket, asio::buffer(std::string("")),
                         std::bind(&UserConnection::handleWrite, shared_from_this(),
                             std::placeholders::_1,
                             std::placeholders::_2));

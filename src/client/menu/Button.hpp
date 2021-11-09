@@ -20,6 +20,7 @@ class Button {
         bool event(const sf::Event &event, const sf::RenderWindow &window);
         bool isMouseHovering(const sf::RenderWindow &window) const;
         void cleanHover();
+        void setPosition(const sf::Vector2f &pos);
 
     protected:
     private:
@@ -27,6 +28,7 @@ class Button {
         sf::Text *_text;
         sf::Font _font;
         sf::Color _outline;
+        sf::Vector2f _offset;
 };
 
 #endif /* !BUTTON_HPP_ */

@@ -29,12 +29,14 @@ void Button::create(const sf::Vector2f &pos, const std::string &text, const sf::
 
     _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
 
+    _offset = offset;
+
     _text = new sf::Text;
     _text->setString(text);
     _text->setScale(factors);
     _text->setFont(_font);
     _text->setOrigin(sf::Vector2f(_text->getGlobalBounds().left + _text->getGlobalBounds().width / 2, _text->getGlobalBounds().top + _text->getGlobalBounds().height / 2));
-    _text->setPosition(sf::Vector2f(_background.getPosition().x + offset.x, _background.getPosition().y + offset.y));
+    _text->setPosition(sf::Vector2f(_background.getPosition().x + _offset.x, _background.getPosition().y + _offset.y));
 
     _background.setSize(sf::Vector2f(_text->getGlobalBounds().width * 1.6, _text->getGlobalBounds().height * 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
@@ -44,6 +46,12 @@ void Button::draw(sf::RenderWindow &window) const
 {
     window.draw(_background);
     window.draw(*_text);
+}
+
+void Button::setPosition(const sf::Vector2f &pos)
+{
+    _background.setPosition(pos);
+    _text->setPosition(sf::Vector2f(pos.x + _offset.x, pos.y + _offset.y));
 }
 
 bool Button::event(const sf::Event &event, const sf::RenderWindow &window)

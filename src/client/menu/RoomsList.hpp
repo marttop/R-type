@@ -30,6 +30,9 @@ class RoomsList {
 
     protected:
     private:
+        void loadRooms(const std::vector<std::string> &cmd);
+        void createRoom(const std::vector<std::string> &cmd);
+
         Button _disconnect;
         Button _create;
         std::vector<RoomCard *> _rooms;

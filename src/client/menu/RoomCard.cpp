@@ -61,12 +61,16 @@ void RoomCard::incrementPosition()
 {
     _background.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y + _background.getSize().y + _thickness * 2));
     _title.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 20, _background.getPosition().y + _background.getSize().y / 2));
+    _playerCount.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 1.35, _background.getPosition().y + _background.getSize().y / 1.9));
+    _delete.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x - _background.getSize().x / 10, _background.getPosition().y + _background.getSize().y / 2));
 }
 
 void RoomCard::decrementPosition()
 {
     _background.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y - _thickness * 2));
     _title.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 20, _background.getPosition().y + _background.getSize().y / 2));
+    _playerCount.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 1.35, _background.getPosition().y + _background.getSize().y / 1.9));
+    _delete.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x - _background.getSize().x / 10, _background.getPosition().y + _background.getSize().y / 2));
 }
 
 sf::Vector2f RoomCard::getSize() const
