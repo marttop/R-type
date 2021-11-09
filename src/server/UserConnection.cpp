@@ -186,6 +186,17 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
         std::stringstream ss;
         std::shared_ptr<ServerRoom> room = _servRef->getRoomById(std::atoi(arg[1].c_str()));
         if (room != nullptr) {
+
+            if (room->isPlayerInRoom(_id)) {
+                sendError(500, "You are already in the room idiot.");
+                return;
+            }
+
+            if (room->getNbUsers() == 4) {
+                sendError(500, "Room is full.");
+                return;
+            }
+
             room->addUser(_id, _userName);
             ss << "230 ";
             ss << room->getPlayersName();
@@ -224,16 +235,6 @@ void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
 
         if (room == nullptr) {
             sendError(500, "Impossible. Room does not exist.");
-            return;
-        }
-
-        if (room->getNbUsers() == 4) {
-            sendError(500, "Room is full.");
-            return;
-        }
-
-        if (room->isPlayerInRoom(_id)) {
-            sendError(500, "You are already in the room idiot.");
             return;
         }
 
