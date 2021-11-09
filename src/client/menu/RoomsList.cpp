@@ -95,7 +95,7 @@ void RoomsList::loadRooms(const std::vector<std::string> &cmd)
             if (it == cmd.front()) continue;
             if (check == false) roomId = it, check = true;
             else playerCount = it, check = false;
-            if (check == true) {
+            if (check == false) {
                 if (_rooms.size() == 0) {
                     _rooms.push_back(new RoomCard);
                     _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), roomId + "\n", std::atoi(playerCount.c_str()), _thickness);
@@ -142,6 +142,12 @@ void RoomsList::deleteRoom(const std::vector<std::string> &cmd)
         if (to_delete)
             delete to_delete;
     }
+}
+
+void RoomsList::cleanHover()
+{
+    for (auto it : _rooms)
+        it->cleanHover();
 }
 
 void RoomsList::update(char *buf)

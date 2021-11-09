@@ -26,6 +26,7 @@ class RoomsList {
         void update(char *buf);
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
+        void cleanHover();
 
     protected:
     private:

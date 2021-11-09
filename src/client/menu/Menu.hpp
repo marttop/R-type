@@ -29,6 +29,7 @@ class Menu {
     private:
         void connect(const sf::Event &event, const sf::RenderWindow &window);
         void getDefaultInput();
+        void openAlert();
 
         sf::RectangleShape _background;
         WarningBox _alert;
