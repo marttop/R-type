@@ -24,6 +24,11 @@ void ServerRoom::addUser(int id, const std::string &username)
     _playerList.push_back(sp);
 }
 
+void ServerRoom::startGame()
+{
+    
+}
+
 int ServerRoom::getNbUsers() const
 {
     return (_playerList.size());

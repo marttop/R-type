@@ -11,6 +11,8 @@
 #include "UserConnection.hpp"
 #include "ServerPlayer.hpp"
 
+class ServerPlayer;
+
 class ServerRoom {
     public:
         ServerRoom(asio::io_context& io_context, int id);
@@ -26,6 +28,7 @@ class ServerRoom {
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
         asio::ip::udp::endpoint remote_endpoint_;
+        void startGame();
         int _id;
 };
 
