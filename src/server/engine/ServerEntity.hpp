@@ -12,7 +12,10 @@
 
 class ServerEntity : public IEntity {
     public:
-        ServerEntity(const CustomRect &customRect);
+        ServerEntity(const CustomRect &customRect,
+                        const std::string &type = "default",
+                        int id = 0,
+                        int health = 1);
         ~ServerEntity();
 
         void sendData();
@@ -21,6 +24,8 @@ class ServerEntity : public IEntity {
         void setId(int id);
 
         bool isAlive() const;
+        void addLifeEntity(int lifeAdded);
+
         int getId() const;
         CustomRect getRect() const;
 
@@ -31,6 +36,7 @@ class ServerEntity : public IEntity {
         CustomRect _rect;
         std::string _type;
         int _id;
+        int _health;
     private:
 };
 

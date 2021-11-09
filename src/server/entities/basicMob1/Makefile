@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC			=	ServerBasicMob1.cpp					\
+SRC			=	BidosSlaves.cpp					\
 				../../engine/ServerEntity.cpp		\
 				../../engine/CustomRect.cpp			\
 				../../EntityLoad.cpp				\
