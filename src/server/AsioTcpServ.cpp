@@ -71,20 +71,21 @@ std::vector<std::shared_ptr<ServerRoom>> &AsioTcpServ::getRoomList()
     return (_roomList);
 }
 
-void AsioTcpServ::deleteRoomById(int id)
+int AsioTcpServ::deleteRoomById(int id)
 {
     int tmp = -1, i = 0;
     for (auto itr : _roomList) {
         if (itr->getId() == id) {
-            tmp = i;
+            if (itr->getNbUsers() > 0)
+                tmp = i;
         }
         i++;
     }
     if (tmp != -1) {
         _roomList.erase(_roomList.begin() + tmp);
-    } else {
-        _roomList.clear();
+        return (1);
     }
+    return (0);
 }
 
 std::shared_ptr<ServerRoom> AsioTcpServ::getRoomById(int id)

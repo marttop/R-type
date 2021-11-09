@@ -68,10 +68,11 @@ void UserConnection::checkCode(std::string &data)
     }
 }
 
-void UserConnection::sendError(const std::string &msg)
+void UserConnection::sendError(int code, const std::string &msg)
 {
     std::stringstream ss;
-    ss << "500 ";
+    ss << code;
+    ss << " ";
     ss << msg;
     ss << "\n";
     _socket.write_some(asio::buffer(ss.str()));
@@ -130,7 +131,7 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
             (this->*func)(arg);
         }
         else {
-            sendError("Unknown command");
+            sendError(500, "Unknown command");
         }
     } else {
         checkDisconnection();
@@ -164,7 +165,7 @@ void UserConnection::cmdConnection(const std::vector<std::string> &arg)
         _socket.send(asio::buffer(ss.str()));
 
     } else {
-        sendError("Missing arg in command");
+        sendError(500, "Missing arg in command");
     }
 }
 
@@ -175,7 +176,7 @@ void UserConnection::cmdCreateRoom(const std::vector<std::string> &arg)
         std::string response = "310 " + std::to_string(id) + "\n";
         broadcastTCP(response);
     } else {
-        sendError("Weird error");
+        sendError(500, "Weird error");
     }
 }
 
@@ -193,10 +194,10 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
             broadcastTCPNotUser("280 " + std::to_string(room->getId()) + "\n");
 
         } else {
-            sendError("'id' of room does not exist");
+            sendError(500, "'id' of room does not exist");
         }
     } else {
-        sendError("Missing arg in command");
+        sendError(500, "Missing arg in command");
     }
 }
 
@@ -209,19 +210,31 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
             room->removeUser(_id);
             broadcastTCPNotUser("290 " + std::to_string(room->getId()) + "\n");
         } else {
-            sendError("'id' of room does not exist");
+            sendError(500, "'id' of room does not exist");
         }
     } else {
-        sendError("Missing arg in command");
+        sendError(500, "Missing arg in command");
     }
 }
 
 void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
 {
     if (arg.size() >= 2) {
-        _servRef->deleteRoomById(std::atoi(arg[1].c_str()));
-        broadcastTCP("380 " + arg[1]);
+        std::shared_ptr<ServerRoom> room = _servRef->getRoomById(std::atoi(arg[1].c_str()));
+
+        if (room == nullptr) {
+            sendError(500, "Impossible. Room does not exist");
+            return;
+        }
+
+        int ret = _servRef->deleteRoomById(std::atoi(arg[1].c_str()));
+        if (ret == 1) {
+            broadcastTCP("380 " + arg[1] + "\n");
+        } else if (ret == 0) {
+            sendError(500, "Impossible. Players are still in the room");
+        }
+
     } else {
-        sendError("Missing arg in command");
+        sendError(500, "Missing arg in command");
     }
 }

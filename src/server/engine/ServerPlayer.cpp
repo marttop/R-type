@@ -31,7 +31,6 @@ void ServerPlayer::startUDP()
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
     std::cout << "udp line: " << _buffer;
-
     _socket.async_receive(asio::buffer(_buffer),
                             std::bind(&ServerPlayer::handleReceive, this,
                                     std::placeholders::_1));

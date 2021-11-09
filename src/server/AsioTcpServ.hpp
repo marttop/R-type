@@ -37,7 +37,7 @@ public:
     std::vector<userConnectionPointer> &getUserList();
     std::vector<std::shared_ptr<ServerRoom>> &getRoomList();
     std::shared_ptr<ServerRoom> getRoomById(int id);
-    void deleteRoomById(int id);
+    int deleteRoomById(int id);
 
 protected:
 private:
