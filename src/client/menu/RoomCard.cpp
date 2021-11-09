@@ -54,10 +54,18 @@ void RoomCard::draw(sf::RenderWindow &window) const
     _delete.draw(window);
 }
 
+std::string RoomCard::getId() const
+{
+    std::string formattedId = _id;
+    formattedId.pop_back();
+    return (formattedId);
+}
+
 void RoomCard::cleanHover()
 {
     _outline = sf::Color::White;
     _background.setOutlineColor(_outline);
+    _delete.cleanHover();
 }
 
 sf::Vector2f RoomCard::getPosition() const

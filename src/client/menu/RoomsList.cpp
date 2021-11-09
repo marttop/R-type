@@ -122,11 +122,34 @@ void RoomsList::createRoom(const std::vector<std::string> &cmd)
     }
 }
 
+void RoomsList::deleteRoom(const std::vector<std::string> &cmd)
+{
+    if (cmd.size() == 2 && cmd[0] == "380") {
+        std::string roomId = cmd[1];
+        if (roomId.size() > 0 && roomId.find('\n') > 0)
+            roomId.pop_back();
+        RoomCard *to_delete = nullptr;
+        bool check = false;
+        for (int i = 0; i < _rooms.size(); i++) {
+            if (!check && _rooms[i]->getId() == roomId) {
+                to_delete = _rooms[i];
+                _rooms.erase(_rooms.begin() + i);
+                check = true;
+            }
+            if (check)
+                _rooms[i]->decrementPosition();
+        }
+        if (to_delete)
+            delete to_delete;
+    }
+}
+
 void RoomsList::update(char *buf)
 {
     std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
     loadRooms(cmd);
     createRoom(cmd);
+    deleteRoom(cmd);
 }
 
 void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &window)

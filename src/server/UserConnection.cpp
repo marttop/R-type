@@ -220,7 +220,7 @@ void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
 {
     if (arg.size() >= 2) {
         _servRef->deleteRoomById(std::atoi(arg[1].c_str()));
-        broadcastTCP("380 " + arg[1]);
+        broadcastTCP("380 " + arg[1] + "\n");
     } else {
         sendError("Missing arg in command");
     }

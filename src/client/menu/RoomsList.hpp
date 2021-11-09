@@ -33,6 +33,7 @@ class RoomsList {
         void loadRooms(const std::vector<std::string> &cmd);
         void createRoom(const std::vector<std::string> &cmd);
         void mouseWheelScroll(const sf::Event &event, const sf::RenderWindow &window);
+        void deleteRoom(const std::vector<std::string> &cmd);
 
         Button _disconnect;
         Button _create;
