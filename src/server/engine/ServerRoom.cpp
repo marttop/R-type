@@ -45,6 +45,7 @@ void ServerRoom::removeUser(int id)
             user->getSocket().send(asio::buffer("250 " + std::to_string(_id) + "\n"));
         }
         else {
+            user->closeUDP();
             tmp = i;
         }
         i++;

@@ -26,6 +26,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         asio::ip::udp::socket &getSocket();
         void startUDP();
         void handleReceive(const asio::error_code &error);
+        void closeUDP();
 
     protected:
     private:
