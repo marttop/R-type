@@ -8,14 +8,9 @@
 #include "ServerBasicMob1.hpp"
 
 #if defined(__linux__) || defined(__APPLE__)
-extern "C" ServerBasicMob1 *allocator()
+extern "C" IEntity *allocator()
 {
-		return new ServerBasicMob1();
-}
-
-extern "C" void deleter(ServerBasicMob1 *ptr)
-{
-		delete ptr;
+    return new ServerBasicMob1;
 }
 #endif
 

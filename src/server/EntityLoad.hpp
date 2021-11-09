@@ -11,27 +11,60 @@
 #include <dlfcn.h>
 #include <string>
 #include <iostream>
-#include <IEntity.hpp>
+#include <ServerEntity.hpp>
+#include <map>
+#include <vector>
+
+/*
+    my singeltone loader insane du asssss
+*/
+// class EntityLoad {
+//     public:
+//         ~EntityLoad();
+
+//         std::string error();
+
+//         static EntityLoad &getEntityLoader() {
+//              static EntityLoad instance;
+//              return instance;
+//         };
+//         IEntity *loadEntityWithPath(const std::string &path);
+
+//     protected:
+//     private:
+//         EntityLoad();
+
+//         void open(const char *filepath);
+//         int close();
+//         void *sym(const std::string &name);
+
+//         void *_handle;
+// };
 
 class EntityLoad {
     public:
+        EntityLoad();
         ~EntityLoad();
 
-        std::string error();
+        std::string                 error();
 
-        static EntityLoad &getEntityLoader();
+        void                        loadEntityWithPath(const std::string &path, const std::string &name);
 
-        IEntity *loadEntityWithPath(const std::string &path);
+        std::shared_ptr<IEntity>    createEntityWithName(const std::string &name);
+        void                        destroyEntityWithName(const std::string &name, std::shared_ptr<IEntity> entity);
 
     protected:
     private:
-        EntityLoad();
+        typedef IEntity*                    (*create)();
+        typedef void                        (*destroy)(std::shared_ptr<IEntity>);
 
-        void open(const char *filepath);
-        int close();
-        void *sym(const std::string &name);
+        void    *open(const char *filepath);
+        int     close(void *handle);
+        void    *sym(const std::string &name, void *handle);
 
-        void *_handle;
+        std::map<const std::string, create> creates;
+        std::map<const std::string, destroy> destroys;
+        std::vector<void *> dlOpens;
 };
 
 #endif /* !DL_HPP_ */
