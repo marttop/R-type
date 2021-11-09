@@ -78,6 +78,8 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
         for (auto it : _rooms)
             delete it;
         _rooms.clear();
+        _displayedIdx.first = 0;
+        _displayedIdx.second = _cardNb;
         return (false);
     }
     return (true);
