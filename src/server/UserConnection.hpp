@@ -49,10 +49,15 @@ private:
     void broadcastTCPNotUser(const std::string &msg) const;
     void checkDisconnection() const;
 
+    ///////////////////////////////////////////////////////////////
+    //-----------------------CMD_RESPONSES-----------------------//
+    ///////////////////////////////////////////////////////////////
+
     void cmdConnection(const std::vector<std::string> &arg);
-    void cmdRoomCreate(const std::vector<std::string> &arg);
+    void cmdCreateRoom(const std::vector<std::string> &arg);
     void cmdJoinRoom(const std::vector<std::string> &arg);
     void cmdQuitRoom(const std::vector<std::string> &arg);
+    void cmdDeleteRoom(const std::vector<std::string> &arg);
 
     std::map<int, factoryF> _cmd;
 

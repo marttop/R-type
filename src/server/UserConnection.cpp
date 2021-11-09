@@ -13,7 +13,8 @@ UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRe
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
     _cmd.emplace(230, &UserConnection::cmdQuitRoom);
-    _cmd.emplace(300, &UserConnection::cmdRoomCreate);
+    _cmd.emplace(300, &UserConnection::cmdCreateRoom);
+    _cmd.emplace(350, &UserConnection::cmdDeleteRoom);
 }
 
 asio::ip::tcp::socket &UserConnection::getSocket()
@@ -167,7 +168,7 @@ void UserConnection::cmdConnection(const std::vector<std::string> &arg)
     }
 }
 
-void UserConnection::cmdRoomCreate(const std::vector<std::string> &arg)
+void UserConnection::cmdCreateRoom(const std::vector<std::string> &arg)
 {
     if (arg.size() >= 1) {
         int id = _servRef->addRoom();
@@ -210,6 +211,16 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
         } else {
             sendError("'id' of room does not exist");
         }
+    } else {
+        sendError("Missing arg in command");
+    }
+}
+
+void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
+{
+    if (arg.size() >= 2) {
+        _servRef->deleteRoomById(std::atoi(arg[1].c_str()));
+        broadcastTCP("380 " + arg[1]);
     } else {
         sendError("Missing arg in command");
     }
