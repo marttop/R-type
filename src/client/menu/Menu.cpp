@@ -55,6 +55,13 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::
 
 void Menu::update()
 {
+    std::string stringBuf(_buf);
+    if (stringBuf.size() > 0 && stringBuf.find("500") != std::string::npos) {
+        stringBuf.erase(0, 4);
+        if (stringBuf.find('\n') != std::string::npos)
+            stringBuf.pop_back();
+        _alert.open(stringBuf);
+    }
     _connection.update();
     _rooms.update(_buf);
 }
