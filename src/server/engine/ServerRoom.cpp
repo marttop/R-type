@@ -41,7 +41,7 @@ void ServerRoom::removeUser(int id)
 {
     int tmp = -1, i = 0;
     for (auto user : _playerList) {
-        if (user->getId() != _id) {
+        if (user->getId() != id) {
             user->getSocket().send(asio::buffer("250 " + std::to_string(_id) + "\n"));
         }
         else {
