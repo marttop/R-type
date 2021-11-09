@@ -7,9 +7,10 @@
 
 #include "ServerPlayer.hpp"
 
-ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef)
+ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef, int port)
                             : ServerEntity(rect), _io_context(io_context),
-                            _socket(io_context, asio::ip::udp::endpoint(asio::ip::udp::v4(), 8888)), _roomRef(&roomRef)
+                            _socket(io_context,
+                            asio::ip::udp::endpoint(asio::ip::udp::v4(), port)), _roomRef(&roomRef), _port(port)
 {
     _userName = "";
     std::memset(_buffer, '\0', 1024);

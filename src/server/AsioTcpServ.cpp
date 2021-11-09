@@ -76,8 +76,10 @@ int AsioTcpServ::deleteRoomById(int id)
     int tmp = -1, i = 0;
     for (auto itr : _roomList) {
         if (itr->getId() == id) {
-            if (itr->getNbUsers() > 0)
+            if (itr->getNbUsers() == 0) {
                 tmp = i;
+                break;
+            }
         }
         i++;
     }

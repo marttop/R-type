@@ -17,7 +17,10 @@ ServerRoom::~ServerRoom()
 
 void ServerRoom::addUser(int id, const std::string &username)
 {
-    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this));
+    static int port = 11999;
+    port++;
+
+    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this, port));
     sp->setId(id);
     sp->setUsername(username);
     sp->startUDP();
