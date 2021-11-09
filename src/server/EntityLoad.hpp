@@ -11,18 +11,26 @@
 #include <dlfcn.h>
 #include <string>
 #include <iostream>
+#include <IEntity.hpp>
 
-class DL {
+class EntityLoad {
     public:
-        DL();
-        ~DL();
+        ~EntityLoad();
 
         std::string error();
-        void open(char *filepath, int flag);
-        int close();
-        void *sym(const std::string &name);
+
+        static EntityLoad &getEntityLoader();
+
+        IEntity *loadEntityWithPath(const std::string &path);
+
     protected:
     private:
+        EntityLoad();
+
+        void open(const char *filepath);
+        int close();
+        void *sym(const std::string &name);
+
         void *_handle;
 };
 

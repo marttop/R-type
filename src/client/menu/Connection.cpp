@@ -46,6 +46,7 @@ bool Connection::connect(const sf::Event &event, const sf::RenderWindow &window,
             try {
                 socket.connect(endpoint);
                 socket.send(boost::asio::buffer("210 " + _name + "\n"));
+                _connect.cleanHover();
                 return (true);
             } catch(std::exception& error) {
                 socket.close();

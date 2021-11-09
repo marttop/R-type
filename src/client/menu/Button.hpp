@@ -15,9 +15,11 @@ class Button {
         Button();
         ~Button();
 
-        void create(const sf::Vector2f &pos, const std::string &text, const sf::Vector2f &factors = {1, 1});
+        void create(const sf::Vector2f &pos, const std::string &text, const sf::Vector2f &offset = {0, 0}, const sf::Vector2f &factors = {1, 1});
         void draw(sf::RenderWindow &window) const;
         bool event(const sf::Event &event, const sf::RenderWindow &window);
+        bool isMouseHovering(const sf::RenderWindow &window) const;
+        void cleanHover();
 
     protected:
     private:

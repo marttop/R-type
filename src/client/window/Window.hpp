@@ -9,7 +9,6 @@
 #define WINDOW_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <boost/array.hpp>
 #include <boost/asio.hpp>
 
 #include "Parallax.hpp"
@@ -42,7 +41,7 @@ class Window {
         boost::asio::io_context _io_context;
         boost::asio::ip::tcp::resolver *_resolver;
         boost::asio::ip::tcp::socket *_socket;
-        boost::array<char, 1024> _buf;
+        char _buf[1024];
         boost::system::error_code _error;
         boost::asio::ip::tcp::endpoint _endpoint;
 };

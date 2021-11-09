@@ -10,6 +10,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Button.hpp"
+
 class RoomCard {
     public:
         RoomCard();
@@ -30,6 +32,7 @@ class RoomCard {
         sf::Text _title;
         sf::Text _playerCount;
         sf::Font _font;
+        Button _delete;
         double _thickness;
 };
 
