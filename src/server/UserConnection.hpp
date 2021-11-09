@@ -44,7 +44,7 @@ private:
     void handleWrite(const asio::error_code &err, size_t size);
     void handleRead(const asio::error_code &error, size_t size);
     void checkCode(std::string &data);
-    void sendError(const std::string &msg);
+    void sendError(int code, const std::string &msg);
     void broadcastTCP(const std::string &msg) const;
     void broadcastTCPNotUser(const std::string &msg) const;
     void checkDisconnection() const;
