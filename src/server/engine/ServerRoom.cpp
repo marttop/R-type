@@ -56,6 +56,14 @@ void ServerRoom::removeUser(int id)
     }
 }
 
+bool ServerRoom::isPlayerInRoom(int id) const
+{
+    for (auto itr : _playerList) {
+        if (itr->getId() == id) return (true);
+    }
+    return (false);
+}
+
 int ServerRoom::getId() const
 {
     return (_id);

@@ -21,6 +21,7 @@ class ServerRoom {
         void removeUser(int id);
         int getNbUsers() const;
         std::string getPlayersName() const;
+        bool isPlayerInRoom(int id) const;
         int getId() const;
 
     protected:
