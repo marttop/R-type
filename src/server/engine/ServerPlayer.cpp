@@ -37,7 +37,7 @@ int ServerPlayer::getPort() const
     return (_port);
 }
 
-bool ServerPlayer::setIsReady(bool isReady)
+void ServerPlayer::setIsReady(bool isReady)
 {
     _isReady = isReady;
 }
