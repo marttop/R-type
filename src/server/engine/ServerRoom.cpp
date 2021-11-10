@@ -21,11 +21,18 @@ void ServerRoom::addUser(int id, const std::string &username)
     static int port = _portSeed;
     port++;
 
+    for (auto user : _playerList) {
+        if (user->getId() != id) {
+            user->getSocket().send(asio::buffer("001 " + user->getUsername() + "\n"));
+        }
+    }
+
     std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this, port));
     sp->setId(id);
     sp->setUsername(username);
     sp->startUDP();
     _playerList.push_back(sp);
+
 }
 
 void ServerRoom::startGame()
@@ -43,7 +50,7 @@ void ServerRoom::removeUser(int id)
     int tmp = -1, i = 0;
     for (auto user : _playerList) {
         if (user->getId() != id) {
-            user->getSocket().send(asio::buffer("250 " + std::to_string(_id) + "\n"));
+            user->getSocket().send(asio::buffer("002 " + user->getUsername() + "\n"));
         }
         else {
             user->closeUDP();
@@ -85,6 +92,8 @@ std::string ServerRoom::getPlayersName() const
     ss << "";
     for (auto itr : _playerList) {
         ss << itr->getUsername();
+        ss << " ";
+        ss << (int)itr->isReady();
         ss << " ";
     }
     return (ss.str());

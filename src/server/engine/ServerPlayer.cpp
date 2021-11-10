@@ -10,7 +10,8 @@
 ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef, int port)
                             : ServerEntity(rect), _io_context(io_context),
                             _socket(io_context,
-                            asio::ip::udp::endpoint(asio::ip::udp::v4(), port)), _roomRef(&roomRef), _port(port)
+                            asio::ip::udp::endpoint(asio::ip::udp::v4(), port)),
+                            _roomRef(&roomRef), _port(port), _isReady(false)
 {
     _userName = "";
     std::memset(_buffer, '\0', 1024);
@@ -26,9 +27,19 @@ void ServerPlayer::closeUDP()
     _socket.close();
 }
 
+bool ServerPlayer::isReady() const
+{
+    return (_isReady);
+}
+
 int ServerPlayer::getPort() const
 {
     return (_port);
+}
+
+bool ServerPlayer::setIsReady(bool isReady)
+{
+    _isReady = isReady;
 }
 
 void ServerPlayer::startUDP()
@@ -41,6 +52,15 @@ void ServerPlayer::startUDP()
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
     std::cout << "udp line: " << _buffer;
+    std::vector<std::string> args = SEPParsor::parseCommands(_buffer);
+    if (args.size() >= 2) {
+        if (args[0] == "003" && args[1] == "1") {
+            _isReady = true;
+        }
+        else if (args[0] == "003" && args[1] == "0") {
+            _isReady = false;
+        }
+    }
     if (_socket.is_open()) {
         _socket.async_receive(asio::buffer(_buffer),
                                 std::bind(&ServerPlayer::handleReceive, this,
