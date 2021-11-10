@@ -41,5 +41,11 @@ Shitty Epitech Protocol
                 Server->Client
                     001 + username (user joined the room)
                     002 + username (user left the room)
+                    004 + 1 + username (user set ready)
+                    004 + 0 + username (user set unready)
 
                 Client->Server
+                    003 + 0 (unReady)
+                      ->  No response
+                    003 + 1 (ready)
+                      ->  No response

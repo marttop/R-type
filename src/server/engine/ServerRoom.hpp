@@ -22,6 +22,7 @@ class ServerRoom {
         int getNbUsers() const;
         std::string getPlayersName() const;
         bool isPlayerInRoom(int id) const;
+        void broadCastUdp(const std::string &code, const std::string &msg);
         std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
         int getId() const;
 

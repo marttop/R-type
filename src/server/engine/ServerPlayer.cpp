@@ -49,6 +49,11 @@ void ServerPlayer::startUDP()
                                     std::placeholders::_1));
 }
 
+void ServerPlayer::sendData(const std::string &code, const std::string &msg)
+{
+    _socket.send(asio::buffer(code + " " + msg + " \n"));
+}
+
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
     std::cout << "udp line: " << _buffer;
@@ -56,8 +61,10 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
     if (args.size() >= 2) {
         if (args[0] == "003" && args[1] == "1") {
             _isReady = true;
+            _roomRef->broadCastUdp("004", "1 " + _userName);
         }
         else if (args[0] == "003" && args[1] == "0") {
+            _roomRef->broadCastUdp("004", "0 " + _userName);
             _isReady = false;
         }
     }

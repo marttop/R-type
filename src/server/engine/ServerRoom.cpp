@@ -35,6 +35,13 @@ void ServerRoom::addUser(int id, const std::string &username)
 
 }
 
+void ServerRoom::broadCastUdp(const std::string &code, const std::string &msg)
+{
+    for (auto itr : _playerList) {
+        itr->sendData(code, msg);
+    }
+}
+
 void ServerRoom::startGame()
 {
 

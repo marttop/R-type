@@ -28,6 +28,8 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void startUDP();
         bool isReady() const;
         bool setIsReady(bool isReady);
+        void sendData(const std::string &code, const std::string &msg);
+        void broadcastUDPNotSelf();
         void handleReceive(const asio::error_code &error);
         void closeUDP();
 
