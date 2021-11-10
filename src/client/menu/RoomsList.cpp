@@ -167,7 +167,7 @@ void RoomsList::userJoinedRoom(const std::vector<std::string> &cmd)
 void RoomsList::userLeftRoom(const std::vector<std::string> &cmd)
 {
     if (cmd.size() > 0 && cmd[0] == "290") {
-        if (cmd.size() == 1)
+        if (cmd[1] == "\n")
             return;
         std::string roomId = cmd[1];
         roomId.pop_back();
