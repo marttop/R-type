@@ -10,8 +10,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <boost/asio.hpp>
+#include <vector>
 
 #include "Button.hpp"
+#include "PlayerCard.hpp"
 
 class Room {
     public:
@@ -30,6 +32,7 @@ class Room {
         Button _leave;
         Button _ready;
         std::string _id;
+        std::vector<PlayerCard *> _players;
 };
 
 #endif /* !ROOM_HPP_ */
