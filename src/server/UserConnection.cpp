@@ -8,7 +8,7 @@
 #include "UserConnection.hpp"
 
 UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id)
-    : _socket(io_context), _servRef(&servRef), _id(id), _isUDPOn(false)
+    : _socket(io_context), _servRef(&servRef), _id(id), _isUDPOn(false), _roomId(-1)
 {
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
@@ -102,9 +102,15 @@ void UserConnection::checkDisconnection() const
     int tmp = -1, i = 0;
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("250 " + std::to_string(_id) + "\n"));
+            user->getSocket().write_some(asio::buffer("290 " + _isUDPOn ? std::to_string(_roomId) + "\n" : "\n"));
         }
         else {
+            if (_isUDPOn) {
+                std::shared_ptr<ServerRoom> room = _servRef->getRoomById(_roomId);
+                if (room != nullptr) {
+                    room->removeUser(_id);
+                }
+            }
             tmp = i;
         }
         i++;
@@ -197,6 +203,8 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
                 return;
             }
 
+            _roomId = room->getId();
+
             room->addUser(_id, _userName);
             ss << "230 ";
             ss << room->getId();
@@ -225,6 +233,7 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
         if (room != nullptr) {
             room->removeUser(_id);
             _isUDPOn = false;
+            _roomId = -1;
             broadcastTCPNotUser("290 " + std::to_string(room->getId()) + "\n");
             _socket.send(asio::buffer("100\n"));
         } else {
