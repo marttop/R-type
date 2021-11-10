@@ -102,7 +102,8 @@ void UserConnection::checkDisconnection() const
     int tmp = -1, i = 0;
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("290 " + _isUDPOn ? std::to_string(_roomId) + "\n" : "\n"));
+            std::string s = _isUDPOn ? std::to_string(_roomId) : "";
+            user->getSocket().write_some(asio::buffer("290 " + s + "\n"));
         }
         else {
             if (_isUDPOn) {
