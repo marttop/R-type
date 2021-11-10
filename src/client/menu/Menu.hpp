@@ -32,6 +32,7 @@ class Menu {
         void getDefaultInput();
         void joinRoom();
         void openAlert();
+        void leaveRoom();
 
         sf::RectangleShape _background;
         WarningBox _alert;

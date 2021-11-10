@@ -81,10 +81,20 @@ void Menu::joinRoom()
     }
 }
 
+void Menu::leaveRoom()
+{
+    std::string strBuf(_buf);
+    if (strBuf.find('\n') != std::string::npos)
+        strBuf.pop_back();
+    if (_connected && _inRoom && strBuf.size() > 0 && strBuf == "100")
+        _inRoom = false;
+}
+
 void Menu::update()
 {
     openAlert();
     joinRoom();
+    leaveRoom();
     _connection.update();
     _rooms.update(_buf);
     _room.update();
