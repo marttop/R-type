@@ -68,6 +68,7 @@ private:
     int _id;
     std::string _userName;
     bool _isUDPOn;
+    int _roomId;
     AsioTcpServ *_servRef;
 };
 
