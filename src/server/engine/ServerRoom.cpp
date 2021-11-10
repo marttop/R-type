@@ -7,7 +7,8 @@
 
 #include "ServerRoom.hpp"
 
-ServerRoom::ServerRoom(asio::io_context& io_context, int id) : _io_context(io_context), _id(id)
+ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed)
+                                        : _io_context(io_context), _id(id), _portSeed(portSeed)
 {
 }
 
@@ -17,7 +18,7 @@ ServerRoom::~ServerRoom()
 
 void ServerRoom::addUser(int id, const std::string &username)
 {
-    static int port = 11999;
+    static int port = _portSeed;
     port++;
 
     std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10), _io_context, *this, port));
@@ -63,6 +64,14 @@ bool ServerRoom::isPlayerInRoom(int id) const
         if (itr->getId() == id) return (true);
     }
     return (false);
+}
+
+std::shared_ptr<ServerPlayer> ServerRoom::getPlayerFromId(int id) const
+{
+    for (auto itr : _playerList) {
+        if (itr->getId() == id) return (itr);
+    }
+    return (nullptr);
 }
 
 int ServerRoom::getId() const

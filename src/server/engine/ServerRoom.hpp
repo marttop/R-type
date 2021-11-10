@@ -15,13 +15,14 @@ class ServerPlayer;
 
 class ServerRoom {
     public:
-        ServerRoom(asio::io_context& io_context, int id);
+        ServerRoom(asio::io_context& io_context, int id, int portSeed);
         ~ServerRoom();
         void addUser(int id, const std::string &username);
         void removeUser(int id);
         int getNbUsers() const;
         std::string getPlayersName() const;
         bool isPlayerInRoom(int id) const;
+        std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
         int getId() const;
 
     protected:
@@ -31,6 +32,7 @@ class ServerRoom {
         asio::ip::udp::endpoint remote_endpoint_;
         void startGame();
         int _id;
+        int _portSeed;
 };
 
 #endif /* !SERVERROOM_HPP_ */

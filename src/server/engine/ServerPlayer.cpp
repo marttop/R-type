@@ -26,6 +26,11 @@ void ServerPlayer::closeUDP()
     _socket.close();
 }
 
+int ServerPlayer::getPort() const
+{
+    return (_port);
+}
+
 void ServerPlayer::startUDP()
 {
     _socket.async_receive(asio::buffer(_buffer),

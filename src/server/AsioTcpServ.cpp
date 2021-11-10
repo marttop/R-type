@@ -20,9 +20,11 @@ AsioTcpServ::~AsioTcpServ()
 int AsioTcpServ::addRoom()
 {
     static int id = 0;
+    static int portSeed = 8888;
+    portSeed += 150;
     id++;
 
-    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context, id));
+    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context, id, portSeed));
     _roomList.push_back(room);
 
     return (id);

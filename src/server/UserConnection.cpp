@@ -8,7 +8,7 @@
 #include "UserConnection.hpp"
 
 UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id)
-    : _socket(io_context), _servRef(&servRef), _id(id)
+    : _socket(io_context), _servRef(&servRef), _id(id), _isUDPOn(false)
 {
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
@@ -201,9 +201,12 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
             ss << "230 ";
             ss << room->getId();
             ss << " ";
+            ss << room->getPlayerFromId(_id)->getPort();
+            ss << " ";
             ss << room->getPlayersName();
             ss << "\n";
             _socket.send(asio::buffer(ss.str()));
+            _isUDPOn = true;
             broadcastTCPNotUser("280 " + std::to_string(room->getId()) + "\n");
 
         } else {
@@ -221,7 +224,9 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
         std::stringstream ss;
         if (room != nullptr) {
             room->removeUser(_id);
+            _isUDPOn = false;
             broadcastTCPNotUser("290 " + std::to_string(room->getId()) + "\n");
+            _socket.send(asio::buffer("100\n"));
         } else {
             sendError(500, "'id' of room does not exist.");
         }

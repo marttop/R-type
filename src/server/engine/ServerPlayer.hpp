@@ -23,6 +23,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void setUsername(const std::string &username);
 
         std::string getUsername() const;
+        int getPort() const;
         asio::ip::udp::socket &getSocket();
         void startUDP();
         void handleReceive(const asio::error_code &error);

@@ -67,6 +67,7 @@ private:
 
     int _id;
     std::string _userName;
+    bool _isUDPOn;
     AsioTcpServ *_servRef;
 };
 

@@ -25,7 +25,7 @@ Shitty Epitech Protocol
                       ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
                     225 + room_id (request join)
-                      ->  230 + room_id + username1 + username2 + ...
+                      ->  230 room_id + udp_port + username1 + username2 + ...
                     235 + room_id (request quit room)
                       ->  100
                       ->  500 (Error)
