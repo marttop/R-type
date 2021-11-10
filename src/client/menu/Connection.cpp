@@ -32,11 +32,11 @@ bool Connection::connect(const sf::Event &event, const sf::RenderWindow &window,
         _ip = _ipBox.getInputString();
         _port = _portBox.getInputString();
         if (_name == "")
-            alert.open("Please enter a non empty name.");
+            alert.open("Please enter a non empty name.", true);
         else if (_validator.validateIpAddress(_ip) == 0)
-            alert.open("Please provide a valid ip address.");
+            alert.open("Please provide a valid ip address.", true);
         else if (_validator.validatePort(std::atoi(_port.c_str())) == 0)
-            alert.open("Please provide a valid port.");
+            alert.open("Please provide a valid port.", true);
         else {
             std::ofstream myfile;
             myfile.open ("src/client/menu/save.txt");
@@ -50,7 +50,7 @@ bool Connection::connect(const sf::Event &event, const sf::RenderWindow &window,
                 return (true);
             } catch(std::exception& error) {
                 socket.close();
-                alert.open("Connection refused.");
+                alert.open("Connection refused.", true);
             }
         }
     }

@@ -20,7 +20,7 @@ class WarningBox {
         void create(const sf::Vector2f &pos, const sf::Vector2f &factors = {1, 1});
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window);
-        void open(const std::string &text);
+        void open(const std::string &text, const bool &isButton);
         bool isOpen() const;
 
     protected:
@@ -30,6 +30,7 @@ class WarningBox {
         sf::Font _font;
         Button _close;
         bool _isOpen;
+        bool _isButton;
         sf::Vector2f _factors;
 };
 

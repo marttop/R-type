@@ -19,6 +19,8 @@ Window::Window(const std::string &title)
     _parallax.create(100);
     _menu.create(_window, _buf);
     _scene = MENU;
+
+    _lostConnection = false;
 }
 
 Window::~Window()
@@ -59,7 +61,10 @@ void Window::draw()
 
 void Window::read()
 {
-    if (_socket->is_open()) {
+    if (_error == boost::asio::error::eof) {
+        _menu.setAlert();
+        _error.clear();
+    } else if (_lostConnection == false && _socket->is_open()) {
         std::memset(_buf, '\0', 1024);
         _socket->non_blocking(true);
         size_t len = 0;

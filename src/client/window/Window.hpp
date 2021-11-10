@@ -13,6 +13,7 @@
 
 #include "Parallax.hpp"
 #include "Menu.hpp"
+#include "RtypeException.hpp"
 
 class Window {
     public:
@@ -37,6 +38,7 @@ class Window {
         Parallax _parallax;
         Menu _menu;
         Scene _scene;
+        bool _lostConnection;
 
         boost::asio::io_context _io_context;
         boost::asio::ip::tcp::resolver *_resolver;

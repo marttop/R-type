@@ -25,6 +25,7 @@ class Menu {
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket);
         void update();
+        void setAlert();
 
     protected:
     private:

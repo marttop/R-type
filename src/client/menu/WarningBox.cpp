@@ -34,7 +34,7 @@ void WarningBox::create(const sf::Vector2f &pos, const sf::Vector2f &factors)
     _factors = factors;
 }
 
-void WarningBox::open(const std::string &text)
+void WarningBox::open(const std::string &text, const bool &isButton)
 {
     if (text != _text->getString() || _text->getString() == "") {
         delete _text;
@@ -48,7 +48,10 @@ void WarningBox::open(const std::string &text)
         _background.setSize(sf::Vector2f(_text->getGlobalBounds().width * 1.5, _text->getGlobalBounds().height * 5));
         _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
-        _close.create(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 2 - _background.getSize().x / 4, _background.getPosition().y + _background.getSize().y / 2), "Close", sf::Vector2f(1, 1));
+        _isButton = isButton;
+
+        if (_isButton)
+            _close.create(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 2 - _background.getSize().x / 4, _background.getPosition().y + _background.getSize().y / 2), "Close", sf::Vector2f(1, 1));
     }
     _isOpen = true;
 }
@@ -63,12 +66,13 @@ void WarningBox::draw(sf::RenderWindow &window) const
     if (_isOpen == true) {
         window.draw(_background);
         window.draw(*_text);
-        _close.draw(window);
+        if (_isButton)
+            _close.draw(window);
     }
 }
 
 void WarningBox::event(const sf::Event &event, const sf::RenderWindow &window)
 {
-    if (_close.event(event, window))
+    if (_isButton && _close.event(event, window))
         _isOpen = false;
 }

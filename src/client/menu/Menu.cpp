@@ -64,7 +64,7 @@ void Menu::openAlert()
         stringBuf.erase(0, 4);
         if (stringBuf.find('\n') != std::string::npos)
             stringBuf.pop_back();
-        _alert.open(stringBuf);
+        _alert.open(stringBuf, true);
         if (_connected)
             _rooms.cleanHover();
     }
@@ -98,6 +98,13 @@ void Menu::update()
     _connection.update();
     _rooms.update(_buf);
     _room.update();
+}
+
+void Menu::setAlert()
+{
+    _alert.open("Lost connection with the server.", false);
+    if (_connected)
+         _rooms.cleanHover();
 }
 
 void Menu::draw(sf::RenderWindow &window) const
