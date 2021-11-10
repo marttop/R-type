@@ -102,7 +102,7 @@ void UserConnection::checkDisconnection() const
     int tmp = -1, i = 0;
     for (auto user : *_userList) {
         if (user->getId() != _id) {
-            user->getSocket().write_some(asio::buffer("290 \n"));
+            user->getSocket().write_some(asio::buffer("290 " + _isUDPOn ? std::to_string(_roomId) + "\n" : "\n"));
         }
         else {
             if (_isUDPOn) {
@@ -233,6 +233,7 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
         if (room != nullptr) {
             room->removeUser(_id);
             _isUDPOn = false;
+            _roomId = -1;
             broadcastTCPNotUser("290 " + std::to_string(room->getId()) + "\n");
             _socket.send(asio::buffer("100\n"));
         } else {

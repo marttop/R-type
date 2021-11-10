@@ -15,7 +15,7 @@ Shitty Epitech Protocol
                 Server->Client
                     100 (Command ok)
                     150 + user_id (user connected)
-                    250 + user_id (user disconnected)
+                    290 (user disconnected)
                     280 + room_id (user joined room)
                     290 + room_id (user quitted room)
                     500 (Unspecified error)
