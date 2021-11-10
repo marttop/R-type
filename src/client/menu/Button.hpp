@@ -9,6 +9,7 @@
 #define BUTTON_HPP_
 
 #include <SFML/Graphics.hpp>
+#include "FontManager.hpp"
 
 class Button {
     public:
