@@ -22,12 +22,14 @@ class Room {
 
         void create(const sf::RectangleShape &background);
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
-        void update();
+        void update(std::vector<std::string> &cmd);
         void draw(sf::RenderWindow &window) const;
-        void setId(const std::string &id);
+        void setRoom(std::vector<std::string> &cmd);
 
     protected:
     private:
+
+        int _port;
         sf::RectangleShape _background;
         Button _leave;
         Button _ready;

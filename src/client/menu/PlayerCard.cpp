@@ -25,15 +25,26 @@ void PlayerCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const
 
     _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
 
-    _name.setString(name);
+    _name.setString(name + '\n');
     _name.setScale(factors);
     _name.setFont(_font);
     _name.setOrigin(sf::Vector2f(_name.getOrigin().x, _name.getGlobalBounds().height / 3));
-    _name.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 20, _background.getPosition().y + _background.getSize().y / 1.9));
+    _name.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 10, _background.getPosition().y + _background.getSize().y / 1.9));
 
 }
 
 void PlayerCard::draw(sf::RenderWindow &window) const
 {
     window.draw(_background);
+    window.draw(_name);
+}
+
+sf::Vector2f PlayerCard::getPosition() const
+{
+    return (_background.getPosition());
+}
+
+sf::Vector2f PlayerCard::getSize() const
+{
+    return (_background.getSize());
 }

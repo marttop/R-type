@@ -17,6 +17,8 @@ class PlayerCard {
 
         void create(const sf::Vector2f &pos, const sf::Vector2f &size, const std::string &name, const sf::Vector2f &factors = {1, 1});
         void draw(sf::RenderWindow &window) const;
+        sf::Vector2f getPosition() const;
+        sf::Vector2f getSize() const;
 
     protected:
     private:

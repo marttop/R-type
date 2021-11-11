@@ -180,9 +180,8 @@ void RoomsList::userLeftRoom(const std::vector<std::string> &cmd)
     }
 }
 
-void RoomsList::update(char *buf)
+void RoomsList::update(std::vector<std::string> &cmd)
 {
-    std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
     loadRooms(cmd);
     createRoom(cmd);
     deleteRoom(cmd);

@@ -77,7 +77,7 @@ void Menu::joinRoom()
         if (cmd.back().find('\n') != std::string::npos)
             cmd.back().pop_back();
         _inRoom = true;
-        _room.setId(cmd[1]);
+        _room.setRoom(cmd);
     }
 }
 
@@ -95,9 +95,10 @@ void Menu::update()
     openAlert();
     joinRoom();
     leaveRoom();
+    std::vector<std::string> cmd = SEPParsor::parseCommands(_buf);
     _connection.update();
-    _rooms.update(_buf);
-    _room.update();
+    _rooms.update(cmd);
+    _room.update(cmd);
 }
 
 void Menu::setAlert()
