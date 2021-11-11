@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "Layer.hpp"
+#include "AssetManager.hpp"
 
 using namespace std;
 

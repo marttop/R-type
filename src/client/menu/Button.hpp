@@ -9,6 +9,7 @@
 #define BUTTON_HPP_
 
 #include <SFML/Graphics.hpp>
+#include "AssetManager.hpp"
 
 class Button {
     public:
