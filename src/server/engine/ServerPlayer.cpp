@@ -44,14 +44,15 @@ void ServerPlayer::setIsReady(bool isReady)
 
 void ServerPlayer::startUDP()
 {
-    _socket.async_receive(asio::buffer(_buffer),
+    std::memset(_buffer, '\0', 1024);
+    _socket.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
                             std::bind(&ServerPlayer::handleReceive, this,
                                     std::placeholders::_1));
 }
 
 void ServerPlayer::sendData(const std::string &code, const std::string &msg)
 {
-    _socket.send(asio::buffer(code + " " + msg + " \n"));
+    _socket.send_to(asio::buffer(code + " " + msg + " \n"), _receiverEndpoint);
 }
 
 void ServerPlayer::handleReceive(const asio::error_code &error)
@@ -68,8 +69,14 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
             _isReady = false;
         }
     }
+    else {
+        if (args[0] == "005") {
+            _roomRef->startThread();
+        }
+    }
     if (_socket.is_open()) {
-        _socket.async_receive(asio::buffer(_buffer),
+        std::memset(_buffer, '\0', 1024);
+        _socket.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
                                 std::bind(&ServerPlayer::handleReceive, this,
                                         std::placeholders::_1));
     }

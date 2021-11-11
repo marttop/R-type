@@ -10,6 +10,9 @@
 
 #include "UserConnection.hpp"
 #include "ServerPlayer.hpp"
+#include <utility>
+#include <thread>
+#include <chrono>
 
 class ServerPlayer;
 
@@ -22,6 +25,8 @@ class ServerRoom {
         int getNbUsers() const;
         std::string getPlayersName() const;
         bool isPlayerInRoom(int id) const;
+        void playGame();
+        std::thread startThread();
         void broadCastUdp(const std::string &code, const std::string &msg);
         std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
         int getId() const;

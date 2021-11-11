@@ -57,6 +57,7 @@ void AsioTcpServ::handle_connexion(userConnectionPointer new_connection,
     std::cout << "client accepted" << std::endl;
     if (!error) {
         new_connection->startCommunication();
+        // std::cout << new_connection->getSocket().remote_endpoint().port() << std::endl;
         _userList.push_back(new_connection);
     }
 
