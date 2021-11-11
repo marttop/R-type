@@ -65,6 +65,13 @@ sf::Vector2f PlayerCard::getPosition() const
     return (_background.getPosition());
 }
 
+void PlayerCard::setPosition(const sf::Vector2f &pos)
+{
+    _background.setPosition(pos);
+    _name.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 10, _background.getPosition().y + _background.getSize().y / 1.9));
+    _ready.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 1.15, _background.getPosition().y + _background.getSize().y / 2));
+}
+
 sf::Vector2f PlayerCard::getSize() const
 {
     return (_background.getSize());

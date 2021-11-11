@@ -66,11 +66,58 @@ void Room::readyUpdate(std::vector<std::string> &cmdUdp)
     }
 }
 
+void Room::roomJoin(std::vector<std::string> &cmdUdp)
+{
+    if (cmdUdp.size() == 2 && cmdUdp[0] == "001") {
+        if (cmdUdp.back().find('\n') != std::string::npos)
+            cmdUdp.back().pop_back();
+        std::string name = cmdUdp[1];
+        if (_players.size() < 4) {
+            _players.push_back(new PlayerCard);
+            if (_players.size() == 2)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
+            else if (_players.size() == 3)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 3)->getPosition().x, _players.at(_players.size() - 3)->getPosition().y + _players.at(_players.size() - 3)->getSize().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
+            else if (_players.size() == 4)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
+        }
+    }
+}
+
+void Room::roomLeave(std::vector<std::string> &cmdUdp)
+{
+    if (cmdUdp.size() == 2 && cmdUdp[0] == "002") {
+        if (cmdUdp.back().find('\n') != std::string::npos)
+            cmdUdp.back().pop_back();
+        std::string name = cmdUdp[1];
+        if (_players.size() > 1) {
+            for (auto it : _players) {
+                if (it->getName() == name) {
+                    delete it;
+                    break;
+                }
+            }
+            int i = 0;
+            for (auto it : _players) {
+                if (i == 0)
+                    it->setPosition(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2, _background.getPosition().y - _background.getSize().y / 2));
+                else if (i == 1)
+                    it->setPosition(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y));
+                else if (i == 2)
+                    it->setPosition(sf::Vector2f(_players.at(_players.size() - 3)->getPosition().x, _players.at(_players.size() - 3)->getPosition().y + _players.at(_players.size() - 3)->getSize().y));
+                i++;
+            }
+        }
+    }
+}
+
 void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
 {
     _leave.update(window);
     _ready.update(window);
     readyUpdate(cmdUdp);
+    roomJoin(cmdUdp);
+    roomLeave(cmdUdp);
 }
 
 void Room::setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket, const std::string &ip)

@@ -29,6 +29,8 @@ class Room {
     protected:
     private:
         void readyUpdate(std::vector<std::string> &cmdUdp);
+        void roomJoin(std::vector<std::string> &cmdUdp);
+        void roomLeave(std::vector<std::string> &cmdUdp);
 
         int _port;
         sf::RectangleShape _background;

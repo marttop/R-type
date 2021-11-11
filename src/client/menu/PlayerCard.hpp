@@ -23,6 +23,7 @@ class PlayerCard {
         sf::Vector2f getSize() const;
         std::string getName() const;
         void setReady(const std::string &state);
+        void setPosition(const sf::Vector2f &pos);
 
     protected:
     private:
