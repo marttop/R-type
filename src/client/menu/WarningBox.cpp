@@ -27,7 +27,7 @@ void WarningBox::create(const sf::Vector2f &pos, const sf::Vector2f &factors)
 
     _isOpen = false;
 
-    _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
+    _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _text = new sf::Text;
     _text->setString("");

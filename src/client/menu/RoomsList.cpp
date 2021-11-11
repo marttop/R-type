@@ -25,7 +25,7 @@ void RoomsList::create(const sf::RectangleShape &background)
 
     _outline = sf::Color::White;
 
-    _background.setSize(sf::Vector2f(background.getSize().x / 1.2, background.getSize().y / 1.2));
+    _background.setSize(sf::Vector2f(background.getSize().x / 1.1, background.getSize().y / 1.2));
     _background.setFillColor(sf::Color::Transparent);
     _background.setOutlineColor(_outline);
     _background.setOutlineThickness(2.0);
@@ -39,8 +39,8 @@ void RoomsList::create(const sf::RectangleShape &background)
     _scroller.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 2 - _scroller.getSize().x / 2, _background.getPosition().y));
     _scroller.setOrigin(sf::Vector2f(_scroller.getSize().x / 2, _scroller.getSize().y / 2));
 
-    _scrollArrowTexture[0].loadFromFile("assets/scroll_arrow_white.png");
-    _scrollArrowTexture[1].loadFromFile("assets/scroll_arrow_black.png");
+    _scrollArrowTexture[0] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png");
+    _scrollArrowTexture[1] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_black.png");
 
     _scrollArrow[0].setTexture(_scrollArrowTexture[0]);
     _scrollArrow[0].setOrigin(sf::Vector2f(_scrollArrow[0].getTextureRect().width / 2, _scrollArrow[0].getTextureRect().height / 2));
@@ -74,7 +74,6 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
 {
     if (_disconnect.event(event, window)) {
         socket.close();
-        _disconnect.cleanHover();
         for (auto it : _rooms)
             delete it;
         _rooms.clear();
@@ -144,12 +143,6 @@ void RoomsList::deleteRoom(const std::vector<std::string> &cmd)
     }
 }
 
-void RoomsList::cleanHover()
-{
-    for (auto it : _rooms)
-        it->cleanHover();
-}
-
 void RoomsList::userJoinedRoom(const std::vector<std::string> &cmd)
 {
     if (cmd.size() == 2 && cmd[0] == "280") {
@@ -180,28 +173,34 @@ void RoomsList::userLeftRoom(const std::vector<std::string> &cmd)
     }
 }
 
-void RoomsList::update(char *buf)
+void RoomsList::scrollerUpdate(const sf::RenderWindow &window)
 {
-    std::vector<std::string> cmd = SEPParsor::parseCommands(buf);
+    if (_scroller.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        _outline = sf::Color::Yellow;
+        _scroller.setOutlineColor(sf::Color::Yellow);
+    }
+    else {
+        _outline = sf::Color::White;
+        _scroller.setOutlineColor(_outline);
+    }
+}
+
+void RoomsList::update(std::vector<std::string> &cmd, const sf::RenderWindow &window)
+{
+    scrollerUpdate(window);
+    _disconnect.update(window);
+    _create.update(window);
     loadRooms(cmd);
     createRoom(cmd);
     deleteRoom(cmd);
     userJoinedRoom(cmd);
     userLeftRoom(cmd);
+    for (auto it : _rooms)
+        it->update(window);
 }
 
 void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &window)
 {
-    if (event.type == sf::Event::MouseMoved) {
-        if (_scroller.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-            _outline = sf::Color::Yellow;
-            _scroller.setOutlineColor(sf::Color::Yellow);
-        }
-        else {
-            _outline = sf::Color::White;
-            _scroller.setOutlineColor(_outline);
-        }
-    }
     if (event.type == sf::Event::MouseButtonPressed) {
         if (_scroller.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             _scroller.setFillColor(sf::Color::White);
@@ -243,19 +242,15 @@ void RoomsList::mouseWheelScroll(const sf::Event &event, const sf::RenderWindow 
             if (_displayedIdx.first > 0) {
                 _displayedIdx.first--;
                 _displayedIdx.second--;
-                for (auto it : _rooms) {
-                    it->cleanHover();
+                for (auto it : _rooms)
                     it->incrementPosition();
-                }
             }
         } else if (event.mouseWheelScroll.delta < 0) {
             if (_displayedIdx.second < _rooms.size()) {
                 _displayedIdx.first++;
                 _displayedIdx.second++;
-                for (auto it : _rooms) {
-                    it->cleanHover();
+                for (auto it : _rooms)
                     it->decrementPosition();
-                }
             }
         }
     }

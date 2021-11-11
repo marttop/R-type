@@ -22,11 +22,11 @@ class RoomsList {
         ~RoomsList();
 
         void create(const sf::RectangleShape &background);
+        void setIp(const std::string &ip);
         void draw(sf::RenderWindow &window) const;
-        void update(char *buf);
+        void update(std::vector<std::string> &cmd, const sf::RenderWindow &window);
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
-        void cleanHover();
 
     protected:
     private:
@@ -37,6 +37,7 @@ class RoomsList {
         void deleteRoom(const std::vector<std::string> &cmd);
         void userJoinedRoom(const std::vector<std::string> &cmd);
         void userLeftRoom(const std::vector<std::string> &cmd);
+        void scrollerUpdate(const sf::RenderWindow &window);
 
         Button _disconnect;
         Button _create;

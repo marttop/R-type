@@ -54,19 +54,21 @@ void Button::setPosition(const sf::Vector2f &pos)
     _text->setPosition(sf::Vector2f(pos.x + _offset.x, pos.y + _offset.y));
 }
 
+void Button::update(const sf::RenderWindow &window)
+{
+    if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        _outline = sf::Color::Yellow;
+        _background.setOutlineColor(_outline);
+    }
+    else {
+        _outline = sf::Color::White;
+        _background.setOutlineColor(_outline);
+    }
+}
+
 bool Button::event(const sf::Event &event, const sf::RenderWindow &window)
 {
     bool clicked = false;
-    if (event.type == sf::Event::MouseMoved) {
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-            _outline = sf::Color::Yellow;
-            _background.setOutlineColor(_outline);
-        }
-        else {
-            _outline = sf::Color::White;
-            _background.setOutlineColor(_outline);
-        }
-    }
     if (event.type == sf::Event::MouseButtonPressed) {
         if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             _background.setFillColor(sf::Color::White);
@@ -84,10 +86,4 @@ bool Button::event(const sf::Event &event, const sf::RenderWindow &window)
 bool Button::isMouseHovering(const sf::RenderWindow &window) const
 {
     return (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
-}
-
-void Button::cleanHover()
-{
-    _outline = sf::Color::White;
-    _background.setOutlineColor(_outline);
 }

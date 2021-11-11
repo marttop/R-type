@@ -24,7 +24,7 @@ void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const s
     _background.setPosition(sf::Vector2f(pos.x, pos.y));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
-    _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
+    _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _title = title;
     _titleText.setString(_title);

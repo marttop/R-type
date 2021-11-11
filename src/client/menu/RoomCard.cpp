@@ -27,7 +27,7 @@ void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const s
     _background.setOutlineThickness(_thickness);
     _background.setPosition(sf::Vector2f(pos.x, pos.y + _thickness * 2));
 
-    _font.loadFromFile("assets/fonts/OxygenMono-Regular.ttf");
+    _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _id = id;
 
@@ -59,13 +59,6 @@ std::string RoomCard::getId() const
     std::string formattedId = _id;
     formattedId.pop_back();
     return (formattedId);
-}
-
-void RoomCard::cleanHover()
-{
-    _outline = sf::Color::White;
-    _background.setOutlineColor(_outline);
-    _delete.cleanHover();
 }
 
 sf::Vector2f RoomCard::getPosition() const
@@ -112,17 +105,15 @@ void RoomCard::incrementPlayer()
     _playerCount.setString(count);
 }
 
-void RoomCard::hover(const sf::Event &event, const sf::RenderWindow &window)
+void RoomCard::update(const sf::RenderWindow &window)
 {
-    if (event.type == sf::Event::MouseMoved) {
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-            _outline = sf::Color::Yellow;
-            _background.setOutlineColor(_outline);
-        }
-        else {
-            _outline = sf::Color::White;
-            _background.setOutlineColor(_outline);
-        }
+    if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        _outline = sf::Color::Yellow;
+        _background.setOutlineColor(_outline);
+    }
+    else {
+        _outline = sf::Color::White;
+        _background.setOutlineColor(_outline);
     }
 }
 
@@ -149,6 +140,5 @@ void RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, boo
 {
     if (_delete.event(event, window))
         socket.send(boost::asio::buffer("350 " + _id + "\n"));
-    hover(event, window);
     join(event, window, socket);
 }

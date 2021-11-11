@@ -15,7 +15,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::create(const sf::RenderWindow &window, char *buf)
+void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 {
     _background.setSize(sf::Vector2f(window.getSize().x / 1.5, window.getSize().y / 1.5));
     _background.setFillColor(sf::Color(0, 0, 0, 150));
@@ -29,11 +29,12 @@ void Menu::create(const sf::RenderWindow &window, char *buf)
 
     _connected = false;
 
-    _buf = buf;
+    _tcpBuf = tcpBuf;
+    _udpBuf = udpBuf;
 
-    _rooms.create(_background);
+    _roomsList.create(_background);
 
-    _logoTexture.loadFromFile("assets/r_type_logo.png");
+    _logoTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/r_type_logo.png");
     _logo.setTexture(_logoTexture);
     _logo.setOrigin(sf::Vector2f(_logo.getTextureRect().width / 2, _logo.getTextureRect().height / 2));
     _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
@@ -41,17 +42,20 @@ void Menu::create(const sf::RenderWindow &window, char *buf)
     _room.create(_background);
 }
 
-void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket)
+void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
+        bool checkState = _connected;
         if (!_connected) {
             _connection.event(event, window);
-            _connected = _connection.connect(event, window, endpoint, socket, _alert);
+            _connected = _connection.connect(event, window, tcpEndpoint, tcpSocket, _alert);
+            if (checkState != _connected)
+                _ip = tcpEndpoint.address().to_string();
         } else if (!_inRoom) {
-            _rooms.event(event, window, socket);
-            _connected = _rooms.disconnect(event, window, socket);
+            _roomsList.event(event, window, tcpSocket);
+            _connected = _roomsList.disconnect(event, window, tcpSocket);
         } else {
-            _room.event(event, window, socket);
+            _room.event(event, window, tcpSocket, udpSocket);
         }
     } else
         _alert.event(event, window);
@@ -59,52 +63,51 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::
 
 void Menu::openAlert()
 {
-    std::string stringBuf(_buf);
+    std::string stringBuf(_tcpBuf);
     if (stringBuf.size() > 0 && stringBuf.find("500") != std::string::npos) {
         stringBuf.erase(0, 4);
         if (stringBuf.find('\n') != std::string::npos)
             stringBuf.pop_back();
         _alert.open(stringBuf, true);
-        if (_connected)
-            _rooms.cleanHover();
     }
 }
 
-void Menu::joinRoom()
+void Menu::joinRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
 {
-    std::vector<std::string> cmd = SEPParsor::parseCommands(_buf);
-    if (_connected && cmd.size() > 1 && cmd[0] == "230") {
-        if (cmd.back().find('\n') != std::string::npos)
-            cmd.back().pop_back();
+    if (_connected && cmdTcp.size() > 1 && cmdTcp[0] == "230") {
+        if (cmdTcp.back().find('\n') != std::string::npos)
+            cmdTcp.back().pop_back();
         _inRoom = true;
-        _room.setId(cmd[1]);
+        _room.setRoom(cmdTcp, udpEndpoint, udpSocket, _ip);
     }
 }
 
-void Menu::leaveRoom()
+void Menu::leaveRoom(boost::asio::ip::udp::socket &udpSocket)
 {
-    std::string strBuf(_buf);
+    std::string strBuf(_tcpBuf);
     if (strBuf.find('\n') != std::string::npos)
         strBuf.pop_back();
-    if (_connected && _inRoom && strBuf.size() > 0 && strBuf == "100")
+    if (_connected && _inRoom && strBuf.size() > 0 && strBuf == "100") {
         _inRoom = false;
+        udpSocket.close();
+    }
 }
 
-void Menu::update()
+void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
 {
+    std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);
+    std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
-    joinRoom();
-    leaveRoom();
-    _connection.update();
-    _rooms.update(_buf);
-    _room.update();
+    joinRoom(cmdTcp, udpEndpoint, udpSocket);
+    leaveRoom(udpSocket);
+    _connection.update(window);
+    _roomsList.update(cmdTcp, window);
+    _room.update(cmdUdp, window);
 }
 
 void Menu::setAlert()
 {
     _alert.open("Lost connection with the server.", false);
-    if (_connected)
-         _rooms.cleanHover();
 }
 
 void Menu::draw(sf::RenderWindow &window) const
@@ -115,7 +118,7 @@ void Menu::draw(sf::RenderWindow &window) const
         if (!_connected)
             _connection.draw(window);
         else if (!_inRoom)
-            _rooms.draw(window);
+            _roomsList.draw(window);
         else
             _room.draw(window);
     }

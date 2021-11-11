@@ -27,7 +27,7 @@ Shitty Epitech Protocol
                     225 + room_id (request join)
                       ->  230 room_id + udp_port + username1 + username2 + ...
                     235 + room_id (request quit room)
-                      ->  100
+                      ->  100 (Command ok)
                       ->  500 (Error)
                     300 (request room creation)
                       ->  310 + room_id (creation ok)
@@ -46,6 +46,6 @@ Shitty Epitech Protocol
 
                 Client->Server
                     003 + 0 (unReady)
-                      ->  No response
+                      ->  004 + 0 + username (user set ready)
                     003 + 1 (ready)
-                      ->  No response
+                      ->  004 + 1 + username (user set ready)

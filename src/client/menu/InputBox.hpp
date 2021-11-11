@@ -10,6 +10,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "AssetManager.hpp"
+
 class InputBox {
     public:
         InputBox();
