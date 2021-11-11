@@ -27,7 +27,7 @@ void Button::create(const sf::Vector2f &pos, const std::string &text, const sf::
     _background.setOutlineThickness(2.0);
     _background.setPosition(sf::Vector2f(pos.x, pos.y));
 
-    _font = FontManager::getFontManager().getFont("assets/fonts/OxygenMono-Regular.ttf");
+    _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _offset = offset;
 
