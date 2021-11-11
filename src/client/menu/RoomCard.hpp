@@ -25,7 +25,7 @@ class RoomCard {
         sf::Vector2f getSize() const;
         void incrementPosition();
         void decrementPosition();
-        void cleanHover();
+        void update(const sf::RenderWindow &window);
         std::string getId() const;
         void incrementPlayer();
         void decrementPlayer();
@@ -33,7 +33,6 @@ class RoomCard {
     protected:
     private:
         void join(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
-        void hover(const sf::Event &event, const sf::RenderWindow &window);
 
         sf::RectangleShape _background;
         sf::Color _outline;

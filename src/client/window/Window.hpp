@@ -31,7 +31,8 @@ class Window {
         void event();
         void update();
         void draw();
-        void read();
+        void readTcp();
+        void readUdp();
 
         sf::RenderWindow _window;
         sf::Event _event;
@@ -42,10 +43,14 @@ class Window {
 
         boost::asio::io_context _io_context;
         boost::asio::ip::tcp::resolver *_resolver;
-        boost::asio::ip::tcp::socket *_socket;
-        char _buf[1024];
-        boost::system::error_code _error;
-        boost::asio::ip::tcp::endpoint _endpoint;
+        boost::asio::ip::tcp::socket *_tcpSocket;
+        boost::asio::ip::udp::socket *_udpSocket;
+        char _tcpBuf[1024];
+        char _udpBuf[1024];
+        boost::system::error_code _tcpError;
+        boost::system::error_code _udpError;
+        boost::asio::ip::tcp::endpoint _tcpEndpoint;
+        boost::asio::ip::udp::endpoint _udpEndpoint;
 };
 
 #endif /* !WINDOW_HPP_ */

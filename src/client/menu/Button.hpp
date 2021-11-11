@@ -20,8 +20,8 @@ class Button {
         void draw(sf::RenderWindow &window) const;
         bool event(const sf::Event &event, const sf::RenderWindow &window);
         bool isMouseHovering(const sf::RenderWindow &window) const;
-        void cleanHover();
         void setPosition(const sf::Vector2f &pos);
+        void update(const sf::RenderWindow &window);
 
     protected:
     private:

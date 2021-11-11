@@ -21,13 +21,14 @@ class Room {
         ~Room();
 
         void create(const sf::RectangleShape &background);
-        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket);
-        void update(std::vector<std::string> &cmd);
+        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket);
+        void update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void draw(sf::RenderWindow &window) const;
-        void setRoom(std::vector<std::string> &cmd);
+        void setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket, const std::string &ip);
 
     protected:
     private:
+        void readyUpdate(std::vector<std::string> &cmdUdp);
 
         int _port;
         sf::RectangleShape _background;
@@ -35,6 +36,10 @@ class Room {
         Button _ready;
         std::string _id;
         std::vector<PlayerCard *> _players;
+        sf::Text _playerCount;
+        sf::Text _roomName;
+        sf::Font _font;
+        bool _isReady;
 };
 
 #endif /* !ROOM_HPP_ */

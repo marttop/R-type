@@ -23,41 +23,67 @@ void Room::create(const sf::RectangleShape &background)
     _ready.create(sf::Vector2f(background.getPosition().x + background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Ready");
     _leave.create(sf::Vector2f(background.getPosition().x - background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Leave");
 
-    _background.setSize(sf::Vector2f(background.getSize().x / 1.2, background.getSize().y / 1.2));
+    _background.setSize(sf::Vector2f(background.getSize().x / 1.1, background.getSize().y / 1.3));
     _background.setFillColor(sf::Color::Transparent);
     _background.setOutlineColor(sf::Color::White);
     _background.setOutlineThickness(2.0);
-    _background.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y));
+    _background.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y + background.getSize().y / 30));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
+
+    _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
+
+    _playerCount.setFont(_font);
+    _playerCount.setPosition(sf::Vector2f(background.getPosition().x + background.getSize().x / 2.45, background.getPosition().y - background.getSize().y / 2.2));
+    _roomName.setFont(_font);
+    _roomName.setPosition(sf::Vector2f(background.getPosition().x - background.getSize().x / 2.22, background.getPosition().y - background.getSize().y / 2.2));
 
     _id = "";
 
     _port = 0;
 }
 
-void Room::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+void Room::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
 {
     if (_leave.event(event, window))
-        socket.send(boost::asio::buffer("235 " + _id + "\n"));
-    _ready.event(event, window);
+        tcpSocket.send(boost::asio::buffer("235 " + _id + "\n"));
+    if (_ready.event(event, window)) {
+        _isReady = !_isReady;
+        udpSocket.send(boost::asio::buffer("003 " + std::to_string(_isReady) + "\n"));
+    }
 }
 
-void Room::update(std::vector<std::string> &cmd)
+void Room::readyUpdate(std::vector<std::string> &cmdUdp)
 {
-
+    if (cmdUdp.size() == 3 && cmdUdp[0] == "004") {
+        if (cmdUdp.back().find('\n') != std::string::npos)
+            cmdUdp.back().pop_back();
+        std::string state = cmdUdp[1];
+        std::string name = cmdUdp[2];
+        for (auto it : _players) {
+            if (it->getName() == name)
+                it->setReady(state);
+        }
+    }
 }
 
-void Room::setRoom(std::vector<std::string> &cmd)
+void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
+{
+    _leave.update(window);
+    _ready.update(window);
+    readyUpdate(cmdUdp);
+}
+
+void Room::setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket, const std::string &ip)
 {
     for (auto it : _players)
         delete it;
     _players.clear();
-    _id = cmd[1];
-    _port = std::atoi(cmd[2].c_str());
+    _id = cmdTcp[1];
+    _port = std::atoi(cmdTcp[2].c_str());
     std::string name;
     std::string isReady;
     int i = 0;
-    for (auto it : cmd) {
+    for (auto it : cmdTcp) {
         if (i < 3) {
             i++;
             continue;
@@ -68,12 +94,20 @@ void Room::setRoom(std::vector<std::string> &cmd)
             isReady = it;
             _players.push_back(new PlayerCard);
             if (_players.size() == 1)
-                _players.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2, _background.getPosition().y - _background.getSize().y / 2), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 4), name);
-            else
-                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x, _players.at(_players.size() - 2)->getPosition().y + _players.at(_players.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 4), name);
+                _players.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2, _background.getPosition().y - _background.getSize().y / 2), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, isReady);
+            else if (_players.size() == 2)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, isReady);
+            else if (_players.size() == 3)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 3)->getPosition().x, _players.at(_players.size() - 3)->getPosition().y + _players.at(_players.size() - 3)->getSize().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, isReady);
+            else if (_players.size() == 4)
+                _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, isReady);
         }
         i++;
     }
+    _playerCount.setString(std::to_string(_players.size()) + "/4");
+    _roomName.setString("Room " + _id);
+    udpEndpoint = boost::asio::ip::udp::endpoint(boost::asio::ip::address::from_string(ip), (unsigned short)(_port));
+    udpSocket.connect(udpEndpoint);
 }
 
 void Room::draw(sf::RenderWindow &window) const
@@ -83,4 +117,6 @@ void Room::draw(sf::RenderWindow &window) const
     _ready.draw(window);
     for (auto it : _players)
         it->draw(window);
+    window.draw(_playerCount);
+    window.draw(_roomName);
 }
