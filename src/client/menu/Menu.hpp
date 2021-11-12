@@ -48,6 +48,7 @@ class Menu {
         char *_udpBuf;
         Room _room;
         std::string _ip;
+        sf::Clock _animation;
 };
 
 #endif /* !MENU_HPP_ */

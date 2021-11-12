@@ -70,10 +70,10 @@ void RoomsList::draw(sf::RenderWindow &window) const
     _create.draw(window);
 }
 
-bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket)
 {
     if (_disconnect.event(event, window)) {
-        socket.close();
+        tcpSocket.close();
         for (auto it : _rooms)
             delete it;
         _rooms.clear();
@@ -185,16 +185,16 @@ void RoomsList::scrollerUpdate(const sf::RenderWindow &window)
     }
 }
 
-void RoomsList::update(std::vector<std::string> &cmd, const sf::RenderWindow &window)
+void RoomsList::update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window)
 {
     scrollerUpdate(window);
     _disconnect.update(window);
     _create.update(window);
-    loadRooms(cmd);
-    createRoom(cmd);
-    deleteRoom(cmd);
-    userJoinedRoom(cmd);
-    userLeftRoom(cmd);
+    loadRooms(cmdTcp);
+    createRoom(cmdTcp);
+    deleteRoom(cmdTcp);
+    userJoinedRoom(cmdTcp);
+    userLeftRoom(cmdTcp);
     for (auto it : _rooms)
         it->update(window);
 }
@@ -256,13 +256,13 @@ void RoomsList::mouseWheelScroll(const sf::Event &event, const sf::RenderWindow 
     }
 }
 
-void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket)
 {
     if (_create.event(event, window))
-        socket.send(boost::asio::buffer("300\n"));
+        tcpSocket.send(boost::asio::buffer("300\n"));
     for (int i = 0; i < _rooms.size(); i++) {
         if (i >= _displayedIdx.first && i < _displayedIdx.second)
-            _rooms[i]->event(event, window, socket);
+            _rooms[i]->event(event, window, tcpSocket);
     }
     scrollerEvents(event, window);
     mouseWheelScroll(event, window);

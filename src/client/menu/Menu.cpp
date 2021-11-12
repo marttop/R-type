@@ -24,22 +24,24 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
     _background.setPosition(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
-    _connection.create(_background);
+    _roomsList.create(_background);
+    _room.create(_background);
     _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
 
+    _background.setPosition(sf::Vector2f(window.getSize().x / 2, -_background.getSize().y / 2));
+
+    _connection.create(_background);
     _connected = false;
+    _animation.restart();
 
     _tcpBuf = tcpBuf;
     _udpBuf = udpBuf;
-
-    _roomsList.create(_background);
 
     _logoTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/r_type_logo.png");
     _logo.setTexture(_logoTexture);
     _logo.setOrigin(sf::Vector2f(_logo.getTextureRect().width / 2, _logo.getTextureRect().height / 2));
     _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
 
-    _room.create(_background);
 }
 
 void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
@@ -95,12 +97,17 @@ void Menu::leaveRoom(boost::asio::ip::udp::socket &udpSocket)
 
 void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
 {
+    if (_background.getPosition().y < window.getSize().y / 2) {
+        _background.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y + 2000 * _animation.getElapsedTime().asSeconds()));
+        _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
+    }
+    _animation.restart();
     std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
     joinRoom(cmdTcp, udpEndpoint, udpSocket);
     leaveRoom(udpSocket);
-    _connection.update(window);
+    _connection.update(window, _background);
     _roomsList.update(cmdTcp, window);
     _room.update(cmdUdp, window);
 }

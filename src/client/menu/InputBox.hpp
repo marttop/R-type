@@ -21,6 +21,7 @@ class InputBox {
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window);
         void update();
+        void setPosition(const sf::Vector2f &pos);
         std::string getInputString() const;
 
     protected:

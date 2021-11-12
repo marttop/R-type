@@ -58,6 +58,14 @@ void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const s
     _alpha = alpha;
 }
 
+void InputBox::setPosition(const sf::Vector2f &pos)
+{
+    _background.setPosition(pos);
+    _titleText.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 2 - _titleText.getGlobalBounds().height));
+    _inputText.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
+    _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 5, _inputText.getGlobalBounds().top + _inputText.getGlobalBounds().height / 2));
+}
+
 void InputBox::update()
 {
     if (_cursorClock.getElapsedTime().asSeconds() >= 0.8)
