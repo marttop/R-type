@@ -52,7 +52,7 @@ void ServerPlayer::startUDP()
 
 void ServerPlayer::sendData(const std::string &code, const std::string &msg)
 {
-    _socket.send_to(asio::buffer(code + " " + msg + " \n"), _receiverEndpoint);
+    _socket.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpoint);
 }
 
 void ServerPlayer::handleReceive(const asio::error_code &error)

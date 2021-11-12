@@ -23,7 +23,7 @@ void ServerRoom::addUser(int id, const std::string &username)
 
     for (auto user : _playerList) {
         if (user->getId() != id) {
-            user->sendData("001", " " + user->getUsername() + "\n");
+            user->sendData("001", user->getUsername());
         }
     }
 
@@ -73,7 +73,7 @@ void ServerRoom::removeUser(int id)
     int tmp = -1, i = 0;
     for (auto user : _playerList) {
         if (user->getId() != id) {
-            user->sendData("003", " " + user->getUsername() + "\n");
+            user->sendData("003", user->getUsername());
         }
         else {
             user->closeUDP();
