@@ -43,21 +43,32 @@ void Window::event()
     }
 }
 
+
+void Window::switchScene()
+{
+    if (std::strlen(_udpBuf) > 3 && std::strncmp(_udpBuf, "006", 3) == 0) {
+        _scene = GAME;
+        std::vector<bool> direction = {1, 0, 0, 0};
+        _parallax.setDirection(direction);
+    }
+}
+
 void Window::update()
 {
-    if (_scene == MENU) {
+    switchScene();
+    if (_scene == MENU || _scene == GAME)
         _parallax.update();
+    if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
-    }
 }
 
 void Window::draw()
 {
     _window.clear();
-    if (_scene == MENU) {
+    if (_scene == MENU || _scene == GAME)
         _parallax.draw(_window);
+    if (_scene == MENU)
         _menu.draw(_window);
-    }
     _window.display();
 }
 

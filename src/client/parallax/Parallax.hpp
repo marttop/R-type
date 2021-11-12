@@ -41,6 +41,7 @@ class Parallax {
         void update();
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event);
+        void setDirection(const std::vector<bool> &direction);
 
     protected:
     private:
