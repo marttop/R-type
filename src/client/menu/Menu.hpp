@@ -22,7 +22,7 @@ class Menu {
         ~Menu();
 
 
-        void create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf, std::string &playerId);
+        void create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf);
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket);
         void update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket);
@@ -51,7 +51,6 @@ class Menu {
         std::string _ip;
         sf::Clock _animation;
         bool _animationEnd;
-        std::string _playerId;
 };
 
 #endif /* !MENU_HPP_ */

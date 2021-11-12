@@ -19,7 +19,8 @@ Window::Window(const std::string &title)
     _udpSocket = new boost::asio::ip::udp::socket(_io_context);
 
     _parallax.create(100);
-    _menu.create(_window, _tcpBuf, _udpBuf, _playerId);
+    _menu.create(_window, _tcpBuf, _udpBuf);
+    _game.create(_window, _udpBuf);
     _scene = MENU;
 
     _lostConnection = false;
@@ -37,6 +38,8 @@ void Window::event()
 {
     if (_event.type == sf::Event::Closed)
         _window.close();
+    if (_scene == GAME)
+        _game.event(_event, _window, *_udpSocket);
     if (_scene == MENU) {
         //_parallax.event(_event);
         _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpSocket);
@@ -60,6 +63,8 @@ void Window::update()
         _parallax.update();
     if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
+    if (_scene == GAME)
+        _game.update(_window, *_udpSocket);
 }
 
 void Window::draw()
@@ -69,6 +74,8 @@ void Window::draw()
         _parallax.draw(_window);
     if (_scene == MENU)
         _menu.draw(_window);
+    if (_scene == GAME)
+        _game.draw(_window);
     _window.display();
 }
 
@@ -100,7 +107,6 @@ void Window::readUdp()
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
-        std::cout << _playerId << std::endl;
         readTcp();
         readUdp();
         while (_window.pollEvent(_event))

@@ -12,7 +12,7 @@ conan_basic_setup(KEEP_RPATHS)
 include_directories(${CONAN_INCLUDE_DIRS})
 link_directories(${CONAN_LIBRARIES_DIRS})
 
-file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/parallax/*.cpp" "src/client/parallax/*.hpp" "src/client/entity/*.cpp" "src/client/entity/*.hpp" "src/client/window/*.cpp" "src/client/window/*.hpp" "src/client/menu/*.cpp" "src/client/menu/*.hpp")
+file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp" "src/client/parallax/*.cpp" "src/client/parallax/*.hpp" "src/client/entity/*.cpp" "src/client/entity/*.hpp" "src/client/window/*.cpp" "src/client/window/*.hpp" "src/client/menu/*.cpp" "src/client/menu/*.hpp" "src/client/game/*.cpp" "src/client/game/*.hpp")
 
 file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp" "src/server/engine/*.cpp" "src/server/engine/*.hpp")
 
@@ -45,6 +45,7 @@ include_directories("src/client/parallax")
 include_directories("src/client/entity")
 include_directories("src/client/window")
 include_directories("src/client/menu")
+include_directories("src/client/game")
 include_directories("src/server/engine")
 
 

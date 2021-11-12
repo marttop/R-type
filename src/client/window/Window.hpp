@@ -12,6 +12,7 @@
 #include <boost/asio.hpp>
 
 #include "Parallax.hpp"
+#include "Game.hpp"
 #include "Menu.hpp"
 #include "RtypeException.hpp"
 
@@ -40,9 +41,9 @@ class Window {
         sf::Event _event;
         Parallax _parallax;
         Menu _menu;
+        Game _game;
         Scene _scene;
         bool _lostConnection;
-        std::string _playerId;
 
         boost::asio::io_context _io_context;
         boost::asio::ip::tcp::resolver *_resolver;
