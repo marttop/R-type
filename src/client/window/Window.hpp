@@ -42,6 +42,7 @@ class Window {
         Menu _menu;
         Scene _scene;
         bool _lostConnection;
+        std::string _playerId;
 
         boost::asio::io_context _io_context;
         boost::asio::ip::tcp::resolver *_resolver;

@@ -19,7 +19,7 @@ Window::Window(const std::string &title)
     _udpSocket = new boost::asio::ip::udp::socket(_io_context);
 
     _parallax.create(100);
-    _menu.create(_window, _tcpBuf, _udpBuf);
+    _menu.create(_window, _tcpBuf, _udpBuf, _playerId);
     _scene = MENU;
 
     _lostConnection = false;
@@ -100,6 +100,7 @@ void Window::readUdp()
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
+        std::cout << _playerId << std::endl;
         readTcp();
         readUdp();
         while (_window.pollEvent(_event))

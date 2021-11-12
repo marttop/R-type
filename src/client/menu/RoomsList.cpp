@@ -18,7 +18,7 @@ RoomsList::~RoomsList()
     _rooms.clear();
 }
 
-void RoomsList::create(const sf::RectangleShape &background)
+void RoomsList::create(const sf::RectangleShape &background, std::string &playerId)
 {
     _create.create(sf::Vector2f(background.getPosition().x + background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Create");
     _disconnect.create(sf::Vector2f(background.getPosition().x - background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Disconnect");
@@ -54,6 +54,8 @@ void RoomsList::create(const sf::RectangleShape &background)
     _cardNb = 8;
     _displayedIdx = std::make_pair(0, _cardNb);
     _thickness = 1.0;
+
+    _playerId = playerId;
 }
 
 void RoomsList::draw(sf::RenderWindow &window) const
@@ -86,23 +88,31 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
 
 void RoomsList::loadRooms(const std::vector<std::string> &cmd, bool &connected)
 {
-    if (cmd.size() > 0 && (cmd[0] == "220" || cmd[0] == "220\n")) {
+    if (cmd.size() > 0 && (cmd[0] == "220")) {
         bool check = false;
         std::string roomId;
         std::string playerCount;
+        int i = 0;
         for (auto it : cmd) {
-            if (it == cmd.front()) continue;
-            if (check == false) roomId = it, check = true;
-            else playerCount = it, check = false;
-            if (check == false) {
-                if (_rooms.size() == 0) {
-                    _rooms.push_back(new RoomCard);
-                    _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), roomId + "\n", std::atoi(playerCount.c_str()), _thickness);
-                } else {
-                    _rooms.push_back(new RoomCard);
-                    _rooms.back()->create(sf::Vector2f(_rooms.at(_rooms.size() - 2)->getPosition().x, _rooms.at(_rooms.size() - 2)->getPosition().y + _rooms.at(_rooms.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), roomId + "\n", std::atoi(playerCount.c_str()), _thickness);
+            if (i == 1) {
+                if (it.find('\n') != std::string::npos)
+                    it.pop_back();
+                _playerId = it;
+            }
+            if (i > 1) {
+                if (check == false) roomId = it, check = true;
+                else playerCount = it, check = false;
+                if (check == false) {
+                    if (_rooms.size() == 0) {
+                        _rooms.push_back(new RoomCard);
+                        _rooms.back()->create(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2 + _thickness, _background.getPosition().y - _background.getSize().y / 2 - _thickness), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), roomId + "\n", std::atoi(playerCount.c_str()), _thickness);
+                    } else {
+                        _rooms.push_back(new RoomCard);
+                        _rooms.back()->create(sf::Vector2f(_rooms.at(_rooms.size() - 2)->getPosition().x, _rooms.at(_rooms.size() - 2)->getPosition().y + _rooms.at(_rooms.size() - 2)->getSize().y), sf::Vector2f(_background.getSize().x - _scroller.getSize().x - _thickness * 2, _background.getSize().y / _cardNb), roomId + "\n", std::atoi(playerCount.c_str()), _thickness);
+                    }
                 }
             }
+            i++;
         }
         connected = true;
     }
