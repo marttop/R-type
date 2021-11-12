@@ -43,7 +43,7 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 
 void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
 {
-    if (!_alert.isOpen()) {
+    if (!_alert.isOpen() && _animationEnd) {
         bool checkState = _connected;
         if (!_connected) {
             _connection.event(event, window);
