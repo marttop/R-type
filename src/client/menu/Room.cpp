@@ -40,6 +40,8 @@ void Room::create(const sf::RectangleShape &background)
     _id = "";
 
     _port = 0;
+
+    _isReady = 0;
 }
 
 void Room::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
@@ -55,8 +57,6 @@ void Room::event(const sf::Event &event, const sf::RenderWindow &window, boost::
 void Room::readyUpdate(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() == 3 && cmdUdp[0] == "004") {
-        if (cmdUdp.back().find('\n') != std::string::npos)
-            cmdUdp.back().pop_back();
         std::string state = cmdUdp[1];
         std::string name = cmdUdp[2];
         for (auto it : _players) {
