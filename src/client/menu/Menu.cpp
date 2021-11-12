@@ -117,7 +117,7 @@ void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint
     openAlert();
     joinRoom(cmdTcp, udpEndpoint, udpSocket);
     leaveRoom(udpSocket);
-    _connection.update(window, _background);
+    _connection.update(window, _background, _animationEnd);
     _roomsList.update(cmdTcp, window);
     _room.update(cmdUdp, window);
 }
