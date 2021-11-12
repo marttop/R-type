@@ -34,7 +34,8 @@ void PlayerCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const
     _readyTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/ready.png");
     _notReadyTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/notready.png");
 
-    _ready.setTexture(_notReadyTexture);
+    if (ready == "0") _ready.setTexture(_notReadyTexture);
+    else _ready.setTexture(_readyTexture);
     _ready.setOrigin(sf::Vector2f(_ready.getTextureRect().width / 2, _ready.getTextureRect().height / 2));
     _ready.setPosition(sf::Vector2f(_background.getPosition().x + _background.getSize().x / 1.15, _background.getPosition().y + _background.getSize().y / 2));
 
