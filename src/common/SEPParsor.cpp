@@ -21,6 +21,10 @@ std::vector<std::string> SEPParsor::parseCommands(std::string command)
     std::size_t pos = 0;
     std::string word;
     int lenght = 0;
+    if (command == "") {
+        arr.push_back("ass");
+        return arr;
+    }
     while ((pos = command.find(" ")) != std::string::npos) {
         word = command.substr(0, pos);
         if (word != "")

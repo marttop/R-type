@@ -109,7 +109,7 @@ void UserConnection::checkDisconnection() const
             if (_isUDPOn) {
                 std::shared_ptr<ServerRoom> room = _servRef->getRoomById(_roomId);
                 if (room != nullptr) {
-                    room->removeUser(_id);
+                    room->removeUser(_id, _userName);
                 }
             }
             tmp = i;
@@ -232,7 +232,7 @@ void UserConnection::cmdQuitRoom(const std::vector<std::string> &arg)
         std::shared_ptr<ServerRoom> room = _servRef->getRoomById(std::atoi(arg[1].c_str()));
         std::stringstream ss;
         if (room != nullptr) {
-            room->removeUser(_id);
+            room->removeUser(_id, _userName);
             _isUDPOn = false;
             _roomId = -1;
             broadcastTCPNotUser("290 " + std::to_string(room->getId()) + "\n");

@@ -21,7 +21,7 @@ class ServerRoom {
         ServerRoom(asio::io_context& io_context, int id, int portSeed);
         ~ServerRoom();
         void addUser(int id, const std::string &username);
-        void removeUser(int id);
+        void removeUser(int id, const std::string &username);
         int getNbUsers() const;
         std::string getPlayersName() const;
         bool isPlayerInRoom(int id) const;

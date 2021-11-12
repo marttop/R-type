@@ -68,12 +68,12 @@ std::thread ServerRoom::startThread()
     return std::thread(&ServerRoom::playGame, this);
 }
 
-void ServerRoom::removeUser(int id)
+void ServerRoom::removeUser(int id, const std::string &username)
 {
     int tmp = -1, i = 0;
     for (auto user : _playerList) {
         if (user->getId() != id) {
-            user->sendData("003", user->getUsername());
+            user->sendData("002", username);
         }
         else {
             user->closeUDP();
@@ -83,8 +83,6 @@ void ServerRoom::removeUser(int id)
     }
     if (tmp != -1) {
         _playerList.erase(_playerList.begin() + tmp);
-    } else {
-        _playerList.clear();
     }
 }
 
