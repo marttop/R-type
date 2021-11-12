@@ -31,6 +31,7 @@ class Room {
         void readyUpdate(std::vector<std::string> &cmdUdp);
         void roomJoin(std::vector<std::string> &cmdUdp);
         void roomLeave(std::vector<std::string> &cmdUdp);
+        void counterUpdate(std::vector<std::string> &cmdUdp);
 
         int _port;
         sf::RectangleShape _background;
@@ -40,8 +41,11 @@ class Room {
         std::vector<PlayerCard *> _players;
         sf::Text _playerCount;
         sf::Text _roomName;
+        sf::RectangleShape _counterBox;
+        sf::Text _counterText;
         sf::Font _font;
         int _isReady;
+        bool _counter;
 };
 
 #endif /* !ROOM_HPP_ */

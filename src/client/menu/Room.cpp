@@ -30,6 +30,15 @@ void Room::create(const sf::RectangleShape &background)
     _background.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y + background.getSize().y / 30));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
+    _counterBox.setFillColor(sf::Color::Black);
+    _counterBox.setOutlineColor(sf::Color::White);
+    _counterBox.setOutlineThickness(2.0);
+    _counterBox.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y));
+
+    _counterText.setFont(_font);
+
+    _counter = false;
+
     _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _playerCount.setFont(_font);
@@ -60,9 +69,26 @@ void Room::readyUpdate(std::vector<std::string> &cmdUdp)
         std::string state = cmdUdp[1];
         std::string name = cmdUdp[2];
         for (auto it : _players) {
-            if (it->getName() == name)
+            if (it->getName() == name) {
                 it->setReady(state);
+                if (state == "0" && _counter)
+                    _counter = !_counter;
+            }
         }
+    }
+}
+
+void Room::counterUpdate(std::vector<std::string> &cmdUdp)
+{
+    if (cmdUdp.size() == 2 && cmdUdp[0] == "005") {
+        std::string sec = cmdUdp[1];
+        sec.pop_back();
+        _counterText.setString("Starting in " + sec + " seconds!\n");
+        _counterBox.setSize(sf::Vector2f(_counterText.getGlobalBounds().width * 1.5, _counterText.getGlobalBounds().height * 1.5));
+        _counterBox.setOrigin(sf::Vector2f(_counterBox.getSize().x / 2, _counterBox.getSize().y / 2));
+        _counterText.setOrigin(sf::Vector2f(_counterText.getGlobalBounds().width / 2, _counterText.getGlobalBounds().height / 2));
+        _counterText.setPosition(sf::Vector2f(_counterBox.getPosition().x, _counterBox.getPosition().y * 1.025));
+        _counter = true;
     }
 }
 
@@ -81,6 +107,8 @@ void Room::roomJoin(std::vector<std::string> &cmdUdp)
             else if (_players.size() == 4)
                 _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
             _playerCount.setString(std::to_string(_players.size()) + "/4");
+            if (_counter)
+                _counter = !_counter;
         }
     }
 }
@@ -121,6 +149,7 @@ void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &wind
     readyUpdate(cmdUdp);
     roomJoin(cmdUdp);
     roomLeave(cmdUdp);
+    counterUpdate(cmdUdp);
 }
 
 void Room::setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket, const std::string &ip)
@@ -170,4 +199,8 @@ void Room::draw(sf::RenderWindow &window) const
         it->draw(window);
     window.draw(_playerCount);
     window.draw(_roomName);
+    if (_counter) {
+        window.draw(_counterBox);
+        window.draw(_counterText);
+    }
 }
