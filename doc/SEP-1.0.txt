@@ -22,7 +22,7 @@ Shitty Epitech Protocol
 
                 Client->Server
                     210 + username (after connection)
-                      ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
+                      ->  220 user_id + room_id + nb_player + room_id2 + nb_player + ... (room joined)
                       ->  500 (Error)
                     225 + room_id (request join)
                       ->  230 room_id + udp_port + username1 + username2 + ...
