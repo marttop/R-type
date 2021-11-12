@@ -9,8 +9,9 @@
 #define ENTITY_HPP_
 
 #include <SFML/Graphics.hpp>
+#include "IClientEntity.hpp"
 
-class Entity {
+class Entity : public IClientEntity {
     public:
         Entity(const sf::Texture &texture, const sf::Vector2f &pos);
         ~Entity();
@@ -24,8 +25,6 @@ class Entity {
         void setColor(const sf::Color &color);
 
         void restartClock();
-        bool isMouseOnSprite(sf::RenderWindow *window) const;
-        bool isColliding(const Entity &other) const;
         void draw(sf::RenderWindow &window);
 
     protected:

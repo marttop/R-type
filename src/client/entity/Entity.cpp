@@ -20,26 +20,9 @@ Entity::~Entity()
 {
 }
 
-bool Entity::isMouseOnSprite(sf::RenderWindow *window) const
-{
-    sf::Vector2i pos = sf::Mouse::getPosition(*window);
-    if (_sprite.getGlobalBounds().contains(sf::Vector2f(pos)))
-        return (true);
-    return (false);
-}
-
 sf::FloatRect Entity::getGlobalBounds() const
 {
     return (_sprite.getGlobalBounds());
-}
-
-bool Entity::isColliding(const Entity &other) const
-{
-    sf::FloatRect rect1 = getGlobalBounds();
-    sf::FloatRect rect2 = other.getGlobalBounds();
-    if (rect1.intersects(rect2))
-        return (true);
-    return (false);
 }
 
 float Entity::getElapsedTime() const
