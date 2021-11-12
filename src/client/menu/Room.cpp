@@ -80,6 +80,7 @@ void Room::roomJoin(std::vector<std::string> &cmdUdp)
                 _players.back()->create(sf::Vector2f(_players.at(_players.size() - 3)->getPosition().x, _players.at(_players.size() - 3)->getPosition().y + _players.at(_players.size() - 3)->getSize().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
             else if (_players.size() == 4)
                 _players.back()->create(sf::Vector2f(_players.at(_players.size() - 2)->getPosition().x + _players.at(_players.size() - 2)->getSize().x, _players.at(_players.size() - 2)->getPosition().y), sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 6), name, "0");
+            _playerCount.setString(std::to_string(_players.size()) + "/4");
         }
     }
 }
@@ -87,17 +88,19 @@ void Room::roomJoin(std::vector<std::string> &cmdUdp)
 void Room::roomLeave(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() == 2 && cmdUdp[0] == "002") {
-        if (cmdUdp.back().find('\n') != std::string::npos)
-            cmdUdp.back().pop_back();
         std::string name = cmdUdp[1];
         if (_players.size() > 1) {
+            int i = 0;
             for (auto it : _players) {
                 if (it->getName() == name) {
+                    _players.erase(_players.begin() + i);
+                    _playerCount.setString(std::to_string(_players.size()) + "/4");
                     delete it;
                     break;
                 }
+                i++;
             }
-            int i = 0;
+            i = 0;
             for (auto it : _players) {
                 if (i == 0)
                     it->setPosition(sf::Vector2f(_background.getPosition().x - _background.getSize().x / 2, _background.getPosition().y - _background.getSize().y / 2));
