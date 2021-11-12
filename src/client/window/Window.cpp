@@ -83,6 +83,7 @@ void Window::readTcp()
 {
     if (_tcpError == boost::asio::error::eof) {
         _menu.setAlert();
+        _game.setAlert();
         _tcpError.clear();
     } else if (_lostConnection == false && _tcpSocket->is_open()) {
         std::memset(_tcpBuf, '\0', 1024);
