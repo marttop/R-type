@@ -29,6 +29,7 @@ class ServerRoom {
         std::thread startThread();
         void broadCastUdp(const std::string &code, const std::string &msg);
         std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
+        bool isEveryoneReady() const;
         int getId() const;
 
     protected:

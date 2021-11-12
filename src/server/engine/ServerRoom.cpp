@@ -48,6 +48,17 @@ void ServerRoom::startGame()
 
 }
 
+bool ServerRoom::isEveryoneReady() const
+{
+    if (_playerList.size() > 0) {
+        for (auto itr : _playerList) {
+            if (!itr->isReady()) return (false);
+        }
+        return (true);
+    }
+    return (false);
+}
+
 int ServerRoom::getNbUsers() const
 {
     return (_playerList.size());
@@ -55,12 +66,17 @@ int ServerRoom::getNbUsers() const
 
 void ServerRoom::playGame()
 {
-    int i = 0;
-    while (i < 10) {
-        std::cout << "Thread 1 executing\n";
+    int i = 5;
+    while (i > 0) {
+        broadCastUdp("005", " " + std::to_string(i));
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        i++;
+        if (!isEveryoneReady()) {
+            return;
+        }
+        i--;
     }
+    broadCastUdp("006", "");
+    std::this_thread::sleep_for(std::chrono::milliseconds(100000));
 }
 
 std::thread ServerRoom::startThread()

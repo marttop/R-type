@@ -49,3 +49,7 @@ Shitty Epitech Protocol
                       ->  004 + 0 + username (user set ready)
                     003 + 1 (ready)
                       ->  004 + 1 + username (user set ready)
+
+
+                Game
+                    [ACTION] + [ID] + [POS_X] + [POS_Y] + [DIRECTION_X] + [DIRECTION_Y] + [SPEED]
