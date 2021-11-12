@@ -35,6 +35,7 @@ class Menu {
         void joinRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket);
         void openAlert();
         void leaveRoom(boost::asio::ip::udp::socket &udpSocket);
+        bool startAnimation(const sf::RenderWindow &window);
 
         sf::RectangleShape _background;
         WarningBox _alert;
@@ -49,6 +50,7 @@ class Menu {
         Room _room;
         std::string _ip;
         sf::Clock _animation;
+        bool _animationEnd;
 };
 
 #endif /* !MENU_HPP_ */

@@ -21,14 +21,11 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
     _background.setFillColor(sf::Color(0, 0, 0, 150));
     _background.setOutlineColor(sf::Color::White);
     _background.setOutlineThickness(2.0);
-    _background.setPosition(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
-    _roomsList.create(_background);
-    _room.create(_background);
-    _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
-
     _background.setPosition(sf::Vector2f(window.getSize().x / 2, -_background.getSize().y / 2));
+
+    _animationEnd = false;
 
     _connection.create(_background);
     _connected = false;
@@ -95,13 +92,26 @@ void Menu::leaveRoom(boost::asio::ip::udp::socket &udpSocket)
     }
 }
 
-void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
+bool Menu::startAnimation(const sf::RenderWindow &window)
 {
+    if (_animationEnd)
+        return (_animationEnd);
     if (_background.getPosition().y < window.getSize().y / 2) {
         _background.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y + 2000 * _animation.getElapsedTime().asSeconds()));
         _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
+    } else {
+        _roomsList.create(_background);
+        _room.create(_background);
+        _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
+        return (true);
     }
     _animation.restart();
+    return (false);
+}
+
+void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
+{
+    _animationEnd = startAnimation(window);
     std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
