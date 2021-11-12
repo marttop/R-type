@@ -23,7 +23,7 @@ void ServerRoom::addUser(int id, const std::string &username)
 
     for (auto user : _playerList) {
         if (user->getId() != id) {
-            user->sendData("001", user->getUsername());
+            user->sendData("001", username);
         }
     }
 
