@@ -21,7 +21,7 @@ class RoomsList {
         RoomsList();
         ~RoomsList();
 
-        void create(const sf::RectangleShape &background);
+        void create(const sf::RectangleShape &background, std::string &playerId);
         void setIp(const std::string &ip);
         void draw(sf::RenderWindow &window) const;
         void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected);
@@ -50,6 +50,7 @@ class RoomsList {
         sf::Sprite _scrollArrow[2];
         sf::Texture _scrollArrowTexture[2];
         sf::Color _outline;
+        std::string _playerId;
 };
 
 #endif /* !ROOMSLIST_HPP_ */

@@ -15,7 +15,7 @@ Menu::~Menu()
 {
 }
 
-void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
+void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf, std::string &playerId)
 {
     _background.setSize(sf::Vector2f(window.getSize().x / 1.5, window.getSize().y / 1.5));
     _background.setFillColor(sf::Color(0, 0, 0, 150));
@@ -33,6 +33,8 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 
     _tcpBuf = tcpBuf;
     _udpBuf = udpBuf;
+
+    _playerId = playerId;
 
     _logoTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/r_type_logo.png");
     _logo.setTexture(_logoTexture);
@@ -98,7 +100,7 @@ bool Menu::startAnimation(const sf::RenderWindow &window)
         _background.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y + 2000 * _animation.getElapsedTime().asSeconds()));
         _logo.setPosition(sf::Vector2f(_background.getPosition().x, _background.getPosition().y - _background.getSize().y / 1.6));
     } else {
-        _roomsList.create(_background);
+        _roomsList.create(_background, _playerId);
         _room.create(_background);
         _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
         return (true);
