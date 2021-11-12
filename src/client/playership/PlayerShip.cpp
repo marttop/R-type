@@ -7,7 +7,8 @@
 
 #include "PlayerShip.hpp"
 
-PlayerShip::PlayerShip(const std::string &path)
+PlayerShip::PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const std::string &id)
+                    : Entity(texture, pos, id)
 {
 }
 

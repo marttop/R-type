@@ -9,10 +9,11 @@
 #define ENTITY_HPP_
 
 #include <SFML/Graphics.hpp>
+#include "IClientEntity.hpp"
 
-class Entity {
+class Entity : public IClientEntity {
     public:
-        Entity(const sf::Texture &texture, const sf::Vector2f &pos);
+        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const std::string &id = "layer");
         ~Entity();
 
         float getElapsedTime() const;
@@ -22,10 +23,9 @@ class Entity {
         void setPos(const sf::Vector2f &pos);
         void setRotation(const float &angle);
         void setColor(const sf::Color &color);
+        std::string getId() const;
 
         void restartClock();
-        bool isMouseOnSprite(sf::RenderWindow *window) const;
-        bool isColliding(const Entity &other) const;
         void draw(sf::RenderWindow &window);
 
     protected:
@@ -33,6 +33,7 @@ class Entity {
         sf::Sprite _sprite;
         sf::Vector2f _pos;
         sf::Clock _clock;
+        std::string _id;
 
     private:
 };
