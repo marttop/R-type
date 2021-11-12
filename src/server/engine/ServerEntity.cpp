@@ -10,9 +10,11 @@
 ServerEntity::ServerEntity(const CustomRect &rect,
                             const std::string &type,
                             int id,
-                            int health)
-    :   _isAlive(true),  _rect(rect), _type(type), _id(id), _health(health)
+                            int health,
+                            int speed)
+    :   _isAlive(true),  _rect(rect), _type(type), _id(id), _health(health), _speed(speed)
 {
+    _direction = std::make_pair(0, 0);
 }
 
 ServerEntity::~ServerEntity()
@@ -51,4 +53,19 @@ CustomRect ServerEntity::getRect() const
 bool ServerEntity::isColliding(const std::shared_ptr<IEntity> &other) const
 {
     return (_rect.isColliding(other->getRect()));
+}
+
+std::pair<double, double> ServerEntity::getDirection() const
+{
+    return (_direction);
+}
+
+std::pair<double, double> ServerEntity::getPosition() const
+{
+    return (_rect.getPosition());
+}
+
+double ServerEntity::getSpeed() const
+{
+    return (_speed);
 }

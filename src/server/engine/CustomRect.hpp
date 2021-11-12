@@ -8,6 +8,9 @@
 #ifndef CUSTOMRECT_HPP_
 #define CUSTOMRECT_HPP_
 
+#include <string>
+#include <iostream>
+
 struct point {
     double x, y;
 };
@@ -19,6 +22,7 @@ class CustomRect {
 
         void setPosition(double x, double y);
         bool isColliding(const CustomRect &rect) const;
+        std::pair<double, double> getPosition() const;
 
         point tr;
         point tl;

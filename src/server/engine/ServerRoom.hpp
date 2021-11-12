@@ -32,6 +32,10 @@ class ServerRoom {
         bool isEveryoneReady() const;
         int getId() const;
 
+        //GAME
+
+        void createPlayers();
+
     protected:
     private:
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;

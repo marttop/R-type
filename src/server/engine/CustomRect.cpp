@@ -30,6 +30,11 @@ void CustomRect::setPosition(double x, double y)
 
 }
 
+std::pair<double, double> CustomRect::getPosition() const
+{
+    return (std::make_pair(_x, _y));
+}
+
 bool CustomRect::isColliding(const CustomRect &rect) const
 {
     if (tl.x == br.x || tl.y == br.y || rect.tl.x == rect.br.x

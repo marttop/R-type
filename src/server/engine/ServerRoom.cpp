@@ -68,7 +68,7 @@ void ServerRoom::playGame()
 {
     int i = 5;
     while (i > 0) {
-        broadCastUdp("005", " " + std::to_string(i));
+        broadCastUdp("005", std::to_string(i));
         std::this_thread::sleep_for(std::chrono::seconds(1));
         if (!isEveryoneReady()) {
             return;
@@ -76,7 +76,8 @@ void ServerRoom::playGame()
         i--;
     }
     broadCastUdp("006", "");
-    std::this_thread::sleep_for(std::chrono::milliseconds(100000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    createPlayers();
 }
 
 std::thread ServerRoom::startThread()
@@ -134,4 +135,29 @@ std::string ServerRoom::getPlayersName() const
         ss << " ";
     }
     return (ss.str());
+}
+
+//GAME
+
+void ServerRoom::createPlayers()
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    for (auto itr : _playerList) {
+        ss << " CREATE PLAYER ";
+        ss << itr->getId();
+        ss << " ";
+        ss << itr->getPosition().first;
+        ss << " ";
+        ss << itr->getPosition().second;
+        ss << " ";
+        ss << itr->getDirection().first;
+        ss << " ";
+        ss << itr->getDirection().second;
+        ss << " ";
+        ss << itr->getSpeed();
+        ss << " 00 ";
+    }
+    broadCastUdp("007", ss.str());
 }
