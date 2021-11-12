@@ -69,3 +69,8 @@ double ServerEntity::getSpeed() const
 {
     return (_speed);
 }
+
+void ServerEntity::setPosition(double x, double y)
+{
+    _rect.setPosition(x, y);
+}

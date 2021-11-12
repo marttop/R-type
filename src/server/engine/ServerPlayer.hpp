@@ -32,6 +32,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void broadcastUDPNotSelf();
         void handleReceive(const asio::error_code &error);
         void closeUDP();
+        void movePlayer(const std::string &direction);
 
     protected:
     private:

@@ -55,6 +55,24 @@ void ServerPlayer::sendData(const std::string &code, const std::string &msg)
     _socket.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpoint);
 }
 
+void ServerPlayer::movePlayer(const std::string &direction)
+{
+    double x = getPosition().first;
+    double y = getPosition().second;
+    if (direction == "UP") {
+        setPosition(x, y + _speed);
+    }
+    else if (direction == "DOWN") {
+        setPosition(x, y - _speed);
+    }
+    else if (direction == "LEFT") {
+        setPosition(x - _speed, y);
+    }
+    else if (direction == "RIGHT") {
+        setPosition(x + _speed, y);
+    }
+}
+
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
     std::cout << "udp line from " << _userName << ": " << _buffer;
@@ -72,6 +90,9 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
         else if (args[0] == "003" && args[1] == "0") {
             _roomRef->broadCastUdp("004", "0 " + _userName);
             _isReady = false;
+        }
+        else if (args[0] == "008") {
+            movePlayer(args[1]);
         }
     }
     if (_socket.is_open()) {

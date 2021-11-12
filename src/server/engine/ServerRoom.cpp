@@ -78,6 +78,8 @@ void ServerRoom::playGame()
     broadCastUdp("006", "");
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     createPlayers();
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    updateLoop();
 }
 
 std::thread ServerRoom::startThread()
@@ -160,4 +162,41 @@ void ServerRoom::createPlayers()
         ss << " 00 ";
     }
     broadCastUdp("007", ss.str());
+}
+
+std::string ServerRoom::updatePlayers() const
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    for (auto itr : _playerList) {
+        ss << " UPDATE PLAYER ";
+        ss << itr->getId();
+        ss << " ";
+        ss << itr->getPosition().first;
+        ss << " ";
+        ss << itr->getPosition().second;
+        ss << " ";
+        ss << itr->getDirection().first;
+        ss << " ";
+        ss << itr->getDirection().second;
+        ss << " ";
+        ss << itr->getSpeed();
+        ss << " 00 ";
+    }
+    return (ss.str());
+}
+
+void ServerRoom::updateLoop()
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    while (1) {
+        ss.str("");
+        ss.clear();
+        ss << updatePlayers();
+        broadCastUdp("007", ss.str());
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
+    }
 }
