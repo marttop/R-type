@@ -22,9 +22,24 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 }
 
+void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
+{
+    if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::Up)
+            udpSocket.send(boost::asio::buffer("008 UP\n"));
+        if (event.key.code == sf::Keyboard::Left)
+            udpSocket.send(boost::asio::buffer("008 LEFT\n"));
+        if (event.key.code == sf::Keyboard::Down)
+            udpSocket.send(boost::asio::buffer("008 DOWN\n"));
+        if (event.key.code == sf::Keyboard::Right)
+            udpSocket.send(boost::asio::buffer("008 RIGHT\n"));
+    }
+}
+
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
+        inputManagement(event, udpSocket);
     } else
         _alert.event(event, window);
 }
@@ -51,15 +66,10 @@ void Game::updateEntity(std::vector<std::string> &cmdUdp)
     }
 }
 
-void Game::inputManagement(const sf::Event &event)
-{
-
-}
-
 void Game::openAlert()
 {
     std::string stringBuf(_udpBuf);
-    if (stringBuf.size() > 0 && stringBuf.find("500") != std::string::npos) {
+    if (stringBuf.size() > 0 && stringBuf.find("500") == 0) {
         stringBuf.erase(0, 4);
         if (stringBuf.find('\n') != std::string::npos)
             stringBuf.pop_back();

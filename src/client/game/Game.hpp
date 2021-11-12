@@ -32,7 +32,7 @@ class Game {
     protected:
     private:
         void updateEntity(std::vector<std::string> &cmdUdp);
-        void inputManagement(const sf::Event &event);
+        void inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket);
 
         WarningBox _alert;
         char *_udpBuf;
