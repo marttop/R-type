@@ -19,32 +19,57 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
 {
     _udpBuf = udpBuf;
 
+    for (int i = 0; i < 4; i++)
+        _direction[i] = false;
+
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 }
 
-void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
+void Game::inputManagement(const sf::Event &event)
 {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up)
-            udpSocket.send(boost::asio::buffer("008 UP\n"));
+            _direction[UP] = true;
         if (event.key.code == sf::Keyboard::Left)
-            udpSocket.send(boost::asio::buffer("008 LEFT\n"));
+            _direction[LEFT] = true;
         if (event.key.code == sf::Keyboard::Down)
-            udpSocket.send(boost::asio::buffer("008 DOWN\n"));
+            _direction[DOWN] = true;
         if (event.key.code == sf::Keyboard::Right)
-            udpSocket.send(boost::asio::buffer("008 RIGHT\n"));
+            _direction[RIGHT] = true;
     }
+    if (event.type == sf::Event::KeyReleased) {
+        if (event.key.code == sf::Keyboard::Up)
+            _direction[UP] = false;
+        if (event.key.code == sf::Keyboard::Left)
+            _direction[LEFT] = false;
+        if (event.key.code == sf::Keyboard::Down)
+            _direction[DOWN] = false;
+        if (event.key.code == sf::Keyboard::Right)
+            _direction[RIGHT] = false;
+    }
+}
+
+void Game::sendDirection(boost::asio::ip::udp::socket &udpSocket)
+{
+    if (_direction[RIGHT])
+        udpSocket.send(boost::asio::buffer("008 RIGHT\n"));
+    if (_direction[UP])
+        udpSocket.send(boost::asio::buffer("008 UP\n"));
+    if (_direction[LEFT])
+        udpSocket.send(boost::asio::buffer("008 LEFT\n"));
+    if (_direction[DOWN])
+        udpSocket.send(boost::asio::buffer("008 DOWN\n"));
 }
 
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
-        inputManagement(event, udpSocket);
+        inputManagement(event);
     } else
         _alert.event(event, window);
 }
 
-void Game::updateEntity(std::vector<std::string> &cmdUdp)
+void Game::updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
         std::vector<std::string> entityCmd;
@@ -52,10 +77,11 @@ void Game::updateEntity(std::vector<std::string> &cmdUdp)
         for (auto it : cmdUdp) {
             if (it == cmdUdp.front()) continue;
             if (i == 8) {
+                float posY = window.getSize().y - std::atof(entityCmd[4].c_str());
                 if (entityCmd[0] == "CREATE")
-                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), std::atof(entityCmd[4].c_str())), entityCmd[2])));
+                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), entityCmd[2])));
                 if (entityCmd[0] == "UPDATE")
-                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), std::atof(entityCmd[4].c_str())));
+                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
                 i = 0;
                 entityCmd.clear();
                 continue;
@@ -81,7 +107,10 @@ void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &
 {
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
-    updateEntity(cmdUdp);
+    if (!_alert.isOpen()) {
+        updateEntity(cmdUdp, window);
+        sendDirection(udpSocket);
+    }
 }
 
 void Game::setAlert()
