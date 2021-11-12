@@ -64,16 +64,14 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
         if (args[0] == "003" && args[1] == "1") {
             _isReady = true;
             _roomRef->broadCastUdp("004", "1 " + _userName);
+            if (_roomRef->isEveryoneReady()) {
+                std::thread game = _roomRef->startThread();
+                game.detach();
+            }
         }
         else if (args[0] == "003" && args[1] == "0") {
             _roomRef->broadCastUdp("004", "0 " + _userName);
             _isReady = false;
-        }
-    }
-    else {
-        args[0].erase(remove(args[0].begin(), args[0].end(), '\n'), args[0].end());
-        if (args.size() > 0 && args[0] == "005") {
-            // _roomRef->startThread();
         }
     }
     if (_socket.is_open()) {
