@@ -36,6 +36,8 @@ class ServerEntity : public IEntity {
         std::pair<double, double> getPosition() const;
         double getSpeed() const;
 
+        void setPosition(double x, double y);
+
     protected:
         bool _isAlive;
         CustomRect _rect;

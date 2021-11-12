@@ -32,6 +32,7 @@ class IEntity {
         virtual CustomRect getRect() const = 0;
         virtual std::pair<double, double> getDirection() const = 0;
         virtual std::pair<double, double> getPosition() const = 0;
+        virtual void setPosition(double x, double y) = 0;
         virtual double getSpeed() const = 0;
 
     protected:
