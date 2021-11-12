@@ -57,9 +57,10 @@ void ServerPlayer::sendData(const std::string &code, const std::string &msg)
 
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
-    std::cout << "udp line: " << _buffer;
+    std::cout << "udp line from " << _userName << ": " << _buffer;
     std::vector<std::string> args = SEPParsor::parseCommands(_buffer);
     if (args.size() >= 2) {
+        args[1].erase(remove(args[1].begin(), args[1].end(), '\n'), args[1].end());
         if (args[0] == "003" && args[1] == "1") {
             _isReady = true;
             _roomRef->broadCastUdp("004", "1 " + _userName);
@@ -70,6 +71,7 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
         }
     }
     else {
+        args[0].erase(remove(args[0].begin(), args[0].end(), '\n'), args[0].end());
         if (args.size() > 0 && args[0] == "005") {
             _roomRef->startThread();
         }
