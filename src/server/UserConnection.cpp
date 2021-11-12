@@ -180,10 +180,10 @@ void UserConnection::cmdConnection(const std::vector<std::string> &arg)
 
         _userName = arg[1];
         std::stringstream ss;
-        ss << "220";
+        ss << "220 ";
 
         std::vector<std::shared_ptr<ServerRoom>> roomList = _servRef->getRoomList();
-
+        ss << _id;
         for (auto itr : roomList) {
             ss << " ";
             ss << itr->getId();
