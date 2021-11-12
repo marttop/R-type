@@ -8,17 +8,16 @@
 #ifndef PLAYERSHIP_HPP_
 #define PLAYERSHIP_HPP_
 
-#include "IEntity.hpp"
+#include "Entity.hpp"
 
-class PlayerShip : virtual public IEntity {
+class PlayerShip : public Entity {
     public:
-        PlayerShip(const std::string &path);
+        PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const std::string &id);
         ~PlayerShip();
-        void update() {};
-        void sendData() {};
 
     protected:
     private:
+        sf::Vector2f _pos;
 };
 
 #endif /* !PLAYERSHIP_HPP_ */

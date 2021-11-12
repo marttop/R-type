@@ -7,13 +7,14 @@
 
 #include "Entity.hpp"
 
-Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos)
+Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const std::string &id)
 {
     _texture = texture;
     _pos = pos;
     _sprite.setTexture(_texture);
     _sprite.setPosition(_pos);
     _clock.restart();
+    _id = id;
 }
 
 Entity::~Entity()
@@ -64,4 +65,9 @@ void Entity::setRotation(const float &angle)
 void Entity::draw(sf::RenderWindow &window)
 {
     window.draw(_sprite);
+}
+
+std::string Entity::getId() const
+{
+    return (_id);
 }
