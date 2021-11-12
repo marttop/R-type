@@ -85,6 +85,18 @@ void Parallax::event(const sf::Event &event)
     }
 }
 
+void Parallax::setDirection(const std::vector<bool> &direction)
+{
+    if (direction.size() == 0)
+        return;
+
+    int i = 0;
+    for (auto it : direction) {
+        _direction[i] = it;
+        i++;
+    }
+}
+
 void Parallax::setPosition(struct std::pair<float, std::pair<std::pair<Layer *, Layer *>, std::pair<Layer *, Layer *>>> iter)
 {
     float elapsedTime = iter.second.first.first->getElapsedTime();

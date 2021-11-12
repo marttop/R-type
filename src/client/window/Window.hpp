@@ -19,6 +19,7 @@ class Window {
     public:
         enum Scene {
             MENU,
+            GAME,
         };
 
         Window(const std::string &title);
@@ -33,6 +34,7 @@ class Window {
         void draw();
         void readTcp();
         void readUdp();
+        void switchScene();
 
         sf::RenderWindow _window;
         sf::Event _event;
