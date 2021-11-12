@@ -68,14 +68,14 @@ void ServerRoom::playGame()
 {
     int i = 5;
     while (i > 0) {
-        broadCastUdp("005", " " + std::to_string(i) + "\n");
+        broadCastUdp("005", " " + std::to_string(i));
         std::this_thread::sleep_for(std::chrono::seconds(1));
         if (!isEveryoneReady()) {
             return;
         }
         i--;
     }
-    broadCastUdp("006", "\n");
+    broadCastUdp("006", "");
     std::this_thread::sleep_for(std::chrono::milliseconds(100000));
 }
 
