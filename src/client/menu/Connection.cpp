@@ -25,7 +25,7 @@ void Connection::create(const sf::RectangleShape &background)
     _connect.create(sf::Vector2f(background.getPosition().x, background.getPosition().y + background.getSize().y / 2), "Connect");
 }
 
-bool Connection::connect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket, WarningBox &alert)
+void Connection::connect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket, WarningBox &alert)
 {
     if (_connect.event(event, window)) {
         _name = _nameBox.getInputString();
@@ -44,16 +44,16 @@ bool Connection::connect(const sf::Event &event, const sf::RenderWindow &window,
             myfile.close();
             endpoint = boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(_ip), (unsigned short)std::atoi(_port.c_str()));
             try {
+                if (socket.is_open())
+                    socket.close();
                 socket.connect(endpoint);
                 socket.send(boost::asio::buffer("210 " + _name + "\n"));
-                return (true);
             } catch(std::exception& error) {
                 socket.close();
                 alert.open("Connection refused.", true);
             }
         }
     }
-    return (false);
 }
 
 void Connection::getDefaultInput()

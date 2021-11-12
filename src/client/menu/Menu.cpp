@@ -44,12 +44,10 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen() && _animationEnd) {
-        bool checkState = _connected;
         if (!_connected) {
             _connection.event(event, window);
-            _connected = _connection.connect(event, window, tcpEndpoint, tcpSocket, _alert);
-            if (checkState != _connected)
-                _ip = tcpEndpoint.address().to_string();
+            _connection.connect(event, window, tcpEndpoint, tcpSocket, _alert);
+            _ip = tcpEndpoint.address().to_string();
         } else if (!_inRoom) {
             _roomsList.event(event, window, tcpSocket);
             _connected = _roomsList.disconnect(event, window, tcpSocket);
@@ -118,7 +116,7 @@ void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint
     joinRoom(cmdTcp, udpEndpoint, udpSocket);
     leaveRoom(udpSocket);
     _connection.update(window, _background, _animationEnd);
-    _roomsList.update(cmdTcp, window);
+    _roomsList.update(cmdTcp, window, _connected);
     _room.update(cmdUdp, window);
 }
 

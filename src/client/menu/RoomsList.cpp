@@ -84,9 +84,9 @@ bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &windo
     return (true);
 }
 
-void RoomsList::loadRooms(const std::vector<std::string> &cmd)
+void RoomsList::loadRooms(const std::vector<std::string> &cmd, bool &connected)
 {
-    if (cmd.size() > 0 && cmd[0] == "220") {
+    if (cmd.size() > 0 && (cmd[0] == "220" || cmd[0] == "220\n")) {
         bool check = false;
         std::string roomId;
         std::string playerCount;
@@ -104,6 +104,7 @@ void RoomsList::loadRooms(const std::vector<std::string> &cmd)
                 }
             }
         }
+        connected = true;
     }
 }
 
@@ -185,12 +186,12 @@ void RoomsList::scrollerUpdate(const sf::RenderWindow &window)
     }
 }
 
-void RoomsList::update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window)
+void RoomsList::update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected)
 {
     scrollerUpdate(window);
     _disconnect.update(window);
     _create.update(window);
-    loadRooms(cmdTcp);
+    loadRooms(cmdTcp, connected);
     createRoom(cmdTcp);
     deleteRoom(cmdTcp);
     userJoinedRoom(cmdTcp);

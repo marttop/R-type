@@ -24,14 +24,14 @@ class RoomsList {
         void create(const sf::RectangleShape &background);
         void setIp(const std::string &ip);
         void draw(sf::RenderWindow &window) const;
-        void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window);
+        void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected);
         void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket);
 
     protected:
     private:
         void scrollerEvents(const sf::Event &event, const sf::RenderWindow &window);
-        void loadRooms(const std::vector<std::string> &cmdTcp);
+        void loadRooms(const std::vector<std::string> &cmdTcp, bool &connected);
         void createRoom(const std::vector<std::string> &cmdTcp);
         void mouseWheelScroll(const sf::Event &event, const sf::RenderWindow &window);
         void deleteRoom(const std::vector<std::string> &cmdTcp);
