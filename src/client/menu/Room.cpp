@@ -155,6 +155,7 @@ void Room::setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpo
     _roomName.setString("Room " + _id);
     udpEndpoint = boost::asio::ip::udp::endpoint(boost::asio::ip::address::from_string(ip), (unsigned short)(_port));
     udpSocket.connect(udpEndpoint);
+    udpSocket.send(boost::asio::buffer("connected\n"));
 }
 
 void Room::draw(sf::RenderWindow &window) const

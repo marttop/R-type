@@ -41,7 +41,7 @@ class Room {
         sf::Text _playerCount;
         sf::Text _roomName;
         sf::Font _font;
-        bool _isReady;
+        int _isReady;
 };
 
 #endif /* !ROOM_HPP_ */
