@@ -73,7 +73,7 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
     else {
         args[0].erase(remove(args[0].begin(), args[0].end(), '\n'), args[0].end());
         if (args.size() > 0 && args[0] == "005") {
-            _roomRef->startThread();
+            // _roomRef->startThread();
         }
     }
     if (_socket.is_open()) {

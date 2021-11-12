@@ -148,6 +148,23 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
     handleWrite(error, size);
 }
 
+std::string UserConnection::getUsername() const
+{
+    return (_userName);
+}
+
+bool UserConnection::isUsernameAvailable(const std::string &username) const
+{
+    std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+
+    for (auto itr : *_userList) {
+        if (username == itr->getUsername()) {
+            return (false);
+        }
+    }
+    return (true);
+}
+
 ///////////////////////////////////////////////////////////////
 //-----------------------CMD_RESPONSES-----------------------//
 ///////////////////////////////////////////////////////////////
@@ -155,6 +172,12 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
 void UserConnection::cmdConnection(const std::vector<std::string> &arg)
 {
     if (arg.size() >= 2) {
+
+        if (!isUsernameAvailable(arg[1])) {
+            sendError(500, "Username already taken.");
+            return;
+        }
+
         _userName = arg[1];
         std::stringstream ss;
         ss << "220";

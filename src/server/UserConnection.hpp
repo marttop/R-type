@@ -48,6 +48,9 @@ private:
     void broadcastTCP(const std::string &msg) const;
     void broadcastTCPNotUser(const std::string &msg) const;
     void checkDisconnection() const;
+    bool isUsernameAvailable(const std::string &username) const;
+
+    std::string getUsername() const;
 
     ///////////////////////////////////////////////////////////////
     //-----------------------CMD_RESPONSES-----------------------//
