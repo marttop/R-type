@@ -18,6 +18,8 @@ Game::~Game()
 void Game::create(const sf::RenderWindow &window, char *udpBuf)
 {
     _udpBuf = udpBuf;
+
+    _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 }
 
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
@@ -49,6 +51,11 @@ void Game::updateEntity(std::vector<std::string> &cmdUdp)
     }
 }
 
+void Game::inputManagement(const sf::Event &event)
+{
+
+}
+
 void Game::openAlert()
 {
     std::string stringBuf(_udpBuf);
@@ -75,6 +82,9 @@ void Game::setAlert()
 void Game::draw(sf::RenderWindow &window) const
 {
     if (!_alert.isOpen()) {
+        for (auto it : _entityMap) {
+            it.second->draw(window);
+        }
     }
     _alert.draw(window);
 }
