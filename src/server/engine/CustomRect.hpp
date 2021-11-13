@@ -28,10 +28,10 @@ class CustomRect {
         point tl;
         point br;
         point bl;
-    protected:
-    private:
         double _x;
         double _y;
+    protected:
+    private:
         double _width;
         double _height;
 };

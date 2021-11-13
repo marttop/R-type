@@ -238,6 +238,8 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
                 return;
             }
 
+            std::cout << "assssssssssssssssss" << std::endl;
+
             _roomId = room->getId();
 
             room->addUser(_id, _userName);

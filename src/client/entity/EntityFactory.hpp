@@ -10,6 +10,7 @@
 
 #include "PlayerShip.hpp"
 #include "AssetManager.hpp"
+#include "Bullet.hpp"
 #include <memory>
 
 class EntityFactory {
@@ -24,6 +25,7 @@ class EntityFactory {
     protected:
     private:
         std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos, const std::string &id);
+        std::shared_ptr<IClientEntity> getBullet(const sf::Vector2f &pos, const std::string &id);
 
         typedef std::shared_ptr<IClientEntity> (EntityFactory::*factoryF)
             (const sf::Vector2f &pos, const std::string &id);

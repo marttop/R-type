@@ -9,7 +9,7 @@
 
 ServerEntity::ServerEntity(const CustomRect &rect,
                             const std::string &type,
-                            int id,
+                            const std::string &id,
                             int health,
                             int speed)
     :   _isAlive(true),  _rect(rect), _type(type), _id(id), _health(health), _speed(speed)
@@ -35,12 +35,12 @@ void ServerEntity::addLifeEntity(int lifeAdded)
     _health += lifeAdded;
 }
 
-int ServerEntity::getId() const
+std::string ServerEntity::getId() const
 {
     return (_id);
 }
 
-void ServerEntity::setId(int id)
+void ServerEntity::setId(const std::string &id)
 {
     _id = id;
 }

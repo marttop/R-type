@@ -17,7 +17,6 @@ class PlayerShip : public Entity {
 
     protected:
     private:
-        sf::Vector2f _pos;
 };
 
 #endif /* !PLAYERSHIP_HPP_ */

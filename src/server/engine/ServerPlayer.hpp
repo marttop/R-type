@@ -8,9 +8,10 @@
 #ifndef PLAYER_HPP_
 #define PLAYER_HPP_
 
-#include "ServerEntity.hpp"
+#include "ServerBullet.hpp"
 #include "ServerRoom.hpp"
 #include <asio.hpp>
+#include <time.h>
 
 class ServerRoom;
 
@@ -33,6 +34,9 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void handleReceive(const asio::error_code &error);
         void closeUDP();
         void movePlayer(const std::string &direction);
+        std::vector<std::shared_ptr<IEntity>> getAmmo();
+        void shoot();
+        bool _canShoot;
 
     protected:
     private:
@@ -41,6 +45,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         asio::io_context &_io_context;
         asio::ip::udp::endpoint _receiverEndpoint;
         ServerRoom *_roomRef;
+        std::vector<std::shared_ptr<IEntity>> _ammo;
         bool _isReady;
         char _buffer[1024];
         int _port;

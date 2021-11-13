@@ -25,7 +25,7 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 }
 
-void Game::inputManagement(const sf::Event &event)
+void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
 {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up)
@@ -36,6 +36,8 @@ void Game::inputManagement(const sf::Event &event)
             _direction[DOWN] = true;
         if (event.key.code == sf::Keyboard::Right)
             _direction[RIGHT] = true;
+        if (event.key.code == sf::Keyboard::Space)
+            udpSocket.send(boost::asio::buffer("008 SPACE\n"));
     }
     if (event.type == sf::Event::KeyReleased) {
         if (event.key.code == sf::Keyboard::Up)
@@ -64,7 +66,7 @@ void Game::sendDirection(boost::asio::ip::udp::socket &udpSocket)
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
-        inputManagement(event);
+        inputManagement(event, udpSocket);
     } else
         _alert.event(event, window);
 }

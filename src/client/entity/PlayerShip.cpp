@@ -10,6 +10,7 @@
 PlayerShip::PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const std::string &id)
                     : Entity(texture, pos, id)
 {
+    _sprite.setScale(sf::Vector2f(0.3, 0.3));
 }
 
 PlayerShip::~PlayerShip()

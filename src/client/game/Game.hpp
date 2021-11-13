@@ -27,7 +27,8 @@ class Game {
             LEFT,
             RIGHT,
             UP,
-            DOWN
+            DOWN,
+            SPACE
         };
 
         void create(const sf::RenderWindow &window, char *udpBuf);
@@ -40,7 +41,7 @@ class Game {
     protected:
     private:
         void updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
-        void inputManagement(const sf::Event &event);
+        void inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket);
         void sendDirection(boost::asio::ip::udp::socket &udpSocket);
 
         WarningBox _alert;
