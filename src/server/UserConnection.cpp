@@ -75,6 +75,7 @@ void UserConnection::sendError(int code, const std::string &msg)
     ss << code;
     ss << " ";
     ss << msg;
+    if (_debug) std::cout << "---> " << ss.str() << std::endl;
     ss << "\n";
     _socket.write_some(asio::buffer(ss.str()));
 }
@@ -82,6 +83,7 @@ void UserConnection::sendError(int code, const std::string &msg)
 void UserConnection::broadcastTCP(const std::string &msg) const
 {
     std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+    if (_debug) std::cout << "---> " << msg << " (boradcast)";
     for (auto user : *_userList) {
         user->getSocket().write_some(asio::buffer(msg));
     }
@@ -90,6 +92,7 @@ void UserConnection::broadcastTCP(const std::string &msg) const
 void UserConnection::broadcastTCPNotUser(const std::string &msg) const
 {
     std::vector<userConnectionPointer> *_userList = &_servRef->getUserList();
+    if (_debug) std::cout << "---> " << msg << " (broadcast not user)";
     for (auto user : *_userList) {
         if (user->getId() != _id) {
             user->getSocket().write_some(asio::buffer(msg));
@@ -107,6 +110,8 @@ void UserConnection::checkDisconnection() const
             user->getSocket().write_some(asio::buffer("290 " + s + "\n"));
         }
         else {
+            if (_debug) std::cout << "user " << _userName <<  " disconnected from " <<
+            _socket.remote_endpoint().address().to_string() << std::endl;
             if (_isUDPOn) {
                 std::shared_ptr<ServerRoom> room = _servRef->getRoomById(_roomId);
                 if (room != nullptr) {
@@ -132,7 +137,8 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
     std::getline(is, line);
 
     if (line != "") {
-        if (_debug) std::cout << "tcp line: " + line << std::endl;
+        if (_debug) std::cout << "tcp line recieved from " << _userName
+        << " ip: " << _socket.remote_endpoint().address().to_string() << std::endl << "data: " + line << std::endl;
         std::vector<std::string> arg = SEPParsor::parseCommands(line);
         if (_cmd.count(std::atoi(arg[0].c_str()))) {
             UserConnection::factoryF func = _cmd[std::atoi(arg[0].c_str())];
@@ -190,7 +196,7 @@ void UserConnection::cmdConnection(const std::vector<std::string> &arg)
             ss << " ";
             ss << itr->getNbUsers();
         }
-
+        if (_debug) std::cout << "---> " << ss.str() << std::endl;
         ss << "\n";
         _socket.send(asio::buffer(ss.str()));
 

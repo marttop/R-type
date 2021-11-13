@@ -55,8 +55,12 @@ void AsioTcpServ::shell_send() const
 void AsioTcpServ::handle_connexion(userConnectionPointer new_connection,
                                     const asio::error_code &error)
 {
-    if (_debug)
+    if (_debug) {
         std::cout << "client accepted" << std::endl;
+        std::cout << "client infos:" << std::endl;
+        std::cout << "ip ---> " << new_connection->getSocket().remote_endpoint().address().to_string() << std::endl;
+        std::cout << "port ---> " << new_connection->getSocket().remote_endpoint().port() << std::endl << std::endl;
+    }
     if (!error) {
         new_connection->startCommunication();
         _userList.push_back(new_connection);
