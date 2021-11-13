@@ -8,7 +8,7 @@
 #include "ServerRoom.hpp"
 
 ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed)
-                                        : _io_context(io_context), _id(id), _portSeed(portSeed)
+                                        : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false)
 {
 }
 
@@ -82,8 +82,14 @@ void ServerRoom::playGame()
     updateLoop();
 }
 
+bool ServerRoom::isGameStarted() const
+{
+    return (_isGameStarted);
+}
+
 std::thread ServerRoom::startThread()
 {
+    _isGameStarted = true;
     return std::thread(&ServerRoom::playGame, this);
 }
 

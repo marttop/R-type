@@ -226,6 +226,11 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
                 return;
             }
 
+            if (room->isGameStarted()) {
+                sendError(500, "A game is currently running in this room.");
+                return;
+            }
+
             _roomId = room->getId();
 
             room->addUser(_id, _userName);

@@ -29,6 +29,7 @@ class ServerRoom {
         void broadCastUdp(const std::string &code, const std::string &msg);
         std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
         bool isEveryoneReady() const;
+        bool isGameStarted() const;
         int getId() const;
 
         //GAME
@@ -45,6 +46,7 @@ class ServerRoom {
         asio::ip::udp::endpoint remote_endpoint_;
         void startGame();
         int _id;
+        bool _isGameStarted;
         int _portSeed;
 };
 
