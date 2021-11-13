@@ -27,7 +27,7 @@ void ServerEntity::sendData()
 
 bool ServerEntity::isAlive() const
 {
-    return true;
+    return (_isAlive);
 }
 
 void ServerEntity::addLifeEntity(int lifeAdded)

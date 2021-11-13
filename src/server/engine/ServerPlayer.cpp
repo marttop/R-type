@@ -140,8 +140,9 @@ void ServerPlayer::update()
 
     while (i != std::end(_ammo)) {
         i->get()->update();
-        if (!i->get()->isAlive())
+        if (!i->get()->isAlive()) {
             i = _ammo.erase(i);
+        }
         else
             ++i;
     }
