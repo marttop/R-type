@@ -7,9 +7,10 @@
 
 #include "ServerRoom.hpp"
 
-ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed)
+ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug)
                                         : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false)
 {
+    _debug = debug;
 }
 
 ServerRoom::~ServerRoom()

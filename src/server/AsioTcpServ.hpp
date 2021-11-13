@@ -20,7 +20,7 @@ typedef std::shared_ptr<UserConnection> userConnectionPointer;
 class AsioTcpServ : public IServer
 {
 public:
-    AsioTcpServ(asio::io_context& io_context, const int port);
+    AsioTcpServ(asio::io_context& io_context, const int port, bool debug = false);
     ~AsioTcpServ();
 
     void initServ() {};
@@ -43,6 +43,7 @@ protected:
 private:
     void handle_connexion(userConnectionPointer new_connection, const asio::error_code& error);
 
+    bool _debug;
     asio::io_context &_io_context;
     asio::ip::tcp::acceptor _acceptor;
     std::vector<userConnectionPointer> _userList;

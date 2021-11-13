@@ -8,7 +8,6 @@
 #ifndef TCPCONNECTION_HPP
 #define TCPCONNECTION_HPP
 
-
 #include <ctime>
 #include <iostream>
 #include <sstream>
@@ -26,8 +25,8 @@ class UserConnection : public std::enable_shared_from_this<UserConnection>
 {
 public:
 
-    static userConnectionPointer create(asio::io_context &io_context, AsioTcpServ &servRef, int id) {
-        return userConnectionPointer(new UserConnection(io_context, servRef, id));
+    static userConnectionPointer create(asio::io_context &io_context, AsioTcpServ &servRef, int id, bool debug) {
+        return userConnectionPointer(new UserConnection(io_context, servRef, id, debug));
     }
 
     asio::ip::tcp::socket &getSocket();
@@ -38,7 +37,7 @@ public:
 
 protected:
 private:
-    UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id);
+    UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id, bool debug);
     typedef void (UserConnection::*factoryF)(const std::vector<std::string> &arg);
 
     void handleWrite(const asio::error_code &err, size_t size);
@@ -71,6 +70,7 @@ private:
     int _id;
     std::string _userName;
     bool _isUDPOn;
+    bool _debug;
     int _roomId;
     AsioTcpServ *_servRef;
 };

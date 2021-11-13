@@ -18,7 +18,7 @@ class ServerPlayer;
 
 class ServerRoom {
     public:
-        ServerRoom(asio::io_context& io_context, int id, int portSeed);
+        ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug);
         ~ServerRoom();
         void addUser(int id, const std::string &username);
         void removeUser(int id, const std::string &username);
@@ -39,6 +39,7 @@ class ServerRoom {
 
         void createPlayers();
 
+        bool _debug;
     protected:
     private:
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;

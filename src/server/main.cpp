@@ -24,14 +24,18 @@ int arg_check(int ac, char *argv[])
 int main(int ac, char **av)
 {
     bool multi_threading = true;
-
-
     srand(time(nullptr));
+    bool debug = false;
     try {
         asio::io_context io_context;
         arg_check(ac, av);
+        if (ac >= 3) {
+            if (std::strcmp(av[2], "debug") == 0) {
+                debug = true;
+            }
+        }
 
-        AsioTcpServ server(io_context, std::atoi(av[1]));
+        AsioTcpServ server(io_context, std::atoi(av[1]), debug);
 
         if (multi_threading) {
             // std::thread shell(AsioTcpServ::shell_send);

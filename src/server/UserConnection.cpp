@@ -7,9 +7,10 @@
 
 #include "UserConnection.hpp"
 
-UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id)
+UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRef, int id, bool debug)
     : _socket(io_context), _servRef(&servRef), _id(id), _isUDPOn(false), _roomId(-1)
 {
+    _debug = debug;
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
     _cmd.emplace(235, &UserConnection::cmdQuitRoom);
@@ -131,7 +132,7 @@ void UserConnection::handleRead(const asio::error_code &error, size_t size)
     std::getline(is, line);
 
     if (line != "") {
-        std::cout << "tcp line: " + line << std::endl;
+        if (_debug) std::cout << "tcp line: " + line << std::endl;
         std::vector<std::string> arg = SEPParsor::parseCommands(line);
         if (_cmd.count(std::atoi(arg[0].c_str()))) {
             UserConnection::factoryF func = _cmd[std::atoi(arg[0].c_str())];

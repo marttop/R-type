@@ -75,7 +75,7 @@ void ServerPlayer::movePlayer(const std::string &direction)
 
 void ServerPlayer::handleReceive(const asio::error_code &error)
 {
-    std::cout << "udp line from " << _userName << ": " << _buffer;
+    if (_roomRef->_debug) std::cout << "udp line from " << _userName << ": " << _buffer;
     std::vector<std::string> args = SEPParsor::parseCommands(_buffer);
     if (args.size() >= 2) {
         args[1].erase(remove(args[1].begin(), args[1].end(), '\n'), args[1].end());
@@ -110,7 +110,7 @@ asio::ip::udp::socket &ServerPlayer::getSocket()
 
 void ServerPlayer::update()
 {
-    std::cout << "I'm a player" << std::endl;
+    if (_roomRef->_debug) std::cout << "I'm a player" << std::endl;
 }
 
 void ServerPlayer::setUsername(const std::string &username)

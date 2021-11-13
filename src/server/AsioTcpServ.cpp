@@ -7,9 +7,10 @@
 
 #include "AsioTcpServ.hpp"
 
-AsioTcpServ::AsioTcpServ(asio::io_context &io_context, const int port)
+AsioTcpServ::AsioTcpServ(asio::io_context &io_context, const int port, bool debug)
     : _io_context(io_context), _acceptor(io_context, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port))
 {
+    _debug = debug;
     start_accept();
 }
 
@@ -24,7 +25,7 @@ int AsioTcpServ::addRoom()
     portSeed += 150;
     id++;
 
-    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context, id, portSeed));
+    std::shared_ptr<ServerRoom> room(new ServerRoom(_io_context, id, portSeed, _debug));
     _roomList.push_back(room);
 
     return (id);
@@ -35,7 +36,7 @@ void AsioTcpServ::start_accept()
     static int id = 0;
     id++;
 
-    userConnectionPointer new_connection = UserConnection::create(_io_context, *this, id);
+    userConnectionPointer new_connection = UserConnection::create(_io_context, *this, id, _debug);
 
     _acceptor.async_accept(new_connection->getSocket(),
                             std::bind(&AsioTcpServ::handle_connexion, this, new_connection,
@@ -54,10 +55,10 @@ void AsioTcpServ::shell_send() const
 void AsioTcpServ::handle_connexion(userConnectionPointer new_connection,
                                     const asio::error_code &error)
 {
-    std::cout << "client accepted" << std::endl;
+    if (_debug)
+        std::cout << "client accepted" << std::endl;
     if (!error) {
         new_connection->startCommunication();
-        // std::cout << new_connection->getSocket().remote_endpoint().port() << std::endl;
         _userList.push_back(new_connection);
     }
 
