@@ -34,6 +34,7 @@ class ServerEntity : public IEntity {
 
         std::pair<double, double> getDirection() const;
         std::pair<double, double> getPosition() const;
+        std::string getType() const;
         double getSpeed() const;
 
         void setPosition(double x, double y);

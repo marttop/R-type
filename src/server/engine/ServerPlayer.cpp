@@ -8,7 +8,7 @@
 #include "ServerPlayer.hpp"
 
 ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef, int port)
-                            : ServerEntity(rect), _io_context(io_context),
+                            : ServerEntity(rect, "player"), _io_context(io_context),
                             _socket(io_context,
                             asio::ip::udp::endpoint(asio::ip::udp::v4(), port)),
                             _roomRef(&roomRef), _port(port), _isReady(false)

@@ -11,11 +11,12 @@
 #include <SFML/Graphics.hpp>
 #include <boost/asio.hpp>
 #include <map>
-#include <memory>
+#include "EntityFactory.hpp"
 
 #include "WarningBox.hpp"
 #include "SEPParsor.hpp"
 #include "PlayerShip.hpp"
+
 
 class Game {
     public:
@@ -43,6 +44,7 @@ class Game {
         void sendDirection(boost::asio::ip::udp::socket &udpSocket);
 
         WarningBox _alert;
+        EntityFactory _factory;
         char *_udpBuf;
         std::map<std::string, std::shared_ptr<IClientEntity>> _entityMap;
         bool _direction[4];

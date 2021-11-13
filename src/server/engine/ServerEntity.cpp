@@ -74,3 +74,8 @@ void ServerEntity::setPosition(double x, double y)
 {
     _rect.setPosition(x, y);
 }
+
+std::string ServerEntity::getType() const
+{
+    return (_type);
+}

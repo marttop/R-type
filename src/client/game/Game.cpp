@@ -78,8 +78,12 @@ void Game::updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow
             if (it == cmdUdp.front()) continue;
             if (i == 8) {
                 float posY = window.getSize().y - std::atof(entityCmd[4].c_str());
-                if (entityCmd[0] == "CREATE")
-                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), entityCmd[2])));
+                if (entityCmd[0] == "CREATE") {
+                    std::cout << entityCmd[1] << std::endl;
+                    _entityMap.insert(std::make_pair(
+                        entityCmd[2],
+                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), entityCmd[2])));
+                }
                 if (entityCmd[0] == "UPDATE")
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
                 i = 0;

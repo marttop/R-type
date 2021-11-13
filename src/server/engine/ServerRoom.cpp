@@ -154,7 +154,9 @@ void ServerRoom::createPlayers()
     ss.str("");
     ss.clear();
     for (auto itr : _playerList) {
-        ss << " CREATE PLAYER ";
+        ss << " CREATE ";
+        ss << itr->getType();
+        ss << " ";
         ss << itr->getId();
         ss << " ";
         ss << itr->getPosition().first;
@@ -177,7 +179,9 @@ std::string ServerRoom::updatePlayers() const
     ss.str("");
     ss.clear();
     for (auto itr : _playerList) {
-        ss << " UPDATE PLAYER ";
+        ss << " UPDATE ";
+        ss << itr->getType();
+        ss << " ";
         ss << itr->getId();
         ss << " ";
         ss << itr->getPosition().first;
