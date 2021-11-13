@@ -204,6 +204,6 @@ void ServerRoom::updateLoop()
         ss.clear();
         ss << updatePlayers();
         broadCastUdp("007", ss.str());
-        std::this_thread::sleep_for(std::chrono::milliseconds(28));
+        std::this_thread::sleep_for(std::chrono::milliseconds(17));
     }
 }
