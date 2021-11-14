@@ -32,6 +32,10 @@ class ServerRoom {
         bool isGameStarted() const;
         int getId() const;
 
+        std::string createEntityResponse(std::shared_ptr<IEntity> obj, const std::string &action) const;
+        std::string updateEntity(std::shared_ptr<IEntity> obj) const;
+        void resetTimers();
+
         //GAME
         void playGame();
         void updateLoop();

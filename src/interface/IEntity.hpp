@@ -30,6 +30,8 @@ class IEntity {
         virtual bool isAlive() const = 0;
         virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
         virtual CustomRect getRect() const = 0;
+        virtual std::string getType() const = 0;
+        virtual std::string getId() const = 0;
         virtual std::pair<double, double> getDirection() const = 0;
         virtual std::pair<double, double> getPosition() const = 0;
         virtual void setPosition(double x, double y) = 0;

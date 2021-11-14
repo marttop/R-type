@@ -15,7 +15,7 @@
 
 class Entity : public IClientEntity {
     public:
-        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::Black);
+        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
         ~Entity();
 
         float getElapsedTime() const;

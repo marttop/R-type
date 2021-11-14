@@ -8,13 +8,14 @@
 #include "ServerPlayer.hpp"
 
 ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef, int port)
-                            : ServerEntity(rect), _io_context(io_context),
+                            : ServerEntity(rect, "player"), _io_context(io_context),
                             _socket(io_context,
                             asio::ip::udp::endpoint(asio::ip::udp::v4(), port)),
                             _roomRef(&roomRef), _port(port), _isReady(false)
 {
     _userName = "";
     std::memset(_buffer, '\0', 1024);
+    _canShoot = true;
 }
 
 ServerPlayer::~ServerPlayer()
@@ -40,6 +41,29 @@ int ServerPlayer::getPort() const
 void ServerPlayer::setIsReady(bool isReady)
 {
     _isReady = isReady;
+}
+
+void ServerPlayer::shoot()
+{
+    if (_canShoot) {
+        static int id = 0;
+        id++;
+        std::string bId = "B" + std::to_string(id);
+        std::shared_ptr<IEntity> sp(new ServerBullet(CustomRect(20, 5,
+            getPosition().first + 200, getPosition().second + 40), "playerbullet", bId));
+        std::stringstream ss;
+        ss.str("");
+        ss.clear();
+        ss << _roomRef->createEntityResponse(sp, "CREATE");
+        _roomRef->broadCastUdp("007", ss.str());
+        _canShoot = false;
+        _ammo.push_back(sp);
+    }
+}
+
+std::vector<std::shared_ptr<IEntity>> ServerPlayer::getAmmo()
+{
+    return (_ammo);
 }
 
 void ServerPlayer::startUDP()
@@ -70,6 +94,8 @@ void ServerPlayer::movePlayer(const std::string &direction)
     }
     else if (direction == "RIGHT") {
         setPosition(x + _speed, y);
+    } else if (direction == "SPACE") {
+        shoot();
     }
 }
 
@@ -110,7 +136,16 @@ asio::ip::udp::socket &ServerPlayer::getSocket()
 
 void ServerPlayer::update()
 {
-    if (_roomRef->_debug) std::cout << "I'm a player" << std::endl;
+    auto i = std::begin(_ammo);
+
+    while (i != std::end(_ammo)) {
+        i->get()->update();
+        if (!i->get()->isAlive()) {
+            i = _ammo.erase(i);
+        }
+        else
+            ++i;
+    }
 }
 
 void ServerPlayer::setUsername(const std::string &username)

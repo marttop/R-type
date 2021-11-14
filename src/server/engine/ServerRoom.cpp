@@ -23,14 +23,14 @@ void ServerRoom::addUser(int id, const std::string &username)
     port++;
 
     for (auto user : _playerList) {
-        if (user->getId() != id) {
+        if (user->getId() != std::to_string(id)) {
             user->sendData("001", username);
         }
     }
 
 
-    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(10, 10, 500, 500), _io_context, *this, port));
-    sp->setId(id);
+    std::shared_ptr<ServerPlayer> sp(new ServerPlayer(CustomRect(232, 96, 500, 500), _io_context, *this, port));
+    sp->setId(std::to_string(id));
     sp->setUsername(username);
     sp->startUDP();
     _playerList.push_back(sp);
@@ -98,7 +98,7 @@ void ServerRoom::removeUser(int id, const std::string &username)
 {
     int tmp = -1, i = 0;
     for (auto user : _playerList) {
-        if (user->getId() != id) {
+        if (user->getId() != std::to_string(id)) {
             user->sendData("002", username);
         }
         else {
@@ -115,7 +115,7 @@ void ServerRoom::removeUser(int id, const std::string &username)
 bool ServerRoom::isPlayerInRoom(int id) const
 {
     for (auto itr : _playerList) {
-        if (itr->getId() == id) return (true);
+        if (itr->getId() == std::to_string(id)) return (true);
     }
     return (false);
 }
@@ -123,7 +123,7 @@ bool ServerRoom::isPlayerInRoom(int id) const
 std::shared_ptr<ServerPlayer> ServerRoom::getPlayerFromId(int id) const
 {
     for (auto itr : _playerList) {
-        if (itr->getId() == id) return (itr);
+        if (itr->getId() == std::to_string(id)) return (itr);
     }
     return (nullptr);
 }
@@ -148,25 +148,37 @@ std::string ServerRoom::getPlayersName() const
 
 //GAME
 
+std::string ServerRoom::createEntityResponse(
+                    std::shared_ptr<IEntity> obj, const std::string &action) const
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    ss << " " + action + " ";
+    ss << obj->getType();
+    ss << " ";
+    ss << obj->getId();
+    ss << " ";
+    ss << obj->getPosition().first;
+    ss << " ";
+    ss << obj->getPosition().second;
+    ss << " ";
+    ss << obj->getDirection().first;
+    ss << " ";
+    ss << obj->getDirection().second;
+    ss << " ";
+    ss << obj->getSpeed();
+    ss << " 00 ";
+    return (ss.str());
+}
+
 void ServerRoom::createPlayers()
 {
     std::stringstream ss;
     ss.str("");
     ss.clear();
     for (auto itr : _playerList) {
-        ss << " CREATE PLAYER ";
-        ss << itr->getId();
-        ss << " ";
-        ss << itr->getPosition().first;
-        ss << " ";
-        ss << itr->getPosition().second;
-        ss << " ";
-        ss << itr->getDirection().first;
-        ss << " ";
-        ss << itr->getDirection().second;
-        ss << " ";
-        ss << itr->getSpeed();
-        ss << " 00 ";
+        ss << createEntityResponse(itr, "CREATE");
     }
     broadCastUdp("007", ss.str());
 }
@@ -177,21 +189,20 @@ std::string ServerRoom::updatePlayers() const
     ss.str("");
     ss.clear();
     for (auto itr : _playerList) {
-        ss << " UPDATE PLAYER ";
-        ss << itr->getId();
-        ss << " ";
-        ss << itr->getPosition().first;
-        ss << " ";
-        ss << itr->getPosition().second;
-        ss << " ";
-        ss << itr->getDirection().first;
-        ss << " ";
-        ss << itr->getDirection().second;
-        ss << " ";
-        ss << itr->getSpeed();
-        ss << " 00 ";
+        itr->update();
+        ss << createEntityResponse(itr, "UPDATE");
+        for (auto bullet : itr->getAmmo()) {
+            ss << createEntityResponse(bullet, "UPDATE");
+        }
     }
     return (ss.str());
+}
+
+void ServerRoom::resetTimers()
+{
+    for (auto itr : _playerList) {
+        itr->_canShoot = true;
+    }
 }
 
 void ServerRoom::updateLoop()
@@ -199,11 +210,17 @@ void ServerRoom::updateLoop()
     std::stringstream ss;
     ss.str("");
     ss.clear();
+    int timer = 0;
     while (1) {
         ss.str("");
         ss.clear();
+        if (timer == 7) {
+            resetTimers();
+            timer = 0;
+        }
         ss << updatePlayers();
         broadCastUdp("007", ss.str());
         std::this_thread::sleep_for(std::chrono::milliseconds(17));
+        timer++;
     }
 }

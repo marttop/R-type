@@ -147,13 +147,13 @@ void ParticleSystem::update(const sf::Vector2f &offset, const sf::Vector2f &dire
     int tmpLife = life;
     for (int i = 0, value = 10; i != number; i++) {
         if (isRand == 1) tmpLife = rand() % life;
-        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{rand() % (value - value / 3) + offset.x, rand() % (value - value / 3) + offset.y}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
+        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.x))), static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.y)))}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
         if (isRand == 1) tmpLife = rand() % life;
-        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{-(rand() % (value - value / 3) + offset.x), -(rand() % (value - value / 3) + offset.y)}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
+        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{-(static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.x)))), -(static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.y))))}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
         if (isRand == 1) tmpLife = rand() % life;
-        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{rand() % (value - value / 3) + offset.x, -(rand() % (value - value / 3) + offset.y)}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
+        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.x))), -(static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.y))))}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
         if (isRand == 1) tmpLife = rand() % life;
-        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{-(rand() % (value - value / 3) + offset.x), rand() % (value - value / 3) + offset.y}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
+        _particles.push_back(createParticle(startColor, endColor, sf::Vector2f{-(static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.x)))), static_cast<float>(rand() % static_cast<int>(((value - value / 3) + offset.y)))}, direction, _utils.getRandomNormalizedVector(), position, tmpLife));
     }
     for (size_t i = 0; i < _particles.size(); i++) {
         _particles[i]->setTimeStep(_particles[i]->getTimeStep() + (1.0f / _particles[i]->getLife()));

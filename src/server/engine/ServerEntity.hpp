@@ -14,7 +14,7 @@ class ServerEntity : public IEntity {
     public:
         ServerEntity(const CustomRect &customRect,
                         const std::string &type = "default",
-                        int id = 0,
+                        const std::string &id = "0",
                         int health = 1,
                         int speed = 5);
         ~ServerEntity();
@@ -22,18 +22,19 @@ class ServerEntity : public IEntity {
         void sendData();
         void update() = 0;
 
-        void setId(int id);
+        void setId(const std::string &id);
 
         bool isAlive() const;
         void addLifeEntity(int lifeAdded);
 
-        int getId() const;
+        std::string getId() const;
         CustomRect getRect() const;
 
         bool isColliding(const std::shared_ptr<IEntity> &other) const;
 
         std::pair<double, double> getDirection() const;
         std::pair<double, double> getPosition() const;
+        std::string getType() const;
         double getSpeed() const;
 
         void setPosition(double x, double y);
@@ -42,7 +43,7 @@ class ServerEntity : public IEntity {
         bool _isAlive;
         CustomRect _rect;
         std::string _type;
-        int _id;
+        std::string _id;
         std::pair<int, int> _direction;
         double _speed;
         int _health;

@@ -23,9 +23,11 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
         _direction[i] = false;
 
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
+
+    _playerCount = 0;
 }
 
-void Game::inputManagement(const sf::Event &event)
+void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
 {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up)
@@ -36,6 +38,8 @@ void Game::inputManagement(const sf::Event &event)
             _direction[DOWN] = true;
         if (event.key.code == sf::Keyboard::Right)
             _direction[RIGHT] = true;
+        if (event.key.code == sf::Keyboard::Space)
+            udpSocket.send(boost::asio::buffer("008 SPACE\n"));
     }
     if (event.type == sf::Event::KeyReleased) {
         if (event.key.code == sf::Keyboard::Up)
@@ -64,9 +68,28 @@ void Game::sendDirection(boost::asio::ip::udp::socket &udpSocket)
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
-        inputManagement(event);
+        inputManagement(event, udpSocket);
     } else
         _alert.event(event, window);
+}
+
+void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor)
+{
+    if (entityCmd[1] != "player") return;
+    if (_playerCount == 0) {
+        startColor = sf::Color(0, 0, 255, 255);
+        endColor = sf::Color(30,144,255);
+    } else if (_playerCount == 1) {
+        startColor = sf::Color(255, 0, 0, 255);
+        endColor = sf::Color(139, 0, 0, 255);
+    } else if (_playerCount == 2) {
+        startColor = sf::Color(255, 255, 0, 255);
+        endColor = sf::Color(255, 215, 0, 255);
+    } else if (_playerCount == 3) {
+        startColor = sf::Color(0, 255, 0, 255);
+        endColor = sf::Color(0, 128, 0, 255);
+    }
+    _playerCount++;
 }
 
 void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
@@ -78,8 +101,14 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
             if (it == cmdUdp.front()) continue;
             if (i == 8) {
                 float posY = window.getSize().y - std::atof(entityCmd[4].c_str());
-                if (entityCmd[0] == "CREATE")
-                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), sf::Color::Red, sf::Color::Yellow)));
+                sf::Color startColor = sf::Color::White;
+                sf::Color endColor = sf::Color::White;
+                selectPlayerColor(entityCmd, startColor, endColor);
+                if (entityCmd[0] == "CREATE") {
+                    _entityMap.insert(std::make_pair(
+                        entityCmd[2],
+                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), startColor, endColor)));
+                }
                 if (entityCmd[0] == "UPDATE")
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
                 i = 0;
