@@ -69,7 +69,7 @@ void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::
         _alert.event(event, window);
 }
 
-void Game::updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
+void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
         std::vector<std::string> entityCmd;
@@ -79,7 +79,7 @@ void Game::updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow
             if (i == 8) {
                 float posY = window.getSize().y - std::atof(entityCmd[4].c_str());
                 if (entityCmd[0] == "CREATE")
-                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), entityCmd[2])));
+                    _entityMap.insert(std::make_pair(entityCmd[2], new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), sf::Color::Red, sf::Color::Yellow)));
                 if (entityCmd[0] == "UPDATE")
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
                 i = 0;
@@ -108,8 +108,10 @@ void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
     if (!_alert.isOpen()) {
-        updateEntity(cmdUdp, window);
+        udpUpdateEntity(cmdUdp, window);
         sendDirection(udpSocket);
+        for (auto it : _entityMap)
+            it.second->update();
     }
 }
 

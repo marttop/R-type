@@ -67,7 +67,7 @@ int ServerRoom::getNbUsers() const
 
 void ServerRoom::playGame()
 {
-    int i = 5;
+    int i = 3;
     while (i > 0) {
         broadCastUdp("005", std::to_string(i));
         std::this_thread::sleep_for(std::chrono::seconds(1));

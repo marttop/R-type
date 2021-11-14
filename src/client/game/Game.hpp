@@ -12,6 +12,7 @@
 #include <boost/asio.hpp>
 #include <map>
 #include <memory>
+#include <SFML/OpenGL.hpp>
 
 #include "WarningBox.hpp"
 #include "SEPParsor.hpp"
@@ -38,7 +39,7 @@ class Game {
 
     protected:
     private:
-        void updateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
+        void udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void inputManagement(const sf::Event &event);
         void sendDirection(boost::asio::ip::udp::socket &udpSocket);
 

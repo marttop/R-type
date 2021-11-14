@@ -24,6 +24,12 @@ Window::Window(const std::string &title)
     _scene = MENU;
 
     _lostConnection = false;
+
+    glEnable(GL_MULTISAMPLE);
+    glEnable(GL_POINT_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glPointSize(7);
 }
 
 Window::~Window()

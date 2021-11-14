@@ -22,10 +22,10 @@ class IClientEntity {
         virtual void setPos(const sf::Vector2f &pos) = 0;
         virtual void setRotation(const float &angle) = 0;
         virtual void setColor(const sf::Color &color) = 0;
-        virtual std::string getId() const = 0;
 
         virtual void restartClock() = 0;
         virtual void draw(sf::RenderWindow &window) = 0;
+        virtual void update() = 0;
 
     protected:
     private:
