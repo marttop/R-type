@@ -50,7 +50,7 @@ void ServerPlayer::shoot()
         id++;
         std::string bId = "B" + std::to_string(id);
         std::shared_ptr<IEntity> sp(new ServerBullet(CustomRect(20, 5,
-            getPosition().first + 200, getPosition().second + 40), "playerbullet", bId));
+            getPosition().first + 225, getPosition().second - 52), "playerbullet", bId));
         std::stringstream ss;
         ss.str("");
         ss.clear();
@@ -137,15 +137,22 @@ asio::ip::udp::socket &ServerPlayer::getSocket()
 void ServerPlayer::update()
 {
     auto i = std::begin(_ammo);
+    int itr = 0;
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
 
     while (i != std::end(_ammo)) {
         i->get()->update();
         if (!i->get()->isAlive()) {
+            ss << _roomRef->createEntityResponse(_ammo[itr], "DELETE");
             i = _ammo.erase(i);
         }
         else
-            ++i;
+            ++i, itr++;
     }
+    if (ss.str() != "")
+        _roomRef->broadCastUdp("007", ss.str());
 }
 
 void ServerPlayer::setUsername(const std::string &username)

@@ -10,6 +10,8 @@
 Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
     : Entity(texture, pos, startColor, endColor)
 {
+    _sprite.setScale(sf::Vector2f(0.6, 0.6));
+    _sprite.setRotation(90);
 }
 
 Bullet::~Bullet()
@@ -19,4 +21,11 @@ Bullet::~Bullet()
 void Bullet::update()
 {
     _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y}, sf::Vector2f{_pos.x, _pos.y}, _startColor, _endColor, 30, 1);
+}
+
+void Bullet::draw(sf::RenderWindow &window)
+{
+    window.draw(_sprite);
+    glPointSize(3.5);
+    _particleSystem.drawParticles(window);
 }

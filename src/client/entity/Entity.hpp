@@ -9,6 +9,7 @@
 #define ENTITY_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/OpenGL.hpp>
 
 #include "IClientEntity.hpp"
 #include "Particles.hpp"

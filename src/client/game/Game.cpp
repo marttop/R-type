@@ -109,8 +109,11 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
                         entityCmd[2],
                         _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), startColor, endColor)));
                 }
-                if (entityCmd[0] == "UPDATE")
+                else if (entityCmd[0] == "UPDATE")
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
+                else if (entityCmd[0] == "DELETE") {
+                    _entityMap.erase(entityCmd[2]);
+                }
                 i = 0;
                 entityCmd.clear();
                 continue;

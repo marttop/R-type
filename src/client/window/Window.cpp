@@ -10,7 +10,7 @@
 Window::Window(const std::string &title)
 {
     _window.create(sf::VideoMode::getDesktopMode(), title);
-    _window.setFramerateLimit(60);
+    _window.setFramerateLimit(70);
 
     std::memset(_tcpBuf, '\0', 1024);
     std::memset(_udpBuf, '\0', 1024);

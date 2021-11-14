@@ -16,6 +16,7 @@ class Bullet : public Entity {
         ~Bullet();
 
         void update();
+        void draw(sf::RenderWindow &window) override;
 
     protected:
     private:
