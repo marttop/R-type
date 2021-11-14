@@ -25,6 +25,7 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 
     _playerCount = 0;
+    _shoot = false;
 }
 
 void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
@@ -39,7 +40,7 @@ void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket 
         if (event.key.code == sf::Keyboard::Right)
             _direction[RIGHT] = true;
         if (event.key.code == sf::Keyboard::Space)
-            udpSocket.send(boost::asio::buffer("008 SPACE\n"));
+            _shoot = true;
     }
     if (event.type == sf::Event::KeyReleased) {
         if (event.key.code == sf::Keyboard::Up)
@@ -50,10 +51,12 @@ void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket 
             _direction[DOWN] = false;
         if (event.key.code == sf::Keyboard::Right)
             _direction[RIGHT] = false;
+        if (event.key.code == sf::Keyboard::Space)
+            _shoot = false;
     }
 }
 
-void Game::sendDirection(boost::asio::ip::udp::socket &udpSocket)
+void Game::sendInput(boost::asio::ip::udp::socket &udpSocket)
 {
     if (_direction[RIGHT])
         udpSocket.send(boost::asio::buffer("008 RIGHT\n"));
@@ -63,6 +66,8 @@ void Game::sendDirection(boost::asio::ip::udp::socket &udpSocket)
         udpSocket.send(boost::asio::buffer("008 LEFT\n"));
     if (_direction[DOWN])
         udpSocket.send(boost::asio::buffer("008 DOWN\n"));
+    if (_shoot)
+        udpSocket.send(boost::asio::buffer("008 SPACE\n"));
 }
 
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
@@ -141,7 +146,7 @@ void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &
     openAlert();
     if (!_alert.isOpen()) {
         udpUpdateEntity(cmdUdp, window);
-        sendDirection(udpSocket);
+        sendInput(udpSocket);
         for (auto it : _entityMap)
             it.second->update();
     }

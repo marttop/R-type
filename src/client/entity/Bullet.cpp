@@ -20,7 +20,7 @@ Bullet::~Bullet()
 
 void Bullet::update()
 {
-    _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y}, sf::Vector2f{_pos.x, _pos.y}, _startColor, _endColor, 30, 1);
+    _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x - 25, _pos.y + _sprite.getGlobalBounds().height / 2}, _startColor, sf::Color::Black, 15, 1);
 }
 
 void Bullet::draw(sf::RenderWindow &window)
