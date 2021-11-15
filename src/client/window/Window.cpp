@@ -16,7 +16,7 @@ Window::Window(const std::string &title)
     std::memset(_udpBuf, '\0', 1024);
     _resolver = new asio::ip::tcp::resolver(_io_context);
     _tcpSocket = new asio::ip::tcp::socket(_io_context);
-    _udpSocket = new asio::ip::udp::socket(_io_context);
+    _udpWriteSocket = new asio::ip::udp::socket(_io_context);
 
     _parallax.create(100);
     _menu.create(_window, _tcpBuf, _udpBuf);
@@ -45,10 +45,10 @@ void Window::event()
     if (_event.type == sf::Event::Closed)
         _window.close();
     if (_scene == GAME)
-        _game.event(_event, _window, *_udpSocket);
+        _game.event(_event, _window);
     if (_scene == MENU) {
         //_parallax.event(_event);
-        _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpSocket);
+        _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpWriteSocket);
     }
 }
 
@@ -68,9 +68,9 @@ void Window::update()
     if (_scene == MENU || _scene == GAME)
         _parallax.update();
     if (_scene == MENU)
-        _menu.update(_window, _udpEndpoint, *_udpSocket);
+        _menu.update(_window, _udpEndpoint, *_udpWriteSocket, *_udpReadSocket);
     if (_scene == GAME)
-        _game.update(_window, *_udpSocket, *_tcpSocket);
+        _game.update(_window, *_udpWriteSocket);
 }
 
 void Window::draw()
@@ -102,11 +102,15 @@ void Window::readTcp()
 
 void Window::readUdp()
 {
-    if (_lostConnection == false && _udpSocket->is_open()) {
+    if (_lostConnection == false && _udpWriteSocket->is_open()) {
+        if (!_udpReadSocket->is_open()) {
+            _udpReadSocket->connect(asio::ip::udp::endpoint(_udpWriteSocket->remote_endpoint().address(), _udpWriteSocket->remote_endpoint().port() + 1));
+            _udpReadSocket->send(asio::buffer("read connected\n"));
+        }
         std::memset(_udpBuf, '\0', 1024);
-        _udpSocket->non_blocking(true);
+        _udpWriteSocket->non_blocking(true);
         size_t len = 0;
-        len = _udpSocket->receive(asio::buffer(_udpBuf), 0, _udpError);
+        len = _udpWriteSocket->receive(asio::buffer(_udpBuf), 0, _udpError);
         //std::cout << _udpBuf;
     }
 }

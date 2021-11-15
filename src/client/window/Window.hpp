@@ -49,7 +49,8 @@ class Window {
         asio::io_context _io_context;
         asio::ip::tcp::resolver *_resolver;
         asio::ip::tcp::socket *_tcpSocket;
-        asio::ip::udp::socket *_udpSocket;
+        asio::ip::udp::socket *_udpWriteSocket;
+        asio::ip::udp::socket *_udpReadSocket;
         char _tcpBuf[1024];
         char _udpBuf[1024];
         asio::error_code _tcpError;

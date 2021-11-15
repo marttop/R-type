@@ -41,7 +41,7 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 
 }
 
-void Menu::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket)
+void Menu::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpWriteSocket)
 {
     if (!_alert.isOpen() && _animationEnd) {
         if (!_connected) {
@@ -52,7 +52,7 @@ void Menu::event(const sf::Event &event, const sf::RenderWindow &window, asio::i
             _roomsList.event(event, window, tcpSocket);
             _connected = _roomsList.disconnect(event, window, tcpSocket);
         } else {
-            _room.event(event, window, tcpSocket, udpSocket);
+            _room.event(event, window, tcpSocket, udpWriteSocket);
         }
     } else
         _alert.event(event, window);
@@ -69,24 +69,24 @@ void Menu::openAlert()
     }
 }
 
-void Menu::joinRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
+void Menu::joinRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpWriteSocket)
 {
     if (_connected && cmdTcp.size() > 1 && cmdTcp[0] == "230") {
         if (cmdTcp.back().find('\n') != std::string::npos)
             cmdTcp.back().pop_back();
         _inRoom = true;
-        _room.setRoom(cmdTcp, udpEndpoint, udpSocket, _ip);
+        _room.setRoom(cmdTcp, udpEndpoint, udpWriteSocket, _ip);
     }
 }
 
-void Menu::leaveRoom(asio::ip::udp::socket &udpSocket)
+void Menu::leaveRoom(asio::ip::udp::socket &udpWriteSocket, asio::ip::udp::socket &udpReadSocket)
 {
     std::string strBuf(_tcpBuf);
     if (strBuf.find('\n') != std::string::npos)
         strBuf.pop_back();
     if (_connected && _inRoom && strBuf.size() > 0 && strBuf == "100") {
         _inRoom = false;
-        udpSocket.close();
+        udpWriteSocket.close();
     }
 }
 
@@ -107,14 +107,14 @@ bool Menu::startAnimation(const sf::RenderWindow &window)
     return (false);
 }
 
-void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
+void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpWriteSocket, asio::ip::udp::socket &udpReadSocket)
 {
     _animationEnd = startAnimation(window);
     std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
-    joinRoom(cmdTcp, udpEndpoint, udpSocket);
-    leaveRoom(udpSocket);
+    joinRoom(cmdTcp, udpEndpoint, udpWriteSocket);
+    leaveRoom(udpWriteSocket, udpReadSocket);
     _connection.update(window, _background, _animationEnd);
     _roomsList.update(cmdTcp, window, _connected);
     _room.update(cmdUdp, window);

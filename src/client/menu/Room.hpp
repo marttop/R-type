@@ -21,10 +21,10 @@ class Room {
         ~Room();
 
         void create(const sf::RectangleShape &background);
-        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
+        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpWriteSocket);
         void update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void draw(sf::RenderWindow &window) const;
-        void setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const std::string &ip);
+        void setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpWriteSocket, const std::string &ip);
 
     protected:
     private:
