@@ -72,6 +72,7 @@ std::vector<std::shared_ptr<IEntity>> ServerPlayer::getAmmo()
 void ServerPlayer::startUDP()
 {
     std::memset(_buffer, '\0', 1024);
+    std::cout << "waiting" << std::endl;
     _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpointR,
                             std::bind(&ServerPlayer::openRead, this,
                                     std::placeholders::_1));
@@ -79,6 +80,7 @@ void ServerPlayer::startUDP()
 
 void ServerPlayer::openRead(const asio::error_code &error)
 {
+    std::memset(_buffer, '\0', 1024);
     if (_roomRef->_debug) std::cout << "udp line from " << _userName << ": " << _buffer;
     _socketW.async_receive_from(asio::buffer(_buffer), _receiverEndpointW,
                             std::bind(&ServerPlayer::handleReceive, this,

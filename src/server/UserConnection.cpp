@@ -245,7 +245,7 @@ void UserConnection::cmdJoinRoom(const std::vector<std::string> &arg)
             ss << "230 ";
             ss << room->getId();
             ss << " ";
-            ss << room->getPlayerFromId(_id)->getPort();
+            ss << room->getPlayerFromId(_id)->getPort() - 1;
             ss << " ";
             ss << room->getPlayersName();
             ss << "\n";
