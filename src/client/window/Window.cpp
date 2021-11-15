@@ -17,6 +17,7 @@ Window::Window(const std::string &title)
     _resolver = new asio::ip::tcp::resolver(_io_context);
     _tcpSocket = new asio::ip::tcp::socket(_io_context);
     _udpWriteSocket = new asio::ip::udp::socket(_io_context);
+    _udpReadSocket = new asio::ip::udp::socket(_io_context);
 
     _parallax.create(100);
     _menu.create(_window, _tcpBuf, _udpBuf);
