@@ -72,22 +72,22 @@ std::vector<std::shared_ptr<IEntity>> ServerPlayer::getAmmo()
 void ServerPlayer::startUDP()
 {
     std::memset(_buffer, '\0', 1024);
-    _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
+    _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpointR,
                             std::bind(&ServerPlayer::openRead, this,
                                     std::placeholders::_1));
 }
 
-void ServerPlayer::openRead()
+void ServerPlayer::openRead(const asio::error_code &error)
 {
     if (_roomRef->_debug) std::cout << "udp line from " << _userName << ": " << _buffer;
-    _socketW.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
+    _socketW.async_receive_from(asio::buffer(_buffer), _receiverEndpointW,
                             std::bind(&ServerPlayer::handleReceive, this,
                                     std::placeholders::_1));
 }
 
 void ServerPlayer::sendData(const std::string &code, const std::string &msg)
 {
-    _socketW.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpoint);
+    _socketW.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpointW);
 }
 
 void ServerPlayer::movePlayer(const std::string &direction)
@@ -134,7 +134,7 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
     }
     if (_socketR.is_open()) {
         std::memset(_buffer, '\0', 1024);
-        _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
+        _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpointR,
                                 std::bind(&ServerPlayer::handleReceive, this,
                                         std::placeholders::_1));
     }
