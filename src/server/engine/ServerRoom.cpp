@@ -20,7 +20,7 @@ ServerRoom::~ServerRoom()
 void ServerRoom::addUser(int id, const std::string &username)
 {
     static int port = _portSeed;
-    port += 2;
+    port++;
 
     for (auto user : _playerList) {
         if (user->getId() != std::to_string(id)) {

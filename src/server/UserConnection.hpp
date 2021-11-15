@@ -60,7 +60,6 @@ private:
     void cmdJoinRoom(const std::vector<std::string> &arg);
     void cmdQuitRoom(const std::vector<std::string> &arg);
     void cmdDeleteRoom(const std::vector<std::string> &arg);
-    void cmdActions(const std::vector<std::string> &arg);
 
     std::map<int, factoryF> _cmd;
 

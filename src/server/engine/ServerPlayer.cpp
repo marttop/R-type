@@ -9,9 +9,7 @@
 
 ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context, ServerRoom &roomRef, int port)
                             : ServerEntity(rect, "player"), _io_context(io_context),
-                            _socketR(io_context,
-                            asio::ip::udp::endpoint(asio::ip::udp::v4(), port - 1)),
-                           _socketW(io_context,
+                            _socket(io_context,
                             asio::ip::udp::endpoint(asio::ip::udp::v4(), port)),
                             _roomRef(&roomRef), _port(port), _isReady(false)
 {
@@ -27,8 +25,7 @@ ServerPlayer::~ServerPlayer()
 
 void ServerPlayer::closeUDP()
 {
-    _socketR.close();
-    _socketW.close();
+    _socket.close();
 }
 
 bool ServerPlayer::isReady() const
@@ -72,24 +69,14 @@ std::vector<std::shared_ptr<IEntity>> ServerPlayer::getAmmo()
 void ServerPlayer::startUDP()
 {
     std::memset(_buffer, '\0', 1024);
-    std::cout << "waiting" << std::endl;
-    _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpointR,
-                            std::bind(&ServerPlayer::openRead, this,
-                                    std::placeholders::_1));
-}
-
-void ServerPlayer::openRead(const asio::error_code &error)
-{
-    std::memset(_buffer, '\0', 1024);
-    if (_roomRef->_debug) std::cout << "udp line from " << _userName << ": " << _buffer;
-    _socketW.async_receive_from(asio::buffer(_buffer), _receiverEndpointW,
+    _socket.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
                             std::bind(&ServerPlayer::handleReceive, this,
                                     std::placeholders::_1));
 }
 
 void ServerPlayer::sendData(const std::string &code, const std::string &msg)
 {
-    _socketW.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpointW);
+    _socket.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpoint);
 }
 
 void ServerPlayer::movePlayer(const std::string &direction)
@@ -134,9 +121,9 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
             movePlayer(args[1]);
         }
     }
-    if (_socketR.is_open()) {
+    if (_socket.is_open()) {
         std::memset(_buffer, '\0', 1024);
-        _socketR.async_receive_from(asio::buffer(_buffer), _receiverEndpointR,
+        _socket.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
                                 std::bind(&ServerPlayer::handleReceive, this,
                                         std::placeholders::_1));
     }
@@ -144,7 +131,7 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
 
 asio::ip::udp::socket &ServerPlayer::getSocket()
 {
-    return (_socketW);
+    return (_socket);
 }
 
 void ServerPlayer::update()

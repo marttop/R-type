@@ -36,17 +36,14 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void movePlayer(const std::string &direction);
         std::vector<std::shared_ptr<IEntity>> getAmmo();
         void shoot();
-        void openRead(const asio::error_code &error);
         bool _canShoot;
 
     protected:
     private:
         std::string _userName;
-        asio::ip::udp::socket _socketR;
-        asio::ip::udp::socket _socketW;
+        asio::ip::udp::socket _socket;
         asio::io_context &_io_context;
-        asio::ip::udp::endpoint _receiverEndpointR;
-        asio::ip::udp::endpoint _receiverEndpointW;
+        asio::ip::udp::endpoint _receiverEndpoint;
         ServerRoom *_roomRef;
         std::vector<std::shared_ptr<IEntity>> _ammo;
         bool _isReady;

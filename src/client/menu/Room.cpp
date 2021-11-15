@@ -53,13 +53,13 @@ void Room::create(const sf::RectangleShape &background)
     _isReady = 0;
 }
 
-void Room::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpWriteSocket)
+void Room::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket)
 {
     if (_leave.event(event, window))
         tcpSocket.send(asio::buffer("235 " + _id + "\n"));
     if (_ready.event(event, window)) {
         _isReady = !_isReady;
-        udpWriteSocket.send(asio::buffer("003 " + std::to_string(_isReady) + "\n"));
+        udpSocket.send(asio::buffer("003 " + std::to_string(_isReady) + "\n"));
     }
 }
 
@@ -152,7 +152,7 @@ void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &wind
     counterUpdate(cmdUdp);
 }
 
-void Room::setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpWriteSocket, const std::string &ip)
+void Room::setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const std::string &ip)
 {
     for (auto it : _players)
         delete it;
@@ -186,8 +186,8 @@ void Room::setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &ud
     _playerCount.setString(std::to_string(_players.size()) + "/4");
     _roomName.setString("Room " + _id);
     udpEndpoint = asio::ip::udp::endpoint(asio::ip::address::from_string(ip), (unsigned short)(_port));
-    udpWriteSocket.connect(udpEndpoint);
-    udpWriteSocket.send(asio::buffer("write connected\n"));
+    udpSocket.connect(udpEndpoint);
+    udpSocket.send(asio::buffer("connected\n"));
 }
 
 void Room::draw(sf::RenderWindow &window) const
