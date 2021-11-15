@@ -96,7 +96,7 @@ void Window::readTcp()
         _tcpSocket->non_blocking(true);
         size_t len = 0;
         len = _tcpSocket->receive(boost::asio::buffer(_tcpBuf), 0, _tcpError);
-        std::cout << _tcpBuf;
+        // std::cout << _tcpBuf;
     }
 }
 
@@ -107,7 +107,7 @@ void Window::readUdp()
         _udpSocket->non_blocking(true);
         size_t len = 0;
         len = _udpSocket->receive(boost::asio::buffer(_udpBuf), 0, _udpError);
-        std::cout << _udpBuf;
+        // std::cout << _udpBuf;
     }
 }
 
