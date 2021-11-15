@@ -97,7 +97,7 @@ void Window::readTcp()
         _tcpSocket->non_blocking(true);
         size_t len = 0;
         len = _tcpSocket->receive(asio::buffer(_tcpBuf), 0, _tcpError);
-        //std::cout << _tcpBuf;
+        std::cout << _tcpBuf;
     }
 }
 
@@ -107,12 +107,14 @@ void Window::readUdp()
         if (!_udpReadSocket->is_open()) {
             _udpReadSocket->connect(asio::ip::udp::endpoint(_udpWriteSocket->remote_endpoint().address(), _udpWriteSocket->remote_endpoint().port() + 1));
             _udpReadSocket->send(asio::buffer("read connected\n"));
+            std::cout << _udpWriteSocket->remote_endpoint().address() << " " << _udpWriteSocket->remote_endpoint().port() << std::endl;
+            std::cout << _udpReadSocket->remote_endpoint().address() << " " << _udpReadSocket->remote_endpoint().port() << std::endl;
         }
         std::memset(_udpBuf, '\0', 1024);
-        _udpWriteSocket->non_blocking(true);
+        _udpReadSocket->non_blocking(true);
         size_t len = 0;
-        len = _udpWriteSocket->receive(asio::buffer(_udpBuf), 0, _udpError);
-        //std::cout << _udpBuf;
+        len = _udpReadSocket->receive(asio::buffer(_udpBuf), 0, _udpError);
+        std::cout << _udpBuf;
     }
 }
 
