@@ -35,7 +35,7 @@ class Game {
         void create(const sf::RenderWindow &window, char *udpBuf);
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
         void openAlert();
-        void update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket, asio::ip::tcp::socket &tcpSocket);
+        void update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
         void setAlert();
         void draw(sf::RenderWindow &window) const;
 
@@ -43,7 +43,7 @@ class Game {
     private:
         void udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket);
-        void sendInput(asio::ip::udp::socket &udpSocket, asio::ip::tcp::socket &tcpSocket);
+        void sendInput(asio::ip::udp::socket &udpSocket);
         void selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor);
 
         WarningBox _alert;

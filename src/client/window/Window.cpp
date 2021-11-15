@@ -70,7 +70,7 @@ void Window::update()
     if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
     if (_scene == GAME)
-        _game.update(_window, *_udpSocket, *_tcpSocket);
+        _game.update(_window, *_udpSocket);
 }
 
 void Window::draw()
