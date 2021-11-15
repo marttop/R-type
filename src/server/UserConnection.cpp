@@ -11,6 +11,7 @@ UserConnection::UserConnection(asio::io_context &io_context, AsioTcpServ &servRe
     : _socket(io_context), _servRef(&servRef), _id(id), _isUDPOn(false), _roomId(-1)
 {
     _debug = debug;
+    _cmd.emplace(108, &UserConnection::cmdActions);
     _cmd.emplace(210, &UserConnection::cmdConnection);
     _cmd.emplace(225, &UserConnection::cmdJoinRoom);
     _cmd.emplace(235, &UserConnection::cmdQuitRoom);
@@ -295,6 +296,24 @@ void UserConnection::cmdDeleteRoom(const std::vector<std::string> &arg)
         } else if (ret == 0) {
             sendError(500, "Impossible. Players are still in the room.");
         }
+
+    } else {
+        sendError(500, "Missing arg in command.");
+    }
+}
+
+void UserConnection::cmdActions(const std::vector<std::string> &arg)
+{
+    if (arg.size() >= 2) {
+        std::shared_ptr<ServerRoom> room = _servRef->getRoomById(_roomId);
+
+        if (room == nullptr) {
+            sendError(500, "Impossible. Room does not exist.");
+            return;
+        }
+
+        std::shared_ptr<ServerPlayer> player = room->getPlayerFromId(_id);
+        player->movePlayer(arg[1]);
 
     } else {
         sendError(500, "Missing arg in command.");

@@ -56,18 +56,18 @@ void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket 
     }
 }
 
-void Game::sendInput(boost::asio::ip::udp::socket &udpSocket)
+void Game::sendInput(boost::asio::ip::udp::socket &udpSocket, boost::asio::ip::tcp::socket &tcpSocket)
 {
     if (_direction[RIGHT])
-        udpSocket.send(boost::asio::buffer("008 RIGHT\n"));
+        tcpSocket.send(boost::asio::buffer("108 RIGHT\n"));
     if (_direction[UP])
-        udpSocket.send(boost::asio::buffer("008 UP\n"));
+        tcpSocket.send(boost::asio::buffer("108 UP\n"));
     if (_direction[LEFT])
-        udpSocket.send(boost::asio::buffer("008 LEFT\n"));
+        tcpSocket.send(boost::asio::buffer("108 LEFT\n"));
     if (_direction[DOWN])
-        udpSocket.send(boost::asio::buffer("008 DOWN\n"));
+        tcpSocket.send(boost::asio::buffer("108 DOWN\n"));
     if (_shoot)
-        udpSocket.send(boost::asio::buffer("008 SPACE\n"));
+        tcpSocket.send(boost::asio::buffer("108 SPACE\n"));
 }
 
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
@@ -140,13 +140,13 @@ void Game::openAlert()
     }
 }
 
-void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
+void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket, boost::asio::ip::tcp::socket &tcpSocket)
 {
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
     if (!_alert.isOpen()) {
         udpUpdateEntity(cmdUdp, window);
-        sendInput(udpSocket);
+        sendInput(udpSocket, tcpSocket);
         for (auto it : _entityMap)
             it.second->update();
     }
