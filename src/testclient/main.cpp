@@ -6,14 +6,13 @@
 */
 
 #include <iostream>
-#include <boost/array.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 #include <sys/types.h>
 #include <unistd.h>
 #include "RtypeException.hpp"
 #include "ValidateIp.hpp"
 
-using boost::asio::ip::udp;
+using asio::ip::udp;
 
 int arg_check(int ac, char *argv[])
 {
@@ -33,13 +32,13 @@ int main(int ac, char* av[])
     {
         arg_check(ac, av);
 
-        boost::asio::io_context io_context;
+        asio::io_context io_context;
         udp::resolver resolver(io_context);
         std::cout << av[1] << std::endl;
-        auto endpoints = udp::endpoint( boost::asio::ip::address::from_string(av[1]), 9039);
+        auto endpoints = udp::endpoint(asio::ip::address::from_string(av[1]), 9039);
         udp::socket socket(io_context);
-            boost::array<char, 128> buf;
-            boost::system::error_code error;
+        std::array<char, 128> buf;
+        asio::error::misc_errors error;
         pid_t eric;
 
         socket.connect( endpoints);
@@ -51,15 +50,15 @@ int main(int ac, char* av[])
 
             if (eric == 0) {
 
-                size_t len = socket.receive_from(boost::asio::buffer(buf), endpoints);
+                size_t len = socket.receive_from(asio::buffer(buf), endpoints);
                 std::cout.write(buf.data(), len);
             }
             else {
 
-                if (error == boost::asio::error::eof)
+                if (error == asio::error::eof)
                     break; // Connection closed cleanly by peer.
                 else if (error)
-                    throw boost::system::system_error(error); // Some other error.
+                    throw asio::system_error(error); // Some other error.
 
                 std::string test = "";
 
@@ -68,7 +67,7 @@ int main(int ac, char* av[])
 
                 test += "\n";
 
-                socket.send_to(boost::asio::buffer(test), endpoints);
+                socket.send_to(asio::buffer(test), endpoints);
 
             }
         }
