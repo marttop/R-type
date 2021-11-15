@@ -48,7 +48,7 @@ void ServerPlayer::shoot()
     if (_canShoot) {
         static int id = 0;
         id++;
-        std::string bId = "B" + std::to_string(id);
+        std::string bId = _id + "B" + std::to_string(id);
         std::shared_ptr<IEntity> sp(new ServerBullet(CustomRect(20, 5,
             getPosition().first + 225, getPosition().second - 52), "playerbullet", bId));
         std::stringstream ss;
