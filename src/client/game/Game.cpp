@@ -19,55 +19,60 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
 {
     _udpBuf = udpBuf;
 
-    for (int i = 0; i < 4; i++)
-        _direction[i] = false;
+    for (int i = 0; i < 5; i++)
+        _inputs[i] = false;
 
     _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
 
     _playerCount = 0;
-    _shoot = false;
 }
 
 void Game::inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket)
 {
     if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Up)
-            _direction[UP] = true;
-        if (event.key.code == sf::Keyboard::Left)
-            _direction[LEFT] = true;
-        if (event.key.code == sf::Keyboard::Down)
-            _direction[DOWN] = true;
-        if (event.key.code == sf::Keyboard::Right)
-            _direction[RIGHT] = true;
-        if (event.key.code == sf::Keyboard::Space)
-            _shoot = true;
+        if (event.key.code == sf::Keyboard::Up && !_inputs[UP]) {
+            _inputs[UP] = true;
+            udpSocket.send(asio::buffer("008 UP START\n"));
+        }
+        if (event.key.code == sf::Keyboard::Left && !_inputs[LEFT]) {
+            _inputs[LEFT] = true;
+            udpSocket.send(asio::buffer("008 LEFT START\n"));
+        }
+        if (event.key.code == sf::Keyboard::Down && !_inputs[DOWN]) {
+            _inputs[DOWN] = true;
+            udpSocket.send(asio::buffer("008 DOWN START\n"));
+        }
+        if (event.key.code == sf::Keyboard::Right && !_inputs[RIGHT]) {
+            _inputs[RIGHT] = true;
+            udpSocket.send(asio::buffer("008 RIGHT START\n"));
+        }
+        if (event.key.code == sf::Keyboard::Space && !_inputs[SPACE]) {
+            _inputs[SPACE] = true;
+            udpSocket.send(asio::buffer("008 SPACE START\n"));
+        }
     }
     if (event.type == sf::Event::KeyReleased) {
-        if (event.key.code == sf::Keyboard::Up)
-            _direction[UP] = false;
-        if (event.key.code == sf::Keyboard::Left)
-            _direction[LEFT] = false;
-        if (event.key.code == sf::Keyboard::Down)
-            _direction[DOWN] = false;
-        if (event.key.code == sf::Keyboard::Right)
-            _direction[RIGHT] = false;
-        if (event.key.code == sf::Keyboard::Space)
-            _shoot = false;
+        if (event.key.code == sf::Keyboard::Up && _inputs[UP]) {
+            _inputs[UP] = false;
+            udpSocket.send(asio::buffer("008 UP STOP\n"));
+        }
+        if (event.key.code == sf::Keyboard::Left && _inputs[LEFT]) {
+            _inputs[LEFT] = false;
+            udpSocket.send(asio::buffer("008 LEFT STOP\n"));
+        }
+        if (event.key.code == sf::Keyboard::Down && _inputs[DOWN]) {
+            _inputs[DOWN] = false;
+            udpSocket.send(asio::buffer("008 DOWN STOP\n"));
+        }
+        if (event.key.code == sf::Keyboard::Right && _inputs[RIGHT]) {
+            _inputs[RIGHT] = false;
+            udpSocket.send(asio::buffer("008 RIGHT STOP\n"));
+        }
+        if (event.key.code == sf::Keyboard::Space && _inputs[SPACE]) {
+            _inputs[SPACE] = false;
+            udpSocket.send(asio::buffer("008 SPACE STOP\n"));
+        }
     }
-}
-
-void Game::sendInput(asio::ip::udp::socket &udpSocket)
-{
-    if (_direction[RIGHT])
-        udpSocket.send(asio::buffer("008 RIGHT\n"));
-    if (_direction[UP])
-        udpSocket.send(asio::buffer("008 UP\n"));
-    if (_direction[LEFT])
-        udpSocket.send(asio::buffer("008 LEFT\n"));
-    if (_direction[DOWN])
-        udpSocket.send(asio::buffer("008 DOWN\n"));
-    if (_shoot)
-        udpSocket.send(asio::buffer("008 SPACE\n"));
 }
 
 void Game::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
@@ -148,7 +153,6 @@ void Game::update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSock
     openAlert();
     if (!_alert.isOpen()) {
         udpUpdateEntity(cmdUdp, window);
-        sendInput(udpSocket);
         for (auto it : _entityMap)
             it.second->update();
     }

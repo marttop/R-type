@@ -10,6 +10,7 @@
 
 #include "UserConnection.hpp"
 #include "ServerPlayer.hpp"
+#include "EntityLoad.hpp"
 #include <utility>
 #include <thread>
 #include <chrono>
@@ -53,6 +54,8 @@ class ServerRoom {
         int _id;
         bool _isGameStarted;
         int _portSeed;
+
+        EntityLoad _loader;        
 };
 
 #endif /* !SERVERROOM_HPP_ */

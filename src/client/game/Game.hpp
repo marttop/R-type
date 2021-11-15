@@ -43,15 +43,13 @@ class Game {
     private:
         void udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket);
-        void sendInput(asio::ip::udp::socket &udpSocket);
         void selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor);
 
         WarningBox _alert;
         EntityFactory _factory;
         char *_udpBuf;
         std::map<std::string, std::shared_ptr<IClientEntity>> _entityMap;
-        bool _direction[4];
-        bool _shoot;
+        bool _inputs[5];
         int _playerCount;
 };
 
