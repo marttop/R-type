@@ -70,7 +70,7 @@ void RoomsList::draw(sf::RenderWindow &window) const
     _create.draw(window);
 }
 
-bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket)
+bool RoomsList::disconnect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket)
 {
     if (_disconnect.event(event, window)) {
         tcpSocket.close();
@@ -257,10 +257,10 @@ void RoomsList::mouseWheelScroll(const sf::Event &event, const sf::RenderWindow 
     }
 }
 
-void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket)
+void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket)
 {
     if (_create.event(event, window))
-        tcpSocket.send(boost::asio::buffer("300\n"));
+        tcpSocket.send(asio::buffer("300\n"));
     for (int i = 0; i < _rooms.size(); i++) {
         if (i >= _displayedIdx.first && i < _displayedIdx.second)
             _rooms[i]->event(event, window, tcpSocket);

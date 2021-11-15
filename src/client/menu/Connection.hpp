@@ -9,7 +9,7 @@
 #define CONNECTION_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -28,7 +28,7 @@ class Connection {
     void event(const sf::Event &event, const sf::RenderWindow &window);
     void update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd);
     void draw(sf::RenderWindow &window) const;
-    void connect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &endpoint, boost::asio::ip::tcp::socket &socket, WarningBox &alert);
+    void connect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &endpoint, asio::ip::tcp::socket &socket, WarningBox &alert);
 
     protected:
     private:

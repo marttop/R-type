@@ -117,7 +117,7 @@ void RoomCard::update(const sf::RenderWindow &window)
     }
 }
 
-void RoomCard::join(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+void RoomCard::join(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &socket)
 {
     if (!_delete.isMouseHovering(window)) {
         if (event.type == sf::Event::MouseButtonPressed) {
@@ -131,14 +131,14 @@ void RoomCard::join(const sf::Event &event, const sf::RenderWindow &window, boos
             _title.setFillColor(sf::Color::White);
             _playerCount.setFillColor(sf::Color::White);
             if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
-                socket.send(boost::asio::buffer("225 " + _id + "\n"));
+                socket.send(asio::buffer("225 " + _id + "\n"));
         }
     }
 }
 
-void RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &socket)
+void RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &socket)
 {
     if (_delete.event(event, window))
-        socket.send(boost::asio::buffer("350 " + _id + "\n"));
+        socket.send(asio::buffer("350 " + _id + "\n"));
     join(event, window, socket);
 }

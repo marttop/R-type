@@ -14,9 +14,9 @@ Window::Window(const std::string &title)
 
     std::memset(_tcpBuf, '\0', 1024);
     std::memset(_udpBuf, '\0', 1024);
-    _resolver = new boost::asio::ip::tcp::resolver(_io_context);
-    _tcpSocket = new boost::asio::ip::tcp::socket(_io_context);
-    _udpSocket = new boost::asio::ip::udp::socket(_io_context);
+    _resolver = new asio::ip::tcp::resolver(_io_context);
+    _tcpSocket = new asio::ip::tcp::socket(_io_context);
+    _udpSocket = new asio::ip::udp::socket(_io_context);
 
     _parallax.create(100);
     _menu.create(_window, _tcpBuf, _udpBuf);
@@ -70,7 +70,7 @@ void Window::update()
     if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
     if (_scene == GAME)
-        _game.update(_window, *_udpSocket);
+        _game.update(_window, *_udpSocket, *_tcpSocket);
 }
 
 void Window::draw()
@@ -87,7 +87,7 @@ void Window::draw()
 
 void Window::readTcp()
 {
-    if (_tcpError == boost::asio::error::eof) {
+    if (_tcpError == asio::error::eof) {
         _menu.setAlert();
         _game.setAlert();
         _tcpError.clear();
@@ -95,8 +95,8 @@ void Window::readTcp()
         std::memset(_tcpBuf, '\0', 1024);
         _tcpSocket->non_blocking(true);
         size_t len = 0;
-        len = _tcpSocket->receive(boost::asio::buffer(_tcpBuf), 0, _tcpError);
-        // std::cout << _tcpBuf;
+        len = _tcpSocket->receive(asio::buffer(_tcpBuf), 0, _tcpError);
+        //std::cout << _tcpBuf;
     }
 }
 
@@ -106,8 +106,8 @@ void Window::readUdp()
         std::memset(_udpBuf, '\0', 1024);
         _udpSocket->non_blocking(true);
         size_t len = 0;
-        len = _udpSocket->receive(boost::asio::buffer(_udpBuf), 0, _udpError);
-        // std::cout << _udpBuf;
+        len = _udpSocket->receive(asio::buffer(_udpBuf), 0, _udpError);
+        //std::cout << _udpBuf;
     }
 }
 
