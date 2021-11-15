@@ -9,7 +9,7 @@
 #define MENU_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 
 #include "WarningBox.hpp"
 #include "Connection.hpp"
@@ -24,17 +24,17 @@ class Menu {
 
         void create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf);
         void draw(sf::RenderWindow &window) const;
-        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket);
-        void update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket);
+        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
+        void update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket);
         void setAlert();
 
     protected:
     private:
         void connect(const sf::Event &event, const sf::RenderWindow &window);
         void getDefaultInput();
-        void joinRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket);
+        void joinRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket);
         void openAlert();
-        void leaveRoom(boost::asio::ip::udp::socket &udpSocket);
+        void leaveRoom(asio::ip::udp::socket &udpSocket);
         bool startAnimation(const sf::RenderWindow &window);
 
         sf::RectangleShape _background;

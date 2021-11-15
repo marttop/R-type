@@ -41,7 +41,7 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 
 }
 
-void Menu::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::endpoint &tcpEndpoint, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket)
+void Menu::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen() && _animationEnd) {
         if (!_connected) {
@@ -69,7 +69,7 @@ void Menu::openAlert()
     }
 }
 
-void Menu::joinRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
+void Menu::joinRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
 {
     if (_connected && cmdTcp.size() > 1 && cmdTcp[0] == "230") {
         if (cmdTcp.back().find('\n') != std::string::npos)
@@ -79,7 +79,7 @@ void Menu::joinRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endp
     }
 }
 
-void Menu::leaveRoom(boost::asio::ip::udp::socket &udpSocket)
+void Menu::leaveRoom(asio::ip::udp::socket &udpSocket)
 {
     std::string strBuf(_tcpBuf);
     if (strBuf.find('\n') != std::string::npos)
@@ -107,7 +107,7 @@ bool Menu::startAnimation(const sf::RenderWindow &window)
     return (false);
 }
 
-void Menu::update(const sf::RenderWindow &window, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket)
+void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
 {
     _animationEnd = startAnimation(window);
     std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);

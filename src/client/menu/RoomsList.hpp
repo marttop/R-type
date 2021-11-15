@@ -9,7 +9,7 @@
 #define ROOMSLIST_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 #include <vector>
 
 #include "Button.hpp"
@@ -25,8 +25,8 @@ class RoomsList {
         void setIp(const std::string &ip);
         void draw(sf::RenderWindow &window) const;
         void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected);
-        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket);
-        bool disconnect(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket);
+        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
+        bool disconnect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
 
     protected:
     private:

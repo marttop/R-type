@@ -10,7 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 
 #include "Parallax.hpp"
 #include "Game.hpp"
@@ -46,16 +46,16 @@ class Window {
         Scene _scene;
         bool _lostConnection;
 
-        boost::asio::io_context _io_context;
-        boost::asio::ip::tcp::resolver *_resolver;
-        boost::asio::ip::tcp::socket *_tcpSocket;
-        boost::asio::ip::udp::socket *_udpSocket;
+        asio::io_context _io_context;
+        asio::ip::tcp::resolver *_resolver;
+        asio::ip::tcp::socket *_tcpSocket;
+        asio::ip::udp::socket *_udpSocket;
         char _tcpBuf[1024];
         char _udpBuf[1024];
-        boost::system::error_code _tcpError;
-        boost::system::error_code _udpError;
-        boost::asio::ip::tcp::endpoint _tcpEndpoint;
-        boost::asio::ip::udp::endpoint _udpEndpoint;
+        asio::error_code _tcpError;
+        asio::error_code _udpError;
+        asio::ip::tcp::endpoint _tcpEndpoint;
+        asio::ip::udp::endpoint _udpEndpoint;
 };
 
 #endif /* !WINDOW_HPP_ */

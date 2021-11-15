@@ -28,7 +28,7 @@ void Game::create(const sf::RenderWindow &window, char *udpBuf)
     _shoot = false;
 }
 
-void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket &udpSocket)
+void Game::inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket)
 {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Up)
@@ -56,21 +56,21 @@ void Game::inputManagement(const sf::Event &event, boost::asio::ip::udp::socket 
     }
 }
 
-void Game::sendInput(boost::asio::ip::udp::socket &udpSocket, boost::asio::ip::tcp::socket &tcpSocket)
+void Game::sendInput(asio::ip::udp::socket &udpSocket, asio::ip::tcp::socket &tcpSocket)
 {
     if (_direction[RIGHT])
-        tcpSocket.send(boost::asio::buffer("108 RIGHT\n"));
+        tcpSocket.send(asio::buffer("108 RIGHT\n"));
     if (_direction[UP])
-        tcpSocket.send(boost::asio::buffer("108 UP\n"));
+        tcpSocket.send(asio::buffer("108 UP\n"));
     if (_direction[LEFT])
-        tcpSocket.send(boost::asio::buffer("108 LEFT\n"));
+        tcpSocket.send(asio::buffer("108 LEFT\n"));
     if (_direction[DOWN])
-        tcpSocket.send(boost::asio::buffer("108 DOWN\n"));
+        tcpSocket.send(asio::buffer("108 DOWN\n"));
     if (_shoot)
-        tcpSocket.send(boost::asio::buffer("108 SPACE\n"));
+        tcpSocket.send(asio::buffer("108 SPACE\n"));
 }
 
-void Game::event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket)
+void Game::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
         inputManagement(event, udpSocket);
@@ -114,8 +114,10 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
                         entityCmd[2],
                         _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), startColor, endColor)));
                 }
-                else if (entityCmd[0] == "UPDATE")
-                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
+                else if (entityCmd[0] == "UPDATE") {
+                    if (_entityMap.count(entityCmd[2]))
+                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
+                }
                 else if (entityCmd[0] == "DELETE") {
                     _entityMap.erase(entityCmd[2]);
                 }
@@ -140,7 +142,7 @@ void Game::openAlert()
     }
 }
 
-void Game::update(const sf::RenderWindow &window, boost::asio::ip::udp::socket &udpSocket, boost::asio::ip::tcp::socket &tcpSocket)
+void Game::update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket, asio::ip::tcp::socket &tcpSocket)
 {
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();

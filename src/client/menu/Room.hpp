@@ -9,7 +9,7 @@
 #define ROOM_HPP_
 
 #include <SFML/Graphics.hpp>
-#include <boost/asio.hpp>
+#include <asio.hpp>
 #include <vector>
 
 #include "Button.hpp"
@@ -21,10 +21,10 @@ class Room {
         ~Room();
 
         void create(const sf::RectangleShape &background);
-        void event(const sf::Event &event, const sf::RenderWindow &window, boost::asio::ip::tcp::socket &tcpSocket, boost::asio::ip::udp::socket &udpSocket);
+        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
         void update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void draw(sf::RenderWindow &window) const;
-        void setRoom(std::vector<std::string> &cmdTcp, boost::asio::ip::udp::endpoint &udpEndpoint, boost::asio::ip::udp::socket &udpSocket, const std::string &ip);
+        void setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const std::string &ip);
 
     protected:
     private:
