@@ -11,10 +11,29 @@ ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool 
                                         : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false), _loader(EntityLoad())
 {
     _debug = debug;
+    loadRoomEntities("RoomConfFile/ConfTest.txt");
 }
 
 ServerRoom::~ServerRoom()
 {
+}
+
+// loader
+
+void ServerRoom::loadRoomEntities(const std::string &FilePath)
+{
+    std::string line;
+    std::ifstream myfile(FilePath);
+    if (myfile.is_open())
+    {
+        while (std::getline(myfile,line)) {
+            if (line[0] == '#') continue;
+            std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
+            _loader.loadEntityWithPath(parsedTab[0], parsedTab[1]);
+            _mobsRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
+        }
+        myfile.close(); 
+    }
 }
 
 void ServerRoom::addUser(int id, const std::string &username)

@@ -11,9 +11,11 @@
 #include "UserConnection.hpp"
 #include "ServerPlayer.hpp"
 #include "EntityLoad.hpp"
+#include "ServerMobSpawnConf.hpp"
 #include <utility>
 #include <thread>
 #include <chrono>
+#include "fstream"
 
 class ServerPlayer;
 
@@ -47,6 +49,9 @@ class ServerRoom {
         bool _debug;
     protected:
     private:
+
+        void loadRoomEntities(const std::string &fileConfPath);
+
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
         asio::ip::udp::endpoint remote_endpoint_;
@@ -55,7 +60,8 @@ class ServerRoom {
         bool _isGameStarted;
         int _portSeed;
 
-        EntityLoad _loader;        
+        EntityLoad _loader;
+        std::vector<ServerMobSpawnConf> _mobsRoomInfo;
 };
 
 #endif /* !SERVERROOM_HPP_ */

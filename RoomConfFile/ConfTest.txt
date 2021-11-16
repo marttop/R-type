@@ -1,0 +1,13 @@
+# pour ajouter un mob il faut
+#
+#   path: le chemin jusqu'a la lib
+#   type: le type de l'objet
+#   time: le timer avant l'apparition du nombre de mob
+#   numberToSpawn: le nombre de mob à spawn à l'instant time
+#
+#   Path    type    time    numberToSpawn
+#
+# exemple:
+# ./server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
+#
+./server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
