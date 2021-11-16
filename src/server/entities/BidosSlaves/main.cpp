@@ -22,11 +22,11 @@ int main()
 
   EntityLoad loader = EntityLoad();
 
-  loader.loadEntityWithPath("./basicMob1.so", "basicMob1");
+  loader.loadEntityWithPath("./BidosSlaves.so", "BidosSlaves");
 
-  auto mob1 = loader.createEntityWithName("basicMob1");
+  auto mob1 = loader.createEntityWithName("BidosSlaves");
 
-  // mob1->update();
+  mob1->update();
 
   // std::cout << mob1->isColliding(mob1) << std::endl;
 

@@ -11,7 +11,7 @@ SRC			=	BidosSlaves.cpp					\
 				../../EntityLoad.cpp				\
 
 CXXFLAGS 	=	-Wall -Wextra -I../../engine -I../../../interface -fPIC
-NAME 		= 	basicMob1.so
+NAME 		= 	BidosSlaves.so
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -16,6 +16,9 @@ ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context,
     _userName = "";
     std::memset(_buffer, '\0', 1024);
     _canShoot = true;
+    for (int i = 0; i < 5; i++) {
+        _boolLand.push_back(false);
+    }
 }
 
 ServerPlayer::~ServerPlayer()
@@ -79,23 +82,23 @@ void ServerPlayer::sendData(const std::string &code, const std::string &msg)
     _socket.send_to(asio::buffer(code + " " + msg + "\n"), _receiverEndpoint);
 }
 
-void ServerPlayer::movePlayer(const std::string &direction)
+void ServerPlayer::movePlayer(const std::string &direction, const std::string &action)
 {
     double x = getPosition().first;
     double y = getPosition().second;
     if (direction == "UP") {
-        setPosition(x, y + _speed);
+        _boolLand[0] = action == "START" ? true : false;
     }
-    else if (direction == "DOWN") {
-        setPosition(x, y - _speed);
+    if (direction == "DOWN") {
+        _boolLand[1] = action == "START" ? true : false;
     }
-    else if (direction == "LEFT") {
-        setPosition(x - _speed, y);
+    if (direction == "LEFT") {
+        _boolLand[2] = action == "START" ? true : false;
     }
-    else if (direction == "RIGHT") {
-        setPosition(x + _speed, y);
-    } else if (direction == "SPACE") {
-        shoot();
+    if (direction == "RIGHT") {
+        _boolLand[3] = action == "START" ? true : false;
+    } if (direction == "SPACE") {
+        _boolLand[4] = action == "START" ? true : false;
     }
 }
 
@@ -103,7 +106,7 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
 {
     if (_roomRef->_debug) std::cout << "udp line from " << _userName << ": " << _buffer;
     std::vector<std::string> args = SEPParsor::parseCommands(_buffer);
-    if (args.size() >= 2) {
+    if (args.size() == 2) {
         args[1].erase(remove(args[1].begin(), args[1].end(), '\n'), args[1].end());
         if (args[0] == "003" && args[1] == "1") {
             _isReady = true;
@@ -117,8 +120,11 @@ void ServerPlayer::handleReceive(const asio::error_code &error)
             _roomRef->broadCastUdp("004", "0 " + _userName);
             _isReady = false;
         }
-        else if (args[0] == "008") {
-            movePlayer(args[1]);
+    }
+    else if (args.size() >= 3) {
+        args[2].erase(remove(args[2].begin(), args[2].end(), '\n'), args[2].end());
+        if (args[0] == "008") {
+            movePlayer(args[1], args[2]);
         }
     }
     if (_socket.is_open()) {
@@ -136,12 +142,30 @@ asio::ip::udp::socket &ServerPlayer::getSocket()
 
 void ServerPlayer::update()
 {
-    auto i = std::begin(_ammo);
     int itr = 0;
     std::stringstream ss;
     ss.str("");
     ss.clear();
 
+    double x = getPosition().first;
+    double y = getPosition().second;
+    if (_boolLand[0] == true) {
+        setPosition(x, y += _speed);
+    }
+    if (_boolLand[1] == true) {
+        setPosition(x, y -= _speed);
+    }
+    if (_boolLand[2] == true) {
+        setPosition(x -= _speed, y);
+    }
+    if (_boolLand[3] == true) {
+        setPosition(x += _speed, y);
+    }
+    if (_boolLand[4] == true) {
+        shoot();
+    }
+
+    auto i = std::begin(_ammo);
     while (i != std::end(_ammo)) {
         i->get()->update();
         if (!i->get()->isAlive()) {
