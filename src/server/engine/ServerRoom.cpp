@@ -191,9 +191,9 @@ std::string ServerRoom::updatePlayers() const
     for (auto itr : _playerList) {
         itr->update();
         ss << createEntityResponse(itr, "UPDATE");
-        for (auto bullet : itr->getAmmo()) {
-            ss << createEntityResponse(bullet, "UPDATE");
-        }
+        // for (auto bullet : itr->getAmmo()) {
+        //     ss << createEntityResponse(bullet, "UPDATE");
+        // }
     }
     return (ss.str());
 }
@@ -220,7 +220,7 @@ void ServerRoom::updateLoop()
         }
         ss << updatePlayers();
         broadCastUdp("007", ss.str());
-        std::this_thread::sleep_for(std::chrono::milliseconds(18));
+        std::this_thread::sleep_for(std::chrono::milliseconds(22));
         timer++;
     }
 }

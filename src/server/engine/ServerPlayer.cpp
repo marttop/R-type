@@ -142,7 +142,6 @@ asio::ip::udp::socket &ServerPlayer::getSocket()
 
 void ServerPlayer::update()
 {
-    auto i = std::begin(_ammo);
     int itr = 0;
     std::stringstream ss;
     ss.str("");
@@ -166,6 +165,7 @@ void ServerPlayer::update()
         shoot();
     }
 
+    auto i = std::begin(_ammo);
     while (i != std::end(_ammo)) {
         i->get()->update();
         if (!i->get()->isAlive()) {
