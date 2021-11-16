@@ -16,7 +16,7 @@
 
 class Entity : public IClientEntity {
     public:
-        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
+        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed = 0, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
         ~Entity();
 
         float getElapsedTime() const;
@@ -39,6 +39,7 @@ class Entity : public IClientEntity {
         ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;
+        float _speed;
 
     private:
 };

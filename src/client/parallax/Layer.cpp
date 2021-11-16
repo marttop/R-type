@@ -7,7 +7,7 @@
 
 #include "Layer.hpp"
 
-Layer::Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active) : Entity(texture, pos)
+Layer::Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active, const float &speed) : Entity(texture, pos, speed)
 {
     _isActive = active;
 }

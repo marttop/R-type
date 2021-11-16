@@ -12,7 +12,7 @@
 
 class PlayerShip : public Entity {
     public:
-        PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor);
+        PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
         ~PlayerShip();
 
         void update();
