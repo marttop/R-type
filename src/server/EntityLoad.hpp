@@ -15,32 +15,6 @@
 #include <map>
 #include <vector>
 
-/*
-    my singeltone loader insane du asssss
-*/
-// class EntityLoad {
-//     public:
-//         ~EntityLoad();
-
-//         std::string error();
-
-//         static EntityLoad &getEntityLoader() {
-//              static EntityLoad instance;
-//              return instance;
-//         };
-//         IEntity *loadEntityWithPath(const std::string &path);
-
-//     protected:
-//     private:
-//         EntityLoad();
-
-//         void open(const char *filepath);
-//         int close();
-//         void *sym(const std::string &name);
-
-//         void *_handle;
-// };
-
 class EntityLoad {
     public:
         EntityLoad();
