@@ -29,7 +29,10 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
         while (std::getline(myfile,line)) {
             if (line[0] == '#') continue;
             std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
-            _loader.loadEntityWithPath(parsedTab[0], parsedTab[1]);
+
+            if (!_loader.loadEntityWithPath(parsedTab[0], parsedTab[1]))
+                continue;
+
             _mobsRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
         }
         myfile.close(); 

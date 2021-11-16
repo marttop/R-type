@@ -27,7 +27,7 @@ void *EntityLoad::open(const char *filepath)
 {
     void *handle = dlopen(filepath, RTLD_LOCAL | RTLD_LAZY);
     if (!handle) {
-        throw std::invalid_argument(this->error());
+        std::cout << this->error() << std::endl;;
     }
     return handle;
 }
@@ -42,9 +42,13 @@ void *EntityLoad::sym(const std::string &name, void *handle)
     return (dlsym(handle, name.c_str()));
 }
 
-void EntityLoad::loadEntityWithPath(const std::string &path, const std::string &name)
+bool EntityLoad::loadEntityWithPath(const std::string &path, const std::string &name)
 {
     void *handle = open(path.c_str());
+
+    if (!handle) {
+        return false;
+    }
 
     IEntity *(*create)();
     void (*destroy)(std::shared_ptr<IEntity>);
@@ -56,6 +60,7 @@ void EntityLoad::loadEntityWithPath(const std::string &path, const std::string &
     creates.insert(std::pair<const std::string, EntityLoad::create>(name, create));
     destroys.insert(std::pair<const std::string, EntityLoad::destroy>(name, destroy));
     dlOpens.push_back(handle);
+    return true;
 }
 
 std::shared_ptr<IEntity> EntityLoad::createEntityWithName(const std::string &name)
