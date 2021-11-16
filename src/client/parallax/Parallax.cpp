@@ -50,12 +50,12 @@ void Parallax::add(const float &speed, const Layers &type, const bool &active)
             speed,
             make_pair(
                 make_pair(
-                    new Layer(_layerTextures[type], sf::Vector2f{0, 0}, active),
-                    new Layer(_layerTextures[type], sf::Vector2f{-float(_layerTextures[type].getSize().x), 0}, active)
+                    new Layer(_layerTextures[type], sf::Vector2f{0, 0}, active, speed),
+                    new Layer(_layerTextures[type], sf::Vector2f{-float(_layerTextures[type].getSize().x), 0}, active, speed)
                 ),
                 make_pair(
-                    new Layer(_layerTextures[type], sf::Vector2f{0, -float(_layerTextures[type].getSize().y)}, active),
-                    new Layer(_layerTextures[type], sf::Vector2f{-float(_layerTextures[type].getSize().x), -float(_layerTextures[type].getSize().y)}, active)
+                    new Layer(_layerTextures[type], sf::Vector2f{0, -float(_layerTextures[type].getSize().y)}, active, speed),
+                    new Layer(_layerTextures[type], sf::Vector2f{-float(_layerTextures[type].getSize().x), -float(_layerTextures[type].getSize().y)}, active, speed)
                 )
             )
         )

@@ -12,7 +12,7 @@
 
 class Bullet : public Entity {
     public:
-        Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor);
+        Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
         ~Bullet();
 
         void update();
@@ -20,6 +20,7 @@ class Bullet : public Entity {
 
     protected:
     private:
+        sf::Clock _moveClk;
 };
 
 #endif /* !BULLET_HPP_ */

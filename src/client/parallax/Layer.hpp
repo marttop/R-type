@@ -12,7 +12,7 @@
 
 class Layer : public Entity {
     public:
-        Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active);
+        Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active, const float &speed);
         ~Layer();
 
         void setActive(const bool &activation);

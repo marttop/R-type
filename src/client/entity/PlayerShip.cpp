@@ -7,8 +7,8 @@
 
 #include "PlayerShip.hpp"
 
-PlayerShip::PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
-                    : Entity(texture, pos, startColor, endColor)
+PlayerShip::PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
+                    : Entity(texture, pos, speed, startColor, endColor)
 {
     _sprite.setScale(sf::Vector2f(0.3, 0.3));
 }

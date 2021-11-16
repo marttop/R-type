@@ -17,22 +17,22 @@ EntityFactory::~EntityFactory()
 {
 }
 
-std::shared_ptr<IClientEntity> EntityFactory::getEntityByType (const std::string &type, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
+std::shared_ptr<IClientEntity> EntityFactory::getEntityByType (const std::string &type, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
 {
     EntityFactory::factoryF func = _cmd[type];
 
-    return ((this->*func)(pos, startColor, endColor));
+    return ((this->*func)(pos, speed, startColor, endColor));
 }
 
-std::shared_ptr<IClientEntity> EntityFactory::getPlayer(const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
+std::shared_ptr<IClientEntity> EntityFactory::getPlayer(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
 {
-    std::shared_ptr<IClientEntity> entity(new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/ship.png"), pos, startColor, endColor));
+    std::shared_ptr<IClientEntity> entity(new PlayerShip(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/ship.png"), pos, speed, startColor, endColor));
     return (entity);
 }
 
-std::shared_ptr<IClientEntity> EntityFactory::getBullet(const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
+std::shared_ptr<IClientEntity> EntityFactory::getBullet(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
 {
-    std::shared_ptr<IClientEntity> entity(new Bullet(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), pos, startColor, endColor));
+    std::shared_ptr<IClientEntity> entity(new Bullet(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/scroll_arrow_white.png"), pos, speed, startColor, endColor));
     return (entity);
 }
 

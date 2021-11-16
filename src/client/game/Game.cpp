@@ -102,6 +102,7 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
     _playerCount++;
 }
 
+/* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED */
 void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
@@ -117,11 +118,13 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
                         entityCmd[2],
-                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), startColor, endColor)));
+                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), std::atof(entityCmd[7].c_str()), startColor, endColor)));
                 }
                 else if (entityCmd[0] == "UPDATE") {
-                    if (_entityMap.count(entityCmd[2]))
-                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
+                    if (entityCmd[1] != "playerbullet") {
+                        if (_entityMap.count(entityCmd[2]))
+                            _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
+                    }
                 }
                 else if (entityCmd[0] == "DELETE") {
                     _entityMap.erase(entityCmd[2]);
