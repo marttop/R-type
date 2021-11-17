@@ -7,7 +7,7 @@
 
 #include "Entity.hpp"
 
-Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Color &startColor, const sf::Color &endColor)
+Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
 {
     _texture = texture;
     _pos = pos;
@@ -16,6 +16,7 @@ Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const sf::Co
     _clock.restart();
     _startColor = startColor;
     _endColor = endColor;
+    _speed = speed;
 }
 
 Entity::~Entity()

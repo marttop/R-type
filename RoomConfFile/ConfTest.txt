@@ -8,6 +8,6 @@
 #   Path    type    time    numberToSpawn
 #
 # exemple:
-# ./server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
+# ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
 #
-./server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
