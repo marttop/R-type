@@ -108,6 +108,7 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
 void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
+        _lock.lock();
         std::vector<std::string> entityCmd;
         int i = 0;
         for (auto it : cmdUdp) {
@@ -138,6 +139,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
             entityCmd.push_back(it);
             i++;
         }
+        _lock.unlock();
     }
 }
 
