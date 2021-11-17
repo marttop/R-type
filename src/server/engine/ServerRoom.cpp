@@ -213,9 +213,9 @@ std::string ServerRoom::updatePlayers() const
     for (auto itr : _playerList) {
         itr->update();
         ss << createEntityResponse(itr, "UPDATE");
-        // for (auto bullet : itr->getAmmo()) {
-        //     ss << createEntityResponse(bullet, "UPDATE");
-        // }
+        for (auto bullet : itr->getAmmo()) {
+            ss << createEntityResponse(bullet, "UPDATE");
+        }
     }
     return (ss.str());
 }
