@@ -19,7 +19,7 @@
 #include "SEPParsor.hpp"
 #include "PlayerShip.hpp"
 
-#define BUFF_SIZE 5000
+#define BUFF_SIZE 65535
 
 class Game {
     public:
