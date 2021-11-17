@@ -242,7 +242,7 @@ void ServerRoom::updateLoop()
         }
         ss << updatePlayers();
         broadCastUdp("007", ss.str());
-        std::this_thread::sleep_for(std::chrono::milliseconds(22));
+        std::this_thread::sleep_for(std::chrono::milliseconds(17));
         timer++;
     }
 }
