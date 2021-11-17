@@ -130,7 +130,8 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                     // }
                 }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
-                    _entityMap[entityCmd[2]]->setIsAlive(false);
+                    _entityMap.erase(entityCmd[2]);
+                    // _entityMap[entityCmd[2]]->setIsAlive(false);
                 }
                 i = 0;
                 entityCmd.clear();
@@ -193,21 +194,19 @@ void Game::setAlert()
 
 void Game::draw()
 {
-    // if (!_alert.isOpen()) {
-    //     for (auto it : _entityMap) {
-    //         it.second->draw(*_window);
-    //         if (!it.second->isAlive()) {
-    //         }
-    //     }
-    // }
-    auto i = std::begin(_entityMap);
-    while (i != std::end(_entityMap)) {
-        i->second->draw(*_window);
-        if (!i->second->isAlive()) {
-            i = _entityMap.erase(i);
+    if (!_alert.isOpen()) {
+        for (auto it : _entityMap) {
+            it.second->draw(*_window);
         }
-        else
-            ++i;
     }
+    // auto i = std::begin(_entityMap);
+    // while (i != std::end(_entityMap)) {
+    //     i->second->draw(*_window);
+    //     if (!i->second->isAlive()) {
+    //         i = _entityMap.erase(i);
+    //     }
+    //     else
+    //         ++i;
+    // }
     _alert.draw(*_window);
 }
