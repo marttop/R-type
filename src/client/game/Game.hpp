@@ -38,9 +38,9 @@ class Game {
         void event(const sf::Event &event, asio::ip::udp::socket &udpSocket);
         void openAlert();
         void setAlert();
-        void draw();
         void handleRead(const asio::error_code &error);
         std::thread startThread(const asio::error_code &error);
+        void draw();
 
     protected:
     private:
