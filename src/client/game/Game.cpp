@@ -164,8 +164,6 @@ void Game::update()
     openAlert();
     if (!_alert.isOpen()) {
         udpUpdateEntity(cmdUdp);
-        for (auto it : _entityMap)
-            it.second->update();
     }
 }
 
@@ -199,6 +197,7 @@ void Game::draw()
     }*/
     auto i = std::begin(_entityMap);
     while (i != std::end(_entityMap)) {
+        i->second->update();
         i->second->draw(*_window);
         if (!i->second->isAlive()) {
             i = _entityMap.erase(i);
