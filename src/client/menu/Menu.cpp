@@ -33,6 +33,9 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
 
     _tcpBuf = tcpBuf;
     _udpBuf = udpBuf;
+    _inRoom = false;
+
+    _alert.create(sf::Vector2f(_background.getPosition().x, _background.getPosition().y));
 
     _logoTexture = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/menu/r_type_logo.png");
     _logo.setTexture(_logoTexture);
