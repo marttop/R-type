@@ -121,10 +121,10 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
                         _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), std::atof(entityCmd[7].c_str()), startColor, endColor)));
                 }
                 else if (entityCmd[0] == "UPDATE") {
-                    if (entityCmd[1] != "playerbullet") {
+                    // if (entityCmd[1] != "playerbullet") {
                         if (_entityMap.count(entityCmd[2]))
                             _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
-                    }
+                    // }
                 }
                 else if (entityCmd[0] == "DELETE") {
                     _entityMap.erase(entityCmd[2]);
