@@ -21,7 +21,7 @@ int ServerMobSpawnConf::getTimeToSpawn() const
     return _time;
 }
 
-const std::string ServerMobSpawnConf::getTypeEntities() const
+std::string ServerMobSpawnConf::getTypeEntities() const
 {
     return _TypeEnities;
 }

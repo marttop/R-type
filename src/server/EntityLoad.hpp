@@ -24,7 +24,7 @@ class EntityLoad {
 
         bool                        loadEntityWithPath(const std::string &path, const std::string &name);
 
-        std::shared_ptr<IEntity>    createEntityWithName(const std::string &name);
+        std::shared_ptr<IEntity>    createEntityWithName(const std::string name);
         void                        destroyEntityWithName(const std::string &name, std::shared_ptr<IEntity> entity);
 
     protected:

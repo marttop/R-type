@@ -15,14 +15,14 @@ class ServerEntity : public IEntity {
         ServerEntity(const CustomRect &customRect,
                         const std::string &type = "default",
                         const std::string &id = "0",
-                        int health = 1,
-                        int speed = 5);
+                        int speed = 5,
+                        int health = 1);
         ~ServerEntity();
 
         void sendData();
         void update() = 0;
 
-        void setId(const std::string &id);
+        void setId(const std::string id);
 
         bool isAlive() const;
         void addLifeEntity(int lifeAdded);

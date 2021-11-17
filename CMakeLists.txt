@@ -5,6 +5,7 @@ project(rtype)
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
+SET(CMAKE_CXX_FLAGS  "-g3")
 
 include(build/conanbuildinfo.cmake)
 conan_basic_setup(KEEP_RPATHS)

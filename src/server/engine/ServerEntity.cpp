@@ -10,9 +10,9 @@
 ServerEntity::ServerEntity(const CustomRect &rect,
                             const std::string &type,
                             const std::string &id,
-                            int health,
-                            int speed)
-    :   _isAlive(true),  _rect(rect), _type(type), _id(id), _health(health), _speed(speed)
+                            int speed,
+                            int health)
+    :   _isAlive(true),  _rect(rect), _type(type), _id(id), _speed(speed), _health(health)
 {
     _direction = std::make_pair(0, 0);
 }
@@ -40,7 +40,7 @@ std::string ServerEntity::getId() const
     return (_id);
 }
 
-void ServerEntity::setId(const std::string &id)
+void ServerEntity::setId(const std::string id)
 {
     _id = id;
 }

@@ -49,8 +49,28 @@ class ServerRoom {
         bool _debug;
     protected:
     private:
-
+        
+        /**
+         * @brief load all entities write in fileConfPath, need for this room
+         * 
+         * @param fileConfPath path of conf file
+         * @return ** void 
+         */
         void loadRoomEntities(const std::string &fileConfPath);
+
+        /**
+         * @brief creates all mobs from the vector _mobsRoomInfo and check if it's time to created it
+         * 
+         * @return ** void 
+         */
+        void createsEntities();
+
+        /**
+         * @brief update all created mobs
+         * 
+         * @return ** std::string 
+         */
+        std::string updateEntities();
 
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
@@ -59,9 +79,11 @@ class ServerRoom {
         int _id;
         bool _isGameStarted;
         int _portSeed;
+        int _timer;
 
         EntityLoad _loader;
-        std::vector<ServerMobSpawnConf> _mobsRoomInfo;
+        std::vector<ServerMobSpawnConf> _entitiesRoomInfo;
+        std::vector<std::shared_ptr<IEntity>> _entities;
 };
 
 #endif /* !SERVERROOM_HPP_ */

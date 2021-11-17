@@ -11,6 +11,7 @@ EntityFactory::EntityFactory()
 {
     _cmd.emplace("player", &EntityFactory::getPlayer);
     _cmd.emplace("playerbullet", &EntityFactory::getBullet);
+    _cmd.emplace("BidosSlaves", &EntityFactory::getBidosSlaves);
 }
 
 EntityFactory::~EntityFactory()
@@ -36,3 +37,8 @@ std::shared_ptr<IClientEntity> EntityFactory::getBullet(const sf::Vector2f &pos,
     return (entity);
 }
 
+std::shared_ptr<IClientEntity> EntityFactory::getBidosSlaves(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
+{
+    std::shared_ptr<IClientEntity> entity(new BidosSlave(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/BidosSlave.png"), pos, speed, startColor, endColor));
+    return (entity);
+}
