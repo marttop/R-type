@@ -56,6 +56,7 @@ class Window {
         char _udpBuf[1024];
         asio::error_code _tcpError;
         asio::error_code _udpError;
+        std::mutex _lock;
         asio::ip::tcp::endpoint _tcpEndpoint;
         asio::ip::udp::endpoint _udpEndpoint;
 };

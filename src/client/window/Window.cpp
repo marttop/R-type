@@ -85,8 +85,11 @@ void Window::draw()
         _parallax.draw(_window);
     if (_scene == MENU)
         _menu.draw(_window);
-    if (_scene == GAME)
+    if (_scene == GAME) {
+        _lock.lock();
         _game.draw();
+        _lock.unlock();
+    }
     _window.display();
 }
 

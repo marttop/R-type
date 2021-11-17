@@ -58,7 +58,6 @@ class Game {
         asio::streambuf _message;
         sf::RenderWindow *_window;
         asio::ip::udp::socket *_udpSocket;
-        std::mutex _lock;
 };
 
 #endif /* !GAME_HPP_ */
