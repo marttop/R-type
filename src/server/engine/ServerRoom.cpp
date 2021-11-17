@@ -11,6 +11,7 @@ ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool 
                                         : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false), _loader(EntityLoad())
 {
     _debug = debug;
+    _timer = 0;
     loadRoomEntities("RoomConfFile/ConfTest.txt");
 }
 
@@ -30,10 +31,12 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
             if (line[0] == '#') continue;
             std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
 
-            if (!_loader.loadEntityWithPath(parsedTab[0], parsedTab[1]))
+            if (!_loader.loadEntityWithPath(parsedTab[0], parsedTab[1])) {
                 continue;
+            }
 
-            _mobsRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
+            std::cout << "load entity: " << parsedTab[1] << std::endl;
+            _entitiesRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
         }
         myfile.close();
     }
@@ -194,6 +197,40 @@ std::string ServerRoom::createEntityResponse(
     return (ss.str());
 }
 
+void ServerRoom::createsEntities() {
+    static int id = 0;
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+
+    for (auto entity : _entitiesRoomInfo) {
+        if (_timer == entity.getTimeToSpawn()) {
+            std::cout << entity.getNumberOfEntities() << std::endl;
+            for (int i = 0; i < entity.getNumberOfEntities(); i++) {
+                auto createdEntity = _loader.createEntityWithName(entity.getTypeEntities());
+                createdEntity->setId("E" + std::to_string(id));
+                id += 1;
+                _entities.push_back(createdEntity);
+                ss << createEntityResponse(createdEntity, "CREATE");
+            }
+        }
+    }
+
+    broadCastUdp("007", ss.str());
+}
+
+std::string ServerRoom::updateEntities()
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    for (auto entity : _entities) {
+        entity->update();
+        ss << createEntityResponse(entity, "UPDATE");
+    }
+    return (ss.str());
+}
+
 void ServerRoom::createPlayers()
 {
     std::stringstream ss;
@@ -232,17 +269,19 @@ void ServerRoom::updateLoop()
     std::stringstream ss;
     ss.str("");
     ss.clear();
-    int timer = 0;
     while (1) {
         ss.str("");
         ss.clear();
-        if (timer == 7) {
+
+        createsEntities();
+
+        if (_timer % 7 == 0) {
             resetTimers();
-            timer = 0;
         }
         ss << updatePlayers();
+        // ss << updateEntities();
         broadCastUdp("007", ss.str());
         std::this_thread::sleep_for(std::chrono::milliseconds(17));
-        timer++;
+        _timer++;
     }
 }

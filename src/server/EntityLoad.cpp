@@ -63,7 +63,7 @@ bool EntityLoad::loadEntityWithPath(const std::string &path, const std::string &
     return true;
 }
 
-std::shared_ptr<IEntity> EntityLoad::createEntityWithName(const std::string &name)
+std::shared_ptr<IEntity> EntityLoad::createEntityWithName(const std::string name)
 {
     std::shared_ptr<IEntity> entity(creates[name]());
     return entity;

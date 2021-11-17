@@ -38,7 +38,7 @@ public:
      * 
      * @return ** const std::string 
      */
-    const std::string   getTypeEntities() const;
+    std::string   getTypeEntities() const;
 
     /**
      * @brief Get the Number Of Entities object
@@ -49,7 +49,7 @@ public:
 
 protected:
 private:
-    const std::string   &_TypeEnities;
+    const std::string   _TypeEnities;
     int                 _time;
     int                 _numberOfEntities;
 };
