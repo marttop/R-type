@@ -35,7 +35,7 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
 
             _mobsRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
         }
-        myfile.close(); 
+        myfile.close();
     }
 }
 

@@ -15,14 +15,16 @@ Game::~Game()
 {
 }
 
-void Game::create(const sf::RenderWindow &window, char *udpBuf)
+void Game::create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
 {
-    _udpBuf = udpBuf;
+    std::memset(_udpBuf, '\0', 1024);
 
     for (int i = 0; i < 5; i++)
         _inputs[i] = false;
 
-    _alert.create(sf::Vector2f(window.getPosition().x + window.getSize().x / 2, window.getPosition().y + window.getSize().y / 2));
+    _window = &window;
+    _udpSocket = &udpSocket;
+    _alert.create(sf::Vector2f(_window->getPosition().x + _window->getSize().x / 2, _window->getPosition().y + _window->getSize().y / 2));
 
     _playerCount = 0;
 }
@@ -75,12 +77,12 @@ void Game::inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSoc
     }
 }
 
-void Game::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
+void Game::event(const sf::Event &event, asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
         inputManagement(event, udpSocket);
     } else
-        _alert.event(event, window);
+        _alert.event(event, *_window);
 }
 
 void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor)
@@ -103,7 +105,7 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
 }
 
 /* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED */
-void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
+void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
         std::vector<std::string> entityCmd;
@@ -111,9 +113,9 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWin
         for (auto it : cmdUdp) {
             if (it == cmdUdp.front()) continue;
             if (i == 8) {
-                float posY = window.getSize().y - std::atof(entityCmd[4].c_str());
-                sf::Color startColor = sf::Color::White;
-                sf::Color endColor = sf::Color::White;
+                float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
+                sf::Color startColor = sf::Color::Red;
+                sf::Color endColor = sf::Color::Green;
                 selectPlayerColor(entityCmd, startColor, endColor);
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
@@ -150,15 +152,27 @@ void Game::openAlert()
     }
 }
 
-void Game::update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
+void Game::update()
 {
     std::vector<std::string> cmdUdp = SEPParsor::parseCommands(_udpBuf);
     openAlert();
     if (!_alert.isOpen()) {
-        udpUpdateEntity(cmdUdp, window);
+        udpUpdateEntity(cmdUdp);
         for (auto it : _entityMap)
             it.second->update();
     }
+}
+
+void Game::handleRead(const asio::error_code &error)
+{
+    if (std::strlen(_udpBuf) > 0) {
+        update();
+        std::cout << _udpBuf;
+    }
+    std::cout << "Daddy" << std::endl;
+    std::memset(_udpBuf, '\0', 1024);
+    _udpSocket->async_receive(asio::buffer(_udpBuf), std::bind(&Game::handleRead, this,
+                                        std::placeholders::_1));
 }
 
 void Game::setAlert()
@@ -166,12 +180,12 @@ void Game::setAlert()
     _alert.open("Lost connection with the server.", false);
 }
 
-void Game::draw(sf::RenderWindow &window) const
+void Game::draw() const
 {
     if (!_alert.isOpen()) {
         for (auto it : _entityMap) {
-            it.second->draw(window);
+            it.second->draw(*_window);
         }
     }
-    _alert.draw(window);
+    _alert.draw(*_window);
 }
