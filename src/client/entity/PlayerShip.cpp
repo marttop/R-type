@@ -45,13 +45,6 @@ void PlayerShip::updateHp(int hp)
         _hpRect.setFillColor(sf::Color::Red);
 }
 
-void PlayerShip::drawSprite(sf::RenderWindow &window)
-{
-    window.draw(_sprite);
-    window.draw(_barRect);
-    window.draw(_hpRect);
-}
-
 void PlayerShip::update()
 {
     _barRect.setPosition(_pos);
@@ -62,9 +55,12 @@ void PlayerShip::update()
 void PlayerShip::drawParticles(sf::RenderWindow &window)
 {
 }
+
 void PlayerShip::drawSprite(sf::RenderWindow &window)
 {
     glPointSize(7);
     _particleSystem.drawParticles(window);
     window.draw(_sprite);
+    window.draw(_barRect);
+    window.draw(_hpRect);
 }
