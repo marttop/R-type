@@ -39,6 +39,7 @@ class ServerEntity : public IEntity {
         double getSpeed() const;
 
         void setPosition(double x, double y);
+        int getHp() const;
 
     protected:
         bool _isAlive;

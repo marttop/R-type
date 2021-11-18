@@ -7,8 +7,9 @@
 
 #include "Bullet.hpp"
 
-Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
-    : Entity(texture, pos, speed, startColor, endColor)
+Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed,
+                const sf::Color &startColor, const sf::Color &endColor, int health)
+    : Entity(texture, pos, speed, startColor, endColor, health)
 {
     _sprite.setScale(sf::Vector2f(0.6, 0.6));
     _sprite.setRotation(90);

@@ -106,7 +106,7 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
     _playerCount++;
 }
 
-/* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED */
+/* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED, 8 == HEALTH */
 void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
@@ -114,7 +114,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
         int i = 0;
         for (auto it : cmdUdp) {
             if (it == cmdUdp.front()) continue;
-            if (i == 8) {
+            if (i == 9) {
                 float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
                 sf::Color startColor = sf::Color::White;
                 sf::Color endColor = sf::Color(255, 255, 255, 0);
@@ -122,7 +122,11 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
                         entityCmd[2],
-                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), std::atof(entityCmd[7].c_str()), startColor, endColor)));
+                        _factory.getEntityByType(entityCmd[1],
+                                                    sf::Vector2f(std::atof(entityCmd[3].c_str()), posY),
+                                                    std::atof(entityCmd[7].c_str()), startColor,
+                                                    endColor,
+                                                    std::atoi(entityCmd[8].c_str()))));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0)
@@ -170,7 +174,7 @@ void Game::handleRead(const asio::error_code &error)
     while (1) {
         if (std::strlen(_udpBuf) > 0) {
             update();
-            //std::cout << _udpBuf;
+            std::cout << _udpBuf;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
         size_t len = 0;

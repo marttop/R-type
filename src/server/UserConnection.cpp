@@ -55,20 +55,6 @@ void UserConnection::handleWrite(const asio::error_code &error, size_t size)
 
 }
 
-void UserConnection::checkCode(std::string &data)
-{
-    int len = data.length();
-    char local_data[len + 1];
-    char *token = NULL;
-    std::strcpy(local_data, data.c_str());
-    token = std::strtok(local_data, " \n");
-    std::cout << data << std::endl;
-    while (token != NULL) {
-        token = std::strtok(NULL, " \n");
-        std::cout << token << std::endl;
-    }
-}
-
 void UserConnection::sendError(int code, const std::string &msg)
 {
     std::stringstream ss;

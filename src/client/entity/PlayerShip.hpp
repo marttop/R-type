@@ -12,15 +12,23 @@
 
 class PlayerShip : public Entity {
     public:
-        PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
+        PlayerShip(const sf::Texture &texture,
+                    const sf::Vector2f &pos,
+                    const float &speed,
+                    const sf::Color &startColor,
+                    const sf::Color &endColor,
+                    int health);
         ~PlayerShip();
 
         void update() override;
         void drawSprite(sf::RenderWindow &window) override;
         void drawParticles(sf::RenderWindow &window) override;
+        void updateHp(int hp) override;
 
     protected:
     private:
+        sf::RectangleShape _hpRect;
+        sf::RectangleShape _barRect;
 };
 
 #endif /* !PLAYERSHIP_HPP_ */

@@ -17,7 +17,12 @@
 
 class Entity : public IClientEntity {
     public:
-        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed = 0, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
+        Entity(const sf::Texture &texture,
+                const sf::Vector2f &pos,
+                const float &speed = 0,
+                const sf::Color &startColor = sf::Color::White,
+                const sf::Color &endColor = sf::Color::White,
+                int health = 10);
         ~Entity();
 
         float getElapsedTime() const;
@@ -35,6 +40,7 @@ class Entity : public IClientEntity {
         void drawParticles(sf::RenderWindow &window);
         void drawSprite(sf::RenderWindow &window);
         void update();
+        void setHealth(int health);
 
     protected:
         sf::Texture _texture;
@@ -45,6 +51,8 @@ class Entity : public IClientEntity {
         ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;
+        int _health;
+        int _maxHealth;
         sf::Sound _sound1;
         sf::SoundBuffer _soundBuf1;
         bool _deathAnimation;

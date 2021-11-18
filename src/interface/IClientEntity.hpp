@@ -22,6 +22,7 @@ class IClientEntity {
         virtual void setPos(const sf::Vector2f &pos) = 0;
         virtual void setRotation(const float &angle) = 0;
         virtual void setColor(const sf::Color &color) = 0;
+        virtual void setHealth(int health) = 0;
 
         virtual void restartClock() = 0;
         virtual void drawSprite(sf::RenderWindow &window) = 0;
