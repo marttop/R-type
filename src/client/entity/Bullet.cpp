@@ -12,7 +12,6 @@ Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float 
 {
     _sprite.setScale(sf::Vector2f(0.6, 0.6));
     _sprite.setRotation(90);
-    _moveClk.restart();
 }
 
 Bullet::~Bullet()
@@ -26,20 +25,24 @@ void Bullet::update()
         _deathClock.restart();
     }
     if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() < 1000)
-        _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(255, 255, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), sf::Color(255, 0, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), 20, 1);
+        _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x + 50, _pos.y + _sprite.getGlobalBounds().height / 2 - 20}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(255, 255, 255, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), sf::Color(255, 255, 255, 150 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), 35, 1);
     else if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() >= 1000)
         _deathFinish = true;
     else
         _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x - 35, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x - 10, _pos.y + _sprite.getGlobalBounds().height / 2}, _startColor, _endColor, 15, 1);
 }
 
-void Bullet::draw(sf::RenderWindow &window)
+void Bullet::drawSprite(sf::RenderWindow &window)
+{
+    if (!_deathAnimation)
+        window.draw(_sprite);
+}
+
+void Bullet::drawParticles(sf::RenderWindow &window)
 {
     if (_deathAnimation)
         glPointSize(5);
     else
         glPointSize(3.5);
     _particleSystem.drawParticles(window);
-    if (!_deathAnimation)
-        window.draw(_sprite);
 }

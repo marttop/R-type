@@ -15,12 +15,12 @@ class Bullet : public Entity {
         Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
         ~Bullet();
 
-        void update();
-        void draw(sf::RenderWindow &window) override;
+        void update() override;
+        void drawSprite(sf::RenderWindow &window) override;
+        void drawParticles(sf::RenderWindow &window) override;
 
     protected:
     private:
-        sf::Clock _moveClk;
 };
 
 #endif /* !BULLET_HPP_ */

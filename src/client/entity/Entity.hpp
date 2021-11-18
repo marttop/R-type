@@ -31,7 +31,8 @@ class Entity : public IClientEntity {
         bool isAlive() const;
         void setIsAlive(bool isAlive);
         bool isDeathFinish() const;
-        void draw(sf::RenderWindow &window);
+        void drawParticles(sf::RenderWindow &window);
+        void drawSprite(sf::RenderWindow &window);
         void update();
 
     protected:

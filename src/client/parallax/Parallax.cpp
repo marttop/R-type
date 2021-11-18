@@ -186,10 +186,10 @@ void Parallax::draw(sf::RenderWindow &window) const
 {
     for (auto iter : _layersVec) {
         if (iter.second.first.first->isActive() == true) {
-            iter.second.first.first->draw(window);
-            iter.second.first.second->draw(window);
-            iter.second.second.first->draw(window);
-            iter.second.second.second->draw(window);
+            iter.second.first.first->drawSprite(window);
+            iter.second.first.second->drawSprite(window);
+            iter.second.second.first->drawSprite(window);
+            iter.second.second.second->drawSprite(window);
         }
     }
 }

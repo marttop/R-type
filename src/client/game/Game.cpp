@@ -190,11 +190,16 @@ void Game::draw()
     auto i = std::begin(_entityMap);
     while (i != std::end(_entityMap)) {
         i->second->update();
-        i->second->draw(*_window);
+        i->second->drawSprite(*_window);
         if (i->second->isDeathFinish())
             i = _entityMap.erase(i);
         else
             ++i;
+    }
+    i = std::begin(_entityMap);
+    while (i != std::end(_entityMap)) {
+        i->second->drawParticles(*_window);
+        ++i;
     }
     _alert.draw(*_window);
 }

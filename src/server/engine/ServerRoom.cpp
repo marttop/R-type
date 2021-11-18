@@ -181,7 +181,6 @@ std::string ServerRoom::createEntityResponse(
     ss.clear();
     ss << " " + action + " ";
     ss << obj->getType();
-    std::cout << "UPDATE TYPE=" << obj->getType() << std::endl;
     ss << " ";
     ss << obj->getId();
     ss << " ";
@@ -212,7 +211,6 @@ void ServerRoom::createsEntities() {
                 createdEntity->setId("E" + std::to_string(id));
                 id += 1;
                 _entities.push_back(createdEntity);
-                std::cout << "l'entity de creation=" << createdEntity->getId() << std::endl;
                 ss << createEntityResponse(createdEntity, "CREATE");
             }
         }
@@ -236,7 +234,6 @@ void ServerRoom::deleteDeadEntities()
 {
     for (auto it = _entities.begin(); it != _entities.end();) {
         if (it->get()->isAlive() == false) {
-            std::cout << "delereDeadada" << std::endl;
             _entities.erase(it);
         } else {
             ++it;
