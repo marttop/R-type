@@ -38,7 +38,7 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
             std::cout << "load entity: " << parsedTab[1] << std::endl;
             _entitiesRoomInfo.push_back(ServerMobSpawnConf(parsedTab[1], std::atoi(parsedTab[2].c_str()), std::atoi(parsedTab[3].c_str())));
         }
-        myfile.close();
+        myfile.close(); 
     }
 }
 
@@ -215,8 +215,8 @@ void ServerRoom::createsEntities() {
             }
         }
     }
-
-    broadCastUdp("007", ss.str());
+    if (ss.str() != "")
+        broadCastUdp("007", ss.str());
 }
 
 std::string ServerRoom::updateEntities()
@@ -250,9 +250,9 @@ std::string ServerRoom::updatePlayers() const
     for (auto itr : _playerList) {
         itr->update();
         ss << createEntityResponse(itr, "UPDATE");
-        for (auto bullet : itr->getAmmo()) {
-            ss << createEntityResponse(bullet, "UPDATE");
-        }
+        // for (auto bullet : itr->getAmmo()) {
+        //     ss << createEntityResponse(bullet, "UPDATE");
+        // }
     }
     return (ss.str());
 }

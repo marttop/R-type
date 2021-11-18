@@ -15,7 +15,7 @@ class ServerBullet : public ServerEntity {
         ServerBullet(const CustomRect &customRect,
                         const std::string &type,
                         const std::string &id,
-                        int health = -1,
+                        int health = -5,
                         int speed = 30);
         ~ServerBullet();
 

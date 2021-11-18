@@ -19,7 +19,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	g++ -o $(NAME) $(OBJ) -shared $(CXXFLAGS)
-	g++ -o a.out  $(OBJ) main.cpp -I../../engine/ -I../../../interface -I../../ -ldl -g3
 	rm -f $(OBJ)
 
 clean:

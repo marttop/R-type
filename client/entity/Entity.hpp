@@ -36,7 +36,6 @@ class Entity : public IClientEntity {
         sf::Sprite _sprite;
         sf::Vector2f _pos;
         sf::Clock _clock;
-        sf::Clock _animationClock;
         ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;

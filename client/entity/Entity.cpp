@@ -14,7 +14,6 @@ Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float 
     _sprite.setTexture(_texture);
     _sprite.setPosition(_pos);
     _clock.restart();
-    _animationClock.restart();
     _startColor = startColor;
     _endColor = endColor;
     _speed = speed;

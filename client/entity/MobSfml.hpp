@@ -1,23 +1,22 @@
 /*
 ** EPITECH PROJECT, 2021
-** G-JAM-001-NCE-0-2-jam-marton.szuts
+** Untitled (Workspace)
 ** File description:
-** Entity
+** MobSfml
 */
 
-#ifndef ENTITY_HPP_
-#define ENTITY_HPP_
+#ifndef MOBSFML_HPP_
+#define MOBSFML_HPP_
 
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
-#include "IClientEntity.hpp"
-#include "Particles.hpp"
+#include "IEntity.hpp"
 
-class Entity : public IClientEntity {
-    public:
-        Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed = 0, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
-        ~Entity();
+class MobSfml {
+public:
+        MobSfml(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed = 0, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
+        ~MobSfml();
 
         float getElapsedTime() const;
         sf::Vector2f getPos() const;
@@ -36,8 +35,6 @@ class Entity : public IClientEntity {
         sf::Sprite _sprite;
         sf::Vector2f _pos;
         sf::Clock _clock;
-        sf::Clock _animationClock;
-        ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;
         float _speed;
@@ -45,4 +42,4 @@ class Entity : public IClientEntity {
     private:
 };
 
-#endif /* !ENTITY_HPP_ */
+#endif /* !MOBSFML_HPP_ */

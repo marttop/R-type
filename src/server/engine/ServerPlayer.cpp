@@ -58,6 +58,7 @@ void ServerPlayer::shoot()
         ss.str("");
         ss.clear();
         ss << _roomRef->createEntityResponse(sp, "CREATE");
+        std::cout << ss.str() << std::endl;
         _roomRef->broadCastUdp("007", ss.str());
         _canShoot = false;
         _ammo.push_back(sp);

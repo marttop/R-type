@@ -30,9 +30,11 @@ extern "C" IEntity *allocator()
 // #endif
 
 BidosSlaves::BidosSlaves()
-    : ServerEntity(CustomRect(20, 20))
+    : ServerEntity(CustomRect(205 * 5 / 12, 18 * 5))
 {
-    setPosition(1800, std::rand() % 900 + 100);
+    int x = std::rand() % 200 + 2000;
+    int y = std::rand() % 900 + 100;
+    setPosition(x, y);
     _speed = -3;
     _type = "BidosSlaves";
 }

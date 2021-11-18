@@ -9,5 +9,9 @@
 #
 # exemple:
 # ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
-#
 ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 10
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 30 10
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 90 10
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 120 10
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 2000 1
+#

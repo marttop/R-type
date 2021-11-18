@@ -37,6 +37,7 @@ class Window {
         void readTcp();
         void readUdp();
         void switchScene();
+        void handleRead(const asio::error_code &error);
 
         sf::RenderWindow _window;
         sf::Event _event;
@@ -45,6 +46,7 @@ class Window {
         Game _game;
         Scene _scene;
         bool _lostConnection;
+        bool _gameStarted;
 
         asio::io_context _io_context;
         asio::ip::tcp::resolver *_resolver;

@@ -21,7 +21,7 @@ Bullet::~Bullet()
 
 void Bullet::update()
 {
-    //if (_moveClk.getElapsedTime().asMilliseconds() >= 16) {
+    //if (_moveClk.getElapsedTime().asMilliseconds() >= 22) {
         _sprite.move(sf::Vector2f(_speed, 0));
         _pos = _sprite.getPosition();
         _moveClk.restart();

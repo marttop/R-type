@@ -8,7 +8,7 @@
 #include "ServerBullet.hpp"
 
 ServerBullet::ServerBullet(const CustomRect &customRect, const std::string &type,
-                        const std::string &id, int health, int speed) : ServerEntity(customRect, type, id, health, speed)
+                        const std::string &id, int health, int speed) : ServerEntity(customRect, type, id, speed, health)
 {
 }
 
