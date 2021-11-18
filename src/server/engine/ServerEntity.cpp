@@ -30,6 +30,11 @@ bool ServerEntity::isAlive() const
     return (_isAlive);
 }
 
+void ServerEntity::setAlive(bool life)
+{
+    _isAlive = life;
+}
+
 void ServerEntity::addLifeEntity(int lifeAdded)
 {
     _health += lifeAdded;

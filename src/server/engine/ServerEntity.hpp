@@ -25,6 +25,7 @@ class ServerEntity : public IEntity {
         void setId(const std::string id);
 
         bool isAlive() const;
+        void setAlive(bool life);
         void addLifeEntity(int lifeAdded);
 
         std::string getId() const;

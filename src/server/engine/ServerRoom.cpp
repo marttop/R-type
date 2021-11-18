@@ -181,6 +181,7 @@ std::string ServerRoom::createEntityResponse(
     ss.clear();
     ss << " " + action + " ";
     ss << obj->getType();
+    std::cout << "UPDATE TYPE=" << obj->getType() << std::endl;
     ss << " ";
     ss << obj->getId();
     ss << " ";
@@ -211,6 +212,7 @@ void ServerRoom::createsEntities() {
                 createdEntity->setId("E" + std::to_string(id));
                 id += 1;
                 _entities.push_back(createdEntity);
+                std::cout << "l'entity de creation=" << createdEntity->getId() << std::endl;
                 ss << createEntityResponse(createdEntity, "CREATE");
             }
         }
@@ -230,6 +232,18 @@ std::vector<std::shared_ptr<IEntity>>::iterator ServerRoom::findIteratorWithId(s
     return it;
 }
 
+void ServerRoom::deleteDeadEntities()
+{
+    for (auto it = _entities.begin(); it != _entities.end();) {
+        if (it->get()->isAlive() == false) {
+            std::cout << "delereDeadada" << std::endl;
+            _entities.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
 std::string ServerRoom::updateEntities()
 {
     std::stringstream ss;
@@ -238,6 +252,8 @@ std::string ServerRoom::updateEntities()
     std::string tmp;
 
     bool entityDead = false;
+
+    deleteDeadEntities();
 
     for (auto entity : _entities) {
         entity->update();
@@ -248,18 +264,15 @@ std::string ServerRoom::updateEntities()
                     ss << createEntityResponse(entity, "DELETE");
                     ss << createEntityResponse(bullet, "DELETE");
 
-                    // auto bulletIt = findIteratorWithId(player->getAmmo(), bullet->getId());
-                    // player->getAmmo().erase(bulletIt);
+                    bullet->setAlive(false);
 
-                    // auto entitiIt = findIteratorWithId(_entities, entity->getId());
-                    // _entities.erase(entitiIt);
+                    entity->setAlive(false);
 
                     entityDead = true;
                     break;
                 }
             }
             if (entityDead) {
-                entityDead = false;
                 break;
             }
         }

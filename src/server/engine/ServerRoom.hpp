@@ -81,6 +81,8 @@ class ServerRoom {
          */
         std::vector<std::shared_ptr<IEntity>>::iterator findIteratorWithId(std::vector<std::shared_ptr<IEntity>> list, const std::string &id) const;
 
+        void deleteDeadEntities();
+
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
         asio::ip::udp::endpoint remote_endpoint_;
