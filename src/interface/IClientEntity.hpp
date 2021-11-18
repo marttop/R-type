@@ -24,7 +24,8 @@ class IClientEntity {
         virtual void setColor(const sf::Color &color) = 0;
 
         virtual void restartClock() = 0;
-        virtual void draw(sf::RenderWindow &window) = 0;
+        virtual void drawSprite(sf::RenderWindow &window) = 0;
+        virtual void drawParticles(sf::RenderWindow &window) = 0;
         virtual void update() = 0;
         virtual bool isAlive() const = 0;
         virtual bool isDeathFinish() const = 0;

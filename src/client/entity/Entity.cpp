@@ -85,9 +85,13 @@ void Entity::setRotation(const float &angle)
     _sprite.rotate(angle);
 }
 
-void Entity::draw(sf::RenderWindow &window)
+void Entity::drawSprite(sf::RenderWindow &window)
 {
     window.draw(_sprite);
+}
+
+void Entity::drawParticles(sf::RenderWindow &window)
+{
     glPointSize(7);
     _particleSystem.drawParticles(window);
 }

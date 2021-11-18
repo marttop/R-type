@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Audio.hpp>
 
 #include "IClientEntity.hpp"
 #include "Particles.hpp"
@@ -31,7 +32,8 @@ class Entity : public IClientEntity {
         bool isAlive() const;
         void setIsAlive(bool isAlive);
         bool isDeathFinish() const;
-        void draw(sf::RenderWindow &window);
+        void drawParticles(sf::RenderWindow &window);
+        void drawSprite(sf::RenderWindow &window);
         void update();
 
     protected:
@@ -43,6 +45,8 @@ class Entity : public IClientEntity {
         ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;
+        sf::Sound _sound1;
+        sf::SoundBuffer _soundBuf1;
         bool _deathAnimation;
         bool _deathFinish;
         float _speed;

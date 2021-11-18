@@ -21,6 +21,15 @@ BidosSlave::~BidosSlave()
 
 void BidosSlave::update()
 {
+    if (!_isAlive && !_deathAnimation) {
+        _deathAnimation = true;
+        _deathClock.restart();
+    }
+    if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() < 1500)
+        _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(255, 255, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), sf::Color(255, 0, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), 50, 1);
+    else if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() >= 1500)
+        _deathFinish = true;
+
     if (_animationClock.getElapsedTime().asMilliseconds() > 50) {
         _animationClock.restart();
         if (_sprite.getTextureRect().left >= _sprite.getTextureRect().width * 11) {
@@ -28,5 +37,19 @@ void BidosSlave::update()
         } else {
             _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getTextureRect().left + _sprite.getTextureRect().width, 0), sf::Vector2i(_sprite.getTextureRect().width, _sprite.getTextureRect().height)));
         }
+    }
+}
+
+void BidosSlave::drawSprite(sf::RenderWindow &window)
+{
+    if (!_deathAnimation)
+        window.draw(_sprite);
+}
+
+void BidosSlave::drawParticles(sf::RenderWindow &window)
+{
+    if (_deathAnimation) {
+        glPointSize(5);
+        _particleSystem.drawParticles(window);
     }
 }
