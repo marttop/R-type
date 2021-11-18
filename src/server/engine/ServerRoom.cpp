@@ -8,7 +8,7 @@
 #include "ServerRoom.hpp"
 
 ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug)
-                                        : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false), _loader(EntityLoad())
+                                        : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false), _loader(new EntityLoad())
 {
     _debug = debug;
     _timer = 0;
@@ -31,7 +31,7 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
             if (line[0] == '#') continue;
             std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
 
-            if (!_loader.loadEntityWithPath(parsedTab[0], parsedTab[1])) {
+            if (!_loader->loadEntityWithPath(parsedTab[0], parsedTab[1])) {
                 continue;
             }
 
@@ -209,7 +209,7 @@ void ServerRoom::createsEntities()
         if (_timer == entity.getTimeToSpawn()) {
             std::cout << entity.getNumberOfEntities() << std::endl;
             for (int i = 0; i < entity.getNumberOfEntities(); i++) {
-                auto createdEntity = _loader.createEntityWithName(entity.getTypeEntities());
+                auto createdEntity = _loader->createEntityWithName(entity.getTypeEntities());
                 createdEntity->setId("E" + std::to_string(id));
                 id += 1;
                 _entities.push_back(createdEntity);

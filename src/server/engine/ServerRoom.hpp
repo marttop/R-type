@@ -92,7 +92,7 @@ class ServerRoom {
         int _portSeed;
         int _timer;
 
-        EntityLoad _loader;
+        EntityLoad *_loader;
         std::vector<ServerMobSpawnConf> _entitiesRoomInfo;
         std::vector<std::shared_ptr<IEntity>> _entities;
 };

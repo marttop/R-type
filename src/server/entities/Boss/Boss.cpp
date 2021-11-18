@@ -30,10 +30,10 @@ extern "C" IEntity *allocator()
 // #endif
 
 Boss::Boss()
-    : ServerEntity(CustomRect(205 * 4 / 12, 18 * 4))
+    : ServerEntity(CustomRect(512 * 4 / 8, 132 * 4))
 {
     int x = std::rand() % 200 + 2000;
-    int y = std::rand() % 900 + 100;
+    int y = 400;
     setPosition(x, y);
     _speed = -3;
     _type = "Boss";
