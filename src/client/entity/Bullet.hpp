@@ -9,6 +9,7 @@
 #define BULLET_HPP_
 
 #include "Entity.hpp"
+#include "AssetManager.hpp"
 
 class Bullet : public Entity {
     public:

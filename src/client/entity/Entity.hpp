@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Audio.hpp>
 
 #include "IClientEntity.hpp"
 #include "Particles.hpp"
@@ -52,6 +53,8 @@ class Entity : public IClientEntity {
         sf::Color _endColor;
         int _health;
         int _maxHealth;
+        sf::Sound _sound1;
+        sf::SoundBuffer _soundBuf1;
         bool _deathAnimation;
         bool _deathFinish;
         float _speed;

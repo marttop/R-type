@@ -129,9 +129,8 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                                                     30)));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
-                else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
+                else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0)
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
-                }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0)
                     _entityMap[entityCmd[2]]->setIsAlive(false);
                 i = 0;

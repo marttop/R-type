@@ -13,6 +13,9 @@ Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float 
 {
     _sprite.setScale(sf::Vector2f(0.6, 0.6));
     _sprite.setRotation(90);
+    _soundBuf1 = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/laser_sound.ogg");
+    _sound1.setBuffer(_soundBuf1);
+    _sound1.play();
 }
 
 Bullet::~Bullet()

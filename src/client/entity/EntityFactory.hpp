@@ -12,6 +12,7 @@
 #include "AssetManager.hpp"
 #include "Bullet.hpp"
 #include "BidosSlave.hpp"
+#include "BossC.hpp"
 
 #include <memory>
 
@@ -54,8 +55,9 @@ class EntityFactory {
                                                                             const sf::Color &endColor,
                                                                             int health);
 
-        std::map<std::string, factoryF> _cmd;
 
+        std::shared_ptr<IClientEntity> getBoss(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
+        std::map<std::string, factoryF> _cmd;
 };
 
 #endif /* !ENTITYFACTORY_HPP_ */
