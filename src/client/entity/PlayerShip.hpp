@@ -22,6 +22,7 @@ class PlayerShip : public Entity {
 
         void update();
         void updateHp(int hp);
+        void drawSprite(sf::RenderWindow &window) override;
 
     protected:
     private:

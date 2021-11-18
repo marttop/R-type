@@ -126,7 +126,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                                                     sf::Vector2f(std::atof(entityCmd[3].c_str()), posY),
                                                     std::atof(entityCmd[7].c_str()), startColor,
                                                     endColor,
-                                                    std::stoi(entityCmd[8]))));
+                                                    30)));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
@@ -175,7 +175,7 @@ void Game::handleRead(const asio::error_code &error)
     while (1) {
         if (std::strlen(_udpBuf) > 0) {
             update();
-            //std::cout << _udpBuf;
+            std::cout << _udpBuf;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
         size_t len = 0;
