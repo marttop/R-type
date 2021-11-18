@@ -187,11 +187,6 @@ void Game::setAlert()
 
 void Game::draw()
 {
-    /*if (!_alert.isOpen()) {
-        for (auto it : _entityMap) {
-            it.second->draw(*_window);
-        }
-    }*/
     auto i = std::begin(_entityMap);
     while (i != std::end(_entityMap)) {
         i->second->update();
