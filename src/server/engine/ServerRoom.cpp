@@ -199,12 +199,12 @@ std::string ServerRoom::createEntityResponse(
     return (ss.str());
 }
 
-void ServerRoom::createsEntities() {
+void ServerRoom::createsEntities()
+{
     static int id = 0;
     std::stringstream ss;
     ss.str("");
     ss.clear();
-
     for (auto entity : _entitiesRoomInfo) {
         if (_timer == entity.getTimeToSpawn()) {
             std::cout << entity.getNumberOfEntities() << std::endl;

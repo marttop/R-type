@@ -114,7 +114,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
         int i = 0;
         for (auto it : cmdUdp) {
             if (it == cmdUdp.front()) continue;
-            if (i == 8) {
+            if (i == 9) {
                 float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
                 sf::Color startColor = sf::Color::White;
                 sf::Color endColor = sf::Color(255, 255, 255, 0);
@@ -126,7 +126,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                                                     sf::Vector2f(std::atof(entityCmd[3].c_str()), posY),
                                                     std::atof(entityCmd[7].c_str()), startColor,
                                                     endColor,
-                                                    30)));
+                                                    std::atoi(entityCmd[8].c_str()))));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0)
