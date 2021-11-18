@@ -22,7 +22,7 @@ std::vector<std::string> SEPParsor::parseCommands(std::string command)
     std::string word;
     int lenght = 0;
     if (command == "") {
-        arr.push_back("ass");
+        arr.push_back("error");
         return arr;
     }
     while ((pos = command.find(" ")) != std::string::npos) {
