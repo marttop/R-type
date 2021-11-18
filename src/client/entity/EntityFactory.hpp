@@ -20,16 +20,39 @@ class EntityFactory {
         EntityFactory();
         ~EntityFactory();
 
-        std::shared_ptr<IClientEntity> getEntityByType(const std::string &type, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor = sf::Color::White, const sf::Color &endColor = sf::Color::White);
+        std::shared_ptr<IClientEntity> getEntityByType(const std::string &type,
+                                                        const sf::Vector2f &pos,
+                                                        const float &speed,
+                                                        const sf::Color &startColor = sf::Color::White,
+                                                        const sf::Color &endColor = sf::Color::White,
+                                                        int health = 10);
 
 
     protected:
     private:
-        std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
-        std::shared_ptr<IClientEntity> getBullet(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
-        std::shared_ptr<IClientEntity> getBidosSlaves(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
+        std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
 
-        typedef std::shared_ptr<IClientEntity> (EntityFactory::*factoryF) (const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
+        std::shared_ptr<IClientEntity> getBullet(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        std::shared_ptr<IClientEntity> getBidosSlaves(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        typedef std::shared_ptr<IClientEntity> (EntityFactory::*factoryF) (const sf::Vector2f &pos,
+                                                                            const float &speed,
+                                                                            const sf::Color &startColor,
+                                                                            const sf::Color &endColor,
+                                                                            int health);
 
         std::map<std::string, factoryF> _cmd;
 

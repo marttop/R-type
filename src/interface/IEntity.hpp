@@ -37,6 +37,7 @@ class IEntity {
         virtual std::pair<double, double> getPosition() const = 0;
         virtual void setPosition(double x, double y) = 0;
         virtual double getSpeed() const = 0;
+        virtual int getHp() const = 0;
 
     protected:
     private:

@@ -12,7 +12,12 @@
 
 class Bullet : public Entity {
     public:
-        Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
+        Bullet(const sf::Texture &texture,
+                const sf::Vector2f &pos,
+                const float &speed,
+                const sf::Color &startColor,
+                const sf::Color &endColor,
+                int health = -1);
         ~Bullet();
 
         void update();

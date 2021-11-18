@@ -8,8 +8,8 @@
 #include "BidosSlave.hpp"
 #include <iostream>
 
-BidosSlave::BidosSlave(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
-    : Entity(texture, pos, speed, startColor, endColor)
+BidosSlave::BidosSlave(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor, int health)
+    : Entity(texture, pos, speed, startColor, endColor, health)
 {
     _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getLocalBounds().width / 12 * (std::rand() % 11 + 1), 0), sf::Vector2i(_sprite.getLocalBounds().width / 12, _sprite.getLocalBounds().height)));
     _sprite.setScale(sf::Vector2f(4, 4));

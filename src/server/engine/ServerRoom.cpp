@@ -193,6 +193,8 @@ std::string ServerRoom::createEntityResponse(
     ss << obj->getDirection().second;
     ss << " ";
     ss << obj->getSpeed();
+    ss << " ";
+    ss << obj->getHp();
     ss << " 00 ";
     return (ss.str());
 }

@@ -7,10 +7,13 @@
 
 #include "Entity.hpp"
 
-Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
+Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed,
+                            const sf::Color &startColor, const sf::Color &endColor, int health)
 {
     _texture = texture;
     _pos = pos;
+    _health = health;
+    _maxHealth = health;
     _sprite.setTexture(_texture);
     _sprite.setPosition(_pos);
     _clock.restart();
@@ -59,6 +62,11 @@ sf::Vector2f Entity::getPos() const
 sf::Vector2f Entity::getSize() const
 {
     return (sf::Vector2f{getGlobalBounds().width, getGlobalBounds().height});
+}
+
+void Entity::setHealth(int health)
+{
+    _health = health;
 }
 
 void Entity::setPos(const sf::Vector2f &pos)

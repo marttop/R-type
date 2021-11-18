@@ -25,6 +25,11 @@ void ServerEntity::sendData()
 {
 }
 
+int ServerEntity::getHp() const
+{
+    return (_health);
+}
+
 bool ServerEntity::isAlive() const
 {
     return (_isAlive);

@@ -106,7 +106,7 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
     _playerCount++;
 }
 
-/* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED */
+/* 0 == ACTION, 1 == TYPE, 2 == ID, 3 == POSX, 4 == POSY, 5 == DIRX, 6 == DIRY, 7 == SPEED, 8 == HEALTH */
 void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() > 0 && cmdUdp[0] == "007") {
@@ -122,12 +122,15 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
                         entityCmd[2],
-                        _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), std::atof(entityCmd[7].c_str()), startColor, endColor)));
+                        _factory.getEntityByType(entityCmd[1],
+                                                    sf::Vector2f(std::atof(entityCmd[3].c_str()), posY),
+                                                    std::atof(entityCmd[7].c_str()), startColor,
+                                                    endColor,
+                                                    std::stoi(entityCmd[8]))));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
-                        if (_entityMap.count(entityCmd[2]))
-                            _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
+                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0)
                     _entityMap[entityCmd[2]]->setIsAlive(false);
