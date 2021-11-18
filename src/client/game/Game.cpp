@@ -26,6 +26,8 @@ void Game::create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
     _udpSocket = &udpSocket;
     _alert.create(sf::Vector2f(_window->getPosition().x + _window->getSize().x / 2, _window->getPosition().y + _window->getSize().y / 2));
 
+    _gameClock.restart();
+
     _playerCount = 0;
 }
 
@@ -131,6 +133,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
                     //_entityMap.erase(entityCmd[2]);
                     _entityMap[entityCmd[2]]->setIsAlive(false);
+                    std::cout << _entityMap[entityCmd[2]]->getPos().x << std::endl;
                 }
                 i = 0;
                 entityCmd.clear();
