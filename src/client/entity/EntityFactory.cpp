@@ -13,7 +13,7 @@ EntityFactory::EntityFactory()
     _cmd.emplace("player", &EntityFactory::getPlayer);
     _cmd.emplace("playerbullet", &EntityFactory::getBullet);
     _cmd.emplace("BidosSlaves", &EntityFactory::getBidosSlaves);
-    _cmd.emplace("Boss", &EntityFactory::getBoss);
+    // _cmd.emplace("Boss", &EntityFactory::getBoss);
 }
 
 EntityFactory::~EntityFactory()
@@ -69,9 +69,9 @@ std::shared_ptr<IClientEntity> EntityFactory::getBidosSlaves(const sf::Vector2f 
     return (entity);
 }
 
-std::shared_ptr<IClientEntity> EntityFactory::getBoss(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
-{
-    std::cout << "SPAW BOSS" << std::endl;
-    std::shared_ptr<IClientEntity> entity(new BossC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/Boss.png"), pos, speed, startColor, endColor));
-    return (entity);
-}
+// std::shared_ptr<IClientEntity> EntityFactory::getBoss(const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor)
+// {
+//     std::cout << "SPAW BOSS" << std::endl;
+//     std::shared_ptr<IClientEntity> entity(new BossC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/Boss.png"), pos, speed, startColor, endColor));
+//     return (entity);
+// }
