@@ -8,8 +8,9 @@
 #include "ServerRoom.hpp"
 
 ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug)
-                                        : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false), _loader(new EntityLoad())
+                                        : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false)
 {
+    _loader = new EntityLoad();
     _debug = debug;
     _timer = 0;
     loadRoomEntities("RoomConfFile/ConfTest.txt");

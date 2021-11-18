@@ -33,9 +33,9 @@ Boss::Boss()
     : ServerEntity(CustomRect(512 * 4 / 8, 132 * 4))
 {
     int x = std::rand() % 200 + 2000;
-    int y = 400;
+    int y = 300;
     setPosition(x, y);
-    _speed = -3;
+    _speed = -10;
     _type = "Boss";
 }
 
@@ -45,5 +45,12 @@ Boss::~Boss()
 
 void Boss::update()
 {
-    setPosition(getPosition().first + _speed, getPosition().second);
+    if (getPosition().first > 1700) {
+        setPosition(getPosition().first + _speed, getPosition().second);
+    } else {
+        if (getPosition().second > 500 || getPosition().second < 50) {
+            _speed *= -1;
+        }
+        setPosition(getPosition().first, getPosition().second + _speed);
+    }
 }

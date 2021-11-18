@@ -21,6 +21,10 @@ BossC::~BossC()
 
 void BossC::update()
 {
+    if (!_isAlive && !_deathAnimation) {
+        _deathFinish = true;
+        _deathClock.restart();
+    }
     if (_animationClock.getElapsedTime().asMilliseconds() > 120) {
         _animationClock.restart();
         if (_sprite.getTextureRect().left >= _sprite.getTextureRect().width * 7) {
