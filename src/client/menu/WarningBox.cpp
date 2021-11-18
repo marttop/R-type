@@ -26,6 +26,7 @@ void WarningBox::create(const sf::Vector2f &pos, const sf::Vector2f &factors)
     _background.setPosition(sf::Vector2f(pos.x, pos.y));
 
     _isOpen = false;
+    _isButton = false;
 
     _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 

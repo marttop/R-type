@@ -102,6 +102,8 @@ ParticleSystem::ParticleSystem()
 
 ParticleSystem::~ParticleSystem()
 {
+    for (auto it : _particles)
+        delete it;
 }
 
 sf::Color ParticleSystem::rgbInterpolation(const sf::Color &startColor, const float &timeStep, const sf::Color &endColor) const

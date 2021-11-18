@@ -20,10 +20,11 @@ Window::Window(const std::string &title)
 
     _parallax.create(100);
     _menu.create(_window, _tcpBuf, _udpBuf);
-    _game.create(_window, _udpBuf);
+    _game.create(_window, *_udpSocket);
     _scene = MENU;
 
     _lostConnection = false;
+    _gameStarted = false;
 
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_POINT_SMOOTH);
@@ -45,7 +46,7 @@ void Window::event()
     if (_event.type == sf::Event::Closed)
         _window.close();
     if (_scene == GAME)
-        _game.event(_event, _window, *_udpSocket);
+        _game.event(_event, *_udpSocket);
     if (_scene == MENU) {
         //_parallax.event(_event);
         _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpSocket);
@@ -69,8 +70,12 @@ void Window::update()
         _parallax.update();
     if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
-    if (_scene == GAME)
-        _game.update(_window, *_udpSocket);
+    if (_scene == GAME && !_gameStarted) {
+        _udpSocket->non_blocking(false);
+        _gameStarted = true;
+        std::thread th = _game.startThread(_udpError);
+        th.detach();
+    }
 }
 
 void Window::draw()
@@ -81,7 +86,7 @@ void Window::draw()
     if (_scene == MENU)
         _menu.draw(_window);
     if (_scene == GAME)
-        _game.draw(_window);
+        _game.draw();
     _window.display();
 }
 
@@ -102,7 +107,7 @@ void Window::readTcp()
 
 void Window::readUdp()
 {
-    if (_lostConnection == false && _udpSocket->is_open()) {
+    if (_lostConnection == false && _udpSocket->is_open() && _scene != GAME) {
         std::memset(_udpBuf, '\0', 1024);
         _udpSocket->non_blocking(true);
         size_t len = 0;

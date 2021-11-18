@@ -28,6 +28,8 @@ class Entity : public IClientEntity {
         void setColor(const sf::Color &color);
 
         void restartClock();
+        bool isAlive() const;
+        void setIsAlive(bool isAlive);
         void draw(sf::RenderWindow &window);
         void update();
 
@@ -41,6 +43,7 @@ class Entity : public IClientEntity {
         sf::Color _startColor;
         sf::Color _endColor;
         float _speed;
+        bool _isAlive;
 
     private:
 };

@@ -12,12 +12,14 @@
 #include <asio.hpp>
 #include <map>
 #include <memory>
+#include <functional>
 
 #include "EntityFactory.hpp"
 #include "WarningBox.hpp"
 #include "SEPParsor.hpp"
 #include "PlayerShip.hpp"
 
+#define BUFF_SIZE 65535
 
 class Game {
     public:
@@ -32,25 +34,30 @@ class Game {
             SPACE
         };
 
-        void create(const sf::RenderWindow &window, char *udpBuf);
-        void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
+        void create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
+        void event(const sf::Event &event, asio::ip::udp::socket &udpSocket);
         void openAlert();
-        void update(const sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
         void setAlert();
-        void draw(sf::RenderWindow &window) const;
+        void handleRead(const asio::error_code &error);
+        std::thread startThread(const asio::error_code &error);
+        void draw();
 
     protected:
     private:
-        void udpUpdateEntity(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
+        void update();
+        void udpUpdateEntity(std::vector<std::string> &cmdUdp);
         void inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket);
         void selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor);
 
         WarningBox _alert;
         EntityFactory _factory;
-        char *_udpBuf;
+        char _udpBuf[BUFF_SIZE];
         std::map<std::string, std::shared_ptr<IClientEntity>> _entityMap;
         bool _inputs[5];
         int _playerCount;
+        asio::streambuf _message;
+        sf::RenderWindow *_window;
+        asio::ip::udp::socket *_udpSocket;
 };
 
 #endif /* !GAME_HPP_ */

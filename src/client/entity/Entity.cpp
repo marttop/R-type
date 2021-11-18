@@ -18,11 +18,23 @@ Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float 
     _startColor = startColor;
     _endColor = endColor;
     _speed = speed;
+    _isAlive = true;
 }
 
 Entity::~Entity()
 {
 }
+
+bool Entity::isAlive() const
+{
+    return (_isAlive);
+}
+
+void Entity::setIsAlive(bool isAlive)
+{
+    _isAlive = isAlive;
+}
+
 
 sf::FloatRect Entity::getGlobalBounds() const
 {
