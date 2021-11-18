@@ -30,6 +30,7 @@ class Entity : public IClientEntity {
         void restartClock();
         bool isAlive() const;
         void setIsAlive(bool isAlive);
+        bool isDeathFinish() const;
         void draw(sf::RenderWindow &window);
         void update();
 
@@ -37,11 +38,13 @@ class Entity : public IClientEntity {
         sf::Texture _texture;
         sf::Sprite _sprite;
         sf::Vector2f _pos;
-        sf::Clock _clock;
         sf::Clock _animationClock;
+        sf::Clock _deathClock;
         ParticleSystem _particleSystem;
         sf::Color _startColor;
         sf::Color _endColor;
+        bool _deathAnimation;
+        bool _deathFinish;
         float _speed;
         bool _isAlive;
 

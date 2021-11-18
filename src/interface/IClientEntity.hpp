@@ -27,6 +27,7 @@ class IClientEntity {
         virtual void draw(sf::RenderWindow &window) = 0;
         virtual void update() = 0;
         virtual bool isAlive() const = 0;
+        virtual bool isDeathFinish() const = 0;
         virtual void setIsAlive(bool isAlive) = 0;
 
     protected:
