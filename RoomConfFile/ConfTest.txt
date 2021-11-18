@@ -9,9 +9,12 @@
 #
 # exemple:
 # ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
-./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 10
-./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 30 10
-./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 90 10
-./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 120 10
-./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 2000 1
-#
+
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 100 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 200 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 300 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 400 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 500 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 600 150
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 2000 500
+./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 1 1
