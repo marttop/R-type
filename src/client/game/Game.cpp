@@ -92,16 +92,16 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
     if (entityCmd[1] != "player") return;
     if (_playerCount == 0) {
         startColor = sf::Color(0, 0, 255, 255);
-        endColor = sf::Color(30,144,255);
+        endColor = sf::Color(0, 0, 0, 255);
     } else if (_playerCount == 1) {
         startColor = sf::Color(255, 0, 0, 255);
-        endColor = sf::Color(139, 0, 0, 255);
+        endColor = sf::Color(0, 0, 0, 255);
     } else if (_playerCount == 2) {
         startColor = sf::Color(255, 255, 0, 255);
-        endColor = sf::Color(255, 215, 0, 255);
+        endColor = sf::Color(0, 0, 0, 255);
     } else if (_playerCount == 3) {
         startColor = sf::Color(0, 255, 0, 255);
-        endColor = sf::Color(0, 128, 0, 255);
+        endColor = sf::Color(0, 0, 0, 255);
     }
     _playerCount++;
 }
@@ -116,25 +116,21 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
             if (it == cmdUdp.front()) continue;
             if (i == 8) {
                 float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
-                sf::Color startColor = sf::Color::Red;
-                sf::Color endColor = sf::Color::Green;
+                sf::Color startColor = sf::Color::White;
+                sf::Color endColor = sf::Color::White;
                 selectPlayerColor(entityCmd, startColor, endColor);
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
                         entityCmd[2],
                         _factory.getEntityByType(entityCmd[1], sf::Vector2f(std::atof(entityCmd[3].c_str()), posY), std::atof(entityCmd[7].c_str()), startColor, endColor)));
+                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
-                    // if (entityCmd[1] != "playerbullet") {
                         if (_entityMap.count(entityCmd[2]))
-                            _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY));
-                    // }
+                            _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
-                else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
-                    //_entityMap.erase(entityCmd[2]);
+                else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0)
                     _entityMap[entityCmd[2]]->setIsAlive(false);
-                    std::cout << _entityMap[entityCmd[2]]->getPos().x << std::endl;
-                }
                 i = 0;
                 entityCmd.clear();
                 continue;
@@ -176,14 +172,11 @@ void Game::handleRead(const asio::error_code &error)
     while (1) {
         if (std::strlen(_udpBuf) > 0) {
             update();
-            // std::cout << _udpBuf;
+            //std::cout << _udpBuf;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
-        // _udpSocket->async_receive(asio::buffer(_udpBuf), std::bind(&Game::handleRead, this,
-        //                                     std::placeholders::_1));
         size_t len = 0;
         len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
-        std::cout << _udpBuf << std::endl;
     }
 }
 
@@ -194,11 +187,6 @@ void Game::setAlert()
 
 void Game::draw()
 {
-    /*if (!_alert.isOpen()) {
-        for (auto it : _entityMap) {
-            it.second->draw(*_window);
-        }
-    }*/
     auto i = std::begin(_entityMap);
     while (i != std::end(_entityMap)) {
         i->second->update();

@@ -52,8 +52,8 @@ void ServerPlayer::shoot()
         static int id = 0;
         id++;
         std::string bId = _id + "B" + std::to_string(id);
-        std::shared_ptr<IEntity> sp(new ServerBullet(CustomRect(20, 5,
-            getPosition().first + 225, getPosition().second - 52), "playerbullet", bId));
+        std::shared_ptr<IEntity> sp(new ServerBullet(CustomRect(20, 20,
+            getPosition().first + 225, getPosition().second + 30), "playerbullet", bId));
         std::stringstream ss;
         ss.str("");
         ss.clear();
