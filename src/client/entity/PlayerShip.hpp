@@ -20,9 +20,10 @@ class PlayerShip : public Entity {
                     int health);
         ~PlayerShip();
 
-        void update();
-        void updateHp(int hp);
+        void update() override;
         void drawSprite(sf::RenderWindow &window) override;
+        void drawParticles(sf::RenderWindow &window) override;
+        void updateHp(int hp);
 
     protected:
     private:
