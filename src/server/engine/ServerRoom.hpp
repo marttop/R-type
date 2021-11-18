@@ -72,6 +72,15 @@ class ServerRoom {
          */
         std::string updateEntities();
 
+        /**
+         * @brief find the iterator with an if for use r
+         * 
+         * @param list vector entity
+         * @param id entity's id to find
+         * @return ** std::vector<std::shared_ptr<IEntity>>::iterator 
+         */
+        std::vector<std::shared_ptr<IEntity>>::iterator findIteratorWithId(std::vector<std::shared_ptr<IEntity>> list, const std::string &id) const;
+
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;
         asio::ip::udp::endpoint remote_endpoint_;

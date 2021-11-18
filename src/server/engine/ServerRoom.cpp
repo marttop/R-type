@@ -219,13 +219,50 @@ void ServerRoom::createsEntities() {
         broadCastUdp("007", ss.str());
 }
 
+std::vector<std::shared_ptr<IEntity>>::iterator ServerRoom::findIteratorWithId(std::vector<std::shared_ptr<IEntity>> list, const std::string &id) const
+{
+    std::vector<std::shared_ptr<IEntity>>::iterator it = list.begin();
+    for (;it != list.end(); ++it) {
+        if (it->get()->getId() == id) {
+            break;
+        }
+    }
+    return it;
+}
+
 std::string ServerRoom::updateEntities()
 {
     std::stringstream ss;
     ss.str("");
     ss.clear();
+    std::string tmp;
+
+    bool entityDead = false;
+
     for (auto entity : _entities) {
         entity->update();
+
+        for (auto player : _playerList) {
+            for (auto bullet : player->getAmmo()) {
+                if (entity->isColliding(bullet)) {
+                    ss << createEntityResponse(entity, "DELETE");
+                    ss << createEntityResponse(bullet, "DELETE");
+
+                    // auto bulletIt = findIteratorWithId(player->getAmmo(), bullet->getId());
+                    // player->getAmmo().erase(bulletIt);
+
+                    // auto entitiIt = findIteratorWithId(_entities, entity->getId());
+                    // _entities.erase(entitiIt);
+
+                    entityDead = true;
+                    break;
+                }
+            }
+            if (entityDead) {
+                entityDead = false;
+                break;
+            }
+        }
         ss << createEntityResponse(entity, "UPDATE");
     }
     return (ss.str());
@@ -279,7 +316,7 @@ void ServerRoom::updateLoop()
             resetTimers();
         }
         ss << updatePlayers();
-        // ss << updateEntities();
+        ss << updateEntities();
         broadCastUdp("007", ss.str());
         std::this_thread::sleep_for(std::chrono::milliseconds(17));
         _timer++;

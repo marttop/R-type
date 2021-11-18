@@ -29,6 +29,4 @@ void BidosSlave::update()
             _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getTextureRect().left + _sprite.getTextureRect().width, 0), sf::Vector2i(_sprite.getTextureRect().width, _sprite.getTextureRect().height)));
         }
     }
-    _sprite.move(_speed, 0);
-    _pos = _sprite.getPosition();
 }
