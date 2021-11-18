@@ -180,6 +180,7 @@ void Game::handleRead(const asio::error_code &error)
         //                                     std::placeholders::_1));
         size_t len = 0;
         len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
+        std::cout << _udpBuf << std::endl;
     }
 }
 
