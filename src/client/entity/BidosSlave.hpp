@@ -20,7 +20,9 @@ public:
                 int health);
     ~BidosSlave();
 
-    void update();
+    void update() override;
+    void drawSprite(sf::RenderWindow &window) override;
+    void drawParticles(sf::RenderWindow &window) override;
 
 protected:
 private:

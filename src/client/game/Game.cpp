@@ -92,16 +92,16 @@ void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &sta
     if (entityCmd[1] != "player") return;
     if (_playerCount == 0) {
         startColor = sf::Color(0, 0, 255, 255);
-        endColor = sf::Color(0, 0, 0, 255);
+        endColor = sf::Color(0, 0, 0, 100);
     } else if (_playerCount == 1) {
         startColor = sf::Color(255, 0, 0, 255);
-        endColor = sf::Color(0, 0, 0, 255);
+        endColor = sf::Color(0, 0, 0, 100);
     } else if (_playerCount == 2) {
         startColor = sf::Color(255, 255, 0, 255);
-        endColor = sf::Color(0, 0, 0, 255);
+        endColor = sf::Color(0, 0, 0, 100);
     } else if (_playerCount == 3) {
         startColor = sf::Color(0, 255, 0, 255);
-        endColor = sf::Color(0, 0, 0, 255);
+        endColor = sf::Color(0, 0, 0, 100);
     }
     _playerCount++;
 }
@@ -117,7 +117,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
             if (i == 8) {
                 float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
                 sf::Color startColor = sf::Color::White;
-                sf::Color endColor = sf::Color::White;
+                sf::Color endColor = sf::Color(255, 255, 255, 0);
                 selectPlayerColor(entityCmd, startColor, endColor);
                 if (entityCmd[0] == "CREATE") {
                     _entityMap.insert(std::make_pair(
@@ -193,12 +193,16 @@ void Game::draw()
     auto i = std::begin(_entityMap);
     while (i != std::end(_entityMap)) {
         i->second->update();
-        i->second->draw(*_window);
-        if (!i->second->isAlive()) {
+        i->second->drawSprite(*_window);
+        if (i->second->isDeathFinish())
             i = _entityMap.erase(i);
-        }
         else
             ++i;
+    }
+    i = std::begin(_entityMap);
+    while (i != std::end(_entityMap)) {
+        i->second->drawParticles(*_window);
+        ++i;
     }
     _alert.draw(*_window);
 }

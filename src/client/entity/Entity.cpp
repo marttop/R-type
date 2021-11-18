@@ -16,12 +16,15 @@ Entity::Entity(const sf::Texture &texture, const sf::Vector2f &pos, const float 
     _maxHealth = health;
     _sprite.setTexture(_texture);
     _sprite.setPosition(_pos);
-    _clock.restart();
     _animationClock.restart();
+    _deathClock.restart();
     _startColor = startColor;
     _endColor = endColor;
     _speed = speed;
     _isAlive = true;
+    _deathAnimation = false;
+    _deathClock.restart();
+    _deathFinish = false;
 }
 
 Entity::~Entity()
@@ -31,6 +34,11 @@ Entity::~Entity()
 bool Entity::isAlive() const
 {
     return (_isAlive);
+}
+
+bool Entity::isDeathFinish() const
+{
+    return (_deathFinish);
 }
 
 void Entity::setIsAlive(bool isAlive)
@@ -46,12 +54,12 @@ sf::FloatRect Entity::getGlobalBounds() const
 
 float Entity::getElapsedTime() const
 {
-    return (_clock.getElapsedTime().asSeconds());
+    return (_animationClock.getElapsedTime().asSeconds());
 }
 
 void Entity::restartClock()
 {
-    _clock.restart();
+    _animationClock.restart();
 }
 
 sf::Vector2f Entity::getPos() const
@@ -85,9 +93,13 @@ void Entity::setRotation(const float &angle)
     _sprite.rotate(angle);
 }
 
-void Entity::draw(sf::RenderWindow &window)
+void Entity::drawSprite(sf::RenderWindow &window)
 {
     window.draw(_sprite);
+}
+
+void Entity::drawParticles(sf::RenderWindow &window)
+{
     glPointSize(7);
     _particleSystem.drawParticles(window);
 }

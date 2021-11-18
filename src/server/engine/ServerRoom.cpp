@@ -232,6 +232,17 @@ std::vector<std::shared_ptr<IEntity>>::iterator ServerRoom::findIteratorWithId(s
     return it;
 }
 
+void ServerRoom::deleteDeadEntities()
+{
+    for (auto it = _entities.begin(); it != _entities.end();) {
+        if (it->get()->isAlive() == false) {
+            _entities.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
 std::string ServerRoom::updateEntities()
 {
     std::stringstream ss;
@@ -240,6 +251,8 @@ std::string ServerRoom::updateEntities()
     std::string tmp;
 
     bool entityDead = false;
+
+    deleteDeadEntities();
 
     for (auto entity : _entities) {
         entity->update();
@@ -250,18 +263,15 @@ std::string ServerRoom::updateEntities()
                     ss << createEntityResponse(entity, "DELETE");
                     ss << createEntityResponse(bullet, "DELETE");
 
-                    // auto bulletIt = findIteratorWithId(player->getAmmo(), bullet->getId());
-                    // player->getAmmo().erase(bulletIt);
+                    bullet->setAlive(false);
 
-                    // auto entitiIt = findIteratorWithId(_entities, entity->getId());
-                    // _entities.erase(entitiIt);
+                    entity->setAlive(false);
 
                     entityDead = true;
                     break;
                 }
             }
             if (entityDead) {
-                entityDead = false;
                 break;
             }
         }

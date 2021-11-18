@@ -28,6 +28,7 @@ class IEntity {
         virtual void addLifeEntity(int lifeAdded) = 0;
 
         virtual bool isAlive() const = 0;
+        virtual void setAlive(bool life) = 0;
         virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
         virtual CustomRect getRect() const = 0;
         virtual std::string getType() const = 0;
