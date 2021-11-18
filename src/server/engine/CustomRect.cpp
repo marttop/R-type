@@ -7,7 +7,7 @@
 
 #include "CustomRect.hpp"
 
-CustomRect::CustomRect(double width, double height, double x, double y) 
+CustomRect::CustomRect(double width, double height, double x, double y)
     : tr((point){x + width, y + height}), tl((point){x, y + height}),
     br((point){x + width, y}), bl((point){x, y}), _x(x), _y(y), _width(width), _height(height)
 {
