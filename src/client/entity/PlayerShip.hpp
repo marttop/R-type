@@ -15,7 +15,9 @@ class PlayerShip : public Entity {
         PlayerShip(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor);
         ~PlayerShip();
 
-        void update();
+        void update() override;
+        void drawSprite(sf::RenderWindow &window) override;
+        void drawParticles(sf::RenderWindow &window) override;
 
     protected:
     private:
