@@ -27,7 +27,7 @@ class Menu {
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
         void update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket);
         void setAlert();
-        void setInRoom(const bool &inRoom);
+        void setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket);
 
     protected:
     private:

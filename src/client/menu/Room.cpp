@@ -63,6 +63,11 @@ void Room::event(const sf::Event &event, const sf::RenderWindow &window, asio::i
     }
 }
 
+std::string Room::getRoomId() const
+{
+    return (_id);
+}
+
 void Room::readyUpdate(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() == 3 && cmdUdp[0] == "004") {

@@ -25,6 +25,7 @@ class Room {
         void update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window);
         void draw(sf::RenderWindow &window) const;
         void setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const std::string &ip);
+        std::string getRoomId() const;
 
     protected:
     private:
