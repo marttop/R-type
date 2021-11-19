@@ -11,7 +11,7 @@
 BossC::BossC(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor, int health)
     : Entity(texture, pos, speed, startColor, endColor, health)
 {
-    _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getLocalBounds().width / 8, 0), sf::Vector2i(_sprite.getLocalBounds().width / 8, _sprite.getLocalBounds().height)));
+    _sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(_sprite.getLocalBounds().width / 8, _sprite.getLocalBounds().height)));
     _sprite.setScale(sf::Vector2f(4, 4));
 }
 

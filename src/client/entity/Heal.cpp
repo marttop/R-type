@@ -15,3 +15,13 @@ Heal::Heal(const sf::Texture &texture, const sf::Vector2f &pos, const float &spe
 Heal::~Heal()
 {
 }
+
+void Heal::drawSprite(sf::RenderWindow &window)
+{
+    if (!_deathAnimation)
+        window.draw(_sprite);
+}
+
+void Heal::drawParticles(sf::RenderWindow &window)
+{
+}
