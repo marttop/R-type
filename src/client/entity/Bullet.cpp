@@ -16,14 +16,21 @@ Bullet::Bullet(const sf::Texture &texture, const sf::Vector2f &pos, const float 
     _soundBuf1 = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/laser_sound.ogg");
     _sound1.setBuffer(_soundBuf1);
     _sound1.play();
+    _sound1.setRelativeToListener(true);
+    _sound1.setPosition(-1.f, 0, 0);
 }
 
 Bullet::~Bullet()
 {
+    _sound1.stop();
 }
 
 void Bullet::update()
 {
+    if (_animationClock.getElapsedTime().asMilliseconds() > 20) {
+        _sound1.setPosition(sf::Vector3f(_sound1.getPosition().x + 0.1, 0.f, 0.f));
+        _animationClock.restart();
+    }
     if (!_isAlive && !_deathAnimation) {
         _deathAnimation = true;
         _deathClock.restart();

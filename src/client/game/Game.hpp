@@ -39,7 +39,7 @@ class Game {
         void openAlert();
         void setAlert();
         void handleRead(const asio::error_code &error);
-        std::thread startThread(const asio::error_code &error);
+        std::thread startThread(const asio::error_code &error, bool &closeGame);
         void draw();
 
     protected:
@@ -59,6 +59,7 @@ class Game {
         sf::RenderWindow *_window;
         asio::ip::udp::socket *_udpSocket;
         sf::Clock _gameClock;
+        bool *_closeGame;
 };
 
 #endif /* !GAME_HPP_ */
