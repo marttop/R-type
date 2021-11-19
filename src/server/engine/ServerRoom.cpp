@@ -254,7 +254,7 @@ std::string ServerRoom::deleteDeadEntities()
                     ss << createEntityResponse(createdEntity, "CREATE");
                 }
             }
-            _entities.erase(it);
+           it = _entities.erase(it);
 
         } else {
             ++it;
@@ -292,8 +292,6 @@ std::string ServerRoom::updateEntities()
     ss.str("");
     ss.clear();
     std::string tmp;
-
-    bool entityDead = false;
     static int timer = 0;
 
     for (auto entity : _entities) {
@@ -305,7 +303,6 @@ std::string ServerRoom::updateEntities()
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
                     if (!player->isAlive()) {
-                        std::cout << "ANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL" << std::endl;
                         ss << createEntityResponse(player, "DELETE");
                     }
                 }
@@ -314,16 +311,8 @@ std::string ServerRoom::updateEntities()
                 if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet") {
                     playerBullet->setAlive(false);
                     entity->addLifeEntity(-1);
-
-                    // entity->setAlive(false);
-
-                    // entityDead = true;
-                    // break;
                 }
             }
-            // if (entityDead) {
-            //     break;
-            // }
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
