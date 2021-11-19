@@ -48,7 +48,6 @@ void AsioTcpServ::shell_send() const
     std::string message;
     while(true) {
         std::cin >> message;
-
     }
 }
 

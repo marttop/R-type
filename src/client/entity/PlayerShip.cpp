@@ -47,8 +47,8 @@ void PlayerShip::updateHp(int hp)
 
 void PlayerShip::update()
 {
-    _barRect.setPosition(_pos);
-    _hpRect.setPosition(sf::Vector2f(_pos.x + 2, _pos.y + 2));
+    _barRect.setPosition(sf::Vector2f(_pos.x + 55, _pos.y - 20));
+    _hpRect.setPosition(sf::Vector2f(_pos.x + 2 + 55, _pos.y + 2 - 20));
     _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x - 25, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, _startColor, _endColor, 50, 1);
 }
 

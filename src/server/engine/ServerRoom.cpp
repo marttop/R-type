@@ -14,6 +14,7 @@ ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool 
     _debug = debug;
     _timer = 0;
     loadRoomEntities("RoomConfFile/ConfTest.txt");
+    _loader->loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
 }
 
 ServerRoom::~ServerRoom()
@@ -30,6 +31,7 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
     {
         while (std::getline(myfile,line)) {
             if (line[0] == '#') continue;
+
             std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
 
             if (!_loader->loadEntityWithPath(parsedTab[0], parsedTab[1])) {
@@ -233,15 +235,46 @@ std::vector<std::shared_ptr<IEntity>>::iterator ServerRoom::findIteratorWithId(s
     return it;
 }
 
-void ServerRoom::deleteDeadEntities()
+std::string ServerRoom::deleteDeadEntities()
 {
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    int index = 0;
+
     for (auto it = _entities.begin(); it != _entities.end();) {
-        if (it->get()->isAlive() == false) {
+        if (it->get()->isAlive() == false){
+            ss << createEntityResponse(_entities.at(index), "DELETE");
             _entities.erase(it);
+
         } else {
             ++it;
+            index += 1;
         }
     }
+
+    return ss.str();
+}
+
+std::string ServerRoom::EntityAsShoot()
+{
+    std::stringstream ss;
+    ss.str("");
+    ss.clear();
+    std::vector<std::shared_ptr<IEntity>> tmp;
+
+    for (auto entity : _entities) {
+        for (auto bullet : entity->getAmmos()) {
+            tmp.push_back(bullet);
+            ss << createEntityResponse(bullet, "CREATE");
+
+        }
+        entity->clearAmmos();
+    }
+
+    _entities.insert( _entities.end(), tmp.begin(), tmp.end() );
+
+    return ss.str();
 }
 
 std::string ServerRoom::updateEntities()
@@ -253,18 +286,13 @@ std::string ServerRoom::updateEntities()
 
     bool entityDead = false;
 
-    deleteDeadEntities();
-
     for (auto entity : _entities) {
         entity->update();
 
         for (auto player : _playerList) {
-            for (auto bullet : player->getAmmo()) {
-                if (entity->isColliding(bullet)) {
-                    ss << createEntityResponse(entity, "DELETE");
-                    ss << createEntityResponse(bullet, "DELETE");
-
-                    bullet->setAlive(false);
+            for (auto playerBullet : player->getAmmo()) {
+                if (entity->isColliding(playerBullet)) {
+                    playerBullet->setAlive(false);
 
                     entity->setAlive(false);
 
@@ -278,6 +306,10 @@ std::string ServerRoom::updateEntities()
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
+
+    ss << EntityAsShoot();
+    ss << deleteDeadEntities();
+
     return (ss.str());
 }
 
