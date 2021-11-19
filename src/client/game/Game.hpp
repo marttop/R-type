@@ -45,6 +45,7 @@ class Game {
     protected:
     private:
         void update();
+        bool checkGameOver() const;
         void udpUpdateEntity(std::vector<std::string> &cmdUdp);
         void inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSocket);
         void selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor);

@@ -116,7 +116,7 @@ void Menu::setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket)
     if (_inRoom == false) {
         _alert.close();
         _room.create(_background);
-        tcpSocket.send(asio::buffer("235 " + _room.getRoomId() + "\n"));
+        tcpSocket.send(asio::buffer("235 " + _room.getRoomId()));
     }
 }
 

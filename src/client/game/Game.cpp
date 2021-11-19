@@ -141,6 +141,9 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                         _isGameFinished = true;
                         _alert.open("You and your team won! Good boy", true);
                     }
+                    if (entityCmd[1] == "player") {
+                        _playerCount--;
+                    }
                 }
                 i = 0;
                 entityCmd.clear();
@@ -187,6 +190,11 @@ void Game::handleRead(const asio::error_code &error)
         if (std::strlen(_udpBuf) > 0) {
             update();
             // std::cout << _udpBuf;
+        }
+        if (_playerCount == 0) {
+            _isGameFinished = true;
+            _alert.open("You lost little shit.", true);
+            break;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
         size_t len = 0;
