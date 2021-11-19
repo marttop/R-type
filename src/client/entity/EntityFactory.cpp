@@ -15,6 +15,7 @@ EntityFactory::EntityFactory()
     _cmd.emplace("BidosSlaves", &EntityFactory::getBidosSlaves);
     _cmd.emplace("Boss", &EntityFactory::getBoss);
     _cmd.emplace("BossBullet", &EntityFactory::getBossBullet);
+    _cmd.emplace("Heal", &EntityFactory::getHeal);
 }
 
 EntityFactory::~EntityFactory()
@@ -77,6 +78,18 @@ std::shared_ptr<IClientEntity> EntityFactory::getBoss(const sf::Vector2f &pos,
                                                                 int health)
 {
     std::shared_ptr<IClientEntity> entity(new BossC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/Boss.png"),
+    pos, speed, startColor, endColor, health));
+
+    return (entity);
+}
+
+std::shared_ptr<IClientEntity> EntityFactory::getHeal(const sf::Vector2f &pos,
+                                                                const float &speed,
+                                                                const sf::Color &startColor,
+                                                                const sf::Color &endColor,
+                                                                int health)
+{
+    std::shared_ptr<IClientEntity> entity(new Heal(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/heal.png"),
     pos, speed, startColor, endColor, health));
 
     return (entity);

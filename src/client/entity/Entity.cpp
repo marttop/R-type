@@ -106,4 +106,6 @@ void Entity::drawParticles(sf::RenderWindow &window)
 
 void Entity::update()
 {
+    if (!_isAlive)
+        _deathFinish = true;
 }

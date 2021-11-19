@@ -15,6 +15,7 @@ ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool 
     _timer = 0;
     loadRoomEntities("RoomConfFile/ConfTest.txt");
     _loader->loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
+    _loader->loadEntityWithPath("./src/server/entities/Heal/Heal.so", "Heal");
 }
 
 ServerRoom::~ServerRoom()
@@ -243,8 +244,16 @@ std::string ServerRoom::deleteDeadEntities()
     int index = 0;
 
     for (auto it = _entities.begin(); it != _entities.end();) {
-        if (it->get()->isAlive() == false){
+        if (it->get()->isAlive() == false) {
             ss << createEntityResponse(_entities.at(index), "DELETE");
+            if (it->get()->getType() == "BidosSlaves") {
+                if (std::rand() % 100 > 50) {
+                    auto createdEntity = _loader->createEntityWithName("Heal");
+                    createdEntity->setPosition(it->get()->getPosition().first, it->get()->getPosition().second);
+                    _entities.push_back(createdEntity);
+                    ss << createEntityResponse(createdEntity, "CREATE");
+                }
+            }
             _entities.erase(it);
 
         } else {

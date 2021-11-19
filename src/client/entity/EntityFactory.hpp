@@ -13,6 +13,7 @@
 #include "Bullet.hpp"
 #include "BidosSlave.hpp"
 #include "BossC.hpp"
+#include "Heal.hpp"
 #include "BossBulletC.hpp"
 
 #include <memory>
@@ -33,6 +34,12 @@ class EntityFactory {
     protected:
     private:
         std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        std::shared_ptr<IClientEntity> getHeal(const sf::Vector2f &pos,
                                                     const float &speed,
                                                     const sf::Color &startColor,
                                                     const sf::Color &endColor,
