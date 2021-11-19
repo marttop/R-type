@@ -30,6 +30,7 @@ void ServerRoom::loadRoomEntities(const std::string &FilePath)
     {
         while (std::getline(myfile,line)) {
             if (line[0] == '#') continue;
+
             std::vector<std::string> parsedTab = SEPParsor::parseCommands(line);
 
             if (!_loader->loadEntityWithPath(parsedTab[0], parsedTab[1])) {
@@ -235,11 +236,14 @@ std::vector<std::shared_ptr<IEntity>>::iterator ServerRoom::findIteratorWithId(s
 
 void ServerRoom::deleteDeadEntities()
 {
+    int itr = 0;
     for (auto it = _entities.begin(); it != _entities.end();) {
         if (it->get()->isAlive() == false) {
+            
             _entities.erase(it);
+
         } else {
-            ++it;
+            ++it, itr++;
         }
     }
 }

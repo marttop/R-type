@@ -45,5 +45,9 @@ BidosSlaves::~BidosSlaves()
 
 void BidosSlaves::update()
 {
+    if (getPosition().first < 60) {
+        _isAlive = false;
+        return;
+    }
     setPosition(getPosition().first + _speed, getPosition().second);
 }
