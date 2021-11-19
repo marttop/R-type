@@ -37,6 +37,8 @@ class ServerRoom {
 
         std::string createEntityResponse(std::shared_ptr<IEntity> obj, const std::string &action) const;
         std::string updateEntity(std::shared_ptr<IEntity> obj) const;
+        std::string EntityAsShoot();
+
         void resetTimers();
 
         //GAME
@@ -81,7 +83,7 @@ class ServerRoom {
          */
         std::vector<std::shared_ptr<IEntity>>::iterator findIteratorWithId(std::vector<std::shared_ptr<IEntity>> list, const std::string &id) const;
 
-        void deleteDeadEntities();
+        std::string deleteDeadEntities();
 
         std::vector<std::shared_ptr<ServerPlayer>> _playerList;
         asio::io_context &_io_context;

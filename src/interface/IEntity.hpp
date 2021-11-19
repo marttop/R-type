@@ -12,6 +12,7 @@
 #include <iostream>
 #include <memory>
 #include "CustomRect.hpp"
+#include <vector>
 
 class IEntity {
     public:
@@ -37,8 +38,11 @@ class IEntity {
         virtual std::pair<double, double> getDirection() const = 0;
         virtual std::pair<double, double> getPosition() const = 0;
         virtual void setPosition(double x, double y) = 0;
+        virtual void setDirection(double x, double y) = 0;
         virtual double getSpeed() const = 0;
         virtual int getHp() const = 0;
+        virtual std::vector<std::shared_ptr<IEntity>> getAmmos() const = 0;
+        virtual void clearAmmos() = 0;
 
     protected:
     private:

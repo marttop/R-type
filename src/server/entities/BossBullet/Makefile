@@ -5,13 +5,13 @@
 ## Makefile
 ##
 
-SRC			=	Boss.cpp					\
+SRC			=	BossBullet.cpp					\
 				../../engine/ServerEntity.cpp		\
 				../../engine/CustomRect.cpp			\
 				../../engine/EntityLoad.cpp				\
 
 CXXFLAGS 	=	-Wall -Wextra -I../../engine -I../../../interface -fPIC
-NAME 		= 	Boss.so
+NAME 		= 	BossBullet.so
 
 OBJ = $(SRC:.cpp=.o)
 
