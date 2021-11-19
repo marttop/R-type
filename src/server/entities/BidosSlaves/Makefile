@@ -8,7 +8,8 @@
 SRC			=	BidosSlaves.cpp					\
 				../../engine/ServerEntity.cpp		\
 				../../engine/CustomRect.cpp			\
-				../../EntityLoad.cpp				\
+				../../engine/EntityLoad.cpp				\
+
 
 CXXFLAGS 	=	-Wall -Wextra -I../../engine -I../../../interface -fPIC
 NAME 		= 	BidosSlaves.so

@@ -65,6 +65,12 @@ bool ServerEntity::isColliding(const std::shared_ptr<IEntity> &other) const
     return (_rect.isColliding(other->getRect()));
 }
 
+void ServerEntity::setDirection(double x, double y) 
+{
+    _direction.first = x;
+    _direction.second = y;
+}
+
 std::pair<double, double> ServerEntity::getDirection() const
 {
     return (_direction);
@@ -88,4 +94,14 @@ void ServerEntity::setPosition(double x, double y)
 std::string ServerEntity::getType() const
 {
     return (_type);
+}
+
+std::vector<std::shared_ptr<IEntity>> ServerEntity::getAmmos() const
+{
+    return (_ammos);
+}
+
+void ServerEntity::clearAmmos()
+{
+    _ammos.clear();
 }

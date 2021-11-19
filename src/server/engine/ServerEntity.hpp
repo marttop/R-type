@@ -33,6 +33,7 @@ class ServerEntity : public IEntity {
 
         bool isColliding(const std::shared_ptr<IEntity> &other) const;
 
+        void setDirection(double x, double y);
         std::pair<double, double> getDirection() const;
         std::pair<double, double> getPosition() const;
         std::string getType() const;
@@ -41,12 +42,16 @@ class ServerEntity : public IEntity {
         void setPosition(double x, double y);
         int getHp() const;
 
+        std::vector<std::shared_ptr<IEntity>> getAmmos() const;
+        void clearAmmos();
+
     protected:
         bool _isAlive;
         CustomRect _rect;
         std::string _type;
         std::string _id;
         std::pair<int, int> _direction;
+        std::vector<std::shared_ptr<IEntity>> _ammos;
         double _speed;
         int _health;
     private:

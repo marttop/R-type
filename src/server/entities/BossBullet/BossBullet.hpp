@@ -9,26 +9,17 @@
 #define SERVERBASICMOB1_HPP_
 
 #include "ServerEntity.hpp"
-#include "EntityLoad.hpp"
-#include <time.h>
 
-class Boss : public ServerEntity
+class BossBullet : public ServerEntity
 {
 public:
-    Boss();
-    ~Boss();
+    BossBullet();
+    ~BossBullet();
 
     void update();
 
-    void shoot();
-
-    void startClock();
-    bool checkClock();
-
 protected:
 private:
-    EntityLoad _loader;
-    clock_t  _shootClock;
 };
 
 #endif /* !SERVERBASICMOB1_HPP_ */
