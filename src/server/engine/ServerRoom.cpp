@@ -97,14 +97,23 @@ void ServerRoom::playGame()
 {
     int i = 3;
     _isGameStarted = true;
+    std::clock_t start;
+    double duration;
+    start = std::clock();
+
+    /* Your algorithm here */
+    broadCastUdp("005", std::to_string(i));
     while (i > 0) {
-        broadCastUdp("005", std::to_string(i));
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        if (duration >= 1) {
+            start = std::clock();
+            i--;
+            broadCastUdp("005", std::to_string(i));
+        }
         if (!isEveryoneReady()) {
             _isGameStarted = false;
             return;
         }
-        i--;
+        duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
     }
     loadRoomEntities("RoomConfFile/ConfTest.txt");
     broadCastUdp("006", "");
