@@ -9,6 +9,7 @@
 #define BOSS_HPP
 
 #include "Entity.hpp"
+#include "AssetManager.hpp"
 
 class BossC : public Entity {
 public:
@@ -21,9 +22,15 @@ public:
     ~BossC();
 
     void update();
+    void updateHp();
+    void drawSprite(sf::RenderWindow &window) override;
 
 protected:
 private:
+    sf::RectangleShape _hpRect;
+    sf::RectangleShape _barRect;
+    sf::Font _font;
+    sf::Text _name;
 };
 
 #endif /* !BOSS_HPP */
