@@ -37,6 +37,7 @@ class ServerRoom {
 
         std::string createEntityResponse(std::shared_ptr<IEntity> obj, const std::string &action) const;
         std::string updateEntity(std::shared_ptr<IEntity> obj) const;
+        void collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
         std::string EntityAsShoot();
 
         void resetTimers();

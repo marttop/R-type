@@ -30,10 +30,10 @@ class CustomRect {
         point bl;
         double _x;
         double _y;
-    protected:
-    private:
         double _width;
         double _height;
+    protected:
+    private:
 };
 
 #endif /* !CUSTOMRECT_HPP_ */

@@ -289,6 +289,15 @@ std::string ServerRoom::EntityAsShoot()
     return ss.str();
 }
 
+void ServerRoom::collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
+{
+    if (entity->getType() == "BidosSlaves" && player->isColliding(entity)) {
+        if (entity->getRect().isColliding(CustomRect(1, player->getRect()._height, player->getRect().br.x, player->getRect().br.y))) {
+            player->setPosition(player->getPosition().first + entity->getSpeed(), player->getPosition().second);
+        }
+    }
+}
+
 std::string ServerRoom::updateEntities()
 {
     std::stringstream ss;
@@ -299,7 +308,6 @@ std::string ServerRoom::updateEntities()
 
     for (auto entity : _entities) {
         entity->update();
-
         for (auto player : _playerList) {
             if (entity->getType() == "Heal" && player->isColliding(entity)) {
                 entity->setAlive(false);
@@ -319,6 +327,7 @@ std::string ServerRoom::updateEntities()
                     entity->addLifeEntity(-1);
                 }
             }
+            collideBidos(player, entity);
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
