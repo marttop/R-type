@@ -10,10 +10,9 @@
 ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug)
                                         : _io_context(io_context), _id(id), _portSeed(portSeed), _isGameStarted(false)
 {
-    _loader = new EntityLoad();
     _debug = debug;
     _timer = 0;
-    loadRoomEntities("RoomConfFile/ConfTest.txt");
+    _loader = new EntityLoad();
     _loader->loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
     _loader->loadEntityWithPath("./src/server/entities/Heal/Heal.so", "Heal");
 }
@@ -107,10 +106,13 @@ void ServerRoom::playGame()
         }
         i--;
     }
+    loadRoomEntities("RoomConfFile/ConfTest.txt");
     broadCastUdp("006", "");
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     createPlayers();
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
+    resetTimers();
+    _timer = 0;
     updateLoop();
 }
 
@@ -403,5 +405,6 @@ void ServerRoom::updateLoop()
     }
     _isGameStarted = false;
     _playerList.clear();
+    _entitiesRoomInfo.clear();
     _entities.clear();
 }
