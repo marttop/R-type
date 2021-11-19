@@ -20,6 +20,7 @@ Heal::Heal()
     _speed = -3;
     _type = "Heal";
     _health = -1;
+    _maxHealth = _health;
 }
 
 Heal::~Heal()

@@ -248,7 +248,7 @@ std::string ServerRoom::deleteDeadEntities()
         if (it->get()->isAlive() == false) {
             ss << createEntityResponse(_entities.at(index), "DELETE");
             if (it->get()->getType() == "BidosSlaves") {
-                if (std::rand() % 100 > 25) {
+                if (std::rand() % 100 < 25) {
                     auto createdEntity = _loader->createEntityWithName("Heal");
                     createdEntity->setPosition(it->get()->getPosition().first, it->get()->getPosition().second);
                     createdEntity->setId("P" + std::to_string(powerUpId));

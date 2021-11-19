@@ -14,8 +14,8 @@ ServerEntity::ServerEntity(const CustomRect &rect,
                             int health)
     :   _isAlive(true),  _rect(rect), _type(type), _id(id), _speed(speed), _health(health)
 {
+    _maxHealth = _health;
     _direction = std::make_pair(0, 0);
-    _maxHealth = health;
 }
 
 ServerEntity::~ServerEntity()
@@ -48,12 +48,10 @@ void ServerEntity::setAlive(bool life)
 
 void ServerEntity::addLifeEntity(int lifeAdded)
 {
-    if (lifeAdded + _health > _maxHealth) {
-        _health = _maxHealth;
-        return;
-    }
     if (_health > 0) {
         _health += lifeAdded;
+        if (_health > _maxHealth)
+            _health = _maxHealth;
     } else {
         _isAlive = false;
     }

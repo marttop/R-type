@@ -37,6 +37,7 @@ Boss::Boss()
     setPosition(x, y);
     _speed = -10;
     _health = 200;
+    _maxHealth = _health;
     _type = "Boss";
     _loader.loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
     startClock();

@@ -16,10 +16,19 @@ Heal::~Heal()
 {
 }
 
+void Heal::update()
+{
+    if (!_isAlive)
+        _deathFinish = true;
+    _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x + _sprite.getGlobalBounds().width / 2, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x + _sprite.getGlobalBounds().width / 2, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(0, 255, 0, 255), sf::Color(0, 255, 0, 0), 10, 1);
+}
+
 void Heal::drawSprite(sf::RenderWindow &window)
 {
-    if (!_deathAnimation)
+    if (!_deathAnimation) {
+        _particleSystem.drawParticles(window);
         window.draw(_sprite);
+    }
 }
 
 void Heal::drawParticles(sf::RenderWindow &window)

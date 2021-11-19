@@ -38,6 +38,7 @@ BossBullet::BossBullet()
     int x = 0;
     int y = 0;
     setPosition(x, y);
+    _maxHealth = _health;
     _speed = 10;
     _type = "BossBullet";
 }

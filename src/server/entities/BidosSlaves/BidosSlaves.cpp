@@ -37,6 +37,7 @@ BidosSlaves::BidosSlaves()
     setPosition(x, y);
     _speed = -3;
     _health = 1;
+    _maxHealth = _health;
     _type = "BidosSlaves";
 }
 

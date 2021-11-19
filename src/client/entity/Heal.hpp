@@ -17,6 +17,7 @@ class Heal : public Entity {
 
         void drawSprite(sf::RenderWindow &window) override;
         void drawParticles(sf::RenderWindow &window) override;
+        void update() override;
 
     protected:
     private:
