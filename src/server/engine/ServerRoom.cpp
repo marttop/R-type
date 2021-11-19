@@ -97,10 +97,12 @@ int ServerRoom::getNbUsers() const
 void ServerRoom::playGame()
 {
     int i = 3;
+    _isGameStarted = true;
     while (i > 0) {
         broadCastUdp("005", std::to_string(i));
         std::this_thread::sleep_for(std::chrono::seconds(1));
         if (!isEveryoneReady()) {
+            _isGameStarted = false;
             return;
         }
         i--;
@@ -119,7 +121,6 @@ bool ServerRoom::isGameStarted() const
 
 std::thread ServerRoom::startThread()
 {
-    _isGameStarted = true;
     return std::thread(&ServerRoom::playGame, this);
 }
 
@@ -257,6 +258,9 @@ std::string ServerRoom::deleteDeadEntities()
                     ss << createEntityResponse(createdEntity, "CREATE");
                 }
             }
+            if (it->get()->getType() == "Boss") {
+                _isGameStarted = false;
+            }
             it = _entities.erase(it);
 
         } else {
@@ -380,9 +384,11 @@ void ServerRoom::updateLoop()
     std::stringstream ss;
     ss.str("");
     ss.clear();
-    while (1) {
+    while (_isGameStarted) {
         ss.str("");
         ss.clear();
+
+        if (_playerList.size() == 0) break;
 
         createsEntities();
 
@@ -395,4 +401,7 @@ void ServerRoom::updateLoop()
         std::this_thread::sleep_for(std::chrono::milliseconds(17));
         _timer++;
     }
+    _isGameStarted = false;
+    _playerList.clear();
+    _entities.clear();
 }
