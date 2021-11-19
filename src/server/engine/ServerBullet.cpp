@@ -8,8 +8,9 @@
 #include "ServerBullet.hpp"
 
 ServerBullet::ServerBullet(const CustomRect &customRect, const std::string &type,
-                        const std::string &id, int health, int speed) : ServerEntity(customRect, type, id, speed, health)
+                        const std::string &id, double start, int health, int speed) : ServerEntity(customRect, type, id, speed, health)
 {
+    _x = start;
 }
 
 ServerBullet::~ServerBullet()
@@ -20,6 +21,6 @@ void ServerBullet::update()
 {
     if (_isAlive) {
         setPosition(_rect._x + _speed, _rect._y);
-        if (_rect._x >= 1850) _isAlive = false;
+        if (_rect._x - _x >= 1200) _isAlive = false;
     }
 }

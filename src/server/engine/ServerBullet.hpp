@@ -15,14 +15,17 @@ class ServerBullet : public ServerEntity {
         ServerBullet(const CustomRect &customRect,
                         const std::string &type,
                         const std::string &id,
+                        double start,
                         int health = -5,
                         int speed = 30);
         ~ServerBullet();
 
         void update();
 
+
     protected:
     private:
+        double _x;
 };
 
 #endif /* !SERVERBULLET_HPP_ */
