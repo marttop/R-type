@@ -243,7 +243,7 @@ std::string ServerRoom::deleteDeadEntities()
     int index = 0;
 
     for (auto it = _entities.begin(); it != _entities.end();) {
-        if (it->get()->isAlive() == false){
+        if (it->get()->isAlive() == false) {
             ss << createEntityResponse(_entities.at(index), "DELETE");
             _entities.erase(it);
 
@@ -285,27 +285,41 @@ std::string ServerRoom::updateEntities()
     std::string tmp;
 
     bool entityDead = false;
+    static int timer = 0;
 
     for (auto entity : _entities) {
         entity->update();
 
         for (auto player : _playerList) {
-            for (auto playerBullet : player->getAmmo()) {
-                if (entity->isColliding(playerBullet)) {
-                    playerBullet->setAlive(false);
-
-                    entity->setAlive(false);
-
-                    entityDead = true;
-                    break;
+            if (timer % 7 == 0 && entity->getType() == "BossBullet" && player->isColliding(entity)) {
+                timer = 0;
+                if (player->isAlive()) {
+                    player->addLifeEntity(-1);
+                    if (!player->isAlive()) {
+                        std::cout << "ANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL" << std::endl;
+                        ss << createEntityResponse(player, "DELETE");
+                    }
                 }
             }
-            if (entityDead) {
-                break;
+            for (auto playerBullet : player->getAmmo()) {
+                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet") {
+                    playerBullet->setAlive(false);
+                    entity->addLifeEntity(-1);
+
+                    // entity->setAlive(false);
+
+                    // entityDead = true;
+                    // break;
+                }
             }
+            // if (entityDead) {
+            //     break;
+            // }
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
+
+    timer++;
 
     ss << EntityAsShoot();
     ss << deleteDeadEntities();
@@ -331,7 +345,9 @@ std::string ServerRoom::updatePlayers() const
     ss.clear();
     for (auto itr : _playerList) {
         itr->update();
-        ss << createEntityResponse(itr, "UPDATE");
+        if (itr->isAlive()) {
+            ss << createEntityResponse(itr, "UPDATE");
+        }
         for (auto bullet : itr->getAmmo()) {
             ss << createEntityResponse(bullet, "UPDATE");
         }

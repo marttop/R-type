@@ -129,10 +129,14 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                                                     std::atoi(entityCmd[8].c_str()))));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
-                else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0)
+                else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
+                    _entityMap[entityCmd[2]]->setHealth(std::atoi(entityCmd[8].c_str()));
                     _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
-                else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0)
+                }
+                else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
+                    if (entityCmd[1] == "player") std::cout << "I died" << std::endl;
                     _entityMap[entityCmd[2]]->setIsAlive(false);
+                }
                 i = 0;
                 entityCmd.clear();
                 continue;
@@ -174,7 +178,7 @@ void Game::handleRead(const asio::error_code &error)
     while (1) {
         if (std::strlen(_udpBuf) > 0) {
             update();
-            std::cout << _udpBuf;
+            // std::cout << _udpBuf;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
         size_t len = 0;
