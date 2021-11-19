@@ -1,7 +1,10 @@
 #!/usr/bin/bash
 
-echo "removing build folder"
+echo "Removing build folder..."
 rm -rf build
 
-echo "building..."
+echo "Building shared libraries..."
+cd src/server/entities && make
+
+echo "Building project..."
 mkdir build && cd build && conan install -u .. --build=missing && cmake .. -G "Unix Makefiles" && cmake --build .
