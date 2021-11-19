@@ -19,12 +19,12 @@ BossC::BossC(const sf::Texture &texture, const sf::Vector2f &pos, const float &s
     _hpRect.setFillColor(sf::Color::Green);
     _barRect.setOutlineColor(sf::Color::White);
     _barRect.setFillColor(sf::Color::Transparent);
-    _barRect.setPosition(sf::Vector2f(800, 15));
-    _hpRect.setPosition(sf::Vector2f(801, 16));
+    _barRect.setPosition(sf::Vector2f(1920 / 2 - _barRect.getSize().x / 2, 15));
+    _hpRect.setPosition(sf::Vector2f(1920 / 2 - _hpRect.getSize().x / 2, 16));
     _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
     _name.setString("BOSS");
     _name.setFont(_font);
-    _name.setPosition(sf::Vector2f(800 + 195 - _name.getGlobalBounds().width / 2, 42));
+    _name.setPosition(sf::Vector2f(1920 / 2 - _name.getGlobalBounds().width / 2, 42));
 }
 
 BossC::~BossC()
