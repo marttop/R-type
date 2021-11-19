@@ -19,6 +19,7 @@ Heal::Heal()
 {
     _speed = -3;
     _type = "Heal";
+    _health = -1;
 }
 
 Heal::~Heal()

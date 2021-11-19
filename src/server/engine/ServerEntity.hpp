@@ -38,6 +38,7 @@ class ServerEntity : public IEntity {
         std::pair<double, double> getPosition() const;
         std::string getType() const;
         double getSpeed() const;
+        int getMaxHp() const;
 
         void setPosition(double x, double y);
         int getHp() const;
@@ -54,6 +55,7 @@ class ServerEntity : public IEntity {
         std::vector<std::shared_ptr<IEntity>> _ammos;
         double _speed;
         int _health;
+        int _maxHealth;
     private:
 };
 

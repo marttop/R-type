@@ -242,19 +242,22 @@ std::string ServerRoom::deleteDeadEntities()
     ss.str("");
     ss.clear();
     int index = 0;
+    static int powerUpId = 0;
 
     for (auto it = _entities.begin(); it != _entities.end();) {
         if (it->get()->isAlive() == false) {
             ss << createEntityResponse(_entities.at(index), "DELETE");
             if (it->get()->getType() == "BidosSlaves") {
-                if (std::rand() % 100 > 50) {
+                if (std::rand() % 100 > 25) {
                     auto createdEntity = _loader->createEntityWithName("Heal");
                     createdEntity->setPosition(it->get()->getPosition().first, it->get()->getPosition().second);
+                    createdEntity->setId("P" + std::to_string(powerUpId));
+                    powerUpId++;
                     _entities.push_back(createdEntity);
                     ss << createEntityResponse(createdEntity, "CREATE");
                 }
             }
-            _entities.erase(it);
+            it = _entities.erase(it);
 
         } else {
             ++it;
@@ -300,18 +303,20 @@ std::string ServerRoom::updateEntities()
         entity->update();
 
         for (auto player : _playerList) {
+            if (entity->getType() == "Heal" && player->isColliding(entity)) {
+                entity->setAlive(false);
+                player->addLifeEntity(player->getMaxHp() / 10);
+            }
             if (timer % 7 == 0 && entity->getType() == "BossBullet" && player->isColliding(entity)) {
                 timer = 0;
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
-                    if (!player->isAlive()) {
-                        std::cout << "ANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL" << std::endl;
+                    if (!player->isAlive())
                         ss << createEntityResponse(player, "DELETE");
-                    }
                 }
             }
             for (auto playerBullet : player->getAmmo()) {
-                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet") {
+                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "Heal") {
                     playerBullet->setAlive(false);
                     entity->addLifeEntity(-1);
 
