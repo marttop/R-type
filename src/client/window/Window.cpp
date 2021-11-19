@@ -48,12 +48,13 @@ void Window::event()
         _closeGame = true;
     if (_scene == GAME) {
         if (_game.event(_event, *_udpSocket)) {
-            _scene == MENU;
-            std::vector<bool> direction = {1, 0, 1, 0};
+            _scene = MENU;
+            std::vector<bool> direction = {1, 0, 0, 1};
             _parallax.setDirection(direction);
             _gameStarted = false;
             _game.create(_window, *_udpSocket);
             _menu.setInRoom(false);
+            _udpSocket->close();
         }
     }
     if (_scene == MENU) {
@@ -69,6 +70,7 @@ void Window::switchScene()
         _scene = GAME;
         std::vector<bool> direction = {1, 0, 0, 0};
         _parallax.setDirection(direction);
+        std::memset(_udpBuf, '\0', 1024);
     }
 }
 

@@ -80,3 +80,8 @@ bool WarningBox::event(const sf::Event &event, const sf::RenderWindow &window)
     }
     return (false);
 }
+
+void WarningBox::close()
+{
+    _isOpen = false;
+}

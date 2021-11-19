@@ -22,6 +22,7 @@ class WarningBox {
         bool event(const sf::Event &event, const sf::RenderWindow &window);
         void open(const std::string &text, const bool &isButton);
         bool isOpen() const;
+        void close();
 
     protected:
     private:

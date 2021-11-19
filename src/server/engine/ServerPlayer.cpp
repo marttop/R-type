@@ -23,7 +23,8 @@ ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context,
 
 ServerPlayer::~ServerPlayer()
 {
-
+    if (_socket.is_open())
+        _socket.close();
 }
 
 void ServerPlayer::closeUDP()

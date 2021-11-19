@@ -139,6 +139,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                     if (entityCmd[1] == "Boss") {
                         _isGameFinished = true;
                         _alert.open("You and your team won! Good boy", true);
+                        _entityMap.clear();
                     }
                 }
                 i = 0;
@@ -192,7 +193,6 @@ void Game::handleRead(const asio::error_code &error)
         if (_udpSocket->is_open()) len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
         else break;
     }
-    //_udpSocket->close();
 }
 
 void Game::setAlert()
