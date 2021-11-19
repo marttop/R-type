@@ -135,6 +135,10 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
                     _entityMap[entityCmd[2]]->setIsAlive(false);
+                    if (entityCmd[1] == "Boss") {
+                        _isGameFinished = true;
+                        _alert.open("You and your team won! Bravo", false);
+                    }
                 }
                 i = 0;
                 entityCmd.clear();
@@ -149,6 +153,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
 std::thread Game::startThread(const asio::error_code &error, bool &closeGame)
 {
     _closeGame = &closeGame;
+    _isGameFinished = false;
     return std::thread(&Game::handleRead, this, error);
 }
 
@@ -175,7 +180,7 @@ void Game::update()
 void Game::handleRead(const asio::error_code &error)
 {
     asio::error_code error2;
-    while (1) {
+    while (!_isGameFinished) {
         if (*_closeGame == true) break;
         if (std::strlen(_udpBuf) > 0) {
             update();

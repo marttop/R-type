@@ -60,6 +60,7 @@ class Game {
         asio::ip::udp::socket *_udpSocket;
         sf::Clock _gameClock;
         bool *_closeGame;
+        bool _isGameFinished;
 };
 
 #endif /* !GAME_HPP_ */
