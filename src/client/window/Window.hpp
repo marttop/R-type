@@ -46,6 +46,7 @@ class Window {
         Scene _scene;
         bool _lostConnection;
         bool _gameStarted;
+        bool _closeGame;
 
         asio::io_context _io_context;
         asio::ip::tcp::resolver *_resolver;

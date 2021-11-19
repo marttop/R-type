@@ -25,6 +25,7 @@ Window::Window(const std::string &title)
 
     _lostConnection = false;
     _gameStarted = false;
+    _closeGame = false;
 
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_POINT_SMOOTH);
@@ -44,7 +45,7 @@ Window::~Window()
 void Window::event()
 {
     if (_event.type == sf::Event::Closed)
-        _window.close();
+        _closeGame = true;
     if (_scene == GAME)
         _game.event(_event, *_udpSocket);
     if (_scene == MENU) {
@@ -73,7 +74,7 @@ void Window::update()
     if (_scene == GAME && !_gameStarted) {
         _udpSocket->non_blocking(false);
         _gameStarted = true;
-        std::thread th = _game.startThread(_udpError);
+        std::thread th = _game.startThread(_udpError, _closeGame);
         th.detach();
     }
 }
@@ -119,6 +120,7 @@ void Window::readUdp()
 void Window::gameLoop()
 {
     while (_window.isOpen()) {
+        if (_closeGame) _window.close();
         readTcp();
         readUdp();
         while (_window.pollEvent(_event))

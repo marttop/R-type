@@ -147,8 +147,9 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
     }
 }
 
-std::thread Game::startThread(const asio::error_code &error)
+std::thread Game::startThread(const asio::error_code &error, bool &closeGame)
 {
+    _closeGame = &closeGame;
     return std::thread(&Game::handleRead, this, error);
 }
 
@@ -176,13 +177,15 @@ void Game::handleRead(const asio::error_code &error)
 {
     asio::error_code error2;
     while (1) {
+        if (*_closeGame == true) break;
         if (std::strlen(_udpBuf) > 0) {
             update();
             // std::cout << _udpBuf;
         }
         std::memset(_udpBuf, '\0', BUFF_SIZE);
         size_t len = 0;
-        len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
+        if (_udpSocket->is_open()) len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
+        else break;
     }
 }
 
