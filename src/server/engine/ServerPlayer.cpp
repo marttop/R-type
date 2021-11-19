@@ -150,20 +150,22 @@ void ServerPlayer::update()
 
     double x = getPosition().first;
     double y = getPosition().second;
-    if (_boolLand[0] == true) {
-        setPosition(x, y += _speed);
-    }
-    if (_boolLand[1] == true) {
-        setPosition(x, y -= _speed);
-    }
-    if (_boolLand[2] == true) {
-        setPosition(x -= _speed, y);
-    }
-    if (_boolLand[3] == true) {
-        setPosition(x += _speed, y);
-    }
-    if (_boolLand[4] == true) {
-        shoot();
+    if (_isAlive) {
+        if (_boolLand[0] == true) {
+            setPosition(x, y += _speed);
+        }
+        if (_boolLand[1] == true) {
+            setPosition(x, y -= _speed);
+        }
+        if (_boolLand[2] == true) {
+            setPosition(x -= _speed, y);
+        }
+        if (_boolLand[3] == true) {
+            setPosition(x += _speed, y);
+        }
+        if (_boolLand[4] == true) {
+            shoot();
+        }
     }
 
     auto i = std::begin(_ammo);

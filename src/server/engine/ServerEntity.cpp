@@ -42,7 +42,11 @@ void ServerEntity::setAlive(bool life)
 
 void ServerEntity::addLifeEntity(int lifeAdded)
 {
-    _health += lifeAdded;
+    if (_health > 0) {
+        _health += lifeAdded;
+    } else {
+        _isAlive = false;
+    }
 }
 
 std::string ServerEntity::getId() const
@@ -65,7 +69,7 @@ bool ServerEntity::isColliding(const std::shared_ptr<IEntity> &other) const
     return (_rect.isColliding(other->getRect()));
 }
 
-void ServerEntity::setDirection(double x, double y) 
+void ServerEntity::setDirection(double x, double y)
 {
     _direction.first = x;
     _direction.second = y;

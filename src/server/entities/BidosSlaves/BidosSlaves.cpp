@@ -36,6 +36,7 @@ BidosSlaves::BidosSlaves()
     int y = std::rand() % 900 + 100;
     setPosition(x, y);
     _speed = -3;
+    _health = 1;
     _type = "BidosSlaves";
 }
 

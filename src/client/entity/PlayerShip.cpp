@@ -23,19 +23,19 @@ PlayerShip::~PlayerShip()
 {
 }
 
-void PlayerShip::updateHp(int hp)
+void PlayerShip::updateHp()
 {
     float x = 0;
 
-    x = (hp * 102) / _health;
+    x = (_health * 102) / _maxHealth;
 
     if (x < 0)
-        _hpRect.setSize(sf::Vector2f{0, 16});
+        _hpRect.setSize(sf::Vector2f{0, 6});
     else
-        _hpRect.setSize(sf::Vector2f{x, 16});
+        _hpRect.setSize(sf::Vector2f{x, 6});
     float y = 0;
 
-    y = (hp * 100) / _health;
+    y = (_health * 100) / _maxHealth;
 
     if (y > 66)
         _hpRect.setFillColor(sf::Color::Green);
@@ -47,9 +47,12 @@ void PlayerShip::updateHp(int hp)
 
 void PlayerShip::update()
 {
-    _barRect.setPosition(sf::Vector2f(_pos.x + 55, _pos.y - 20));
-    _hpRect.setPosition(sf::Vector2f(_pos.x + 2 + 55, _pos.y + 2 - 20));
-    _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x - 25, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, _startColor, _endColor, 50, 1);
+    if (_isAlive) {
+        _barRect.setPosition(sf::Vector2f(_pos.x + 55, _pos.y - 20));
+        _hpRect.setPosition(sf::Vector2f(_pos.x + 2 + 55, _pos.y + 2 - 20));
+        updateHp();
+        _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x - 25, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / static_cast<float>(1.75)}, _startColor, _endColor, 50, 1);
+    }
 }
 
 void PlayerShip::drawParticles(sf::RenderWindow &window)
@@ -58,9 +61,11 @@ void PlayerShip::drawParticles(sf::RenderWindow &window)
 
 void PlayerShip::drawSprite(sf::RenderWindow &window)
 {
-    glPointSize(7);
-    _particleSystem.drawParticles(window);
-    window.draw(_sprite);
-    window.draw(_barRect);
-    window.draw(_hpRect);
+    if (_isAlive) {
+        glPointSize(7);
+        _particleSystem.drawParticles(window);
+        window.draw(_sprite);
+        window.draw(_barRect);
+        window.draw(_hpRect);
+    }
 }
