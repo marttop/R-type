@@ -27,6 +27,7 @@ void Game::create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
     _alert.create(sf::Vector2f(_window->getPosition().x + _window->getSize().x / 2, _window->getPosition().y + _window->getSize().y / 2));
 
     _gameClock.restart();
+    _entityMap.clear();
 
     _playerCount = 0;
 }
@@ -139,7 +140,6 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                     if (entityCmd[1] == "Boss") {
                         _isGameFinished = true;
                         _alert.open("You and your team won! Good boy", true);
-                        _entityMap.clear();
                     }
                 }
                 i = 0;

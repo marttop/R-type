@@ -53,11 +53,11 @@ void Window::event()
             _parallax.setDirection(direction);
             _gameStarted = false;
             _game.create(_window, *_udpSocket);
-            _menu.setInRoom(false);
+            _menu.setInRoom(false, *_tcpSocket);
             _udpSocket->close();
         }
     }
-    if (_scene == MENU) {
+    else if (_scene == MENU) {
         //_parallax.event(_event);
         _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpSocket);
     }
@@ -77,10 +77,10 @@ void Window::switchScene()
 void Window::update()
 {
     switchScene();
-    if (_scene == MENU || _scene == GAME)
+    if (_scene == MENU || _scene == GAME) {
         _parallax.update();
-    if (_scene == MENU)
         _menu.update(_window, _udpEndpoint, *_udpSocket);
+    }
     if (_scene == GAME && !_gameStarted) {
         _udpSocket->non_blocking(false);
         _gameStarted = true;

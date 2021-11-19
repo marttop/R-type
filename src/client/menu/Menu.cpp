@@ -110,12 +110,13 @@ bool Menu::startAnimation(const sf::RenderWindow &window)
     return (false);
 }
 
-void Menu::setInRoom(const bool &inRoom)
+void Menu::setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket)
 {
     _inRoom = inRoom;
     if (_inRoom == false) {
         _alert.close();
         _room.create(_background);
+        tcpSocket.send(asio::buffer("235 " + _room.getRoomId() + "\n"));
     }
 }
 
