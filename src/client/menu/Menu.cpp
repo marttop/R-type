@@ -110,6 +110,11 @@ bool Menu::startAnimation(const sf::RenderWindow &window)
     return (false);
 }
 
+void Menu::setInRoom(const bool &inRoom)
+{
+    _inRoom = inRoom;
+}
+
 void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
 {
     _animationEnd = startAnimation(window);

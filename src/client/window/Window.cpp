@@ -46,8 +46,16 @@ void Window::event()
 {
     if (_event.type == sf::Event::Closed)
         _closeGame = true;
-    if (_scene == GAME)
-        _game.event(_event, *_udpSocket);
+    if (_scene == GAME) {
+        if (_game.event(_event, *_udpSocket)) {
+            _scene == MENU;
+            std::vector<bool> direction = {1, 0, 1, 0};
+            _parallax.setDirection(direction);
+            _gameStarted = false;
+            _game.create(_window, *_udpSocket);
+            _menu.setInRoom(false);
+        }
+    }
     if (_scene == MENU) {
         //_parallax.event(_event);
         _menu.event(_event, _window, _tcpEndpoint, *_tcpSocket, *_udpSocket);

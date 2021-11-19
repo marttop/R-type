@@ -35,7 +35,7 @@ class Game {
         };
 
         void create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
-        void event(const sf::Event &event, asio::ip::udp::socket &udpSocket);
+        bool event(const sf::Event &event, asio::ip::udp::socket &udpSocket);
         void openAlert();
         void setAlert();
         void handleRead(const asio::error_code &error);

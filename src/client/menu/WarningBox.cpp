@@ -72,8 +72,11 @@ void WarningBox::draw(sf::RenderWindow &window) const
     }
 }
 
-void WarningBox::event(const sf::Event &event, const sf::RenderWindow &window)
+bool WarningBox::event(const sf::Event &event, const sf::RenderWindow &window)
 {
-    if (_isButton && _close.event(event, window))
+    if (_isButton && _close.event(event, window)) {
         _isOpen = false;
+        return (true);
+    }
+    return (false);
 }

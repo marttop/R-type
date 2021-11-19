@@ -79,12 +79,13 @@ void Game::inputManagement(const sf::Event &event, asio::ip::udp::socket &udpSoc
     }
 }
 
-void Game::event(const sf::Event &event, asio::ip::udp::socket &udpSocket)
+bool Game::event(const sf::Event &event, asio::ip::udp::socket &udpSocket)
 {
     if (!_alert.isOpen()) {
         inputManagement(event, udpSocket);
     } else
-        _alert.event(event, *_window);
+        return (_alert.event(event, *_window));
+    return (false);
 }
 
 void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor)
@@ -137,7 +138,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                     _entityMap[entityCmd[2]]->setIsAlive(false);
                     if (entityCmd[1] == "Boss") {
                         _isGameFinished = true;
-                        _alert.open("You and your team won! Bravo", false);
+                        _alert.open("You and your team won! Good boy", true);
                     }
                 }
                 i = 0;
@@ -191,6 +192,7 @@ void Game::handleRead(const asio::error_code &error)
         if (_udpSocket->is_open()) len = _udpSocket->receive(asio::buffer(_udpBuf), 0, error2);
         else break;
     }
+    //_udpSocket->close();
 }
 
 void Game::setAlert()
@@ -200,19 +202,21 @@ void Game::setAlert()
 
 void Game::draw()
 {
-    auto i = std::begin(_entityMap);
-    while (i != std::end(_entityMap)) {
-        i->second->update();
-        i->second->drawSprite(*_window);
-        if (i->second->isDeathFinish())
-            i = _entityMap.erase(i);
-        else
+    if (!_alert.isOpen()) {
+        auto i = std::begin(_entityMap);
+        while (i != std::end(_entityMap)) {
+            i->second->update();
+            i->second->drawSprite(*_window);
+            if (i->second->isDeathFinish())
+                i = _entityMap.erase(i);
+            else
+                ++i;
+        }
+        i = std::begin(_entityMap);
+        while (i != std::end(_entityMap)) {
+            i->second->drawParticles(*_window);
             ++i;
-    }
-    i = std::begin(_entityMap);
-    while (i != std::end(_entityMap)) {
-        i->second->drawParticles(*_window);
-        ++i;
+        }
     }
     _alert.draw(*_window);
 }

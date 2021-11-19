@@ -19,7 +19,7 @@ class WarningBox {
 
         void create(const sf::Vector2f &pos, const sf::Vector2f &factors = {1, 1});
         void draw(sf::RenderWindow &window) const;
-        void event(const sf::Event &event, const sf::RenderWindow &window);
+        bool event(const sf::Event &event, const sf::RenderWindow &window);
         void open(const std::string &text, const bool &isButton);
         bool isOpen() const;
 
