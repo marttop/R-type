@@ -295,8 +295,6 @@ std::string ServerRoom::updateEntities()
     ss.str("");
     ss.clear();
     std::string tmp;
-
-    bool entityDead = false;
     static int timer = 0;
 
     for (auto entity : _entities) {
@@ -319,16 +317,8 @@ std::string ServerRoom::updateEntities()
                 if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "Heal") {
                     playerBullet->setAlive(false);
                     entity->addLifeEntity(-1);
-
-                    // entity->setAlive(false);
-
-                    // entityDead = true;
-                    // break;
                 }
             }
-            // if (entityDead) {
-            //     break;
-            // }
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
