@@ -120,8 +120,8 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 float posY = _window->getSize().y - std::atof(entityCmd[4].c_str());
                 sf::Color startColor = sf::Color::White;
                 sf::Color endColor = sf::Color(255, 255, 255, 0);
-                selectPlayerColor(entityCmd, startColor, endColor);
                 if (entityCmd[0] == "CREATE") {
+                    selectPlayerColor(entityCmd, startColor, endColor);
                     _entityMap.insert(std::make_pair(
                         entityCmd[2],
                         _factory.getEntityByType(entityCmd[1],
