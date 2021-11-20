@@ -22,7 +22,7 @@ Shitty Epitech Protocol
 
                 Client->Server
                     210 + username (after connection)
-                      ->  220 + room_id + nb_player + room_id2 + nb_player + ... (room joined)
+                      ->  220 + room_id + nb_player + ... (room joined)
                       ->  500 (Error)
                     225 + room_id (request join)
                       ->  230 room_id + udp_port + username1 + username2 + ...
@@ -43,6 +43,8 @@ Shitty Epitech Protocol
                     002 + username (user left the room)
                     004 + 1 + username (user set ready)
                     004 + 0 + username (user set unready)
+                    005 + seconds_left
+                    006 (game start)
 
                 Client->Server
                     003 + 0 (unReady)
@@ -52,4 +54,7 @@ Shitty Epitech Protocol
 
 
                 Game
-                    [ACTION] + [ID] + [POS_X] + [POS_Y] + [DIRECTION_X] + [DIRECTION_Y] + [SPEED]
+                    007 + [ACTION] + [ID] + [POS_X] + [POS_Y] + [DIR_X] + [DIR_Y] + [SPEED] + [HEALTH] + 00
+                    code  (CREATE)
+                          (DELETE)
+                          (UPDATE)
