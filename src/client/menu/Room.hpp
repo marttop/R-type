@@ -36,7 +36,7 @@ class Room {
 
         int _port;
         sf::RectangleShape _background;
-        Button _leave;
+        Button _leaving;
         Button _ready;
         std::string _id;
         std::vector<PlayerCard *> _players;

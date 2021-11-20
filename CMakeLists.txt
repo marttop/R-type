@@ -20,24 +20,14 @@ file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp" "src/server/engine/*.
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
 
-file(GLOB TESTCLIENT_SRC "src/testclient/*.cpp")
-
 file(GLOB INTERFACE "src/interface/*.hpp")
 
 add_executable (rtype_client ${CLIENT_SRC} ${COMMON})
 
-add_executable (rtype_testclient ${TESTCLIENT_SRC} ${COMMON})
-
-add_executable (rtype_server ${SERVER_SRC} ${COMMON})
 
 target_include_directories(rtype_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/interface)
 target_link_libraries(rtype_client PUBLIC ${CONAN_LIBS})
 
-target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
-target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
-
-target_include_directories(rtype_testclient PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
-target_link_libraries(rtype_testclient PUBLIC ${CONAN_LIBS})
 
 include_directories("src/interface")
 include_directories("src/common")
@@ -52,6 +42,9 @@ include_directories("src/server/engine")
 
 
 if(CMAKE_COMPILER_IS_GNUCXX)
+	add_executable (rtype_server ${SERVER_SRC} ${COMMON})
+	target_include_directories(rtype_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common src/interface)
+	target_link_libraries(rtype_server PUBLIC ${CONAN_LIBS})
 	list(APPEND CLIENT_COMPILE_OPTIONS "-std=c++14 -W -Wall -Wextra")
 	list(APPEND SERVER_COMPILE_OPTIONS "-std=c++14 -W -Wall -Wextra")
 	foreach(ITEM ${SERVER_COMPILE_OPTIONS})
@@ -63,11 +56,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 if(MSVC)
-	list(APPEND SERVER_COMPILE_OPTIONS "/std:c++14 -D_WIN32_WINNT=0x0A00")
-	list(APPEND CLIENT_COMPILE_OPTIONS "/std:c++14")
-	foreach(ITEM ${SERVER_COMPILE_OPTIONS})
-		set_source_files_properties(${SERVER_SRC} PROPERTIES COMPILE_FLAGS ${ITEM})
-	endforeach(ITEM in SERVER_COMPILE_OPTIONS)
+	add_definitions(-DWIN32_LEAN_AND_MEAN)
+	list(APPEND CLIENT_COMPILE_OPTIONS "/std:c++14 /wd4530")
 	foreach(ITEM ${CLIENT_COMPILE_OPTIONS})
 		set_source_files_properties(${CLIENT_SRC} PROPERTIES COMPILE_FLAGS ${ITEM})
 	endforeach(ITEM in CLIENT_COMPILE_OPTIONS)

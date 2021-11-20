@@ -22,7 +22,7 @@ class Parallax {
             BACKGROUND,
             PLANET,
             FARTHEST,
-            FAR,
+            FARE,
             CLOSE,
             CLOSEST,
         };
