@@ -27,7 +27,6 @@ Window::Window(const std::string &title)
     _gameStarted = false;
     _closeGame = false;
 
-    glEnable(GL_MULTISAMPLE);
     glEnable(GL_POINT_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

@@ -1,5 +1,5 @@
 [requires]
-sfml/2.5.1
+sfml/2.5.1@bincrafters/stable
 asio/1.20.0
 boost/1.77.0
 

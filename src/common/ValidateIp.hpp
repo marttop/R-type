@@ -8,7 +8,12 @@
 #ifndef VALIDATEIP_HPP_
 #define VALIDATEIP_HPP_
 
+#if defined (_WIN32)
+#include <winsock2.h>
+#include <Ws2tcpip.h>
+#else
 #include <arpa/inet.h>
+#endif
 #include <string>
 
 class ValidateIp {

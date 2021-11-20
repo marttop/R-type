@@ -31,14 +31,14 @@ void Parallax::create(const int &speed)
     _layerTextures[BACKGROUND] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/BKG 2/Bkg 2 Nebula.png");
     _layerTextures[PLANET] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/BKG 2/Bkg 2 Planet.png");
     _layerTextures[FARTHEST] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/OLD/small_stars1.png");
-    _layerTextures[FAR] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/OLD/small_stars2.png");
+    _layerTextures[FARE] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/OLD/small_stars2.png");
     _layerTextures[CLOSE] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/BKG 2/Bkg 2 Middle Stars NO.png");
     _layerTextures[CLOSEST] = AssetManager<sf::Texture>::getAssetManager().getAsset("assets/parallax/BKG 2/Bkg 2 Meteors.png");
 
     add(1.0, BACKGROUND, true);
     add(1.2, PLANET, true);
     add(1.4, FARTHEST, true);
-    add(1.6, FAR, true);
+    add(1.6, FARE, true);
     add(1.9, CLOSE, true);
     add(2.2, CLOSEST, true);
 }

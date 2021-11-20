@@ -21,7 +21,7 @@ Room::~Room()
 void Room::create(const sf::RectangleShape &background)
 {
     _ready.create(sf::Vector2f(background.getPosition().x + background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Ready");
-    _leave.create(sf::Vector2f(background.getPosition().x - background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Leave");
+    _leaving.create(sf::Vector2f(background.getPosition().x - background.getSize().x / 4, background.getPosition().y + background.getSize().y / 2), "Leave");
 
     _background.setSize(sf::Vector2f(background.getSize().x / 1.1, background.getSize().y / 1.3));
     _background.setFillColor(sf::Color::Transparent);
@@ -55,7 +55,7 @@ void Room::create(const sf::RectangleShape &background)
 
 void Room::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket)
 {
-    if (_leave.event(event, window))
+    if (_leaving.event(event, window))
         tcpSocket.send(asio::buffer("235 " + _id + "\n"));
     if (_ready.event(event, window)) {
         _isReady = !_isReady;
@@ -149,7 +149,7 @@ void Room::roomLeave(std::vector<std::string> &cmdUdp)
 
 void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
 {
-    _leave.update(window);
+    _leaving.update(window);
     _ready.update(window);
     readyUpdate(cmdUdp);
     roomJoin(cmdUdp);
@@ -198,7 +198,7 @@ void Room::setRoom(std::vector<std::string> &cmdTcp, asio::ip::udp::endpoint &ud
 void Room::draw(sf::RenderWindow &window) const
 {
     window.draw(_background);
-    _leave.draw(window);
+    _leaving.draw(window);
     _ready.draw(window);
     for (auto it : _players)
         it->draw(window);
