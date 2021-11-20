@@ -107,7 +107,7 @@ void ServerRoom::playGame()
         if (duration >= 1) {
             start = std::clock();
             i--;
-            broadCastUdp("005", std::to_string(i));
+            if (i != 0) broadCastUdp("005", std::to_string(i));
         }
         if (!isEveryoneReady()) {
             _isGameStarted = false;
