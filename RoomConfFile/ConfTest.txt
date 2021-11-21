@@ -10,7 +10,7 @@
 # exemple:
 # ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 3 1
 #./src/server/entities/Boss/Boss.so Boss 500 1
-./src/server/entities/BoomBoos/BoomBoss.so BoomBoss 500 1
+./src/server/entities/BoomBoss/BoomBoss.so BoomBoss 500 1
 ./src/server/entities/Asteroids/Asteroids.so Asteroids 100 3
 ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 100 10
 ./src/server/entities/BidosSlaves/BidosSlaves.so BidosSlaves 200 10
