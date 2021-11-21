@@ -25,22 +25,125 @@ class Entity : public IClientEntity {
                 int health = 10);
         ~Entity();
 
+        /**
+         * @brief Get the Elapsed Time object
+         * 
+         * @return ** float 
+         */
         float getElapsedTime() const;
+
+        /**
+         * @brief Get the Pos object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getPos() const;
+
+        /**
+         * @brief Get the Size object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getSize() const;
+
+        /**
+         * @brief Get the Local Bounds object
+         * 
+         * @return ** sf::FloatRect 
+         */
         sf::FloatRect getLocalBounds() const;
+
+        /**
+         * @brief Get the Global Bounds object
+         * 
+         * @return ** sf::FloatRect 
+         */
         sf::FloatRect getGlobalBounds() const;
+
+        /**
+         * @brief Set the Pos object
+         * 
+         * @param pos 
+         * @return ** void 
+         */
         void setPos(const sf::Vector2f &pos);
+
+        /**
+         * @brief Set the Rotation object
+         * 
+         * @param angle 
+         * @return ** void 
+         */
         void setRotation(const float &angle);
+
+        /**
+         * @brief Set the Color object
+         * 
+         * @param color 
+         * @return ** void 
+         */
         void setColor(const sf::Color &color);
 
+        /**
+         * @brief Restart entity clocks
+         * 
+         * @return ** void 
+         */
         void restartClock();
+
+        /**
+         * @brief Get isAlive state
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isAlive() const;
+
+        /**
+         * @brief Set the Is Alive object
+         * 
+         * @param isAlive 
+         * @return ** void 
+         */
         void setIsAlive(bool isAlive);
+
+        /**
+         * @brief Get deathFinish state
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isDeathFinish() const;
+
+        /**
+         * @brief Draw the entity particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window);
+
+        /**
+         * @brief Draw the entity sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window);
+
+        /**
+         * @brief Update the entity
+         * 
+         * @return ** void 
+         */
         void update();
+
+        /**
+         * @brief Set the Health object
+         * 
+         * @param health 
+         * @return ** void 
+         */
         void setHealth(int health);
 
     protected:

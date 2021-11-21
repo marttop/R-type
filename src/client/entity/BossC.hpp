@@ -21,8 +21,26 @@ public:
                 int health);
     ~BossC();
 
+    /**
+     * @brief Update the BossC
+     * 
+     * @return ** void 
+     */
     void update();
+
+    /**
+     * @brief Update the BossC hp
+     * 
+     * @return ** void 
+     */
     void updateHp();
+
+    /**
+     * @brief Draw the BossC sprite
+     * 
+     * @param window 
+     * @return ** void 
+     */
     void drawSprite(sf::RenderWindow &window) override;
 
 protected:

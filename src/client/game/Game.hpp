@@ -35,14 +35,76 @@ class Game {
             SPACE
         };
 
+        /**
+         * @brief Create Game
+         * 
+         * @param window 
+         * @param udpSocket 
+         * @return ** void 
+         */
         void create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket);
+
+        /**
+         * @brief Game events
+         * 
+         * @param event 
+         * @param udpSocket 
+         * @return true 
+         * @return false 
+         */
         bool event(const sf::Event &event, asio::ip::udp::socket &udpSocket);
+
+        /**
+         * @brief Open WarningBox
+         * 
+         * @return ** void 
+         */
         void openAlert();
+
+        /**
+         * @brief Set the Alert object
+         * 
+         * @return ** void 
+         */
         void setAlert();
+
+        /**
+         * @brief UDP read
+         * 
+         * @param error 
+         * @return ** void 
+         */
+        
         void handleRead(const asio::error_code &error);
+
+        /**
+         * @brief Start thread for UDP read
+         * 
+         * @param error 
+         * @param closeGame 
+         * @return ** std::thread 
+         */
         std::thread startThread(const asio::error_code &error, bool &closeGame);
+
+        /**
+         * @brief Draw Game
+         * 
+         * @return ** void 
+         */
         void draw();
+
+        /**
+         * @brief Stop the music
+         * 
+         * @return ** void 
+         */
         void stopMusic();
+
+        /**
+         * @brief Start the music
+         * 
+         * @return ** void 
+         */
         void startMusic();
 
     protected:

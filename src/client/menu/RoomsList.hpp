@@ -22,11 +22,60 @@ class RoomsList {
         RoomsList();
         ~RoomsList();
 
+        /**
+         * @brief Create RoomsList
+         * 
+         * @param background 
+         * @return ** void 
+         */
         void create(const sf::RectangleShape &background);
+
+        /**
+         * @brief Set the Ip object
+         * 
+         * @param ip 
+         * @return ** void 
+         */
         void setIp(const std::string &ip);
+
+        /**
+         * @brief Draw RoomsList
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void draw(sf::RenderWindow &window) const;
+
+        /**
+         * @brief Update RoomsList
+         * 
+         * @param cmdTcp 
+         * @param window 
+         * @param connected 
+         * @param isDrawn 
+         * @return ** void 
+         */
         void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected, const bool &isDrawn);
+
+        /**
+         * @brief RoomsList events
+         * 
+         * @param event 
+         * @param window 
+         * @param tcpSocket 
+         * @return ** void 
+         */
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
+
+        /**
+         * @brief Disconnect event
+         * 
+         * @param event 
+         * @param window 
+         * @param tcpSocket 
+         * @return true 
+         * @return false 
+         */
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
 
     protected:

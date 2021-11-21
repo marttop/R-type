@@ -21,8 +21,27 @@ class BossBulletC : public Entity {
                     int health);
         ~BossBulletC();
 
+        /**
+         * @brief Update the BossBulletC
+         * 
+         * @return ** void 
+         */
         void update() override;
+
+        /**
+         * @brief Draw the BossBulletC sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Draw the BossBulletC particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window) override;
 
     protected:

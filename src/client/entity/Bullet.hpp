@@ -21,8 +21,27 @@ class Bullet : public Entity {
                 int health = -1);
         ~Bullet();
 
+        /**
+         * @brief Update the Bullet
+         * 
+         * @return ** void 
+         */
         void update() override;
+
+        /**
+         * @brief Draw the Bullet sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Draw the Bullet particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window) override;
 
     protected:

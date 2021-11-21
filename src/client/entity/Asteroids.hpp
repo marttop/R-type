@@ -20,8 +20,27 @@ class Asteroids : public Entity {
                     int health);
         ~Asteroids();
 
+        /**
+         * @brief Update the Asteroids
+         * 
+         * @return ** void 
+         */
         void update() override;
+
+        /**
+         * @brief Draw the Asteroids particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Draw the Asteroids sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window) override;
 
     protected:

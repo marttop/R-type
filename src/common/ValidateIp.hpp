@@ -21,7 +21,22 @@ public:
     ValidateIp();
     ~ValidateIp();
 
+    /**
+     * @brief Check if the ip is valid
+     * 
+     * @param ipAddress 
+     * @return true 
+     * @return false 
+     */
     bool validateIpAddress(const std::string &ipAddress);
+
+    /**
+     * @brief Check if the port is valid
+     * 
+     * @param port 
+     * @return true 
+     * @return false 
+     */
     bool validatePort(const int &port);
 
 protected:

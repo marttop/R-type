@@ -26,6 +26,17 @@ class EntityFactory {
         EntityFactory();
         ~EntityFactory();
 
+        /**
+         * @brief Get the Entity By Type object
+         * 
+         * @param type 
+         * @param pos 
+         * @param speed 
+         * @param startColor 
+         * @param endColor 
+         * @param health 
+         * @return ** std::shared_ptr<IClientEntity> 
+         */
         std::shared_ptr<IClientEntity> getEntityByType(const std::string &type,
                                                         const sf::Vector2f &pos,
                                                         const float &speed,

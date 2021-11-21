@@ -24,10 +24,52 @@ class Connection {
         Connection();
         ~Connection();
 
+    /**
+     * @brief Create Connection
+     * 
+     * @param background 
+     * @return ** void 
+     */
     void create(const sf::RectangleShape &background);
+
+    /**
+     * @brief Connection events
+     * 
+     * @param event 
+     * @param window 
+     * @return ** void 
+     */
     void event(const sf::Event &event, const sf::RenderWindow &window);
+
+    /**
+     * @brief Update Connection
+     * 
+     * @param window 
+     * @param background 
+     * @param animationEnd 
+     * @param isDrawn 
+     * @return ** void 
+     */
     void update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd, const bool &isDrawn);
+
+    /**
+     * @brief Draw Connection
+     * 
+     * @param window 
+     * @return ** void 
+     */
     void draw(sf::RenderWindow &window) const;
+
+    /**
+     * @brief Connect event
+     * 
+     * @param event 
+     * @param window 
+     * @param endpoint 
+     * @param socket 
+     * @param alert 
+     * @return ** void 
+     */
     void connect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &endpoint, asio::ip::tcp::socket &socket, WarningBox &alert);
 
     protected:

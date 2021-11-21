@@ -27,6 +27,11 @@ class Window {
         Window(const std::string &title);
         ~Window();
 
+        /**
+         * @brief Start the gameLoop
+         * 
+         * @return ** void 
+         */
         void gameLoop();
 
     protected:

@@ -21,8 +21,27 @@ class BidosBulletC : public Entity {
                     int health);
         ~BidosBulletC();
 
+        /**
+         * @brief Update the BidosBulletC
+         * 
+         * @return ** void 
+         */
         void update() override;
+
+        /**
+         * @brief Draw the BidosBulletC sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Draw the BidosBulletC particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window) override;
 
     protected:

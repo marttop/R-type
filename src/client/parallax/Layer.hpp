@@ -15,7 +15,19 @@ class Layer : public Entity {
         Layer(const sf::Texture &texture, const sf::Vector2f &pos, const bool &active, const float &speed);
         ~Layer();
 
+        /**
+         * @brief Set the Active object
+         *
+         * @param activation
+         */
         void setActive(const bool &activation);
+
+        /**
+         * @brief 
+         * 
+         * @return true
+         * @return false 
+         */
         bool isActive() const;
 
     protected:

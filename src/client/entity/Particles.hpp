@@ -16,19 +16,109 @@ class Particle
         Particle(const sf::Color &startColor, const sf::Color &endColor, const int &life, const sf::Vector2f &direction, const sf::Vector2f &randomDirection);
         ~Particle();
 
+        /**
+         * @brief Set the Direction object
+         * 
+         * @param direction 
+         * @return ** void 
+         */
         void setDirection(const sf::Vector2f &direction);
+
+        /**
+         * @brief Set the Random Direction object
+         * 
+         * @param randomDirection 
+         * @return ** void 
+         */
         void setRandomDirection(const sf::Vector2f &randomDirection);
+
+        /**
+         * @brief Set the Position object
+         * 
+         * @param position 
+         * @return ** void 
+         */
         void setPosition(const sf::Vector2f &position);
+
+        /**
+         * @brief Set the Color object
+         * 
+         * @param color 
+         * @return ** void 
+         */
         void setColor(const sf::Color &color);
+
+        /**
+         * @brief Set the Time Step object
+         * 
+         * @param timeStep 
+         * @return ** void 
+         */
         void setTimeStep(const float &timeStep);
+
+        /**
+         * @brief Get the Time Step object
+         * 
+         * @return ** float 
+         */
         float getTimeStep() const;
+
+        /**
+         * @brief Get the Life object
+         * 
+         * @return ** int 
+         */
         int getLife() const;
+
+        /**
+         * @brief Get the Start Color object
+         * 
+         * @return ** sf::Color 
+         */
         sf::Color getStartColor() const;
+
+        /**
+         * @brief Get the End Color object
+         * 
+         * @return ** sf::Color 
+         */
         sf::Color getEndColor() const;
+
+        /**
+         * @brief Get the Position object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getPosition() const;
+
+        /**
+         * @brief Get the Direction object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getDirection() const;
+
+        /**
+         * @brief Set the Colors object
+         * 
+         * @param startColor 
+         * @param endColor 
+         * @return ** void 
+         */
         void setColors(const sf::Color &startColor, const sf::Color &endColor);
+
+        /**
+         * @brief Get the Random Direction object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getRandomDirection() const;
+
+        /**
+         * @brief Get the Particle object
+         * 
+         * @return ** sf::VertexArray 
+         */
         sf::VertexArray getParticle() const;
 
     protected:

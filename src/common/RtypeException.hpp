@@ -18,6 +18,12 @@ namespace rtype {
         public:
             RtypeException(const std::string &what): _what(what) {};
             ~RtypeException() override = default;
+
+            /**
+             * @brief Get the exception
+             * 
+             * @return ** const char* 
+             */
             const char *what() const noexcept override {
                 return _what.c_str();
             }

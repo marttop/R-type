@@ -18,11 +18,60 @@ class InputBox {
         InputBox();
         ~InputBox();
 
+        /**
+         * @brief Create InputBox
+         * 
+         * @param size 
+         * @param pos 
+         * @param title 
+         * @param defaultInput 
+         * @param ip 
+         * @param num 
+         * @param alpha 
+         * @param factors 
+         * @return ** void 
+         */
         void create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title = "", const std::string &defaultInput = "", const bool &ip = false, const bool &num = false, const bool &alpha = true, const sf::Vector2f &factors = {1, 1});
+
+        /**
+         * @brief Draw InputBox
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void draw(sf::RenderWindow &window) const;
+
+        /**
+         * @brief InputBox events
+         * 
+         * @param event 
+         * @param window 
+         * @return ** void 
+         */
         void event(const sf::Event &event, const sf::RenderWindow &window);
+
+        /**
+         * @brief Update InputBox
+         * 
+         * @param window 
+         * @param isDrawn 
+         * @return ** void 
+         */
         void update(const sf::RenderWindow &window, const bool &isDrawn);
+
+        /**
+         * @brief Set the Position object
+         * 
+         * @param pos 
+         * @return ** void 
+         */
         void setPosition(const sf::Vector2f &pos);
+
+        /**
+         * @brief Get the Input String object
+         * 
+         * @return ** std::string 
+         */
         std::string getInputString() const;
 
     protected:
