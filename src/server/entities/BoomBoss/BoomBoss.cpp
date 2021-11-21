@@ -55,7 +55,7 @@ void BoomBoss::startClock()
 bool BoomBoss::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 0.01) {
+    if (((float)t / CLOCKS_PER_SEC) > 1) {
         _shootClock = clock();
         return true;
     }
