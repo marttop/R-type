@@ -18,7 +18,7 @@ Asteroids::Asteroids()
     : ServerEntity(CustomRect(200, 200))
 {
     int x = std::rand() % 200 + 2000;
-    int y = std::rand() % 800 + 100;
+    int y = std::rand() % 800;
     setPosition(x, y);
     _speed = -(rand() % 5 + 5);
     _health = 1;

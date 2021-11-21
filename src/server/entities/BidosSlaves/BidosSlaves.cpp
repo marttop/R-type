@@ -33,7 +33,7 @@ BidosSlaves::BidosSlaves()
     : ServerEntity(CustomRect(205 * 4 / 12, 18 * 4))
 {
     int x = std::rand() % 200 + 2000;
-    int y = std::rand() % 900 + 100;
+    int y = std::rand() % 1000;
     setPosition(x, y);
     _speed = -3;
     _health = 1;
