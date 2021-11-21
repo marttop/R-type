@@ -21,8 +21,26 @@ public:
                 int health);
     ~BoomBossC();
 
+    /**
+     * @brief Update BoomBossC
+     * 
+     * @return ** void 
+     */
     void update();
+
+    /**
+     * @brief Update BoomBossC hp
+     * 
+     * @return ** void 
+     */
     void updateHp();
+
+    /**
+     * @brief Draw BoomBossC sprite
+     * 
+     * @param window 
+     * @return ** void 
+     */
     void drawSprite(sf::RenderWindow &window) override;
 
 protected:
@@ -31,6 +49,8 @@ private:
     sf::RectangleShape _barRect;
     sf::Font _font;
     sf::Text _name;
+    sf::SoundBuffer _spawnBuf;
+    sf::Sound _spawn;
 };
 
 #endif /* !BOOMBOSS_HPP__ */

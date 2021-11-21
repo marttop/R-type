@@ -21,14 +21,10 @@ BoomrangBulletC::~BoomrangBulletC()
 
 void BoomrangBulletC::update()
 {
-    if (!_isAlive && !_deathAnimation) {
+    if (!_isAlive)
         _deathFinish = true;
-        _deathClock.restart();
-    }
-    if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() < 1500)
-        _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(255, 255, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), sf::Color(255, 0, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), 50, 1);
-    else if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() >= 1500)
-        _deathFinish = true;
+
+    _particleSystem.update(sf::Vector2f{25, 25}, sf::Vector2f{_pos.x + _sprite.getGlobalBounds().width / 2, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x + _sprite.getGlobalBounds().width / 2, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(0, 255, 255, 200), sf::Color(255, 255, 255, 50), 20, 1);
 
     if (_animationClock.getElapsedTime().asMilliseconds() > 50) {
         _animationClock.restart();
@@ -42,14 +38,11 @@ void BoomrangBulletC::update()
 
 void BoomrangBulletC::drawSprite(sf::RenderWindow &window)
 {
-    if (!_deathAnimation)
-        window.draw(_sprite);
+    glPointSize(5);
+    _particleSystem.drawParticles(window);
+    window.draw(_sprite);
 }
 
 void BoomrangBulletC::drawParticles(sf::RenderWindow &window)
 {
-    if (_deathAnimation) {
-        glPointSize(5);
-        _particleSystem.drawParticles(window);
-    }
 }
