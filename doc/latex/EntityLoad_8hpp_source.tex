@@ -1,0 +1,51 @@
+\hypertarget{EntityLoad_8hpp_source}{}\doxysection{Entity\+Load.\+hpp}
+\label{EntityLoad_8hpp_source}\index{src/server/engine/EntityLoad.hpp@{src/server/engine/EntityLoad.hpp}}
+\mbox{\hyperlink{EntityLoad_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/OOP-\/400-\/NCE-\/4-\/1-\/arcade-\/marton.szuts}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** DL}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef DL\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DL\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <dlfcn.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{ServerEntity_8hpp}{ServerEntity.hpp}}>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classEntityLoad}{EntityLoad}} \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{classEntityLoad_a85779047b07a454fa1f759061f07d021}{EntityLoad}}();}
+\DoxyCodeLine{21         \mbox{\hyperlink{classEntityLoad_a0a5588d54ec95ae8ce026b956ab73cba}{\string~EntityLoad}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{28         std::string                 \mbox{\hyperlink{classEntityLoad_a80b0070d169d299b9da0989b65a238fa}{error}}();}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{38         \textcolor{keywordtype}{bool}                        \mbox{\hyperlink{classEntityLoad_adfd6a095b15adc58f77df9346ed2e781}{loadEntityWithPath}}(\textcolor{keyword}{const} std::string \&path, \textcolor{keyword}{const} std::string \&name);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{46         std::shared\_ptr<IEntity>    \mbox{\hyperlink{classEntityLoad_a2068176fcbeae4b1a85b9cc1ffe15107}{createEntityWithName}}(\textcolor{keyword}{const} std::string name);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{54         \textcolor{keywordtype}{void}                        \mbox{\hyperlink{classEntityLoad_ad4d92edf50b6dbf918df99666dbac23a}{destroyEntityWithName}}(\textcolor{keyword}{const} std::string \&name, std::shared\_ptr<IEntity> entity);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{57     \textcolor{keyword}{private}:}
+\DoxyCodeLine{58         \textcolor{keyword}{typedef} \mbox{\hyperlink{classIEntity}{IEntity}}*                    (*create)();}
+\DoxyCodeLine{59         \textcolor{keyword}{typedef} void                        (*destroy)(std::shared\_ptr<IEntity>);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordtype}{void}    *open(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filepath);}
+\DoxyCodeLine{62         \textcolor{keywordtype}{int}     close(\textcolor{keywordtype}{void} *handle);}
+\DoxyCodeLine{63         \textcolor{keywordtype}{void}    *sym(\textcolor{keyword}{const} std::string \&name, \textcolor{keywordtype}{void} *handle);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65         std::map<const std::string, create> creates;}
+\DoxyCodeLine{66         std::map<const std::string, destroy> destroys;}
+\DoxyCodeLine{67         std::vector<void *> dlOpens;}
+\DoxyCodeLine{68 \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !DL\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

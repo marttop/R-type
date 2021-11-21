@@ -1,0 +1,5 @@
+<map id="AsioTcpServ::AsioTcpServ" name="AsioTcpServ::AsioTcpServ">
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,191,39"/>
+<area shape="rect" id="node2" href="$classAsioTcpServ.html#a5be08860b31bff042c030eda067c5fd7" title="Starts the server&#39;s TCP communication. Waits for new clients." alt="" coords="239,5,376,47"/>
+<area shape="rect" id="node3" href="$classUserConnection.html#a573ec3c5d2e6f3d866b04cec8b74a5f1" title="Creates a new user (TCP only)" alt="" coords="424,13,599,39"/>
+</map>

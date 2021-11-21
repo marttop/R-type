@@ -1,0 +1,10 @@
+<map id="ServerPlayer::update" name="ServerPlayer::update">
+<area shape="rect" id="node1" title="Updates the entity." alt="" coords="5,101,164,128"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#a507704c43695d0fbb5d6d553ea34d87d" title="Broadcast to all the players in the room." alt="" coords="441,5,644,32"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a22652e96fe96dc2431c4a2fd844e1dce" title="Create a Entity Response object." alt="" coords="448,61,637,102"/>
+<area shape="rect" id="node4" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="451,135,634,161"/>
+<area shape="rect" id="node6" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="212,203,393,229"/>
+<area shape="rect" id="node8" href="$classServerPlayer.html#af9c9fecbfc466f46b13fac08d8d0425c" title="Creates a shooting entity in the player." alt="" coords="228,101,377,128"/>
+<area shape="rect" id="node5" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="692,135,875,161"/>
+<area shape="rect" id="node7" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="452,203,633,229"/>
+</map>

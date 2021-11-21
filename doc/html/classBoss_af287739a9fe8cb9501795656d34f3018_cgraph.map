@@ -1,0 +1,7 @@
+<map id="Boss::Boss" name="Boss::Boss">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,97,83"/>
+<area shape="rect" id="node2" href="$classEntityLoad.html#adfd6a095b15adc58f77df9346ed2e781" title="Loads a new entity with the path and name." alt="" coords="145,5,368,32"/>
+<area shape="rect" id="node3" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="166,56,347,83"/>
+<area shape="rect" id="node5" href="$classBoss.html#a5e3e90f5b52dfccbe2f0f747f99ac923" title=" " alt="" coords="193,107,320,133"/>
+<area shape="rect" id="node4" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="416,56,597,83"/>
+</map>

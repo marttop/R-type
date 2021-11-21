@@ -1,0 +1,13 @@
+<map id="src/client/menu/WarningBox.hpp" name="src/client/menu/WarningBox.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="427,5,659,32"/>
+<area shape="rect" id="node2" href="$Game_8hpp.html" title=" " alt="" coords="137,80,330,107"/>
+<area shape="rect" id="node7" href="$Connection_8hpp.html" title=" " alt="" coords="355,80,581,107"/>
+<area shape="rect" id="node9" href="$Menu_8hpp.html" title=" " alt="" coords="523,155,714,181"/>
+<area shape="rect" id="node11" href="$WarningBox_8cpp.html" title=" " alt="" coords="657,80,887,107"/>
+<area shape="rect" id="node3" href="$Game_8cpp.html" title=" " alt="" coords="5,155,197,181"/>
+<area shape="rect" id="node4" href="$Window_8hpp.html" title=" " alt="" coords="204,229,423,256"/>
+<area shape="rect" id="node5" href="$client_2main_8cpp.html" title=" " alt="" coords="138,304,283,331"/>
+<area shape="rect" id="node6" href="$Window_8cpp.html" title=" " alt="" coords="307,304,525,331"/>
+<area shape="rect" id="node8" href="$Connection_8cpp.html" title=" " alt="" coords="272,155,499,181"/>
+<area shape="rect" id="node10" href="$Menu_8cpp.html" title=" " alt="" coords="524,229,713,256"/>
+</map>

@@ -1,0 +1,551 @@
+\hypertarget{classServerEntity}{}\doxysection{Server\+Entity Class Reference}
+\label{classServerEntity}\index{ServerEntity@{ServerEntity}}
+
+
+{\ttfamily \#include $<$Server\+Entity.\+hpp$>$}
+
+
+
+Inheritance diagram for Server\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Server\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServerEntity_aea0f8043c778331693ba8a348cd9d47e}{Server\+Entity}} (const \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \&custom\+Rect, const std\+::string \&type=\char`\"{}default\char`\"{}, const std\+::string \&id=\char`\"{}0\char`\"{}, int speed=5, int health=1)
+\item 
+\mbox{\hyperlink{classServerEntity_adeeeedd0dc4d2e364d80936fc821e271}{$\sim$\+Server\+Entity}} ()
+\item 
+void \mbox{\hyperlink{classServerEntity_a10ad07157f4ad9e3059496c086b0059f}{send\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Not used function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_af1b6df8d9e414561f5ff45999ee1ec77}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em Updates the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_a1c0c32266bf4c7329d0ca397d638cb33}{set\+Id}} (const std\+::string id)
+\begin{DoxyCompactList}\small\item\em Set the Id object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classServerEntity_a350f979b0a159b5be0a894a72689c86f}{is\+Alive}} () const
+\begin{DoxyCompactList}\small\item\em Is the entity alive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_a0feab00da45d3be0a2e7b99e5bacd16d}{set\+Alive}} (bool life)
+\begin{DoxyCompactList}\small\item\em Set the Alive object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_a26a3c70ff4f34fdd9b8ca46aaacc1a77}{add\+Life\+Entity}} (int life\+Added)
+\begin{DoxyCompactList}\small\item\em add life to an entity, this function can handle negative add \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classServerEntity_a3fb483762bb0bca311b80c71c2b211f7}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get the Id object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \mbox{\hyperlink{classServerEntity_ae418d986e5ec2cfcd959dd94e9531951}{get\+Rect}} () const
+\begin{DoxyCompactList}\small\item\em Get the Rect object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classServerEntity_ae3f0682169f572d3c123974c0f961f5a}{is\+Colliding}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \&other) const
+\begin{DoxyCompactList}\small\item\em Is entity colliding with another. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_afaaae4d9faa86e7712a9cb66ae99e97f}{set\+Direction}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Set the Direction object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{classServerEntity_a3de74aab9f2a934c124c5aa600b02e10}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Get the Direction object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Get the Position object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classServerEntity_ac707c11d9f28653e373a97e0e334a94a}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the Type object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classServerEntity_a0174e2d8e065ccf36992bb5ad057435a}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Get the Speed object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServerEntity_af5752dcde96357a5d3e76964cfb72000}{get\+Max\+Hp}} () const
+\item 
+void \mbox{\hyperlink{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169}{set\+Position}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Set the Position object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServerEntity_a5458f0fc2a066233dc1c5d5bb177b814}{get\+Hp}} () const
+\begin{DoxyCompactList}\small\item\em Get the Hp object. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ \mbox{\hyperlink{classServerEntity_ae844b1c49cf3a61045afc5fbb45e9ecc}{get\+Ammos}} () const
+\begin{DoxyCompactList}\small\item\em Get the Ammos object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerEntity_a5b5202c23b744ad8d68ca1c197b63f54}{clear\+Ammos}} ()
+\begin{DoxyCompactList}\small\item\em Deletes all the ammos in the list of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classServerEntity_a31ec1eebc65b256a95fe59fab4d071ac}{\+\_\+is\+Alive}}
+\item 
+\mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \mbox{\hyperlink{classServerEntity_abbe25a3c79c2b5857c90d7182c0091b8}{\+\_\+rect}}
+\item 
+std\+::string \mbox{\hyperlink{classServerEntity_af6b15008690da377f9d8789fe34334e2}{\+\_\+type}}
+\item 
+std\+::string \mbox{\hyperlink{classServerEntity_a44403be8d5bf4651dd38dcda7678020d}{\+\_\+id}}
+\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{classServerEntity_a3ebdbb625ae1b6958424f7ccce4193f9}{\+\_\+direction}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ \mbox{\hyperlink{classServerEntity_ac0a66c570abc9f4a8c893a8e5d107e6f}{\+\_\+ammos}}
+\item 
+double \mbox{\hyperlink{classServerEntity_a984e9b4f31ee03ce8c5813f163d10da1}{\+\_\+speed}}
+\item 
+int \mbox{\hyperlink{classServerEntity_a5fda0814e145529482ff868f669bec69}{\+\_\+health}}
+\item 
+int \mbox{\hyperlink{classServerEntity_ae4a03b4fb4ce1b3e601cf23d9541157f}{\+\_\+max\+Health}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServerEntity_aea0f8043c778331693ba8a348cd9d47e}\label{classServerEntity_aea0f8043c778331693ba8a348cd9d47e}} 
+\index{ServerEntity@{ServerEntity}!ServerEntity@{ServerEntity}}
+\index{ServerEntity@{ServerEntity}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{ServerEntity()}{ServerEntity()}}
+{\footnotesize\ttfamily Server\+Entity\+::\+Server\+Entity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \&}]{custom\+Rect,  }\item[{const std\+::string \&}]{type = {\ttfamily \char`\"{}default\char`\"{}},  }\item[{const std\+::string \&}]{id = {\ttfamily \char`\"{}0\char`\"{}},  }\item[{int}]{speed = {\ttfamily 5},  }\item[{int}]{health = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classServerEntity_adeeeedd0dc4d2e364d80936fc821e271}\label{classServerEntity_adeeeedd0dc4d2e364d80936fc821e271}} 
+\index{ServerEntity@{ServerEntity}!````~ServerEntity@{$\sim$ServerEntity}}
+\index{````~ServerEntity@{$\sim$ServerEntity}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{$\sim$ServerEntity()}{~ServerEntity()}}
+{\footnotesize\ttfamily Server\+Entity\+::$\sim$\+Server\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerEntity_a26a3c70ff4f34fdd9b8ca46aaacc1a77}\label{classServerEntity_a26a3c70ff4f34fdd9b8ca46aaacc1a77}} 
+\index{ServerEntity@{ServerEntity}!addLifeEntity@{addLifeEntity}}
+\index{addLifeEntity@{addLifeEntity}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{addLifeEntity()}{addLifeEntity()}}
+{\footnotesize\ttfamily void Server\+Entity\+::add\+Life\+Entity (\begin{DoxyParamCaption}\item[{int}]{life\+Added }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+add life to an entity, this function can handle negative add 
+
+
+\begin{DoxyParams}{Parameters}
+{\em life\+Added} & number of life point sum to the actual life \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_aed8ff2ce5d8450620621aa7e8dfd3056}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a5b5202c23b744ad8d68ca1c197b63f54}\label{classServerEntity_a5b5202c23b744ad8d68ca1c197b63f54}} 
+\index{ServerEntity@{ServerEntity}!clearAmmos@{clearAmmos}}
+\index{clearAmmos@{clearAmmos}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{clearAmmos()}{clearAmmos()}}
+{\footnotesize\ttfamily void Server\+Entity\+::clear\+Ammos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Deletes all the ammos in the list of the entity. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_aa378ddb558c5347e62edd93b52f3f7bb}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_ae844b1c49cf3a61045afc5fbb45e9ecc}\label{classServerEntity_ae844b1c49cf3a61045afc5fbb45e9ecc}} 
+\index{ServerEntity@{ServerEntity}!getAmmos@{getAmmos}}
+\index{getAmmos@{getAmmos}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getAmmos()}{getAmmos()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ Server\+Entity\+::get\+Ammos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Ammos object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IEntity$>$$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a64e4b13aacb0bbff746c41fd4a3eecda}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a3de74aab9f2a934c124c5aa600b02e10}\label{classServerEntity_a3de74aab9f2a934c124c5aa600b02e10}} 
+\index{ServerEntity@{ServerEntity}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Server\+Entity\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Direction object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::pair$<$double, double$>$ (x, y) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a920dc68c489c93638ea6304eb0145d0e}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a5458f0fc2a066233dc1c5d5bb177b814}\label{classServerEntity_a5458f0fc2a066233dc1c5d5bb177b814}} 
+\index{ServerEntity@{ServerEntity}!getHp@{getHp}}
+\index{getHp@{getHp}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getHp()}{getHp()}}
+{\footnotesize\ttfamily int Server\+Entity\+::get\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Hp object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a46cb460e05d3e3c6c958fc523b47b73c}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a3fb483762bb0bca311b80c71c2b211f7}\label{classServerEntity_a3fb483762bb0bca311b80c71c2b211f7}} 
+\index{ServerEntity@{ServerEntity}!getId@{getId}}
+\index{getId@{getId}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily std\+::string Server\+Entity\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Id object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a23ad5dec44124013263afbed77c66d5b}{IEntity}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_a3fb483762bb0bca311b80c71c2b211f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerEntity_af5752dcde96357a5d3e76964cfb72000}\label{classServerEntity_af5752dcde96357a5d3e76964cfb72000}} 
+\index{ServerEntity@{ServerEntity}!getMaxHp@{getMaxHp}}
+\index{getMaxHp@{getMaxHp}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getMaxHp()}{getMaxHp()}}
+{\footnotesize\ttfamily int Server\+Entity\+::get\+Max\+Hp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c}\label{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c}} 
+\index{ServerEntity@{ServerEntity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Server\+Entity\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Position object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$double, double$>$ (x, y) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a44086c862227b4d2397b5f1d80af65d3}{IEntity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerEntity_ae418d986e5ec2cfcd959dd94e9531951}\label{classServerEntity_ae418d986e5ec2cfcd959dd94e9531951}} 
+\index{ServerEntity@{ServerEntity}!getRect@{getRect}}
+\index{getRect@{getRect}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getRect()}{getRect()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} Server\+Entity\+::get\+Rect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Rect object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_afda3c6b642a8b8b7327fb0e7618e78bd}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a0174e2d8e065ccf36992bb5ad057435a}\label{classServerEntity_a0174e2d8e065ccf36992bb5ad057435a}} 
+\index{ServerEntity@{ServerEntity}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily double Server\+Entity\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Speed object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ double 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_acf205d75213f26bd1a2cd7e98efe99c9}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_ac707c11d9f28653e373a97e0e334a94a}\label{classServerEntity_ac707c11d9f28653e373a97e0e334a94a}} 
+\index{ServerEntity@{ServerEntity}!getType@{getType}}
+\index{getType@{getType}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily std\+::string Server\+Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Type object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_acf90d593003711ef619cf14624f60ccc}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a350f979b0a159b5be0a894a72689c86f}\label{classServerEntity_a350f979b0a159b5be0a894a72689c86f}} 
+\index{ServerEntity@{ServerEntity}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{isAlive()}{isAlive()}}
+{\footnotesize\ttfamily bool Server\+Entity\+::is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Is the entity alive. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a3c69e2d0dd2bd40ec5865a1d974d5403}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_ae3f0682169f572d3c123974c0f961f5a}\label{classServerEntity_ae3f0682169f572d3c123974c0f961f5a}} 
+\index{ServerEntity@{ServerEntity}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{isColliding()}{isColliding()}}
+{\footnotesize\ttfamily bool Server\+Entity\+::is\+Colliding (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Is entity colliding with another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_ac9cead79160a4a7d771bb1f3e55689ac}{IEntity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_ae3f0682169f572d3c123974c0f961f5a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerEntity_a10ad07157f4ad9e3059496c086b0059f}\label{classServerEntity_a10ad07157f4ad9e3059496c086b0059f}} 
+\index{ServerEntity@{ServerEntity}!sendData@{sendData}}
+\index{sendData@{sendData}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily void Server\+Entity\+::send\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Not used function. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_ad4cb36d83978f22747f6001a9a0c16db}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a0feab00da45d3be0a2e7b99e5bacd16d}\label{classServerEntity_a0feab00da45d3be0a2e7b99e5bacd16d}} 
+\index{ServerEntity@{ServerEntity}!setAlive@{setAlive}}
+\index{setAlive@{setAlive}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{setAlive()}{setAlive()}}
+{\footnotesize\ttfamily void Server\+Entity\+::set\+Alive (\begin{DoxyParamCaption}\item[{bool}]{life }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Alive object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em life} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_a4f218b1db56a29c6d0163b7e33bceee4}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_afaaae4d9faa86e7712a9cb66ae99e97f}\label{classServerEntity_afaaae4d9faa86e7712a9cb66ae99e97f}} 
+\index{ServerEntity@{ServerEntity}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily void Server\+Entity\+::set\+Direction (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Direction object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_a71ed039a0b9b6e57de9fad38fc6741de}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_a1c0c32266bf4c7329d0ca397d638cb33}\label{classServerEntity_a1c0c32266bf4c7329d0ca397d638cb33}} 
+\index{ServerEntity@{ServerEntity}!setId@{setId}}
+\index{setId@{setId}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Server\+Entity\+::set\+Id (\begin{DoxyParamCaption}\item[{const std\+::string}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Id object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_ad117a1237907c109a91d59c4bad6489e}{IEntity}}.
+
+\mbox{\Hypertarget{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169}\label{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169}} 
+\index{ServerEntity@{ServerEntity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Server\+Entity\+::set\+Position (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the Position object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIEntity_a4420dc11cbdab742fdcc9db03d1e7814}{IEntity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerEntity_af1b6df8d9e414561f5ff45999ee1ec77}\label{classServerEntity_af1b6df8d9e414561f5ff45999ee1ec77}} 
+\index{ServerEntity@{ServerEntity}!update@{update}}
+\index{update@{update}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Server\+Entity\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updates the entity. 
+
+
+
+Implements \mbox{\hyperlink{classIEntity_a556e11eb6fa12864de1620ee3555ce58}{IEntity}}.
+
+
+
+Implemented in \mbox{\hyperlink{classServerBullet_a5dc8ac595f9b44e670cd1f0290e9bf50}{Server\+Bullet}}, \mbox{\hyperlink{classBidosSlaves_a00b7503431594ea7e1fcafab9857dcc1}{Bidos\+Slaves}}, \mbox{\hyperlink{classBoss_ab3b0e756ba923f88c8afea3ed3af552c}{Boss}}, \mbox{\hyperlink{classBossBullet_acaa5b40d7a19f79a762f5695790e8e3c}{Boss\+Bullet}}, \mbox{\hyperlink{classHeal_a6112557307ca96c42ede67d281c7ff35}{Heal}}, \mbox{\hyperlink{classHeal_a74c764dbf474f0d0de69b5c86ce10377}{Heal}}, and \mbox{\hyperlink{classServerPlayer_a67b1db7a377d6f9aa4f31607f64f3d40}{Server\+Player}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classServerEntity_ac0a66c570abc9f4a8c893a8e5d107e6f}\label{classServerEntity_ac0a66c570abc9f4a8c893a8e5d107e6f}} 
+\index{ServerEntity@{ServerEntity}!\_ammos@{\_ammos}}
+\index{\_ammos@{\_ammos}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_ammos}{\_ammos}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classIEntity}{IEntity}}$>$ $>$ Server\+Entity\+::\+\_\+ammos\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_a3ebdbb625ae1b6958424f7ccce4193f9}\label{classServerEntity_a3ebdbb625ae1b6958424f7ccce4193f9}} 
+\index{ServerEntity@{ServerEntity}!\_direction@{\_direction}}
+\index{\_direction@{\_direction}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_direction}{\_direction}}
+{\footnotesize\ttfamily std\+::pair$<$int, int$>$ Server\+Entity\+::\+\_\+direction\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_a5fda0814e145529482ff868f669bec69}\label{classServerEntity_a5fda0814e145529482ff868f669bec69}} 
+\index{ServerEntity@{ServerEntity}!\_health@{\_health}}
+\index{\_health@{\_health}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_health}{\_health}}
+{\footnotesize\ttfamily int Server\+Entity\+::\+\_\+health\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_a44403be8d5bf4651dd38dcda7678020d}\label{classServerEntity_a44403be8d5bf4651dd38dcda7678020d}} 
+\index{ServerEntity@{ServerEntity}!\_id@{\_id}}
+\index{\_id@{\_id}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily std\+::string Server\+Entity\+::\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_a31ec1eebc65b256a95fe59fab4d071ac}\label{classServerEntity_a31ec1eebc65b256a95fe59fab4d071ac}} 
+\index{ServerEntity@{ServerEntity}!\_isAlive@{\_isAlive}}
+\index{\_isAlive@{\_isAlive}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_isAlive}{\_isAlive}}
+{\footnotesize\ttfamily bool Server\+Entity\+::\+\_\+is\+Alive\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_ae4a03b4fb4ce1b3e601cf23d9541157f}\label{classServerEntity_ae4a03b4fb4ce1b3e601cf23d9541157f}} 
+\index{ServerEntity@{ServerEntity}!\_maxHealth@{\_maxHealth}}
+\index{\_maxHealth@{\_maxHealth}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_maxHealth}{\_maxHealth}}
+{\footnotesize\ttfamily int Server\+Entity\+::\+\_\+max\+Health\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_abbe25a3c79c2b5857c90d7182c0091b8}\label{classServerEntity_abbe25a3c79c2b5857c90d7182c0091b8}} 
+\index{ServerEntity@{ServerEntity}!\_rect@{\_rect}}
+\index{\_rect@{\_rect}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_rect}{\_rect}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} Server\+Entity\+::\+\_\+rect\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_a984e9b4f31ee03ce8c5813f163d10da1}\label{classServerEntity_a984e9b4f31ee03ce8c5813f163d10da1}} 
+\index{ServerEntity@{ServerEntity}!\_speed@{\_speed}}
+\index{\_speed@{\_speed}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_speed}{\_speed}}
+{\footnotesize\ttfamily double Server\+Entity\+::\+\_\+speed\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classServerEntity_af6b15008690da377f9d8789fe34334e2}\label{classServerEntity_af6b15008690da377f9d8789fe34334e2}} 
+\index{ServerEntity@{ServerEntity}!\_type@{\_type}}
+\index{\_type@{\_type}!ServerEntity@{ServerEntity}}
+\doxysubsubsection{\texorpdfstring{\_type}{\_type}}
+{\footnotesize\ttfamily std\+::string Server\+Entity\+::\+\_\+type\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/engine/\mbox{\hyperlink{ServerEntity_8hpp}{Server\+Entity.\+hpp}}\item 
+src/server/engine/\mbox{\hyperlink{ServerEntity_8cpp}{Server\+Entity.\+cpp}}\end{DoxyCompactItemize}

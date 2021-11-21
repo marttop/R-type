@@ -1,0 +1,9 @@
+<map id="Menu::setInRoom" name="Menu::setInRoom">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,141,83"/>
+<area shape="rect" id="node2" href="$classWarningBox.html#ac5da36dc6470530fb05aa96ab5519dca" title=" " alt="" coords="189,5,332,32"/>
+<area shape="rect" id="node3" href="$classRoom.html#aa907af37455db27f6206237e897fd7a6" title=" " alt="" coords="206,56,315,83"/>
+<area shape="rect" id="node7" href="$classRoom.html#a0144a82201924961529711586b9079a5" title=" " alt="" coords="191,107,330,133"/>
+<area shape="rect" id="node4" href="$classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title=" " alt="" coords="380,56,495,83"/>
+<area shape="rect" id="node5" href="$classAssetManager.html#a1fb0a1e8f46f3773f0a08f9eafb7649d" title="Get asset, if asset already load just return the asset associeted to, IMPORTANT !!..." alt="" coords="571,31,751,57"/>
+<area shape="rect" id="node6" href="$classAssetManager.html#a85998651ebed21145f82915e9c890159" title="Get the instance of the FontManager singelton." alt="" coords="543,93,780,120"/>
+</map>

@@ -1,0 +1,183 @@
+\hypertarget{classRoomCard}{}\doxysection{Room\+Card Class Reference}
+\label{classRoomCard}\index{RoomCard@{RoomCard}}
+
+
+{\ttfamily \#include $<$Room\+Card.\+hpp$>$}
+
+
+
+Collaboration diagram for Room\+Card\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classRoomCard__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRoomCard_abbc1ddd0fc1c076ca68fad9dacd7115b}{Room\+Card}} ()
+\item 
+\mbox{\hyperlink{classRoomCard_ab43b54e8018cf220b45c50b6acb0a407}{$\sim$\+Room\+Card}} ()
+\item 
+void \mbox{\hyperlink{classRoomCard_ae97168c1a4654db0281aa22ba7a88f12}{create}} (const sf\+::\+Vector2f \&pos, const sf\+::\+Vector2f \&size, const std\+::string \&text, const int \&users=0, const double \&thickness=1.\+0, const sf\+::\+Vector2f \&factors=\{1, 1\})
+\item 
+void \mbox{\hyperlink{classRoomCard_ad442a8161ca9a5b158719b13596bb01d}{draw}} (sf\+::\+Render\+Window \&window) const
+\item 
+void \mbox{\hyperlink{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}{event}} (const sf\+::\+Event \&event, const sf\+::\+Render\+Window \&window, asio\+::ip\+::tcp\+::socket \&socket)
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classRoomCard_a28ba7eb29d9a60a61f0562632e114a7b}{get\+Position}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classRoomCard_a157bfd99633673d59c52d30b12a3ba46}{get\+Size}} () const
+\item 
+void \mbox{\hyperlink{classRoomCard_a2ff3e295a29558c5b5b23eb00d0fbc06}{increment\+Position}} ()
+\item 
+void \mbox{\hyperlink{classRoomCard_a32c80fdc9d3a3f49bd602e691e4d73e9}{decrement\+Position}} ()
+\item 
+void \mbox{\hyperlink{classRoomCard_a583f6900927117c70b9b6772fbe430a2}{update}} (const sf\+::\+Render\+Window \&window)
+\item 
+std\+::string \mbox{\hyperlink{classRoomCard_a3b7fd7a655f5df82e4267dff2ecac43a}{get\+Id}} () const
+\item 
+void \mbox{\hyperlink{classRoomCard_a7598b8fa2c9dc5f03440c73f0242ad92}{increment\+Player}} ()
+\item 
+void \mbox{\hyperlink{classRoomCard_a5c17022a05c10d7e528ca03449134a39}{decrement\+Player}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRoomCard_abbc1ddd0fc1c076ca68fad9dacd7115b}\label{classRoomCard_abbc1ddd0fc1c076ca68fad9dacd7115b}} 
+\index{RoomCard@{RoomCard}!RoomCard@{RoomCard}}
+\index{RoomCard@{RoomCard}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{RoomCard()}{RoomCard()}}
+{\footnotesize\ttfamily Room\+Card\+::\+Room\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRoomCard_ab43b54e8018cf220b45c50b6acb0a407}\label{classRoomCard_ab43b54e8018cf220b45c50b6acb0a407}} 
+\index{RoomCard@{RoomCard}!````~RoomCard@{$\sim$RoomCard}}
+\index{````~RoomCard@{$\sim$RoomCard}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{$\sim$RoomCard()}{~RoomCard()}}
+{\footnotesize\ttfamily Room\+Card\+::$\sim$\+Room\+Card (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRoomCard_ae97168c1a4654db0281aa22ba7a88f12}\label{classRoomCard_ae97168c1a4654db0281aa22ba7a88f12}} 
+\index{RoomCard@{RoomCard}!create@{create}}
+\index{create@{create}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void Room\+Card\+::create (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{pos,  }\item[{const sf\+::\+Vector2f \&}]{size,  }\item[{const std\+::string \&}]{text,  }\item[{const int \&}]{users = {\ttfamily 0},  }\item[{const double \&}]{thickness = {\ttfamily 1.0},  }\item[{const sf\+::\+Vector2f \&}]{factors = {\ttfamily \{1,~1\}} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRoomCard_ae97168c1a4654db0281aa22ba7a88f12_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoomCard_a5c17022a05c10d7e528ca03449134a39}\label{classRoomCard_a5c17022a05c10d7e528ca03449134a39}} 
+\index{RoomCard@{RoomCard}!decrementPlayer@{decrementPlayer}}
+\index{decrementPlayer@{decrementPlayer}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{decrementPlayer()}{decrementPlayer()}}
+{\footnotesize\ttfamily void Room\+Card\+::decrement\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRoomCard_a32c80fdc9d3a3f49bd602e691e4d73e9}\label{classRoomCard_a32c80fdc9d3a3f49bd602e691e4d73e9}} 
+\index{RoomCard@{RoomCard}!decrementPosition@{decrementPosition}}
+\index{decrementPosition@{decrementPosition}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{decrementPosition()}{decrementPosition()}}
+{\footnotesize\ttfamily void Room\+Card\+::decrement\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRoomCard_a32c80fdc9d3a3f49bd602e691e4d73e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoomCard_ad442a8161ca9a5b158719b13596bb01d}\label{classRoomCard_ad442a8161ca9a5b158719b13596bb01d}} 
+\index{RoomCard@{RoomCard}!draw@{draw}}
+\index{draw@{draw}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Room\+Card\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{classRoomCard_ad442a8161ca9a5b158719b13596bb01d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}\label{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}} 
+\index{RoomCard@{RoomCard}!event@{event}}
+\index{event@{event}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily void Room\+Card\+::event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event,  }\item[{const sf\+::\+Render\+Window \&}]{window,  }\item[{asio\+::ip\+::tcp\+::socket \&}]{socket }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoomCard_a3b7fd7a655f5df82e4267dff2ecac43a}\label{classRoomCard_a3b7fd7a655f5df82e4267dff2ecac43a}} 
+\index{RoomCard@{RoomCard}!getId@{getId}}
+\index{getId@{getId}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily std\+::string Room\+Card\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRoomCard_a28ba7eb29d9a60a61f0562632e114a7b}\label{classRoomCard_a28ba7eb29d9a60a61f0562632e114a7b}} 
+\index{RoomCard@{RoomCard}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Room\+Card\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRoomCard_a157bfd99633673d59c52d30b12a3ba46}\label{classRoomCard_a157bfd99633673d59c52d30b12a3ba46}} 
+\index{RoomCard@{RoomCard}!getSize@{getSize}}
+\index{getSize@{getSize}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Room\+Card\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRoomCard_a7598b8fa2c9dc5f03440c73f0242ad92}\label{classRoomCard_a7598b8fa2c9dc5f03440c73f0242ad92}} 
+\index{RoomCard@{RoomCard}!incrementPlayer@{incrementPlayer}}
+\index{incrementPlayer@{incrementPlayer}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{incrementPlayer()}{incrementPlayer()}}
+{\footnotesize\ttfamily void Room\+Card\+::increment\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRoomCard_a2ff3e295a29558c5b5b23eb00d0fbc06}\label{classRoomCard_a2ff3e295a29558c5b5b23eb00d0fbc06}} 
+\index{RoomCard@{RoomCard}!incrementPosition@{incrementPosition}}
+\index{incrementPosition@{incrementPosition}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{incrementPosition()}{incrementPosition()}}
+{\footnotesize\ttfamily void Room\+Card\+::increment\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRoomCard_a2ff3e295a29558c5b5b23eb00d0fbc06_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoomCard_a583f6900927117c70b9b6772fbe430a2}\label{classRoomCard_a583f6900927117c70b9b6772fbe430a2}} 
+\index{RoomCard@{RoomCard}!update@{update}}
+\index{update@{update}!RoomCard@{RoomCard}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Room\+Card\+::update (\begin{DoxyParamCaption}\item[{const sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/menu/\mbox{\hyperlink{RoomCard_8hpp}{Room\+Card.\+hpp}}\item 
+src/client/menu/\mbox{\hyperlink{RoomCard_8cpp}{Room\+Card.\+cpp}}\end{DoxyCompactItemize}

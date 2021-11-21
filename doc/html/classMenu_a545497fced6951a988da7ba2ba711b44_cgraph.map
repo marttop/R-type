@@ -1,0 +1,11 @@
+<map id="Menu::update" name="Menu::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,116,133"/>
+<area shape="rect" id="node2" href="$classSEPParsor.html#adac18053c195ac29876d0b4312876b58" title="Parse the command line and returns an array of string the code is in command[0]." alt="" coords="164,31,368,57"/>
+<area shape="rect" id="node3" href="$classConnection.html#a3509a036de5b9d5831e1c972ee72bf67" title=" " alt="" coords="192,81,340,108"/>
+<area shape="rect" id="node8" href="$classRoomsList.html#ac3ea6b6882fc1ee4800d25e49cd169a0" title=" " alt="" coords="195,132,337,159"/>
+<area shape="rect" id="node9" href="$classRoom.html#ac17b143580e26ea9519b4477a7bf0580" title=" " alt="" coords="209,183,323,209"/>
+<area shape="rect" id="node4" href="$classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title=" " alt="" coords="423,5,569,32"/>
+<area shape="rect" id="node5" href="$classInputBox.html#a4ead1320741a5253e3c2465d122a0ec5" title=" " alt="" coords="416,56,576,83"/>
+<area shape="rect" id="node6" href="$classInputBox.html#a0b1707f0cb5e0383f71ece29fb832e8a" title=" " alt="" coords="429,107,563,133"/>
+<area shape="rect" id="node7" href="$classButton.html#a846e4181678540fba9336144e9a76392" title=" " alt="" coords="437,157,555,184"/>
+</map>

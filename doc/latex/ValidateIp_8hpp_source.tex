@@ -1,0 +1,37 @@
+\hypertarget{ValidateIp_8hpp_source}{}\doxysection{Validate\+Ip.\+hpp}
+\label{ValidateIp_8hpp_source}\index{src/common/ValidateIp.hpp@{src/common/ValidateIp.hpp}}
+\mbox{\hyperlink{ValidateIp_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** ValidateIp}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef VALIDATEIP\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define VALIDATEIP\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#if defined (\_WIN32)}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <winsock2.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <Ws2tcpip.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classValidateIp}{ValidateIp}} \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{classValidateIp_aae2138b2b0c02ade342aeff95d7ab80e}{ValidateIp}}();}
+\DoxyCodeLine{22     \mbox{\hyperlink{classValidateIp_aae641bd6f47561da57bbf3bc55252e01}{\string~ValidateIp}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classValidateIp_ad6bde94c8beb54b20bb7e87f250d9f5e}{validateIpAddress}}(\textcolor{keyword}{const} std::string \&ipAddress);}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classValidateIp_adc572f4a4f8aa294e4fedec24f3f53e2}{validatePort}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \&port);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{28 \textcolor{keyword}{private}:}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !VALIDATEIP\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

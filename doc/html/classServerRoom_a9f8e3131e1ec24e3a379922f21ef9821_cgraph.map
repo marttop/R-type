@@ -1,0 +1,4 @@
+<map id="ServerRoom::ServerRoom" name="ServerRoom::ServerRoom">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,196,32"/>
+<area shape="rect" id="node2" href="$classEntityLoad.html#adfd6a095b15adc58f77df9346ed2e781" title="Loads a new entity with the path and name." alt="" coords="244,5,467,32"/>
+</map>

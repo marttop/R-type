@@ -1,0 +1,5 @@
+<map id="ServerRoom::startThread" name="ServerRoom::startThread">
+<area shape="rect" id="node1" title="Returns the game thread ready to be detached." alt="" coords="481,29,667,56"/>
+<area shape="rect" id="node2" href="$classServerPlayer.html#aeeb880ae5fb11205daca89d4a9e4a842" title="Async recieve for the UDP user." alt="" coords="224,29,433,56"/>
+<area shape="rect" id="node3" href="$classServerPlayer.html#a6ab9f3f17477b8cdd42bc95b65b4934e" title="Starts udp commincation in the room." alt="" coords="5,29,176,56"/>
+</map>

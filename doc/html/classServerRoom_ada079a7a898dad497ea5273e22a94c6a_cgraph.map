@@ -1,0 +1,5 @@
+<map id="ServerRoom::createPlayers" name="ServerRoom::createPlayers">
+<area shape="rect" id="node1" title="Create all the players." alt="" coords="5,35,204,61"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#a507704c43695d0fbb5d6d553ea34d87d" title="Broadcast to all the players in the room." alt="" coords="252,5,455,32"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a22652e96fe96dc2431c4a2fd844e1dce" title="Create a Entity Response object." alt="" coords="259,57,448,98"/>
+</map>

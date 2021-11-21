@@ -1,0 +1,167 @@
+\hypertarget{classRoom}{}\doxysection{Room Class Reference}
+\label{classRoom}\index{Room@{Room}}
+
+
+{\ttfamily \#include $<$Room.\+hpp$>$}
+
+
+
+Collaboration diagram for Room\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classRoom__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRoom_ac6ef93a7d9c3e1d624e025058d5f16ff}{Room}} ()
+\item 
+\mbox{\hyperlink{classRoom_a67d5da09983cc53097807fd43ba5481a}{$\sim$\+Room}} ()
+\item 
+void \mbox{\hyperlink{classRoom_aa907af37455db27f6206237e897fd7a6}{create}} (const sf\+::\+Rectangle\+Shape \&background)
+\item 
+void \mbox{\hyperlink{classRoom_ab25a779475ed11659d4c8a3e30db041e}{event}} (const sf\+::\+Event \&event, const sf\+::\+Render\+Window \&window, asio\+::ip\+::tcp\+::socket \&tcp\+Socket, asio\+::ip\+::udp\+::socket \&udp\+Socket)
+\item 
+void \mbox{\hyperlink{classRoom_ac17b143580e26ea9519b4477a7bf0580}{update}} (std\+::vector$<$ std\+::string $>$ \&cmd\+Udp, const sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{classRoom_aa249a168181dde88ff9171cdbfb98076}{draw}} (sf\+::\+Render\+Window \&window) const
+\item 
+void \mbox{\hyperlink{classRoom_aa20fa422d03bf222e8202a96629e2447}{set\+Room}} (std\+::vector$<$ std\+::string $>$ \&cmd\+Tcp, asio\+::ip\+::udp\+::endpoint \&udp\+Endpoint, asio\+::ip\+::udp\+::socket \&udp\+Socket, const std\+::string \&ip)
+\item 
+std\+::string \mbox{\hyperlink{classRoom_a0144a82201924961529711586b9079a5}{get\+Room\+Id}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRoom_ac6ef93a7d9c3e1d624e025058d5f16ff}\label{classRoom_ac6ef93a7d9c3e1d624e025058d5f16ff}} 
+\index{Room@{Room}!Room@{Room}}
+\index{Room@{Room}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{Room()}{Room()}}
+{\footnotesize\ttfamily Room\+::\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRoom_a67d5da09983cc53097807fd43ba5481a}\label{classRoom_a67d5da09983cc53097807fd43ba5481a}} 
+\index{Room@{Room}!````~Room@{$\sim$Room}}
+\index{````~Room@{$\sim$Room}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{$\sim$Room()}{~Room()}}
+{\footnotesize\ttfamily Room\+::$\sim$\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRoom_aa907af37455db27f6206237e897fd7a6}\label{classRoom_aa907af37455db27f6206237e897fd7a6}} 
+\index{Room@{Room}!create@{create}}
+\index{create@{create}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void Room\+::create (\begin{DoxyParamCaption}\item[{const sf\+::\+Rectangle\+Shape \&}]{background }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRoom_aa907af37455db27f6206237e897fd7a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classRoom_aa907af37455db27f6206237e897fd7a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoom_aa249a168181dde88ff9171cdbfb98076}\label{classRoom_aa249a168181dde88ff9171cdbfb98076}} 
+\index{Room@{Room}!draw@{draw}}
+\index{draw@{draw}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Room\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classRoom_aa249a168181dde88ff9171cdbfb98076_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classRoom_aa249a168181dde88ff9171cdbfb98076_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoom_ab25a779475ed11659d4c8a3e30db041e}\label{classRoom_ab25a779475ed11659d4c8a3e30db041e}} 
+\index{Room@{Room}!event@{event}}
+\index{event@{event}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily void Room\+::event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event,  }\item[{const sf\+::\+Render\+Window \&}]{window,  }\item[{asio\+::ip\+::tcp\+::socket \&}]{tcp\+Socket,  }\item[{asio\+::ip\+::udp\+::socket \&}]{udp\+Socket }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{classRoom_ab25a779475ed11659d4c8a3e30db041e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{classRoom_ab25a779475ed11659d4c8a3e30db041e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoom_a0144a82201924961529711586b9079a5}\label{classRoom_a0144a82201924961529711586b9079a5}} 
+\index{Room@{Room}!getRoomId@{getRoomId}}
+\index{getRoomId@{getRoomId}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{getRoomId()}{getRoomId()}}
+{\footnotesize\ttfamily std\+::string Room\+::get\+Room\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{classRoom_a0144a82201924961529711586b9079a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classRoom_aa20fa422d03bf222e8202a96629e2447}\label{classRoom_aa20fa422d03bf222e8202a96629e2447}} 
+\index{Room@{Room}!setRoom@{setRoom}}
+\index{setRoom@{setRoom}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{setRoom()}{setRoom()}}
+{\footnotesize\ttfamily void Room\+::set\+Room (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{cmd\+Tcp,  }\item[{asio\+::ip\+::udp\+::endpoint \&}]{udp\+Endpoint,  }\item[{asio\+::ip\+::udp\+::socket \&}]{udp\+Socket,  }\item[{const std\+::string \&}]{ip }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRoom_ac17b143580e26ea9519b4477a7bf0580}\label{classRoom_ac17b143580e26ea9519b4477a7bf0580}} 
+\index{Room@{Room}!update@{update}}
+\index{update@{update}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Room\+::update (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{cmd\+Udp,  }\item[{const sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{classRoom_ac17b143580e26ea9519b4477a7bf0580_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classRoom_ac17b143580e26ea9519b4477a7bf0580_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/menu/\mbox{\hyperlink{Room_8hpp}{Room.\+hpp}}\item 
+src/client/menu/\mbox{\hyperlink{Room_8cpp}{Room.\+cpp}}\end{DoxyCompactItemize}

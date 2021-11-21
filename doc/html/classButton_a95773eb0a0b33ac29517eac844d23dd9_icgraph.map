@@ -1,0 +1,10 @@
+<map id="Button::draw" name="Button::draw">
+<area shape="rect" id="node1" title=" " alt="" coords="343,107,448,133"/>
+<area shape="rect" id="node2" href="$classConnection.html#a003c4bc6425098d0a6bf945ba497016c" title=" " alt="" coords="157,5,292,32"/>
+<area shape="rect" id="node4" href="$classRoom.html#aa249a168181dde88ff9171cdbfb98076" title=" " alt="" coords="175,56,275,83"/>
+<area shape="rect" id="node5" href="$classRoomCard.html#ad442a8161ca9a5b158719b13596bb01d" title=" " alt="" coords="159,107,290,133"/>
+<area shape="rect" id="node6" href="$classRoomsList.html#a39f81e0967ec5e3cdd32c36680c814fb" title=" " alt="" coords="159,157,290,184"/>
+<area shape="rect" id="node7" href="$classWarningBox.html#a7c45715d854ce78809b145f022ef32c8" title=" " alt="" coords="155,208,295,235"/>
+<area shape="rect" id="node3" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title=" " alt="" coords="7,107,105,133"/>
+<area shape="rect" id="node8" href="$classGame.html#a6d54497ce3a66f6dd45eacfdccc8d0bd" title=" " alt="" coords="5,208,107,235"/>
+</map>

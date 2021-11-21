@@ -20,8 +20,28 @@ class CustomRect {
         CustomRect(double width, double height, double x = 0, double y = 0);
         ~CustomRect();
 
+        /**
+         * @brief Set the Position of the rect
+         *
+         * @param x pos x
+         * @param y pos y
+         */
         void setPosition(double x, double y);
+
+        /**
+         * @brief Check if the rect collides with the other rect.
+         *
+         * @param rect the other rect.
+         * @return true
+         * @return false
+         */
         bool isColliding(const CustomRect &rect) const;
+
+        /**
+         * @brief Get the Position object
+         *
+         * @return std::pair<double, double> (x, y)
+         */
         std::pair<double, double> getPosition() const;
 
         point tr;

@@ -1,0 +1,7 @@
+<map id="ServerRoom::updateLoop" name="ServerRoom::updateLoop">
+<area shape="rect" id="node1" title="Infinite loop of the game called by PlayGame()." alt="" coords="5,56,192,83"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#a507704c43695d0fbb5d6d553ea34d87d" title="Broadcast to all the players in the room." alt="" coords="240,5,443,32"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a24e28a631833079a0ee2f5ba78a024bf" title="Reset the timers." alt="" coords="247,56,435,83"/>
+<area shape="rect" id="node4" href="$classServerRoom.html#a5956924ed0bceea22477c3d9ee9d95fc" title="Update players during the game." alt="" coords="240,107,443,133"/>
+<area shape="rect" id="node5" href="$classServerRoom.html#a22652e96fe96dc2431c4a2fd844e1dce" title="Create a Entity Response object." alt="" coords="491,99,680,141"/>
+</map>

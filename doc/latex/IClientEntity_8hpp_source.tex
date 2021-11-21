@@ -1,0 +1,45 @@
+\hypertarget{IClientEntity_8hpp_source}{}\doxysection{IClient\+Entity.\+hpp}
+\label{IClientEntity_8hpp_source}\index{src/interface/IClientEntity.hpp@{src/interface/IClientEntity.hpp}}
+\mbox{\hyperlink{IClientEntity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** IClientEntity}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ICLIENTENTITY\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ICLIENTENTITY\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classIClientEntity}{IClientEntity}} \{}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classIClientEntity_a37b4b87641a91a57a4c6ae0761d51eb0}{IClientEntity}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{16         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIClientEntity_aa961fe58a6949508e5fb6ea7cd4d6884}{\string~IClientEntity}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18         \textcolor{keyword}{virtual} \textcolor{keywordtype}{float} \mbox{\hyperlink{classIClientEntity_a276c1b69004cc910978109c751890db5}{getElapsedTime}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{19         \textcolor{keyword}{virtual} sf::Vector2f \mbox{\hyperlink{classIClientEntity_a88fb4962e5672072c16d99ce5134c6b1}{getPos}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{20         \textcolor{keyword}{virtual} sf::Vector2f \mbox{\hyperlink{classIClientEntity_a0c6bc4e20438d1244ff57f32e35670dc}{getSize}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{21         \textcolor{keyword}{virtual} sf::FloatRect \mbox{\hyperlink{classIClientEntity_ab102618b3a7ae1cc941a6c2352175679}{getGlobalBounds}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{22         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_aa4cbddeb9cd750678b4875bfe445db51}{setPos}}(\textcolor{keyword}{const} sf::Vector2f \&pos) = 0;}
+\DoxyCodeLine{23         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_a394da96330df4f8bbdb13a2fcac9a6e0}{setRotation}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} \&angle) = 0;}
+\DoxyCodeLine{24         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_a05fbc3364ad24350ab009caaa76497d7}{setColor}}(\textcolor{keyword}{const} sf::Color \&color) = 0;}
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_aaec5be6185d0a177e6d112313c268bfe}{setHealth}}(\textcolor{keywordtype}{int} health) = 0;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_acfc56a9b9a54f4b9e4f4cfeb6dea7e79}{restartClock}}() = 0;}
+\DoxyCodeLine{28         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_a97ff119821568d3ad29e0732ff0d4672}{drawSprite}}(sf::RenderWindow \&window) = 0;}
+\DoxyCodeLine{29         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_a2ac7f999312a729b4520c4c6540e12be}{drawParticles}}(sf::RenderWindow \&window) = 0;}
+\DoxyCodeLine{30         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_aed933ec470bc22847f058125442b4ac9}{update}}() = 0;}
+\DoxyCodeLine{31         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}{isAlive}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{32         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classIClientEntity_a2ceec27a0d832d7c9288f33a77128a75}{isDeathFinish}}() \textcolor{keyword}{const} = 0;}
+\DoxyCodeLine{33         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIClientEntity_a590c7ec5454edc074b8c9ccf1de405fa}{setIsAlive}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}{isAlive}}) = 0;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{36     \textcolor{keyword}{private}:}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ICLIENTENTITY\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

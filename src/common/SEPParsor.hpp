@@ -16,6 +16,14 @@ class SEPParsor {
     public:
         SEPParsor();
         ~SEPParsor();
+
+        /**
+         * @brief Parse the command line and returns an array of string
+         * the code is in command[0].
+         *
+         * @param command command line.
+         * @return ** std::vector<std::string> parsed response.
+         */
         static std::vector<std::string> parseCommands(std::string command);
     protected:
     private:

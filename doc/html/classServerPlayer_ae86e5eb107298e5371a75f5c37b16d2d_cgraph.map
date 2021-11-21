@@ -1,0 +1,5 @@
+<map id="ServerPlayer::movePlayer" name="ServerPlayer::movePlayer">
+<area shape="rect" id="node1" title="Moves the player." alt="" coords="5,5,196,32"/>
+<area shape="rect" id="node2" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="244,5,427,32"/>
+<area shape="rect" id="node3" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="475,5,657,32"/>
+</map>
