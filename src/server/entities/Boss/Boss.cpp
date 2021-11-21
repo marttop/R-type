@@ -55,7 +55,7 @@ void Boss::startClock()
 bool Boss::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 0.05) {
+    if (((float)t / CLOCKS_PER_SEC) > 1) {
         _shootClock = clock();
         return true;
     }

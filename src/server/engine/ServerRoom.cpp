@@ -114,13 +114,11 @@ void ServerRoom::playGame()
             _isGameStarted = false;
             return;
         }
-        duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+        duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
     }
     loadRoomEntities("RoomConfFile/ConfTest.txt");
     broadCastUdp("006", "");
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     createPlayers();
-    std::this_thread::sleep_for(std::chrono::milliseconds(5));
     resetTimers();
     _timer = 0;
     updateLoop();
@@ -418,22 +416,30 @@ void ServerRoom::updateLoop()
     std::stringstream ss;
     ss.str("");
     ss.clear();
+
+    std::clock_t start;
+    double duration;
+    start = std::clock();
+
     while (_isGameStarted) {
-        ss.str("");
-        ss.clear();
+        if (duration > 17) {
+            start = std::clock();
+            ss.str("");
+            ss.clear();
 
-        if (_playerList.size() == 0) break;
+            if (_playerList.size() == 0) break;
 
-        createsEntities();
+            createsEntities();
 
-        if (_timer % 7 == 0) {
-            resetTimers();
+            if (_timer % 7 == 0) {
+                resetTimers();
+            }
+            ss << updatePlayers();
+            ss << updateEntities();
+            broadCastUdp("007", ss.str());
+            _timer++;
         }
-        ss << updatePlayers();
-        ss << updateEntities();
-        broadCastUdp("007", ss.str());
-        std::this_thread::sleep_for(std::chrono::milliseconds(17));
-        _timer++;
+        duration = (std::clock() - start) / ((double)CLOCKS_PER_SEC / 1000);
     }
     _isGameStarted = false;
     _playerList.clear();

@@ -54,7 +54,7 @@ void BidosSlaves::startClock()
 bool BidosSlaves::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 0.1) {
+    if (((float)t / CLOCKS_PER_SEC) > 2) {
         _shootClock = clock();
         return true;
     }
