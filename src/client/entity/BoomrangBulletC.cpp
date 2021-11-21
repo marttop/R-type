@@ -15,7 +15,7 @@ BoomrangBulletC::BoomrangBulletC(const sf::Texture &texture, const sf::Vector2f 
 
     _shootBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/boss_shoot.ogg");
     _shoot.setBuffer(_shootBuf);
-    _shoot.setVolume(20);
+    _shoot.setVolume(60);
     _shoot.play();
 }
 
