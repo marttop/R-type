@@ -43,11 +43,6 @@ int ServerPlayer::getPort() const
     return (_port);
 }
 
-std::vector<bool> &ServerPlayer::getBoolLand()
-{
-    return (_boolLand);
-}
-
 void ServerPlayer::setIsReady(bool isReady)
 {
     _isReady = isReady;
