@@ -1,0 +1,135 @@
+\hypertarget{classUtils}{}\doxysection{Utils Class Reference}
+\label{classUtils}\index{Utils@{Utils}}
+
+
+{\ttfamily \#include $<$Utils.\+hpp$>$}
+
+
+
+Collaboration diagram for Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{classUtils__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}{Utils}} ()
+\item 
+\mbox{\hyperlink{classUtils_afa5e70facffc286607498e7edb639b8a}{$\sim$\+Utils}} ()
+\item 
+float \mbox{\hyperlink{classUtils_a230e57f495d345155a0211e6f58d22e4}{vector\+Magnitude}} (const sf\+::\+Vector2f \&vector) const
+\item 
+void \mbox{\hyperlink{classUtils_ae3de0bb9fb0b661e37a29c675a8320a7}{vector\+Normalize}} (sf\+::\+Vector2f \&vector)
+\item 
+float \mbox{\hyperlink{classUtils_a50cc3c06a1d891f4bb5934c78294735b}{vector\+Size}} (const sf\+::\+Vector2f \&vector1, const sf\+::\+Vector2f \&vector2) const
+\item 
+void \mbox{\hyperlink{classUtils_aa2fd6b11c80e12a67319b337a7d835fe}{rotate\+Point\+Around\+Center}} (sf\+::\+Vector2f \&\mbox{\hyperlink{structpoint}{point}}, const sf\+::\+Vector2f \&center, const float \&angle\+\_\+rad)
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classUtils_a603207f48d0394cb1f2d6742303c3191}{get\+Random\+Normalized\+Vector}} () const
+\item 
+float \mbox{\hyperlink{classUtils_a6c3c20b98b690981daea824a049de4f0}{dot\+Product}} (const sf\+::\+Vector2f \&vector\+\_\+a, const sf\+::\+Vector2f \&vector\+\_\+b) const
+\item 
+void \mbox{\hyperlink{classUtils_a712eb116620bc6328def53b5bac88c04}{pos\+Debug}} (const sf\+::\+Vector2f \&pos, sf\+::\+Render\+Window \&window)
+\item 
+bool \mbox{\hyperlink{classUtils_a42a2cbb4620b1a167c1050d0414d6e09}{segment\+Intersects\+Rectangle}} (const sf\+::\+Float\+Rect \&rect, const sf\+::\+Vector2f \&a\+\_\+p1, const sf\+::\+Vector2f \&a\+\_\+p2) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}\label{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}} 
+\index{Utils@{Utils}!Utils@{Utils}}
+\index{Utils@{Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{Utils()}{Utils()}}
+{\footnotesize\ttfamily Utils\+::\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUtils_afa5e70facffc286607498e7edb639b8a}\label{classUtils_afa5e70facffc286607498e7edb639b8a}} 
+\index{Utils@{Utils}!````~Utils@{$\sim$Utils}}
+\index{````~Utils@{$\sim$Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{$\sim$Utils()}{~Utils()}}
+{\footnotesize\ttfamily Utils\+::$\sim$\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtils_a6c3c20b98b690981daea824a049de4f0}\label{classUtils_a6c3c20b98b690981daea824a049de4f0}} 
+\index{Utils@{Utils}!dotProduct@{dotProduct}}
+\index{dotProduct@{dotProduct}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{dotProduct()}{dotProduct()}}
+{\footnotesize\ttfamily float Utils\+::dot\+Product (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{vector\+\_\+a,  }\item[{const sf\+::\+Vector2f \&}]{vector\+\_\+b }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUtils_a603207f48d0394cb1f2d6742303c3191}\label{classUtils_a603207f48d0394cb1f2d6742303c3191}} 
+\index{Utils@{Utils}!getRandomNormalizedVector@{getRandomNormalizedVector}}
+\index{getRandomNormalizedVector@{getRandomNormalizedVector}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{getRandomNormalizedVector()}{getRandomNormalizedVector()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Utils\+::get\+Random\+Normalized\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classUtils_a603207f48d0394cb1f2d6742303c3191_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classUtils_a712eb116620bc6328def53b5bac88c04}\label{classUtils_a712eb116620bc6328def53b5bac88c04}} 
+\index{Utils@{Utils}!posDebug@{posDebug}}
+\index{posDebug@{posDebug}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{posDebug()}{posDebug()}}
+{\footnotesize\ttfamily void Utils\+::pos\+Debug (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{pos,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUtils_aa2fd6b11c80e12a67319b337a7d835fe}\label{classUtils_aa2fd6b11c80e12a67319b337a7d835fe}} 
+\index{Utils@{Utils}!rotatePointAroundCenter@{rotatePointAroundCenter}}
+\index{rotatePointAroundCenter@{rotatePointAroundCenter}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{rotatePointAroundCenter()}{rotatePointAroundCenter()}}
+{\footnotesize\ttfamily void Utils\+::rotate\+Point\+Around\+Center (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{point,  }\item[{const sf\+::\+Vector2f \&}]{center,  }\item[{const float \&}]{angle\+\_\+rad }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUtils_a42a2cbb4620b1a167c1050d0414d6e09}\label{classUtils_a42a2cbb4620b1a167c1050d0414d6e09}} 
+\index{Utils@{Utils}!segmentIntersectsRectangle@{segmentIntersectsRectangle}}
+\index{segmentIntersectsRectangle@{segmentIntersectsRectangle}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{segmentIntersectsRectangle()}{segmentIntersectsRectangle()}}
+{\footnotesize\ttfamily bool Utils\+::segment\+Intersects\+Rectangle (\begin{DoxyParamCaption}\item[{const sf\+::\+Float\+Rect \&}]{rect,  }\item[{const sf\+::\+Vector2f \&}]{a\+\_\+p1,  }\item[{const sf\+::\+Vector2f \&}]{a\+\_\+p2 }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUtils_a230e57f495d345155a0211e6f58d22e4}\label{classUtils_a230e57f495d345155a0211e6f58d22e4}} 
+\index{Utils@{Utils}!vectorMagnitude@{vectorMagnitude}}
+\index{vectorMagnitude@{vectorMagnitude}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{vectorMagnitude()}{vectorMagnitude()}}
+{\footnotesize\ttfamily float Utils\+::vector\+Magnitude (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{vector }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classUtils_a230e57f495d345155a0211e6f58d22e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classUtils_ae3de0bb9fb0b661e37a29c675a8320a7}\label{classUtils_ae3de0bb9fb0b661e37a29c675a8320a7}} 
+\index{Utils@{Utils}!vectorNormalize@{vectorNormalize}}
+\index{vectorNormalize@{vectorNormalize}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{vectorNormalize()}{vectorNormalize()}}
+{\footnotesize\ttfamily void Utils\+::vector\+Normalize (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{vector }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classUtils_ae3de0bb9fb0b661e37a29c675a8320a7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classUtils_a50cc3c06a1d891f4bb5934c78294735b}\label{classUtils_a50cc3c06a1d891f4bb5934c78294735b}} 
+\index{Utils@{Utils}!vectorSize@{vectorSize}}
+\index{vectorSize@{vectorSize}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{vectorSize()}{vectorSize()}}
+{\footnotesize\ttfamily float Utils\+::vector\+Size (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{vector1,  }\item[{const sf\+::\+Vector2f \&}]{vector2 }\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/entity/\mbox{\hyperlink{Utils_8hpp}{Utils.\+hpp}}\item 
+src/client/entity/\mbox{\hyperlink{Utils_8cpp}{Utils.\+cpp}}\end{DoxyCompactItemize}

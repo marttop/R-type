@@ -1,0 +1,72 @@
+\hypertarget{Entity_8hpp_source}{}\doxysection{Entity.\+hpp}
+\label{Entity_8hpp_source}\index{src/client/entity/Entity.hpp@{src/client/entity/Entity.hpp}}
+\mbox{\hyperlink{Entity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** G-\/JAM-\/001-\/NCE-\/0-\/2-\/jam-\/marton.szuts}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Entity}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ENTITY\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ENTITY\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <SFML/OpenGL.hpp>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <SFML/Audio.hpp>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{IClientEntity_8hpp}{IClientEntity.hpp}}"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Particles_8hpp}{Particles.hpp}}"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classEntity}{Entity}} : \textcolor{keyword}{public} \mbox{\hyperlink{classIClientEntity}{IClientEntity}} \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{classEntity_ae660b2ec4d37d2eb1b1dedfb3c4ee879}{Entity}}(\textcolor{keyword}{const} sf::Texture \&texture,}
+\DoxyCodeLine{21                 \textcolor{keyword}{const} sf::Vector2f \&pos,}
+\DoxyCodeLine{22                 \textcolor{keyword}{const} \textcolor{keywordtype}{float} \&speed = 0,}
+\DoxyCodeLine{23                 \textcolor{keyword}{const} sf::Color \&startColor = sf::Color::White,}
+\DoxyCodeLine{24                 \textcolor{keyword}{const} sf::Color \&endColor = sf::Color::White,}
+\DoxyCodeLine{25                 \textcolor{keywordtype}{int} health = 10);}
+\DoxyCodeLine{26         \mbox{\hyperlink{classEntity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{\string~Entity}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{float} \mbox{\hyperlink{classEntity_a87e11b5e7ee68728deea0d1c83bd92fa}{getElapsedTime}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{29         sf::Vector2f \mbox{\hyperlink{classEntity_accc9c0c4d3d0083c08fcd866bd1d26e6}{getPos}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{30         sf::Vector2f \mbox{\hyperlink{classEntity_a6c2cd79160cddba0b223f932c1d151f1}{getSize}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{31         sf::FloatRect \mbox{\hyperlink{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e}{getGlobalBounds}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a992beaebe218e29a718f7805c9b0e364}{setPos}}(\textcolor{keyword}{const} sf::Vector2f \&pos);}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a1e3b4c159f98c669daa9e01cc875ec97}{setRotation}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} \&angle);}
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_ac5987db2dd874b3df2428196513766e4}{setColor}}(\textcolor{keyword}{const} sf::Color \&color);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a7a82c1fe9f0eb0838437f5133ee302a0}{restartClock}}();}
+\DoxyCodeLine{37         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_abadcf5fb781cafa3a9779091e210b96f}{isAlive}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_afdd29f9911c799abbbf1cc0d768ff754}{setIsAlive}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_abadcf5fb781cafa3a9779091e210b96f}{isAlive}});}
+\DoxyCodeLine{39         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_a25d9a35d2be7f2bd8a3409ac79cc8de9}{isDeathFinish}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{40         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a0db96afd3c1595f1aea1d765f4611995}{drawParticles}}(sf::RenderWindow \&window);}
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a73314638228926c6cc510574ecea377e}{drawSprite}}(sf::RenderWindow \&window);}
+\DoxyCodeLine{42         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}{update}}();}
+\DoxyCodeLine{43         \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntity_a7dae281ff92be9bc98672cafe05c77ab}{setHealth}}(\textcolor{keywordtype}{int} health);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{46         sf::Texture \mbox{\hyperlink{classEntity_a8e409f1b737a84cd895e42e4ec8c28bc}{\_texture}};}
+\DoxyCodeLine{47         sf::Sprite \mbox{\hyperlink{classEntity_a040bd9d02a9c5d0c7f07348bc15cc0a3}{\_sprite}};}
+\DoxyCodeLine{48         sf::Vector2f \mbox{\hyperlink{classEntity_a70316fde8272a3b08cbdc935f61477ac}{\_pos}};}
+\DoxyCodeLine{49         sf::Clock \mbox{\hyperlink{classEntity_ace51d1b581f7f7992a0919a203e790ac}{\_animationClock}};}
+\DoxyCodeLine{50         sf::Clock \mbox{\hyperlink{classEntity_a9d07fb0bc4e2baa5ac218f2f3ee7beca}{\_deathClock}};}
+\DoxyCodeLine{51         \mbox{\hyperlink{classParticleSystem}{ParticleSystem}} \mbox{\hyperlink{classEntity_af56298c9fe871dcdd8c66127dcf653e0}{\_particleSystem}};}
+\DoxyCodeLine{52         sf::Color \mbox{\hyperlink{classEntity_a2d12858c82ff226a738dd4273412ccbd}{\_startColor}};}
+\DoxyCodeLine{53         sf::Color \mbox{\hyperlink{classEntity_a0130b195c2c74bf84e135d3eab95eb94}{\_endColor}};}
+\DoxyCodeLine{54         \textcolor{keywordtype}{int} \mbox{\hyperlink{classEntity_a5d9f213ef26f1e09ebff7fcb46634b97}{\_health}};}
+\DoxyCodeLine{55         \textcolor{keywordtype}{int} \mbox{\hyperlink{classEntity_ab8931a040758502fbaa50010dedd54c6}{\_maxHealth}};}
+\DoxyCodeLine{56         sf::Sound \mbox{\hyperlink{classEntity_a1e7e03a90c8bea2689dd08f4c5177372}{\_sound1}};}
+\DoxyCodeLine{57         sf::SoundBuffer \mbox{\hyperlink{classEntity_aed8845158d8cec2c780a13fe2fc89142}{\_soundBuf1}};}
+\DoxyCodeLine{58         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_a2109c3bae235bc35fef203719c6c4258}{\_deathAnimation}};}
+\DoxyCodeLine{59         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_a5d39f2687941274489028fe2c32aaf48}{\_deathFinish}};}
+\DoxyCodeLine{60         \textcolor{keywordtype}{float} \mbox{\hyperlink{classEntity_affa34087931fd08b03afa12c0bd3554a}{\_speed}};}
+\DoxyCodeLine{61         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classEntity_aacf8a96c8862a9a78707cc840e3cdd6b}{\_isAlive}};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     \textcolor{keyword}{private}:}
+\DoxyCodeLine{64 \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ENTITY\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

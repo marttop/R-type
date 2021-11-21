@@ -1,0 +1,205 @@
+\hypertarget{classMobSfml}{}\doxysection{Mob\+Sfml Class Reference}
+\label{classMobSfml}\index{MobSfml@{MobSfml}}
+
+
+{\ttfamily \#include $<$Mob\+Sfml.\+hpp$>$}
+
+
+
+Collaboration diagram for Mob\+Sfml\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMobSfml__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMobSfml_a1f79c78b5c7dd94453d74b83d5b76add}{Mob\+Sfml}} (const sf\+::\+Texture \&texture, const sf\+::\+Vector2f \&pos, const float \&speed=0, const sf\+::\+Color \&start\+Color=sf\+::\+Color\+::\+White, const sf\+::\+Color \&end\+Color=sf\+::\+Color\+::\+White)
+\item 
+\mbox{\hyperlink{classMobSfml_a3969bf42ddee645d00dd28c525ffdf10}{$\sim$\+Mob\+Sfml}} ()
+\item 
+float \mbox{\hyperlink{classMobSfml_acbd0dc0162a1cb9471cbf3db8109a222}{get\+Elapsed\+Time}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classMobSfml_ae7707af3ecb96742c3d97066af41a2f6}{get\+Pos}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classMobSfml_a01852e1a311a5f90109d601c9150b854}{get\+Size}} () const
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{classMobSfml_aee5f18763e82af03d9a88da3c9ca147c}{get\+Global\+Bounds}} () const
+\item 
+void \mbox{\hyperlink{classMobSfml_ac8c637bf6b369c6a55b6a0a55b44eaed}{set\+Pos}} (const sf\+::\+Vector2f \&pos)
+\item 
+void \mbox{\hyperlink{classMobSfml_afee64871dbcbf09b518b4c3b8d2ead77}{set\+Rotation}} (const float \&angle)
+\item 
+void \mbox{\hyperlink{classMobSfml_ac5eab933bfe8372361cb5b110ec7f065}{set\+Color}} (const sf\+::\+Color \&color)
+\item 
+void \mbox{\hyperlink{classMobSfml_a7ea8109b9d47521f994df411ed369597}{restart\+Clock}} ()
+\item 
+void \mbox{\hyperlink{classMobSfml_a8cb26293313b679afb6b818486316cb0}{draw}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{classMobSfml_a403cd729f32ac5ae178c644e1fc093fd}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Texture \mbox{\hyperlink{classMobSfml_ab96b06905aafbb75dae5217e92cc24c3}{\+\_\+texture}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{classMobSfml_a0782f65a9acd0275da340aba0b4f3e2b}{\+\_\+sprite}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classMobSfml_a3951f14316bbc64d66a6d6c6b261a702}{\+\_\+pos}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classMobSfml_a813684d69250bea7216673ca6dfe3bbe}{\+\_\+clock}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classMobSfml_a21dc5873e72a0130833068a749300a26}{\+\_\+start\+Color}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classMobSfml_a0191f8571a31248394e767d88c242825}{\+\_\+end\+Color}}
+\item 
+float \mbox{\hyperlink{classMobSfml_a7eb4ee5de0048ca7446897d89cf2dec9}{\+\_\+speed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMobSfml_a1f79c78b5c7dd94453d74b83d5b76add}\label{classMobSfml_a1f79c78b5c7dd94453d74b83d5b76add}} 
+\index{MobSfml@{MobSfml}!MobSfml@{MobSfml}}
+\index{MobSfml@{MobSfml}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{MobSfml()}{MobSfml()}}
+{\footnotesize\ttfamily Mob\+Sfml\+::\+Mob\+Sfml (\begin{DoxyParamCaption}\item[{const sf\+::\+Texture \&}]{texture,  }\item[{const sf\+::\+Vector2f \&}]{pos,  }\item[{const float \&}]{speed = {\ttfamily 0},  }\item[{const sf\+::\+Color \&}]{start\+Color = {\ttfamily sf\+:\+:Color\+:\+:White},  }\item[{const sf\+::\+Color \&}]{end\+Color = {\ttfamily sf\+:\+:Color\+:\+:White} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_a3969bf42ddee645d00dd28c525ffdf10}\label{classMobSfml_a3969bf42ddee645d00dd28c525ffdf10}} 
+\index{MobSfml@{MobSfml}!````~MobSfml@{$\sim$MobSfml}}
+\index{````~MobSfml@{$\sim$MobSfml}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{$\sim$MobSfml()}{~MobSfml()}}
+{\footnotesize\ttfamily Mob\+Sfml\+::$\sim$\+Mob\+Sfml (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMobSfml_a8cb26293313b679afb6b818486316cb0}\label{classMobSfml_a8cb26293313b679afb6b818486316cb0}} 
+\index{MobSfml@{MobSfml}!draw@{draw}}
+\index{draw@{draw}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_acbd0dc0162a1cb9471cbf3db8109a222}\label{classMobSfml_acbd0dc0162a1cb9471cbf3db8109a222}} 
+\index{MobSfml@{MobSfml}!getElapsedTime@{getElapsedTime}}
+\index{getElapsedTime@{getElapsedTime}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{getElapsedTime()}{getElapsedTime()}}
+{\footnotesize\ttfamily float Mob\+Sfml\+::get\+Elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classMobSfml_aee5f18763e82af03d9a88da3c9ca147c}\label{classMobSfml_aee5f18763e82af03d9a88da3c9ca147c}} 
+\index{MobSfml@{MobSfml}!getGlobalBounds@{getGlobalBounds}}
+\index{getGlobalBounds@{getGlobalBounds}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{getGlobalBounds()}{getGlobalBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Mob\+Sfml\+::get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMobSfml_aee5f18763e82af03d9a88da3c9ca147c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMobSfml_ae7707af3ecb96742c3d97066af41a2f6}\label{classMobSfml_ae7707af3ecb96742c3d97066af41a2f6}} 
+\index{MobSfml@{MobSfml}!getPos@{getPos}}
+\index{getPos@{getPos}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Mob\+Sfml\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classMobSfml_a01852e1a311a5f90109d601c9150b854}\label{classMobSfml_a01852e1a311a5f90109d601c9150b854}} 
+\index{MobSfml@{MobSfml}!getSize@{getSize}}
+\index{getSize@{getSize}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Mob\+Sfml\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMobSfml_a01852e1a311a5f90109d601c9150b854_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMobSfml_a7ea8109b9d47521f994df411ed369597}\label{classMobSfml_a7ea8109b9d47521f994df411ed369597}} 
+\index{MobSfml@{MobSfml}!restartClock@{restartClock}}
+\index{restartClock@{restartClock}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{restartClock()}{restartClock()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::restart\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_ac5eab933bfe8372361cb5b110ec7f065}\label{classMobSfml_ac5eab933bfe8372361cb5b110ec7f065}} 
+\index{MobSfml@{MobSfml}!setColor@{setColor}}
+\index{setColor@{setColor}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::set\+Color (\begin{DoxyParamCaption}\item[{const sf\+::\+Color \&}]{color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_ac8c637bf6b369c6a55b6a0a55b44eaed}\label{classMobSfml_ac8c637bf6b369c6a55b6a0a55b44eaed}} 
+\index{MobSfml@{MobSfml}!setPos@{setPos}}
+\index{setPos@{setPos}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::set\+Pos (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{pos }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_afee64871dbcbf09b518b4c3b8d2ead77}\label{classMobSfml_afee64871dbcbf09b518b4c3b8d2ead77}} 
+\index{MobSfml@{MobSfml}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::set\+Rotation (\begin{DoxyParamCaption}\item[{const float \&}]{angle }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMobSfml_a403cd729f32ac5ae178c644e1fc093fd}\label{classMobSfml_a403cd729f32ac5ae178c644e1fc093fd}} 
+\index{MobSfml@{MobSfml}!update@{update}}
+\index{update@{update}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Mob\+Sfml\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMobSfml_a813684d69250bea7216673ca6dfe3bbe}\label{classMobSfml_a813684d69250bea7216673ca6dfe3bbe}} 
+\index{MobSfml@{MobSfml}!\_clock@{\_clock}}
+\index{\_clock@{\_clock}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_clock}{\_clock}}
+{\footnotesize\ttfamily sf\+::\+Clock Mob\+Sfml\+::\+\_\+clock\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_a0191f8571a31248394e767d88c242825}\label{classMobSfml_a0191f8571a31248394e767d88c242825}} 
+\index{MobSfml@{MobSfml}!\_endColor@{\_endColor}}
+\index{\_endColor@{\_endColor}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_endColor}{\_endColor}}
+{\footnotesize\ttfamily sf\+::\+Color Mob\+Sfml\+::\+\_\+end\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_a3951f14316bbc64d66a6d6c6b261a702}\label{classMobSfml_a3951f14316bbc64d66a6d6c6b261a702}} 
+\index{MobSfml@{MobSfml}!\_pos@{\_pos}}
+\index{\_pos@{\_pos}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_pos}{\_pos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Mob\+Sfml\+::\+\_\+pos\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_a7eb4ee5de0048ca7446897d89cf2dec9}\label{classMobSfml_a7eb4ee5de0048ca7446897d89cf2dec9}} 
+\index{MobSfml@{MobSfml}!\_speed@{\_speed}}
+\index{\_speed@{\_speed}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_speed}{\_speed}}
+{\footnotesize\ttfamily float Mob\+Sfml\+::\+\_\+speed\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_a0782f65a9acd0275da340aba0b4f3e2b}\label{classMobSfml_a0782f65a9acd0275da340aba0b4f3e2b}} 
+\index{MobSfml@{MobSfml}!\_sprite@{\_sprite}}
+\index{\_sprite@{\_sprite}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_sprite}{\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Mob\+Sfml\+::\+\_\+sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_a21dc5873e72a0130833068a749300a26}\label{classMobSfml_a21dc5873e72a0130833068a749300a26}} 
+\index{MobSfml@{MobSfml}!\_startColor@{\_startColor}}
+\index{\_startColor@{\_startColor}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_startColor}{\_startColor}}
+{\footnotesize\ttfamily sf\+::\+Color Mob\+Sfml\+::\+\_\+start\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classMobSfml_ab96b06905aafbb75dae5217e92cc24c3}\label{classMobSfml_ab96b06905aafbb75dae5217e92cc24c3}} 
+\index{MobSfml@{MobSfml}!\_texture@{\_texture}}
+\index{\_texture@{\_texture}!MobSfml@{MobSfml}}
+\doxysubsubsection{\texorpdfstring{\_texture}{\_texture}}
+{\footnotesize\ttfamily sf\+::\+Texture Mob\+Sfml\+::\+\_\+texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/entity/\mbox{\hyperlink{MobSfml_8hpp}{Mob\+Sfml.\+hpp}}\item 
+src/client/entity/\mbox{\hyperlink{MobSfml_8cpp}{Mob\+Sfml.\+cpp}}\end{DoxyCompactItemize}

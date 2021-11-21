@@ -3,6 +3,7 @@ CALL_MAKE_BOSS	=	cd Boss && make
 CALL_MAKE_BOSS_BULLETS	=	cd BossBullet && make
 CALL_MAKE_HEAL	=	cd Heal && make
 CALL_MAKE_ASTEROIDS	=	cd Asteroids && make
+CALL_MAKE_BIDOS_BULLETS	=	cd BidosBullet && make
 
 all: entities
 
@@ -12,3 +13,4 @@ entities:
 	$(CALL_MAKE_BOSS_BULLETS)
 	$(CALL_MAKE_HEAL)
 	$(CALL_MAKE_ASTEROIDS)
+	$(CALL_MAKE_BIDOS_BULLETS)

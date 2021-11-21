@@ -1,0 +1,53 @@
+\hypertarget{RoomCard_8hpp_source}{}\doxysection{Room\+Card.\+hpp}
+\label{RoomCard_8hpp_source}\index{src/client/menu/RoomCard.hpp@{src/client/menu/RoomCard.hpp}}
+\mbox{\hyperlink{RoomCard_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** RoomCard}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ROOMCARD\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ROOMCARD\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <asio.hpp>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Button_8hpp}{Button.hpp}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classRoomCard}{RoomCard}} \{}
+\DoxyCodeLine{17     \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classRoomCard_abbc1ddd0fc1c076ca68fad9dacd7115b}{RoomCard}}();}
+\DoxyCodeLine{19         \mbox{\hyperlink{classRoomCard_ab43b54e8018cf220b45c50b6acb0a407}{\string~RoomCard}}();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_ae97168c1a4654db0281aa22ba7a88f12}{create}}(\textcolor{keyword}{const} sf::Vector2f \&pos, \textcolor{keyword}{const} sf::Vector2f \&size, \textcolor{keyword}{const} std::string \&text, \textcolor{keyword}{const} \textcolor{keywordtype}{int} \&users = 0, \textcolor{keyword}{const} \textcolor{keywordtype}{double} \&thickness = 1.0, \textcolor{keyword}{const} sf::Vector2f \&factors = \{1, 1\});}
+\DoxyCodeLine{22         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_ad442a8161ca9a5b158719b13596bb01d}{draw}}(sf::RenderWindow \&window) \textcolor{keyword}{const};}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}{event}}(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window, asio::ip::tcp::socket \&socket);}
+\DoxyCodeLine{24         sf::Vector2f \mbox{\hyperlink{classRoomCard_a28ba7eb29d9a60a61f0562632e114a7b}{getPosition}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25         sf::Vector2f \mbox{\hyperlink{classRoomCard_a157bfd99633673d59c52d30b12a3ba46}{getSize}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a2ff3e295a29558c5b5b23eb00d0fbc06}{incrementPosition}}();}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a32c80fdc9d3a3f49bd602e691e4d73e9}{decrementPosition}}();}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a583f6900927117c70b9b6772fbe430a2}{update}}(\textcolor{keyword}{const} sf::RenderWindow \&window);}
+\DoxyCodeLine{29         std::string \mbox{\hyperlink{classRoomCard_a3b7fd7a655f5df82e4267dff2ecac43a}{getId}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a7598b8fa2c9dc5f03440c73f0242ad92}{incrementPlayer}}();}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{classRoomCard_a5c17022a05c10d7e528ca03449134a39}{decrementPlayer}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{34     \textcolor{keyword}{private}:}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} join(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classRoomCard_a563a611042df3fdb1843bfc6f21a6d38}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window, asio::ip::tcp::socket \&socket);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         sf::RectangleShape \_background;}
+\DoxyCodeLine{38         sf::Color \_outline;}
+\DoxyCodeLine{39         sf::Text \_title;}
+\DoxyCodeLine{40         sf::Text \_playerCount;}
+\DoxyCodeLine{41         std::string \_id;}
+\DoxyCodeLine{42         sf::Font \_font;}
+\DoxyCodeLine{43         \mbox{\hyperlink{classButton}{Button}} \_delete;}
+\DoxyCodeLine{44         \textcolor{keywordtype}{double} \_thickness;}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ROOMCARD\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

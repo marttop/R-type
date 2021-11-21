@@ -1,0 +1,44 @@
+\hypertarget{WarningBox_8hpp_source}{}\doxysection{Warning\+Box.\+hpp}
+\label{WarningBox_8hpp_source}\index{src/client/menu/WarningBox.hpp@{src/client/menu/WarningBox.hpp}}
+\mbox{\hyperlink{WarningBox_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** WarningBox}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef WARNINGBOX\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define WARNINGBOX\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Button_8hpp}{Button.hpp}}"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classWarningBox}{WarningBox}} \{}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \mbox{\hyperlink{classWarningBox_a6e9bacda21728a336e014ff6bbd0913d}{WarningBox}}();}
+\DoxyCodeLine{18         \mbox{\hyperlink{classWarningBox_a888c85fcaaaa1a073d64d6de37fbaf8b}{\string~WarningBox}}();}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{classWarningBox_aa2e0287538822f289816875ab076dc19}{create}}(\textcolor{keyword}{const} sf::Vector2f \&pos, \textcolor{keyword}{const} sf::Vector2f \&factors = \{1, 1\});}
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} \mbox{\hyperlink{classWarningBox_a7c45715d854ce78809b145f022ef32c8}{draw}}(sf::RenderWindow \&window) \textcolor{keyword}{const};}
+\DoxyCodeLine{22         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classWarningBox_ac52d538ffe5a93e5942b66ada4d48252}{event}}(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classWarningBox_ac52d538ffe5a93e5942b66ada4d48252}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window);}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classWarningBox_ab0adc1943502d2f49eed779aa0fdd079}{open}}(\textcolor{keyword}{const} std::string \&text, \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&isButton);}
+\DoxyCodeLine{24         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classWarningBox_a4f12139f83f128ffd610bd719a816a6c}{isOpen}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{classWarningBox_ac5da36dc6470530fb05aa96ab5519dca}{close}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{28     \textcolor{keyword}{private}:}
+\DoxyCodeLine{29         sf::RectangleShape \_background;}
+\DoxyCodeLine{30         sf::Text *\_text;}
+\DoxyCodeLine{31         sf::Font \_font;}
+\DoxyCodeLine{32         \mbox{\hyperlink{classButton}{Button}} \_close;}
+\DoxyCodeLine{33         \textcolor{keywordtype}{bool} \_isOpen;}
+\DoxyCodeLine{34         \textcolor{keywordtype}{bool} \_isButton;}
+\DoxyCodeLine{35         sf::Vector2f \_factors;}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !WARNINGBOX\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

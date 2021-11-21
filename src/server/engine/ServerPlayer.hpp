@@ -21,23 +21,116 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         ~ServerPlayer();
 
         void update() override;
+
+        /**
+         * @brief Set the Username object
+         *
+         * @param username
+         */
         void setUsername(const std::string &username);
 
+        /**
+         * @brief Get the Username object
+         *
+         * @return ** std::string
+         */
         std::string getUsername() const;
+
+        /**
+         * @brief Get the isPushed bool
+         *
+         * @return ** bool
+         */
         bool isPushed() const;
+
+        /**
+         * @brief Set the isPushed bool
+         *
+         * @param isPushed
+         */
         void setIsPushed(const bool &isPushed);
+
+        /**
+         * @brief Get the Port object
+         *
+         * @return ** int
+         */
         int getPort() const;
+
+        /**
+         * @brief Get the Socket object
+         *
+         * @return ** asio::ip::udp::socket&
+         */
         asio::ip::udp::socket &getSocket();
+
+        /**
+         * @brief Starts udp commincation in the room.
+         *
+         */
         void startUDP();
+
+        /**
+         * @brief Is the user ready.
+         *
+         * @return true
+         * @return false
+         */
         bool isReady() const;
+
+        /**
+         * @brief Set the Is Ready object
+         *
+         * @param isReady
+         */
         void setIsReady(bool isReady);
+
+        /**
+         * @brief Sends data to the user (UDP only).
+         *
+         * @param code SEP code (UDP)
+         * @param msg message
+         */
         void sendData(const std::string &code, const std::string &msg);
+
+        /**
+         * @brief Boradcast UDP data to everyone in the room but not the user
+         *
+         */
         void broadcastUDPNotSelf();
+
+        /**
+         * @brief Async recieve for the UDP user
+         *
+         * @param error error code (asio)
+         */
         void handleReceive(const asio::error_code &error);
+
+        /**
+         * @brief Close the udp socket
+         *
+         */
         void closeUDP();
+
+        /**
+         * @brief Moves the player
+         *
+         * @param direction
+         * @param action
+         */
         void movePlayer(const std::string &direction, const std::string &action);
+
+        /**
+         * @brief Get the Ammo object
+         *
+         * @return ** std::vector<std::shared_ptr<IEntity>>
+         */
         std::vector<std::shared_ptr<IEntity>> getAmmo();
-        std::vector<bool> &getBoolLand();
+
+        /**
+         * @brief Creates a shooting entity in the player.
+         *
+         */
         void shoot();
         bool _canShoot;
 

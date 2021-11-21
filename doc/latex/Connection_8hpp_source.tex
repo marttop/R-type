@@ -1,0 +1,53 @@
+\hypertarget{Connection_8hpp_source}{}\doxysection{Connection.\+hpp}
+\label{Connection_8hpp_source}\index{src/client/menu/Connection.hpp@{src/client/menu/Connection.hpp}}
+\mbox{\hyperlink{Connection_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Connection}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef CONNECTION\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define CONNECTION\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <asio.hpp>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{InputBox_8hpp}{InputBox.hpp}}"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Button_8hpp}{Button.hpp}}"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ValidateIp_8hpp}{ValidateIp.hpp}}"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{WarningBox_8hpp}{WarningBox.hpp}}"{}}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classConnection}{Connection}} \{}
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \mbox{\hyperlink{classConnection_a9de94289ca6259f94ef6aeba3b134a77}{Connection}}();}
+\DoxyCodeLine{25         \mbox{\hyperlink{classConnection_a2e4352edf667bea83001569e9da8a24d}{\string~Connection}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{classConnection_a221d5888c0f5c1099007b27bef982b18}{create}}(\textcolor{keyword}{const} sf::RectangleShape \&background);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{classConnection_ac3021df79decfd9f9a2753a6435fa645}{event}}(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classConnection_ac3021df79decfd9f9a2753a6435fa645}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{classConnection_a3509a036de5b9d5831e1c972ee72bf67}{update}}(\textcolor{keyword}{const} sf::RenderWindow \&window, \textcolor{keyword}{const} sf::RectangleShape \&background, \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \&animationEnd);}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{classConnection_a003c4bc6425098d0a6bf945ba497016c}{draw}}(sf::RenderWindow \&window) \textcolor{keyword}{const};}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{classConnection_ad509e56897dbf1189752e195716b9a71}{connect}}(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classConnection_ac3021df79decfd9f9a2753a6435fa645}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window, asio::ip::tcp::endpoint \&endpoint, asio::ip::tcp::socket \&socket, \mbox{\hyperlink{classWarningBox}{WarningBox}} \&alert);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{34     \textcolor{keyword}{private}:}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} getDefaultInput();}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         \mbox{\hyperlink{classInputBox}{InputBox}} \_nameBox;}
+\DoxyCodeLine{38         \mbox{\hyperlink{classInputBox}{InputBox}} \_ipBox;}
+\DoxyCodeLine{39         \mbox{\hyperlink{classInputBox}{InputBox}} \_portBox;}
+\DoxyCodeLine{40         \mbox{\hyperlink{classButton}{Button}} \_connect;}
+\DoxyCodeLine{41         \mbox{\hyperlink{classValidateIp}{ValidateIp}} \_validator;}
+\DoxyCodeLine{42         std::string \_ip;}
+\DoxyCodeLine{43         std::string \_name;}
+\DoxyCodeLine{44         std::string \_port;}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !CONNECTION\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

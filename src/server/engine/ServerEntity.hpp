@@ -19,7 +19,12 @@ class ServerEntity : public IEntity {
                         int health = 1);
         ~ServerEntity();
 
+        /**
+         * @brief Not used function
+         * 
+         */
         void sendData();
+
         void update() = 0;
 
         void setId(const std::string id);

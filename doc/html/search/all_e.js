@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['removeuser_0',['removeUser',['../classServerRoom.html#ae39227a195ea5cd57aa6b210f2300f01',1,'ServerRoom']]],
+  ['resettimers_1',['resetTimers',['../classServerRoom.html#a24e28a631833079a0ee2f5ba78a024bf',1,'ServerRoom']]],
+  ['restartclock_2',['restartClock',['../classIClientEntity.html#acfc56a9b9a54f4b9e4f4cfeb6dea7e79',1,'IClientEntity::restartClock()'],['../classMobSfml.html#a7ea8109b9d47521f994df411ed369597',1,'MobSfml::restartClock()'],['../classEntity.html#a7a82c1fe9f0eb0838437f5133ee302a0',1,'Entity::restartClock()']]],
+  ['right_3',['RIGHT',['../classParallax.html#a8d251a9f27bde8a2fcf099efd5d31bc2a9586a005e0615ca923434295db5b49eb',1,'Parallax::RIGHT()'],['../classGame.html#a54cdb83358fe9b841c91fcde9a28a69ba2334078310ea81f6cc36d668b9267015',1,'Game::RIGHT()']]],
+  ['room_4',['Room',['../classRoom.html',1,'Room'],['../classRoom.html#ac6ef93a7d9c3e1d624e025058d5f16ff',1,'Room::Room()']]],
+  ['room_2ecpp_5',['Room.cpp',['../Room_8cpp.html',1,'']]],
+  ['room_2ehpp_6',['Room.hpp',['../Room_8hpp.html',1,'']]],
+  ['roomcard_7',['RoomCard',['../classRoomCard.html',1,'RoomCard'],['../classRoomCard.html#abbc1ddd0fc1c076ca68fad9dacd7115b',1,'RoomCard::RoomCard()']]],
+  ['roomcard_2ecpp_8',['RoomCard.cpp',['../RoomCard_8cpp.html',1,'']]],
+  ['roomcard_2ehpp_9',['RoomCard.hpp',['../RoomCard_8hpp.html',1,'']]],
+  ['roomslist_10',['RoomsList',['../classRoomsList.html',1,'RoomsList'],['../classRoomsList.html#a243c6cb47b7361364fbdb80d9b13e97e',1,'RoomsList::RoomsList()']]],
+  ['roomslist_2ecpp_11',['RoomsList.cpp',['../RoomsList_8cpp.html',1,'']]],
+  ['roomslist_2ehpp_12',['RoomsList.hpp',['../RoomsList_8hpp.html',1,'']]],
+  ['rotatepointaroundcenter_13',['rotatePointAroundCenter',['../classUtils.html#aa2fd6b11c80e12a67319b337a7d835fe',1,'Utils']]],
+  ['rtype_14',['rtype',['../namespacertype.html',1,'']]],
+  ['rtypeexception_15',['RtypeException',['../classrtype_1_1RtypeException.html',1,'rtype::RtypeException'],['../classrtype_1_1RtypeException.html#ad7bf2cb501f6caeef15edfb1ab460be2',1,'rtype::RtypeException::RtypeException()']]],
+  ['rtypeexception_2ehpp_16',['RtypeException.hpp',['../RtypeException_8hpp.html',1,'']]]
+];

@@ -39,16 +39,49 @@ BidosSlaves::BidosSlaves()
     _health = 1;
     _maxHealth = _health;
     _type = "BidosSlaves";
+    _loader.loadEntityWithPath("./src/server/entities/BidosBullet/BidosBullet.so", "BidosBullet");
 }
 
 BidosSlaves::~BidosSlaves()
 {
 }
 
+void BidosSlaves::startClock()
+{
+    _shootClock = clock();
+}
+
+bool BidosSlaves::checkClock()
+{
+    clock_t t = (clock() - _shootClock);
+    if (((float)t / CLOCKS_PER_SEC) > 0.1) {
+        _shootClock = clock();
+        return true;
+    }
+    return false;
+}
+
+void BidosSlaves::shoot()
+{
+    static int id = 0;
+    std::shared_ptr<IEntity> bullet1 = _loader.createEntityWithName("BidosBullet");
+   
+    bullet1->setId(getId() + std::to_string(id));
+    id += 1;
+
+    bullet1->setPosition(getPosition().first, getPosition().second + 10);
+
+    _ammos.push_back(bullet1);
+}
+
 void BidosSlaves::update()
 {
     if (getPosition().first < -50) {
         _isAlive = false;
+        return;
+    }
+    if (checkClock()) {
+        shoot();
     }
     setPosition(getPosition().first + _speed, getPosition().second);
 }

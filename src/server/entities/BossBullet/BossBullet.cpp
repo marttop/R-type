@@ -29,9 +29,6 @@ extern "C" IEntity *allocator()
 // }
 // #endif
 
-
-// La Position negatif pcq pendant une frame on ne sais pas ou est la balle
-
 BossBullet::BossBullet()
     : ServerEntity(CustomRect(102 * 4 / 3, 34 * 4))
 {

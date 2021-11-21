@@ -1,0 +1,41 @@
+\hypertarget{Button_8hpp_source}{}\doxysection{Button.\+hpp}
+\label{Button_8hpp_source}\index{src/client/menu/Button.hpp@{src/client/menu/Button.hpp}}
+\mbox{\hyperlink{Button_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Button}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef BUTTON\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define BUTTON\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{AssetManager_8hpp}{AssetManager.hpp}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classButton}{Button}} \{}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{16         \mbox{\hyperlink{classButton_a3b36df1ae23c58aedb9e15a713159459}{Button}}();}
+\DoxyCodeLine{17         \mbox{\hyperlink{classButton_a2a001eb9c3cc8ae54768a850dd345002}{\string~Button}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} \mbox{\hyperlink{classButton_a6fb77f4d8aaa28fd09d9713b64372af4}{create}}(\textcolor{keyword}{const} sf::Vector2f \&pos, \textcolor{keyword}{const} std::string \&text, \textcolor{keyword}{const} sf::Vector2f \&offset = \{0, 0\}, \textcolor{keyword}{const} sf::Vector2f \&factors = \{1, 1\});}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{classButton_a95773eb0a0b33ac29517eac844d23dd9}{draw}}(sf::RenderWindow \&window) \textcolor{keyword}{const};}
+\DoxyCodeLine{21         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classButton_aa0b54c7f3541e658eb6a81b7692830f7}{event}}(\textcolor{keyword}{const} sf::Event \&\mbox{\hyperlink{classButton_aa0b54c7f3541e658eb6a81b7692830f7}{event}}, \textcolor{keyword}{const} sf::RenderWindow \&window);}
+\DoxyCodeLine{22         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classButton_a2409c2f7e593d6e24897c568d80b72a4}{isMouseHovering}}(\textcolor{keyword}{const} sf::RenderWindow \&window) \textcolor{keyword}{const};}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} \mbox{\hyperlink{classButton_a280c1f052bc36b032798ccb1f1f8bd9d}{setPosition}}(\textcolor{keyword}{const} sf::Vector2f \&pos);}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} \mbox{\hyperlink{classButton_a846e4181678540fba9336144e9a76392}{update}}(\textcolor{keyword}{const} sf::RenderWindow \&window);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{27     \textcolor{keyword}{private}:}
+\DoxyCodeLine{28         sf::RectangleShape \_background;}
+\DoxyCodeLine{29         sf::Text *\_text;}
+\DoxyCodeLine{30         sf::Font \_font;}
+\DoxyCodeLine{31         sf::Color \_outline;}
+\DoxyCodeLine{32         sf::Vector2f \_offset;}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !BUTTON\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -43,14 +43,6 @@ void AsioTcpServ::start_accept()
                                     std::placeholders::_1));
 }
 
-void AsioTcpServ::shell_send() const
-{
-    std::string message;
-    while(true) {
-        std::cin >> message;
-    }
-}
-
 void AsioTcpServ::handle_connexion(userConnectionPointer new_connection,
                                     const asio::error_code &error)
 {

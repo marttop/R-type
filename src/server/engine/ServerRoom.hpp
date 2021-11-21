@@ -23,31 +23,155 @@ class ServerRoom {
     public:
         ServerRoom(asio::io_context& io_context, int id, int portSeed, bool debug);
         ~ServerRoom();
+
+        /**
+         * @brief Add a new user to the room.
+         *
+         * @param id new user's id.
+         * @param username user's username.
+         */
         void addUser(int id, const std::string &username);
+
+        /**
+         * @brief Remove user from the room.
+         *
+         * @param id id to broadcast.
+         * @param username username to broadcast.
+         */
         void removeUser(int id, const std::string &username);
+
+        /**
+         * @brief Get the Nb Users object
+         *
+         * @return ** int
+         */
         int getNbUsers() const;
+
+        /**
+         * @brief Get the Players Name object
+         *
+         * @return ** std::string
+         */
         std::string getPlayersName() const;
+
+        /**
+         * @brief Is the player in the room (By Id).
+         *
+         * @param id
+         * @return true
+         * @return false
+         */
         bool isPlayerInRoom(int id) const;
+
+        /**
+         * @brief Returns the game thread ready to be detached.
+         *
+         * @return ** std::thread
+         */
         std::thread startThread();
+
+        /**
+         * @brief Broadcast to all the players in the room.
+         *
+         * @param code SEP code
+         * @param msg message
+         */
         void broadCastUdp(const std::string &code, const std::string &msg);
+
+        /**
+         * @brief Get the Player From Id object
+         *
+         * @param id
+         * @return ** std::shared_ptr<ServerPlayer>
+         */
         std::shared_ptr<ServerPlayer> getPlayerFromId(int id) const;
+
+        /**
+         * @brief Returns true if everyone is ready in the room.
+         *
+         * @return true
+         * @return false
+         */
         bool isEveryoneReady() const;
+
+        /**
+         * @brief Returns true if the game has started.
+         *
+         * @return true
+         * @return false
+         */
         bool isGameStarted() const;
+
+        /**
+         * @brief Get the Id object
+         *
+         * @return ** int
+         */
         int getId() const;
 
+        /**
+         * @brief Create a Entity Response object
+         *
+         * @param obj type of the object
+         * @param action ction to be done (DELETE, CREATE, UDPATE).
+         * @return ** std::string (response)
+         */
         std::string createEntityResponse(std::shared_ptr<IEntity> obj, const std::string &action) const;
-        std::string updateEntity(std::shared_ptr<IEntity> obj) const;
-        bool collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
-        std::string EntityAsShoot();
-        bool IsPlayers() const;
 
+        /**
+         * @brief Updates the entity
+         *
+         * @param obj entity
+         * @return ** std::string
+         */
+        std::string updateEntity(std::shared_ptr<IEntity> obj) const;
+
+        /**
+         * @brief Checks asteroids collision with player
+         *
+         * @param player
+         * @param entity
+         */
+        bool collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
+
+        /**
+         * @brief Who the fuck knows ? can't remember everything.
+         *
+         * @return ** std::string
+         */
+        std::string EntityAsShoot();
+
+        /**
+         * @brief Reset the timers.
+         *
+         */
         void resetTimers();
 
         //GAME
+
+        /**
+         * @brief Launches the game
+         *
+         */
         void playGame();
+
+        /**
+         * @brief Infinite loop of the game called by PlayGame().
+         *
+         */
         void updateLoop();
+
+        /**
+         * @brief Update players during the game.
+         *
+         * @return ** std::string
+         */
         std::string updatePlayers() const;
 
+        /**
+         * @brief Create all the players
+         *
+         */
         void createPlayers();
 
         bool _debug;

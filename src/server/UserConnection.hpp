@@ -25,13 +25,37 @@ class UserConnection : public std::enable_shared_from_this<UserConnection>
 {
 public:
 
+    /**
+     * @brief Creates a new user (TCP only)
+     * 
+     * @param io_context Context of the server (asio)
+     * @param servRef Reference of the parent class.
+     * @param id New id of the user
+     * @param debug is in debug mode
+     * @return new pointer to the new user
+     */
     static userConnectionPointer create(asio::io_context &io_context, AsioTcpServ &servRef, int id, bool debug) {
         return userConnectionPointer(new UserConnection(io_context, servRef, id, debug));
     }
 
+    /**
+     * @brief Get the Socket object
+     *
+     * @return asio::ip::tcp::socket&
+     */
     asio::ip::tcp::socket &getSocket();
+
+    /**
+     * @brief Get the Id object
+     *
+     * @return int id
+     */
     int getId() const;
 
+    /**
+     * @brief Start listening on the user's TCP socket.
+     *
+     */
     void startCommunication();
 
 

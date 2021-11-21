@@ -20,11 +20,37 @@ class EntityLoad {
         EntityLoad();
         ~EntityLoad();
 
+        /**
+         * @brief Return if error
+         * 
+         * @return ** std::string error
+         */
         std::string                 error();
 
+        /**
+         * @brief Loads a new entity with the path and name.
+         *
+         * @param path 
+         * @param name 
+         * @return true (succes)
+         * @return false (failure)
+         */
         bool                        loadEntityWithPath(const std::string &path, const std::string &name);
 
+        /**
+         * @brief Create a Entity With Name object
+         * 
+         * @param name
+         * @return ** std::shared_ptr<IEntity> 
+         */
         std::shared_ptr<IEntity>    createEntityWithName(const std::string name);
+
+        /**
+         * @brief Deletes entity by name given.
+         * 
+         * @param name
+         * @param entity
+         */
         void                        destroyEntityWithName(const std::string &name, std::shared_ptr<IEntity> entity);
 
     protected:

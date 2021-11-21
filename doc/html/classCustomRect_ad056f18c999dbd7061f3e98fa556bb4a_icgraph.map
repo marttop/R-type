@@ -1,0 +1,12 @@
+<map id="CustomRect::setPosition" name="CustomRect::setPosition">
+<area shape="rect" id="node1" title="Set the Position of the rect." alt="" coords="471,183,652,209"/>
+<area shape="rect" id="node2" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="241,183,423,209"/>
+<area shape="rect" id="node3" href="$classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="5,5,193,32"/>
+<area shape="rect" id="node4" href="$classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="53,56,145,83"/>
+<area shape="rect" id="node5" href="$classBossBullet.html#acca8ecca1f90ed4454ca2bb3f20a86f9" title=" " alt="" coords="15,107,183,133"/>
+<area shape="rect" id="node6" href="$classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50" title="Updates the entity." alt="" coords="22,157,177,184"/>
+<area shape="rect" id="node7" href="$classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="22,208,177,235"/>
+<area shape="rect" id="node8" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="46,259,153,285"/>
+<area shape="rect" id="node9" href="$classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="27,309,171,336"/>
+<area shape="rect" id="node10" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="20,360,179,387"/>
+</map>

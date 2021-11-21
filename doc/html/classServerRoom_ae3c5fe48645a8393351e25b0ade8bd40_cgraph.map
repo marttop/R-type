@@ -1,0 +1,11 @@
+<map id="ServerRoom::startThread" name="ServerRoom::startThread">
+<area shape="rect" id="node1" title="Returns the game thread ready to be detached." alt="" coords="5,107,191,133"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#a09ac325d82194a4470d0e03c924bbc2e" title="Launches the game." alt="" coords="239,107,416,133"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a507704c43695d0fbb5d6d553ea34d87d" title="Broadcast to all the players in the room." alt="" coords="735,56,937,83"/>
+<area shape="rect" id="node4" href="$classServerRoom.html#ada079a7a898dad497ea5273e22a94c6a" title="Create all the players." alt="" coords="476,5,675,32"/>
+<area shape="rect" id="node6" href="$classServerRoom.html#ac53cc31547415b0e090c96f63b83ce5e" title="Returns true if everyone is ready in the room." alt="" coords="464,107,687,133"/>
+<area shape="rect" id="node7" href="$classServerRoom.html#a24e28a631833079a0ee2f5ba78a024bf" title="Reset the timers." alt="" coords="742,195,930,221"/>
+<area shape="rect" id="node8" href="$classServerRoom.html#abbc07051548fb4b40cf6e8abb8669a2c" title="Infinite loop of the game called by PlayGame()." alt="" coords="482,157,669,184"/>
+<area shape="rect" id="node5" href="$classServerRoom.html#a22652e96fe96dc2431c4a2fd844e1dce" title="Create a Entity Response object." alt="" coords="985,55,1175,97"/>
+<area shape="rect" id="node9" href="$classServerRoom.html#a5956924ed0bceea22477c3d9ee9d95fc" title="Update players during the game." alt="" coords="735,119,937,145"/>
+</map>

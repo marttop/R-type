@@ -1,0 +1,4 @@
+<map id="ServerPlayer::isReady" name="ServerPlayer::isReady">
+<area shape="rect" id="node1" title="Is the user ready." alt="" coords="239,5,404,32"/>
+<area shape="rect" id="node2" href="$classServerPlayer.html#a02ca97d41e460aecbcf91533c174106a" title="Set the Is Ready object." alt="" coords="5,5,191,32"/>
+</map>

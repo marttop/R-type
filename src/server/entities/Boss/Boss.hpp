@@ -5,8 +5,8 @@
 ** ServerBasicMob1
 */
 
-#ifndef SERVERBASICMOB1_HPP_
-#define SERVERBASICMOB1_HPP_
+#ifndef BOS_HPP__
+#define BOS_HPP__
 
 #include "ServerEntity.hpp"
 #include "EntityLoad.hpp"
@@ -31,4 +31,4 @@ private:
     clock_t  _shootClock;
 };
 
-#endif /* !SERVERBASICMOB1_HPP_ */
+#endif /* !BOS_HPP__ */

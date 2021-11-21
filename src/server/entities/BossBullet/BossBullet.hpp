@@ -5,8 +5,8 @@
 ** ServerBasicMob1
 */
 
-#ifndef SERVERBASICMOB1_HPP_
-#define SERVERBASICMOB1_HPP_
+#ifndef BOSSBULLET_HPP__
+#define BOSSBULLET_HPP__
 
 #include "ServerEntity.hpp"
 
@@ -22,4 +22,4 @@ protected:
 private:
 };
 
-#endif /* !SERVERBASICMOB1_HPP_ */
+#endif /* !BOSSBULLET_HPP__ */

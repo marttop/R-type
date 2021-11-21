@@ -1,0 +1,7 @@
+<map id="ServerPlayer::shoot" name="ServerPlayer::shoot">
+<area shape="rect" id="node1" title="Creates a shooting entity in the player." alt="" coords="5,64,155,91"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#a507704c43695d0fbb5d6d553ea34d87d" title="Broadcast to all the players in the room." alt="" coords="203,5,405,32"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a22652e96fe96dc2431c4a2fd844e1dce" title="Create a Entity Response object." alt="" coords="209,57,399,98"/>
+<area shape="rect" id="node4" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="213,123,395,149"/>
+<area shape="rect" id="node5" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="453,123,636,149"/>
+</map>

@@ -1,0 +1,176 @@
+\hypertarget{classAsioTcpServ}{}\doxysection{Asio\+Tcp\+Serv Class Reference}
+\label{classAsioTcpServ}\index{AsioTcpServ@{AsioTcpServ}}
+
+
+{\ttfamily \#include $<$Asio\+Tcp\+Serv.\+hpp$>$}
+
+
+
+Collaboration diagram for Asio\+Tcp\+Serv\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classAsioTcpServ__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAsioTcpServ_a95f52165c3ae9d9e23021a3cf41bf411}{Asio\+Tcp\+Serv}} (asio\+::io\+\_\+context \&io\+\_\+context, const int port, bool debug=false)
+\item 
+\mbox{\hyperlink{classAsioTcpServ_a9c92a112d81464697de632c5dd18ecc2}{$\sim$\+Asio\+Tcp\+Serv}} ()
+\item 
+void \mbox{\hyperlink{classAsioTcpServ_a5be08860b31bff042c030eda067c5fd7}{start\+\_\+accept}} ()
+\begin{DoxyCompactList}\small\item\em Starts the server\textquotesingle{}s TCP communication. Waits for new clients. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAsioTcpServ_ac37186670e4b29ef2638429f969362f5}{add\+Room}} ()
+\begin{DoxyCompactList}\small\item\em Add a new room in the room list. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{AsioTcpServ_8hpp_a753e7540e06be2c96dffa1a345fa805f}{user\+Connection\+Pointer}} $>$ \& \mbox{\hyperlink{classAsioTcpServ_ab41dba1a475ca045464288a4a5fa4833}{get\+User\+List}} ()
+\begin{DoxyCompactList}\small\item\em Get the TCP User\textquotesingle{}s list. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classServerRoom}{Server\+Room}} $>$ $>$ \& \mbox{\hyperlink{classAsioTcpServ_a1458bb0441711c186c56b2c7b68662f3}{get\+Room\+List}} ()
+\begin{DoxyCompactList}\small\item\em Get the room\textquotesingle{}s list. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classServerRoom}{Server\+Room}} $>$ \mbox{\hyperlink{classAsioTcpServ_a12d2302a54878ec12617859bc35b21ba}{get\+Room\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classRoom}{Room}} By Id object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAsioTcpServ_a3107d817f91187720c325dbf76a926ae}{delete\+Room\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Removes the room from the list by id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAsioTcpServ_a95f52165c3ae9d9e23021a3cf41bf411}\label{classAsioTcpServ_a95f52165c3ae9d9e23021a3cf41bf411}} 
+\index{AsioTcpServ@{AsioTcpServ}!AsioTcpServ@{AsioTcpServ}}
+\index{AsioTcpServ@{AsioTcpServ}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{AsioTcpServ()}{AsioTcpServ()}}
+{\footnotesize\ttfamily Asio\+Tcp\+Serv\+::\+Asio\+Tcp\+Serv (\begin{DoxyParamCaption}\item[{asio\+::io\+\_\+context \&}]{io\+\_\+context,  }\item[{const int}]{port,  }\item[{bool}]{debug = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAsioTcpServ_a95f52165c3ae9d9e23021a3cf41bf411_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classAsioTcpServ_a9c92a112d81464697de632c5dd18ecc2}\label{classAsioTcpServ_a9c92a112d81464697de632c5dd18ecc2}} 
+\index{AsioTcpServ@{AsioTcpServ}!````~AsioTcpServ@{$\sim$AsioTcpServ}}
+\index{````~AsioTcpServ@{$\sim$AsioTcpServ}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{$\sim$AsioTcpServ()}{~AsioTcpServ()}}
+{\footnotesize\ttfamily Asio\+Tcp\+Serv\+::$\sim$\+Asio\+Tcp\+Serv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAsioTcpServ_ac37186670e4b29ef2638429f969362f5}\label{classAsioTcpServ_ac37186670e4b29ef2638429f969362f5}} 
+\index{AsioTcpServ@{AsioTcpServ}!addRoom@{addRoom}}
+\index{addRoom@{addRoom}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{addRoom()}{addRoom()}}
+{\footnotesize\ttfamily int Asio\+Tcp\+Serv\+::add\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Add a new room in the room list. 
+
+\begin{DoxyReturn}{Returns}
+the id of the new room. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAsioTcpServ_a3107d817f91187720c325dbf76a926ae}\label{classAsioTcpServ_a3107d817f91187720c325dbf76a926ae}} 
+\index{AsioTcpServ@{AsioTcpServ}!deleteRoomById@{deleteRoomById}}
+\index{deleteRoomById@{deleteRoomById}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{deleteRoomById()}{deleteRoomById()}}
+{\footnotesize\ttfamily int Asio\+Tcp\+Serv\+::delete\+Room\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Removes the room from the list by id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & of the room to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the next room. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAsioTcpServ_a12d2302a54878ec12617859bc35b21ba}\label{classAsioTcpServ_a12d2302a54878ec12617859bc35b21ba}} 
+\index{AsioTcpServ@{AsioTcpServ}!getRoomById@{getRoomById}}
+\index{getRoomById@{getRoomById}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{getRoomById()}{getRoomById()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classServerRoom}{Server\+Room}} $>$ Asio\+Tcp\+Serv\+::get\+Room\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classRoom}{Room}} By Id object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & of the room. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Server\+Room$>$ list. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAsioTcpServ_a1458bb0441711c186c56b2c7b68662f3}\label{classAsioTcpServ_a1458bb0441711c186c56b2c7b68662f3}} 
+\index{AsioTcpServ@{AsioTcpServ}!getRoomList@{getRoomList}}
+\index{getRoomList@{getRoomList}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{getRoomList()}{getRoomList()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classServerRoom}{Server\+Room}} $>$ $>$ \& Asio\+Tcp\+Serv\+::get\+Room\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the room\textquotesingle{}s list. 
+
+\begin{DoxyReturn}{Returns}
+list of rooms. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAsioTcpServ_ab41dba1a475ca045464288a4a5fa4833}\label{classAsioTcpServ_ab41dba1a475ca045464288a4a5fa4833}} 
+\index{AsioTcpServ@{AsioTcpServ}!getUserList@{getUserList}}
+\index{getUserList@{getUserList}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{getUserList()}{getUserList()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{AsioTcpServ_8hpp_a753e7540e06be2c96dffa1a345fa805f}{user\+Connection\+Pointer}} $>$ \& Asio\+Tcp\+Serv\+::get\+User\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the TCP User\textquotesingle{}s list. 
+
+\begin{DoxyReturn}{Returns}
+list of users. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAsioTcpServ_ab41dba1a475ca045464288a4a5fa4833_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classAsioTcpServ_a5be08860b31bff042c030eda067c5fd7}\label{classAsioTcpServ_a5be08860b31bff042c030eda067c5fd7}} 
+\index{AsioTcpServ@{AsioTcpServ}!start\_accept@{start\_accept}}
+\index{start\_accept@{start\_accept}!AsioTcpServ@{AsioTcpServ}}
+\doxysubsubsection{\texorpdfstring{start\_accept()}{start\_accept()}}
+{\footnotesize\ttfamily void Asio\+Tcp\+Serv\+::start\+\_\+accept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the server\textquotesingle{}s TCP communication. Waits for new clients. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAsioTcpServ_a5be08860b31bff042c030eda067c5fd7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAsioTcpServ_a5be08860b31bff042c030eda067c5fd7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/\mbox{\hyperlink{AsioTcpServ_8hpp}{Asio\+Tcp\+Serv.\+hpp}}\item 
+src/server/\mbox{\hyperlink{AsioTcpServ_8cpp}{Asio\+Tcp\+Serv.\+cpp}}\end{DoxyCompactItemize}

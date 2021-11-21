@@ -1,0 +1,382 @@
+\hypertarget{classServerPlayer}{}\doxysection{Server\+Player Class Reference}
+\label{classServerPlayer}\index{ServerPlayer@{ServerPlayer}}
+
+
+{\ttfamily \#include $<$Server\+Player.\+hpp$>$}
+
+
+
+Inheritance diagram for Server\+Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classServerPlayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Server\+Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classServerPlayer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServerPlayer_a7e100bd0479d04aaab3944d1b5de0275}{Server\+Player}} (const \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \&rect, asio\+::io\+\_\+context \&io\+\_\+context, \mbox{\hyperlink{classServerRoom}{Server\+Room}} \&room\+Ref, int port)
+\item 
+\mbox{\hyperlink{classServerPlayer_a3d3e92ea255b51a0274259f017033483}{$\sim$\+Server\+Player}} ()
+\item 
+void \mbox{\hyperlink{classServerPlayer_a67b1db7a377d6f9aa4f31607f64f3d40}{update}} () override
+\begin{DoxyCompactList}\small\item\em Updates the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_adfafc1a0fbd765d214df6c0afe3e424c}{set\+Username}} (const std\+::string \&username)
+\begin{DoxyCompactList}\small\item\em Set the Username object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classServerPlayer_a1604f17c23740411d37bed871c580158}{get\+Username}} () const
+\begin{DoxyCompactList}\small\item\em Get the Username object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServerPlayer_a9d6c58e948f92060d7a5a4e507ed955a}{get\+Port}} () const
+\begin{DoxyCompactList}\small\item\em Get the Port object. \end{DoxyCompactList}\item 
+asio\+::ip\+::udp\+::socket \& \mbox{\hyperlink{classServerPlayer_a028dd0f2206312cda01aa99ad1113bdb}{get\+Socket}} ()
+\begin{DoxyCompactList}\small\item\em Get the Socket object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_a6ab9f3f17477b8cdd42bc95b65b4934e}{start\+UDP}} ()
+\begin{DoxyCompactList}\small\item\em Starts udp commincation in the room. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classServerPlayer_a4f04a7d436cb95dd3c13da6680e55583}{is\+Ready}} () const
+\begin{DoxyCompactList}\small\item\em Is the user ready. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_a02ca97d41e460aecbcf91533c174106a}{set\+Is\+Ready}} (bool \mbox{\hyperlink{classServerPlayer_a4f04a7d436cb95dd3c13da6680e55583}{is\+Ready}})
+\begin{DoxyCompactList}\small\item\em Set the Is Ready object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_a20421371183b4a152c3d67d947598d5e}{send\+Data}} (const std\+::string \&code, const std\+::string \&msg)
+\begin{DoxyCompactList}\small\item\em Sends data to the user (UDP only). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_a358f08c1cdc27a72ad57adb7dfb9cff4}{broadcast\+UDPNot\+Self}} ()
+\begin{DoxyCompactList}\small\item\em Boradcast UDP data to everyone in the room but not the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_aeeb880ae5fb11205daca89d4a9e4a842}{handle\+Receive}} (const asio\+::error\+\_\+code \&error)
+\begin{DoxyCompactList}\small\item\em Async recieve for the UDP user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_aa598fa15c046a353ab92bfcf1eaecd18}{close\+UDP}} ()
+\begin{DoxyCompactList}\small\item\em Close the udp socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_ae86e5eb107298e5371a75f5c37b16d2d}{move\+Player}} (const std\+::string \&direction, const std\+::string \&action)
+\begin{DoxyCompactList}\small\item\em Moves the player. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ \mbox{\hyperlink{classServerPlayer_ae727e46f0168d2a0cd740bd253c01314}{get\+Ammo}} ()
+\begin{DoxyCompactList}\small\item\em Get the Ammo object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServerPlayer_af9c9fecbfc466f46b13fac08d8d0425c}{shoot}} ()
+\begin{DoxyCompactList}\small\item\em Creates a shooting entity in the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classServerPlayer_a10dfe5a779a989564aa369910dfc83f4}{\+\_\+can\+Shoot}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServerPlayer_a7e100bd0479d04aaab3944d1b5de0275}\label{classServerPlayer_a7e100bd0479d04aaab3944d1b5de0275}} 
+\index{ServerPlayer@{ServerPlayer}!ServerPlayer@{ServerPlayer}}
+\index{ServerPlayer@{ServerPlayer}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{ServerPlayer()}{ServerPlayer()}}
+{\footnotesize\ttfamily Server\+Player\+::\+Server\+Player (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCustomRect}{Custom\+Rect}} \&}]{rect,  }\item[{asio\+::io\+\_\+context \&}]{io\+\_\+context,  }\item[{\mbox{\hyperlink{classServerRoom}{Server\+Room}} \&}]{room\+Ref,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classServerPlayer_a3d3e92ea255b51a0274259f017033483}\label{classServerPlayer_a3d3e92ea255b51a0274259f017033483}} 
+\index{ServerPlayer@{ServerPlayer}!````~ServerPlayer@{$\sim$ServerPlayer}}
+\index{````~ServerPlayer@{$\sim$ServerPlayer}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{$\sim$ServerPlayer()}{~ServerPlayer()}}
+{\footnotesize\ttfamily Server\+Player\+::$\sim$\+Server\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerPlayer_a358f08c1cdc27a72ad57adb7dfb9cff4}\label{classServerPlayer_a358f08c1cdc27a72ad57adb7dfb9cff4}} 
+\index{ServerPlayer@{ServerPlayer}!broadcastUDPNotSelf@{broadcastUDPNotSelf}}
+\index{broadcastUDPNotSelf@{broadcastUDPNotSelf}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{broadcastUDPNotSelf()}{broadcastUDPNotSelf()}}
+{\footnotesize\ttfamily void Server\+Player\+::broadcast\+UDPNot\+Self (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Boradcast UDP data to everyone in the room but not the user. 
+
+\mbox{\Hypertarget{classServerPlayer_aa598fa15c046a353ab92bfcf1eaecd18}\label{classServerPlayer_aa598fa15c046a353ab92bfcf1eaecd18}} 
+\index{ServerPlayer@{ServerPlayer}!closeUDP@{closeUDP}}
+\index{closeUDP@{closeUDP}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{closeUDP()}{closeUDP()}}
+{\footnotesize\ttfamily void Server\+Player\+::close\+UDP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Close the udp socket. 
+
+\mbox{\Hypertarget{classServerPlayer_ae727e46f0168d2a0cd740bd253c01314}\label{classServerPlayer_ae727e46f0168d2a0cd740bd253c01314}} 
+\index{ServerPlayer@{ServerPlayer}!getAmmo@{getAmmo}}
+\index{getAmmo@{getAmmo}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{getAmmo()}{getAmmo()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classIEntity}{IEntity}} $>$ $>$ Server\+Player\+::get\+Ammo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Ammo object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::vector$<$std\+::shared\+\_\+ptr$<$\+IEntity$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerPlayer_a9d6c58e948f92060d7a5a4e507ed955a}\label{classServerPlayer_a9d6c58e948f92060d7a5a4e507ed955a}} 
+\index{ServerPlayer@{ServerPlayer}!getPort@{getPort}}
+\index{getPort@{getPort}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{getPort()}{getPort()}}
+{\footnotesize\ttfamily int Server\+Player\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Port object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerPlayer_a028dd0f2206312cda01aa99ad1113bdb}\label{classServerPlayer_a028dd0f2206312cda01aa99ad1113bdb}} 
+\index{ServerPlayer@{ServerPlayer}!getSocket@{getSocket}}
+\index{getSocket@{getSocket}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{getSocket()}{getSocket()}}
+{\footnotesize\ttfamily asio\+::ip\+::udp\+::socket \& Server\+Player\+::get\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Socket object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ asio\+::ip\+::udp\+::socket\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerPlayer_a1604f17c23740411d37bed871c580158}\label{classServerPlayer_a1604f17c23740411d37bed871c580158}} 
+\index{ServerPlayer@{ServerPlayer}!getUsername@{getUsername}}
+\index{getUsername@{getUsername}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{getUsername()}{getUsername()}}
+{\footnotesize\ttfamily std\+::string Server\+Player\+::get\+Username (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Username object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerPlayer_aeeb880ae5fb11205daca89d4a9e4a842}\label{classServerPlayer_aeeb880ae5fb11205daca89d4a9e4a842}} 
+\index{ServerPlayer@{ServerPlayer}!handleReceive@{handleReceive}}
+\index{handleReceive@{handleReceive}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{handleReceive()}{handleReceive()}}
+{\footnotesize\ttfamily void Server\+Player\+::handle\+Receive (\begin{DoxyParamCaption}\item[{const asio\+::error\+\_\+code \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Async recieve for the UDP user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & error code (asio) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_aeeb880ae5fb11205daca89d4a9e4a842_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_aeeb880ae5fb11205daca89d4a9e4a842_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_a4f04a7d436cb95dd3c13da6680e55583}\label{classServerPlayer_a4f04a7d436cb95dd3c13da6680e55583}} 
+\index{ServerPlayer@{ServerPlayer}!isReady@{isReady}}
+\index{isReady@{isReady}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily bool Server\+Player\+::is\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Is the user ready. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_a4f04a7d436cb95dd3c13da6680e55583_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_ae86e5eb107298e5371a75f5c37b16d2d}\label{classServerPlayer_ae86e5eb107298e5371a75f5c37b16d2d}} 
+\index{ServerPlayer@{ServerPlayer}!movePlayer@{movePlayer}}
+\index{movePlayer@{movePlayer}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{movePlayer()}{movePlayer()}}
+{\footnotesize\ttfamily void Server\+Player\+::move\+Player (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{direction,  }\item[{const std\+::string \&}]{action }\end{DoxyParamCaption})}
+
+
+
+Moves the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & \\
+\hline
+{\em action} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_ae86e5eb107298e5371a75f5c37b16d2d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_ae86e5eb107298e5371a75f5c37b16d2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_a20421371183b4a152c3d67d947598d5e}\label{classServerPlayer_a20421371183b4a152c3d67d947598d5e}} 
+\index{ServerPlayer@{ServerPlayer}!sendData@{sendData}}
+\index{sendData@{sendData}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily void Server\+Player\+::send\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{code,  }\item[{const std\+::string \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Sends data to the user (UDP only). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & SEP code (UDP) \\
+\hline
+{\em msg} & message \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServerPlayer_a02ca97d41e460aecbcf91533c174106a}\label{classServerPlayer_a02ca97d41e460aecbcf91533c174106a}} 
+\index{ServerPlayer@{ServerPlayer}!setIsReady@{setIsReady}}
+\index{setIsReady@{setIsReady}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{setIsReady()}{setIsReady()}}
+{\footnotesize\ttfamily void Server\+Player\+::set\+Is\+Ready (\begin{DoxyParamCaption}\item[{bool}]{is\+Ready }\end{DoxyParamCaption})}
+
+
+
+Set the Is Ready object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Ready} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_a02ca97d41e460aecbcf91533c174106a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_adfafc1a0fbd765d214df6c0afe3e424c}\label{classServerPlayer_adfafc1a0fbd765d214df6c0afe3e424c}} 
+\index{ServerPlayer@{ServerPlayer}!setUsername@{setUsername}}
+\index{setUsername@{setUsername}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{setUsername()}{setUsername()}}
+{\footnotesize\ttfamily void Server\+Player\+::set\+Username (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{username }\end{DoxyParamCaption})}
+
+
+
+Set the Username object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServerPlayer_af9c9fecbfc466f46b13fac08d8d0425c}\label{classServerPlayer_af9c9fecbfc466f46b13fac08d8d0425c}} 
+\index{ServerPlayer@{ServerPlayer}!shoot@{shoot}}
+\index{shoot@{shoot}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{shoot()}{shoot()}}
+{\footnotesize\ttfamily void Server\+Player\+::shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a shooting entity in the player. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_af9c9fecbfc466f46b13fac08d8d0425c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classServerPlayer_af9c9fecbfc466f46b13fac08d8d0425c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_a6ab9f3f17477b8cdd42bc95b65b4934e}\label{classServerPlayer_a6ab9f3f17477b8cdd42bc95b65b4934e}} 
+\index{ServerPlayer@{ServerPlayer}!startUDP@{startUDP}}
+\index{startUDP@{startUDP}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{startUDP()}{startUDP()}}
+{\footnotesize\ttfamily void Server\+Player\+::start\+UDP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts udp commincation in the room. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_a6ab9f3f17477b8cdd42bc95b65b4934e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classServerPlayer_a67b1db7a377d6f9aa4f31607f64f3d40}\label{classServerPlayer_a67b1db7a377d6f9aa4f31607f64f3d40}} 
+\index{ServerPlayer@{ServerPlayer}!update@{update}}
+\index{update@{update}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Server\+Player\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the entity. 
+
+
+
+Implements \mbox{\hyperlink{classServerEntity_af1b6df8d9e414561f5ff45999ee1ec77}{Server\+Entity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServerPlayer_a67b1db7a377d6f9aa4f31607f64f3d40_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classServerPlayer_a10dfe5a779a989564aa369910dfc83f4}\label{classServerPlayer_a10dfe5a779a989564aa369910dfc83f4}} 
+\index{ServerPlayer@{ServerPlayer}!\_canShoot@{\_canShoot}}
+\index{\_canShoot@{\_canShoot}!ServerPlayer@{ServerPlayer}}
+\doxysubsubsection{\texorpdfstring{\_canShoot}{\_canShoot}}
+{\footnotesize\ttfamily bool Server\+Player\+::\+\_\+can\+Shoot}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/engine/\mbox{\hyperlink{ServerPlayer_8hpp}{Server\+Player.\+hpp}}\item 
+src/server/engine/\mbox{\hyperlink{ServerPlayer_8cpp}{Server\+Player.\+cpp}}\end{DoxyCompactItemize}

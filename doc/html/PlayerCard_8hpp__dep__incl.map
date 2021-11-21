@@ -1,0 +1,11 @@
+<map id="src/client/menu/PlayerCard.hpp" name="src/client/menu/PlayerCard.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="121,5,346,32"/>
+<area shape="rect" id="node2" href="$PlayerCard_8cpp.html" title=" " alt="" coords="5,80,229,107"/>
+<area shape="rect" id="node3" href="$Room_8hpp.html" title=" " alt="" coords="253,80,445,107"/>
+<area shape="rect" id="node4" href="$Menu_8hpp.html" title=" " alt="" coords="146,155,337,181"/>
+<area shape="rect" id="node9" href="$Room_8cpp.html" title=" " alt="" coords="361,155,551,181"/>
+<area shape="rect" id="node5" href="$Menu_8cpp.html" title=" " alt="" coords="33,229,223,256"/>
+<area shape="rect" id="node6" href="$Window_8hpp.html" title=" " alt="" coords="247,229,465,256"/>
+<area shape="rect" id="node7" href="$client_2main_8cpp.html" title=" " alt="" coords="181,304,326,331"/>
+<area shape="rect" id="node8" href="$Window_8cpp.html" title=" " alt="" coords="350,304,567,331"/>
+</map>

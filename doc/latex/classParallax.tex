@@ -1,0 +1,197 @@
+\hypertarget{classParallax}{}\doxysection{Parallax Class Reference}
+\label{classParallax}\index{Parallax@{Parallax}}
+
+
+{\ttfamily \#include $<$Parallax.\+hpp$>$}
+
+
+
+Collaboration diagram for Parallax\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classParallax__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216}{Layers}} \{ \newline
+\mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216a28fbfab3102d4942715dc6ef3df1947e}{BACKGROUND}}
+, \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216ae4e38794666879890bc818b5915aa574}{PLANET}}
+, \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216a4ad2dc83aa740a9ec4aad8fe5ed75631}{FARTHEST}}
+, \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216afde498cfe0bf5c5aace923e70d83a53c}{FARE}}
+, \newline
+\mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216a51527a0a91fcf04ef406a984021da50d}{CLOSE}}
+, \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216a0a53f96ba92a6b730f3144972f89bee3}{CLOSEST}}
+ \}
+\item 
+enum \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2}{Direction}} \{ \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2af553b8460f857af7a765aaa615f8c667}{LEFT}}
+, \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a9586a005e0615ca923434295db5b49eb}{RIGHT}}
+, \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a11fa7e1552f0bb39e05da047c2024dbe}{UP}}
+, \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a49bd701f0c15394f71ab8ebfaba0c1d6}{DOWN}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classParallax_a8ca0cc66eb88dabe8be28182ec2fb895}{Parallax}} ()
+\item 
+\mbox{\hyperlink{classParallax_a020f2ca7b60c22d6a8b2690000b7e5fe}{$\sim$\+Parallax}} ()
+\item 
+void \mbox{\hyperlink{classParallax_aaf53bdf084ea3ee9a61771813bc9ec6a}{create}} (const int \&speed)
+\item 
+void \mbox{\hyperlink{classParallax_a6be54fd90f83817eb8c2825443868640}{update}} ()
+\item 
+void \mbox{\hyperlink{classParallax_ae1513dea5ac57149ff0a6de571f5789c}{draw}} (sf\+::\+Render\+Window \&window) const
+\item 
+void \mbox{\hyperlink{classParallax_aa9fa7bcd0476789281950c5ec7bfe781}{event}} (const sf\+::\+Event \&event)
+\item 
+void \mbox{\hyperlink{classParallax_a1993f1791a106c73b8d0e556827d5c26}{set\+Direction}} (const std\+::vector$<$ bool $>$ \&direction)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2}\label{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2}} 
+\index{Parallax@{Parallax}!Direction@{Direction}}
+\index{Direction@{Direction}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2}{Parallax\+::\+Direction}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!Parallax@{Parallax}}\index{Parallax@{Parallax}!LEFT@{LEFT}}}\mbox{\Hypertarget{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2af553b8460f857af7a765aaa615f8c667}\label{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2af553b8460f857af7a765aaa615f8c667}} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!Parallax@{Parallax}}\index{Parallax@{Parallax}!RIGHT@{RIGHT}}}\mbox{\Hypertarget{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a9586a005e0615ca923434295db5b49eb}\label{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a9586a005e0615ca923434295db5b49eb}} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!Parallax@{Parallax}}\index{Parallax@{Parallax}!UP@{UP}}}\mbox{\Hypertarget{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a11fa7e1552f0bb39e05da047c2024dbe}\label{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a11fa7e1552f0bb39e05da047c2024dbe}} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!Parallax@{Parallax}}\index{Parallax@{Parallax}!DOWN@{DOWN}}}\mbox{\Hypertarget{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a49bd701f0c15394f71ab8ebfaba0c1d6}\label{classParallax_a8d251a9f27bde8a2fcf099efd5d31bc2a49bd701f0c15394f71ab8ebfaba0c1d6}} 
+DOWN&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216}} 
+\index{Parallax@{Parallax}!Layers@{Layers}}
+\index{Layers@{Layers}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{Layers}{Layers}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classParallax_ad5d3646ef9654130f802a00dcabb2216}{Parallax\+::\+Layers}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BACKGROUND@{BACKGROUND}!Parallax@{Parallax}}\index{Parallax@{Parallax}!BACKGROUND@{BACKGROUND}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216a28fbfab3102d4942715dc6ef3df1947e}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216a28fbfab3102d4942715dc6ef3df1947e}} 
+BACKGROUND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLANET@{PLANET}!Parallax@{Parallax}}\index{Parallax@{Parallax}!PLANET@{PLANET}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216ae4e38794666879890bc818b5915aa574}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216ae4e38794666879890bc818b5915aa574}} 
+PLANET&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FARTHEST@{FARTHEST}!Parallax@{Parallax}}\index{Parallax@{Parallax}!FARTHEST@{FARTHEST}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216a4ad2dc83aa740a9ec4aad8fe5ed75631}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216a4ad2dc83aa740a9ec4aad8fe5ed75631}} 
+FARTHEST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FARE@{FARE}!Parallax@{Parallax}}\index{Parallax@{Parallax}!FARE@{FARE}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216afde498cfe0bf5c5aace923e70d83a53c}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216afde498cfe0bf5c5aace923e70d83a53c}} 
+FARE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOSE@{CLOSE}!Parallax@{Parallax}}\index{Parallax@{Parallax}!CLOSE@{CLOSE}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216a51527a0a91fcf04ef406a984021da50d}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216a51527a0a91fcf04ef406a984021da50d}} 
+CLOSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOSEST@{CLOSEST}!Parallax@{Parallax}}\index{Parallax@{Parallax}!CLOSEST@{CLOSEST}}}\mbox{\Hypertarget{classParallax_ad5d3646ef9654130f802a00dcabb2216a0a53f96ba92a6b730f3144972f89bee3}\label{classParallax_ad5d3646ef9654130f802a00dcabb2216a0a53f96ba92a6b730f3144972f89bee3}} 
+CLOSEST&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classParallax_a8ca0cc66eb88dabe8be28182ec2fb895}\label{classParallax_a8ca0cc66eb88dabe8be28182ec2fb895}} 
+\index{Parallax@{Parallax}!Parallax@{Parallax}}
+\index{Parallax@{Parallax}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{Parallax()}{Parallax()}}
+{\footnotesize\ttfamily Parallax\+::\+Parallax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classParallax_a020f2ca7b60c22d6a8b2690000b7e5fe}\label{classParallax_a020f2ca7b60c22d6a8b2690000b7e5fe}} 
+\index{Parallax@{Parallax}!````~Parallax@{$\sim$Parallax}}
+\index{````~Parallax@{$\sim$Parallax}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{$\sim$Parallax()}{~Parallax()}}
+{\footnotesize\ttfamily Parallax\+::$\sim$\+Parallax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParallax_aaf53bdf084ea3ee9a61771813bc9ec6a}\label{classParallax_aaf53bdf084ea3ee9a61771813bc9ec6a}} 
+\index{Parallax@{Parallax}!create@{create}}
+\index{create@{create}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily void Parallax\+::create (\begin{DoxyParamCaption}\item[{const int \&}]{speed }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classParallax_aaf53bdf084ea3ee9a61771813bc9ec6a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{classParallax_aaf53bdf084ea3ee9a61771813bc9ec6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classParallax_ae1513dea5ac57149ff0a6de571f5789c}\label{classParallax_ae1513dea5ac57149ff0a6de571f5789c}} 
+\index{Parallax@{Parallax}!draw@{draw}}
+\index{draw@{draw}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Parallax\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classParallax_aa9fa7bcd0476789281950c5ec7bfe781}\label{classParallax_aa9fa7bcd0476789281950c5ec7bfe781}} 
+\index{Parallax@{Parallax}!event@{event}}
+\index{event@{event}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily void Parallax\+::event (\begin{DoxyParamCaption}\item[{const sf\+::\+Event \&}]{event }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classParallax_aa9fa7bcd0476789281950c5ec7bfe781_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classParallax_aa9fa7bcd0476789281950c5ec7bfe781_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classParallax_a1993f1791a106c73b8d0e556827d5c26}\label{classParallax_a1993f1791a106c73b8d0e556827d5c26}} 
+\index{Parallax@{Parallax}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily void Parallax\+::set\+Direction (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ bool $>$ \&}]{direction }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classParallax_a6be54fd90f83817eb8c2825443868640}\label{classParallax_a6be54fd90f83817eb8c2825443868640}} 
+\index{Parallax@{Parallax}!update@{update}}
+\index{update@{update}!Parallax@{Parallax}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Parallax\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/parallax/\mbox{\hyperlink{Parallax_8hpp}{Parallax.\+hpp}}\item 
+src/client/parallax/\mbox{\hyperlink{Parallax_8cpp}{Parallax.\+cpp}}\end{DoxyCompactItemize}

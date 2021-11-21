@@ -1,0 +1,7 @@
+<map id="BossBullet::update" name="BossBullet::update">
+<area shape="rect" id="node1" title="Updates the entity." alt="" coords="5,31,149,57"/>
+<area shape="rect" id="node2" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="197,5,380,32"/>
+<area shape="rect" id="node4" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="198,56,379,83"/>
+<area shape="rect" id="node3" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="428,5,611,32"/>
+<area shape="rect" id="node5" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="429,56,610,83"/>
+</map>

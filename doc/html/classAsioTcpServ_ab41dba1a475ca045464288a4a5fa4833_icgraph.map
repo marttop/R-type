@@ -1,0 +1,4 @@
+<map id="AsioTcpServ::getUserList" name="AsioTcpServ::getUserList">
+<area shape="rect" id="node1" title="Get the TCP User&#39;s list." alt="" coords="320,5,501,32"/>
+<area shape="rect" id="node2" href="$classUserConnection.html#a63405d60679289be553264578c35a449" title="Start listening on the user&#39;s TCP socket." alt="" coords="5,5,272,32"/>
+</map>
