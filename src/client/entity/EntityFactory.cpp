@@ -16,6 +16,8 @@ EntityFactory::EntityFactory()
     _cmd.emplace("Boss", &EntityFactory::getBoss);
     _cmd.emplace("BossBullet", &EntityFactory::getBossBullet);
     _cmd.emplace("BidosBullet", &EntityFactory::getBidosBullet);
+    _cmd.emplace("BoomBoss", &EntityFactory::getBoomBoss);
+    _cmd.emplace("BoomrangBullet", &EntityFactory::getBoomrangBullet);
     _cmd.emplace("Heal", &EntityFactory::getHeal);
 }
 
@@ -115,6 +117,30 @@ std::shared_ptr<IClientEntity> EntityFactory::getBidosBullet(const sf::Vector2f 
                                                                 int health)
 {
     std::shared_ptr<IClientEntity> entity(new BidosBulletC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/BidosBullet.png"),
+    pos, speed, startColor, endColor, health));
+
+    return (entity);
+}
+
+std::shared_ptr<IClientEntity> EntityFactory::getBoomBoss(const sf::Vector2f &pos,
+                                                                const float &speed,
+                                                                const sf::Color &startColor,
+                                                                const sf::Color &endColor,
+                                                                int health)
+{
+    std::shared_ptr<IClientEntity> entity(new BoomBossC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/BoomBoss.png"),
+    pos, speed, startColor, endColor, health));
+
+    return (entity);
+}
+
+std::shared_ptr<IClientEntity> EntityFactory::getBoomrangBullet(const sf::Vector2f &pos,
+                                                                const float &speed,
+                                                                const sf::Color &startColor,
+                                                                const sf::Color &endColor,
+                                                                int health)
+{
+    std::shared_ptr<IClientEntity> entity(new BoomrangBulletC(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/BoomrangBullet.png"),
     pos, speed, startColor, endColor, health));
 
     return (entity);

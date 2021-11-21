@@ -56,7 +56,7 @@ class ServerEntity : public IEntity {
         CustomRect _rect;
         std::string _type;
         std::string _id;
-        std::pair<int, int> _direction;
+        std::pair<double, double> _direction;
         std::vector<std::shared_ptr<IEntity>> _ammos;
         double _speed;
         int _health;

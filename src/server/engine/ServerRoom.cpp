@@ -14,6 +14,7 @@ ServerRoom::ServerRoom(asio::io_context& io_context, int id, int portSeed, bool 
     _timer = 0;
     _loader = new EntityLoad();
     _loader->loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
+    _loader->loadEntityWithPath("./src/server/entities/BoomrangBullet/BoomrangBullet.so", "BoomrangBullet");
     _loader->loadEntityWithPath("./src/server/entities/BidosBullet/BidosBullet.so", "BidosBullet");
     _loader->loadEntityWithPath("./src/server/entities/Heal/Heal.so", "Heal");
 }
@@ -270,7 +271,7 @@ std::string ServerRoom::deleteDeadEntities()
                     ss << createEntityResponse(createdEntity, "CREATE");
                 }
             }
-            if (it->get()->getType() == "Boss") {
+            if (it->get()->getType() == "Boss" || it->get()->getType() == "BoomBoss") {
                 _isGameStarted = false;
             }
             it = _entities.erase(it);
@@ -329,15 +330,7 @@ std::string ServerRoom::updateEntities()
                 entity->setAlive(false);
                 player->addLifeEntity(player->getMaxHp() / 10);
             }
-            if (timer % 7 == 0 && entity->getType() == "BossBullet" && player->isColliding(entity)) {
-                timer = 0;
-                if (player->isAlive()) {
-                    player->addLifeEntity(-1);
-                    if (!player->isAlive())
-                        ss << createEntityResponse(player, "DELETE");
-                }
-            }
-            if (timer % 7 == 0 && entity->getType() == "BidosBullet" && player->isColliding(entity)) {
+            if (timer % 7 == 0 && (entity->getType() == "BossBullet" || entity->getType() == "BidosBullet" || entity->getType() == "BoomrangBullet")  && player->isColliding(entity)) {
                 timer = 0;
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
@@ -346,7 +339,7 @@ std::string ServerRoom::updateEntities()
                 }
             }
             for (auto playerBullet : player->getAmmo()) {
-                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "Heal") {
+                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "BoomrangBullet" && entity->getType() != "Heal") {
                     playerBullet->setAlive(false);
                     entity->addLifeEntity(-1);
                 }
