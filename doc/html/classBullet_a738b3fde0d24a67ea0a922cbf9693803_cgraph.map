@@ -1,6 +1,6 @@
 <map id="Bullet::update" name="Bullet::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,42,119,69"/>
+<area shape="rect" id="node1" title="Update the Bullet." alt="" coords="5,42,119,69"/>
 <area shape="rect" id="node2" href="$classParticleSystem.html#a66c05aa9eb45ce1da93ae277e4ea5d78" title=" " alt="" coords="167,42,339,69"/>
-<area shape="rect" id="node3" href="$classUtils.html#a603207f48d0394cb1f2d6742303c3191" title=" " alt="" coords="387,5,597,47"/>
-<area shape="rect" id="node4" href="$classUtils.html#a230e57f495d345155a0211e6f58d22e4" title=" " alt="" coords="407,71,577,98"/>
+<area shape="rect" id="node3" href="$classUtils.html#a603207f48d0394cb1f2d6742303c3191" title="Get the Random Normalized Vector object." alt="" coords="387,5,597,47"/>
+<area shape="rect" id="node4" href="$classUtils.html#a230e57f495d345155a0211e6f58d22e4" title="Get vector magnitude." alt="" coords="407,71,577,98"/>
 </map>

@@ -1,0 +1,4 @@
+<map id="ServerPlayer::isPushed" name="ServerPlayer::isPushed">
+<area shape="rect" id="node1" title="Get the isPushed bool." alt="" coords="244,5,415,32"/>
+<area shape="rect" id="node2" href="$classServerPlayer.html#ab84a6f3b5d7070e16b190ca6447f488a" title="Set the isPushed bool." alt="" coords="5,5,196,32"/>
+</map>

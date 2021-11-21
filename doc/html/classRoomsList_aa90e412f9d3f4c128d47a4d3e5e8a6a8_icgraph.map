@@ -1,5 +1,5 @@
 <map id="RoomsList::event" name="RoomsList::event">
-<area shape="rect" id="node1" title=" " alt="" coords="372,31,507,57"/>
-<area shape="rect" id="node2" href="$classRoomsList.html#a8c81392813d5ea4df06eb59a3bc2855f" title=" " alt="" coords="156,5,324,32"/>
-<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,31,108,57"/>
+<area shape="rect" id="node1" title="RoomsList events." alt="" coords="372,31,507,57"/>
+<area shape="rect" id="node2" href="$classRoomsList.html#a8c81392813d5ea4df06eb59a3bc2855f" title="Disconnect event." alt="" coords="156,5,324,32"/>
+<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,31,108,57"/>
 </map>

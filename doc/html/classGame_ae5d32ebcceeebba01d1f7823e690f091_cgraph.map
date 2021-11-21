@@ -1,4 +1,4 @@
 <map id="Game::startThread" name="Game::startThread">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,149,32"/>
-<area shape="rect" id="node2" href="$classGame.html#a5a04c1872124cb7bac668ab684bcc5c8" title=" " alt="" coords="197,5,344,32"/>
+<area shape="rect" id="node1" title="Start thread for UDP read." alt="" coords="5,5,149,32"/>
+<area shape="rect" id="node2" href="$classGame.html#a5a04c1872124cb7bac668ab684bcc5c8" title="UDP read." alt="" coords="197,5,344,32"/>
 </map>

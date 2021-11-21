@@ -1,7 +1,8 @@
 <map id="src/client/menu/WarningBox.hpp" name="src/client/menu/WarningBox.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,237,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="51,229,197,256"/>
-<area shape="rect" id="node3" href="$Button_8hpp.html" title=" " alt="" coords="117,80,211,107"/>
-<area shape="rect" id="node4" href="$AssetManager_8hpp.html" title=" " alt="" coords="169,155,311,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="221,229,272,256"/>
+<area shape="rect" id="node2" title=" " alt="" coords="57,229,204,256"/>
+<area shape="rect" id="node3" href="$Button_8hpp.html" title=" " alt="" coords="151,80,244,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="169,155,295,181"/>
+<area shape="rect" id="node5" href="$AssetManager_8hpp.html" title=" " alt="" coords="319,155,462,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="365,229,416,256"/>
 </map>

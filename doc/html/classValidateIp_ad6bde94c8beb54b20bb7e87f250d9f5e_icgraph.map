@@ -1,6 +1,5 @@
 <map id="ValidateIp::validateIpAddress" name="ValidateIp::validateIpAddress">
-<area shape="rect" id="node1" title=" " alt="" coords="359,31,571,57"/>
-<area shape="rect" id="node2" href="$testclient_2main_8cpp.html#a8ecb04e5bb02fea7da8a8daa917c71d5" title=" " alt="" coords="189,5,277,32"/>
-<area shape="rect" id="node3" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title=" " alt="" coords="156,56,311,83"/>
-<area shape="rect" id="node4" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,56,108,83"/>
+<area shape="rect" id="node1" title="Check if the ip is valid." alt="" coords="359,29,571,56"/>
+<area shape="rect" id="node2" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title="Connect event." alt="" coords="156,29,311,56"/>
+<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,29,108,56"/>
 </map>

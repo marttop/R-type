@@ -1,4 +1,4 @@
 <map id="Room::draw" name="Room::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="152,5,252,32"/>
-<area shape="rect" id="node2" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node1" title="Draw Room." alt="" coords="152,5,252,32"/>
+<area shape="rect" id="node2" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title="Draw Menu." alt="" coords="5,5,104,32"/>
 </map>

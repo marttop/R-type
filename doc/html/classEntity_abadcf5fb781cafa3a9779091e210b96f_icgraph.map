@@ -1,4 +1,4 @@
 <map id="Entity::isAlive" name="Entity::isAlive">
-<area shape="rect" id="node1" title=" " alt="" coords="184,5,295,32"/>
-<area shape="rect" id="node2" href="$classEntity.html#afdd29f9911c799abbbf1cc0d768ff754" title=" " alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node1" title="Get isAlive state." alt="" coords="184,5,295,32"/>
+<area shape="rect" id="node2" href="$classEntity.html#afdd29f9911c799abbbf1cc0d768ff754" title="Set the Is Alive object." alt="" coords="5,5,136,32"/>
 </map>

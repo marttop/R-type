@@ -1,10 +1,11 @@
 <map id="src/client/menu/Room.hpp" name="src/client/menu/Room.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="148,5,340,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="167,5,359,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,229,152,256"/>
-<area shape="rect" id="node3" title=" " alt="" coords="329,80,407,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="431,80,494,107"/>
-<area shape="rect" id="node5" href="$Button_8hpp.html" title=" " alt="" coords="65,80,159,107"/>
-<area shape="rect" id="node8" href="$PlayerCard_8hpp.html" title=" " alt="" coords="183,80,305,107"/>
-<area shape="rect" id="node6" href="$AssetManager_8hpp.html" title=" " alt="" coords="117,155,259,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="176,229,227,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="348,80,425,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="450,80,513,107"/>
+<area shape="rect" id="node5" href="$Button_8hpp.html" title=" " alt="" coords="71,80,164,107"/>
+<area shape="rect" id="node9" href="$PlayerCard_8hpp.html" title=" " alt="" coords="202,80,323,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="47,155,174,181"/>
+<area shape="rect" id="node7" href="$AssetManager_8hpp.html" title=" " alt="" coords="198,155,341,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="244,229,295,256"/>
 </map>

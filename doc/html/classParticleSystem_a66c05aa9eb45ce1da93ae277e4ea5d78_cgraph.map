@@ -1,5 +1,5 @@
 <map id="ParticleSystem::update" name="ParticleSystem::update">
 <area shape="rect" id="node1" title=" " alt="" coords="5,42,177,69"/>
-<area shape="rect" id="node2" href="$classUtils.html#a603207f48d0394cb1f2d6742303c3191" title=" " alt="" coords="225,5,436,47"/>
-<area shape="rect" id="node3" href="$classUtils.html#a230e57f495d345155a0211e6f58d22e4" title=" " alt="" coords="245,71,416,98"/>
+<area shape="rect" id="node2" href="$classUtils.html#a603207f48d0394cb1f2d6742303c3191" title="Get the Random Normalized Vector object." alt="" coords="225,5,436,47"/>
+<area shape="rect" id="node3" href="$classUtils.html#a230e57f495d345155a0211e6f58d22e4" title="Get vector magnitude." alt="" coords="245,71,416,98"/>
 </map>

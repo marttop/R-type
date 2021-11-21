@@ -1,4 +1,4 @@
 <map id="WarningBox::draw" name="WarningBox::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,145,32"/>
-<area shape="rect" id="node2" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title=" " alt="" coords="193,5,299,32"/>
+<area shape="rect" id="node1" title="Draw WarningBox." alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title="Draw Button." alt="" coords="193,5,299,32"/>
 </map>

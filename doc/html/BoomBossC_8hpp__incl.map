@@ -1,0 +1,13 @@
+<map id="src/client/entity/BoomBossC.hpp" name="src/client/entity/BoomBossC.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="335,5,531,47"/>
+<area shape="rect" id="node2" href="$Entity_8hpp.html" title=" " alt="" coords="311,95,397,121"/>
+<area shape="rect" id="node10" href="$AssetManager_8hpp.html" title=" " alt="" coords="495,95,637,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="329,319,475,345"/>
+<area shape="rect" id="node4" title=" " alt="" coords="337,169,477,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,169,132,196"/>
+<area shape="rect" id="node6" href="$IClientEntity_8hpp.html" title=" " alt="" coords="370,244,498,271"/>
+<area shape="rect" id="node7" href="$Particles_8hpp.html" title=" " alt="" coords="156,169,261,196"/>
+<area shape="rect" id="node8" href="$Utils_8hpp.html" title=" " alt="" coords="175,244,255,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="181,319,249,345"/>
+<area shape="rect" id="node11" title=" " alt="" coords="603,169,654,196"/>
+</map>

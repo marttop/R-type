@@ -86,14 +86,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e4352edf667bea83001569e9da8a24d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#a2e4352edf667bea83001569e9da8a24d">~Connection</a> ()</td></tr>
 <tr class="separator:a2e4352edf667bea83001569e9da8a24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a221d5888c0f5c1099007b27bef982b18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#a221d5888c0f5c1099007b27bef982b18">create</a> (const sf::RectangleShape &amp;background)</td></tr>
+<tr class="memdesc:a221d5888c0f5c1099007b27bef982b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create <a class="el" href="classConnection.html">Connection</a>.  <a href="classConnection.html#a221d5888c0f5c1099007b27bef982b18">More...</a><br /></td></tr>
 <tr class="separator:a221d5888c0f5c1099007b27bef982b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3021df79decfd9f9a2753a6435fa645"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#ac3021df79decfd9f9a2753a6435fa645">event</a> (const sf::Event &amp;event, const sf::RenderWindow &amp;window)</td></tr>
+<tr class="memdesc:ac3021df79decfd9f9a2753a6435fa645"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classConnection.html">Connection</a> events.  <a href="classConnection.html#ac3021df79decfd9f9a2753a6435fa645">More...</a><br /></td></tr>
 <tr class="separator:ac3021df79decfd9f9a2753a6435fa645"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3509a036de5b9d5831e1c972ee72bf67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#a3509a036de5b9d5831e1c972ee72bf67">update</a> (const sf::RenderWindow &amp;window, const sf::RectangleShape &amp;background, const bool &amp;animationEnd)</td></tr>
-<tr class="separator:a3509a036de5b9d5831e1c972ee72bf67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842607cd8e8048eed1a7dd049e570a48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#a842607cd8e8048eed1a7dd049e570a48">update</a> (const sf::RenderWindow &amp;window, const sf::RectangleShape &amp;background, const bool &amp;animationEnd, const bool &amp;isDrawn)</td></tr>
+<tr class="memdesc:a842607cd8e8048eed1a7dd049e570a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update <a class="el" href="classConnection.html">Connection</a>.  <a href="classConnection.html#a842607cd8e8048eed1a7dd049e570a48">More...</a><br /></td></tr>
+<tr class="separator:a842607cd8e8048eed1a7dd049e570a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a003c4bc6425098d0a6bf945ba497016c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#a003c4bc6425098d0a6bf945ba497016c">draw</a> (sf::RenderWindow &amp;window) const</td></tr>
+<tr class="memdesc:a003c4bc6425098d0a6bf945ba497016c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw <a class="el" href="classConnection.html">Connection</a>.  <a href="classConnection.html#a003c4bc6425098d0a6bf945ba497016c">More...</a><br /></td></tr>
 <tr class="separator:a003c4bc6425098d0a6bf945ba497016c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad509e56897dbf1189752e195716b9a71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConnection.html#ad509e56897dbf1189752e195716b9a71">connect</a> (const sf::Event &amp;<a class="el" href="classConnection.html#ac3021df79decfd9f9a2753a6435fa645">event</a>, const sf::RenderWindow &amp;window, asio::ip::tcp::endpoint &amp;endpoint, asio::ip::tcp::socket &amp;socket, <a class="el" href="classWarningBox.html">WarningBox</a> &amp;alert)</td></tr>
+<tr class="memdesc:ad509e56897dbf1189752e195716b9a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect event.  <a href="classConnection.html#ad509e56897dbf1189752e195716b9a71">More...</a><br /></td></tr>
 <tr class="separator:ad509e56897dbf1189752e195716b9a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -175,20 +180,33 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Connect event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td></td></tr>
+    <tr><td class="paramname">window</td><td></td></tr>
+    <tr><td class="paramname">endpoint</td><td></td></tr>
+    <tr><td class="paramname">socket</td><td></td></tr>
+    <tr><td class="paramname">alert</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>** void </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_ad509e56897dbf1189752e195716b9a71_cgraph.png" border="0" usemap="#aclassConnection_ad509e56897dbf1189752e195716b9a71_cgraph" alt=""/></div>
 <map name="aclassConnection_ad509e56897dbf1189752e195716b9a71_cgraph" id="aclassConnection_ad509e56897dbf1189752e195716b9a71_cgraph">
-<area shape="rect" title=" " alt="" coords="5,180,160,207"/>
-<area shape="rect" href="classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title=" " alt="" coords="259,29,369,56"/>
-<area shape="rect" href="classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title=" " alt="" coords="244,104,384,131"/>
-<area shape="rect" href="classInputBox.html#a97d893ae3459098f3f4dd116df717d4c" title=" " alt="" coords="224,155,404,181"/>
-<area shape="rect" href="classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title=" " alt="" coords="244,205,384,232"/>
-<area shape="rect" href="classValidateIp.html#ad6bde94c8beb54b20bb7e87f250d9f5e" title=" " alt="" coords="208,256,420,283"/>
-<area shape="rect" href="classValidateIp.html#adc572f4a4f8aa294e4fedec24f3f53e2" title=" " alt="" coords="227,307,401,333"/>
-<area shape="rect" href="classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title=" " alt="" coords="468,104,593,131"/>
-<area shape="rect" href="classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title=" " alt="" coords="473,205,588,232"/>
+<area shape="rect" title="Connect event." alt="" coords="5,180,160,207"/>
+<area shape="rect" href="classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title="Button events." alt="" coords="259,29,369,56"/>
+<area shape="rect" href="classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title="Connection events." alt="" coords="244,104,384,131"/>
+<area shape="rect" href="classInputBox.html#a97d893ae3459098f3f4dd116df717d4c" title="Get the Input String object." alt="" coords="224,155,404,181"/>
+<area shape="rect" href="classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title="Open WarningBox." alt="" coords="244,205,384,232"/>
+<area shape="rect" href="classValidateIp.html#ad6bde94c8beb54b20bb7e87f250d9f5e" title="Check if the ip is valid." alt="" coords="208,256,420,283"/>
+<area shape="rect" href="classValidateIp.html#adc572f4a4f8aa294e4fedec24f3f53e2" title="Check if the port is valid." alt="" coords="227,307,401,333"/>
+<area shape="rect" href="classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title="InputBox events." alt="" coords="468,104,593,131"/>
+<area shape="rect" href="classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title="Create Button." alt="" coords="473,205,588,232"/>
 <area shape="rect" href="classAssetManager.html#a1fb0a1e8f46f3773f0a08f9eafb7649d" title="Get asset, if asset already load just return the asset associeted to, IMPORTANT !!..." alt="" coords="670,180,850,207"/>
 <area shape="rect" href="classAssetManager.html#a85998651ebed21145f82915e9c890159" title="Get the instance of the FontManager singelton." alt="" coords="641,231,879,257"/>
 </map>
@@ -198,8 +216,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_ad509e56897dbf1189752e195716b9a71_icgraph.png" border="0" usemap="#aclassConnection_ad509e56897dbf1189752e195716b9a71_icgraph" alt=""/></div>
 <map name="aclassConnection_ad509e56897dbf1189752e195716b9a71_icgraph" id="aclassConnection_ad509e56897dbf1189752e195716b9a71_icgraph">
-<area shape="rect" title=" " alt="" coords="156,29,311,56"/>
-<area shape="rect" href="classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,29,108,56"/>
+<area shape="rect" title="Connect event." alt="" coords="156,29,311,56"/>
+<area shape="rect" href="classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,29,108,56"/>
 </map>
 </div>
 
@@ -220,14 +238,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Create <a class="el" href="classConnection.html">Connection</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">background</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>** void </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_a221d5888c0f5c1099007b27bef982b18_cgraph.png" border="0" usemap="#aclassConnection_a221d5888c0f5c1099007b27bef982b18_cgraph" alt=""/></div>
 <map name="aclassConnection_a221d5888c0f5c1099007b27bef982b18_cgraph" id="aclassConnection_a221d5888c0f5c1099007b27bef982b18_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,149,57"/>
-<area shape="rect" href="classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title=" " alt="" coords="205,5,319,32"/>
-<area shape="rect" href="classInputBox.html#ad76972126d438c1f0376e0f821194739" title=" " alt="" coords="197,56,327,83"/>
+<area shape="rect" title="Create Connection." alt="" coords="5,31,149,57"/>
+<area shape="rect" href="classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title="Create Button." alt="" coords="205,5,319,32"/>
+<area shape="rect" href="classInputBox.html#ad76972126d438c1f0376e0f821194739" title="Create InputBox." alt="" coords="197,56,327,83"/>
 <area shape="rect" href="classAssetManager.html#a1fb0a1e8f46f3773f0a08f9eafb7649d" title="Get asset, if asset already load just return the asset associeted to, IMPORTANT !!..." alt="" coords="403,5,583,32"/>
 <area shape="rect" href="classAssetManager.html#a85998651ebed21145f82915e9c890159" title="Get the instance of the FontManager singelton." alt="" coords="375,56,612,83"/>
 </map>
@@ -237,8 +264,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_a221d5888c0f5c1099007b27bef982b18_icgraph.png" border="0" usemap="#aclassConnection_a221d5888c0f5c1099007b27bef982b18_icgraph" alt=""/></div>
 <map name="aclassConnection_a221d5888c0f5c1099007b27bef982b18_icgraph" id="aclassConnection_a221d5888c0f5c1099007b27bef982b18_icgraph">
-<area shape="rect" title=" " alt="" coords="341,5,485,32"/>
-<area shape="rect" href="classMenu.html#abb4b1b9c4b970eb720c26976cef7cece" title=" " alt="" coords="187,5,293,32"/>
+<area shape="rect" title="Create Connection." alt="" coords="341,5,485,32"/>
+<area shape="rect" href="classMenu.html#abb4b1b9c4b970eb720c26976cef7cece" title="Create Menu." alt="" coords="187,5,293,32"/>
 <area shape="rect" href="classWindow.html#afbbf6fabca06597e070b5a9488d7f8aa" title=" " alt="" coords="5,5,139,32"/>
 </map>
 </div>
@@ -260,14 +287,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draw <a class="el" href="classConnection.html">Connection</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>** void </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_a003c4bc6425098d0a6bf945ba497016c_cgraph.png" border="0" usemap="#aclassConnection_a003c4bc6425098d0a6bf945ba497016c_cgraph" alt=""/></div>
 <map name="aclassConnection_a003c4bc6425098d0a6bf945ba497016c_cgraph" id="aclassConnection_a003c4bc6425098d0a6bf945ba497016c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,140,57"/>
-<area shape="rect" href="classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title=" " alt="" coords="195,5,301,32"/>
-<area shape="rect" href="classInputBox.html#a179396a7356c64e63d66f710d4cde0e1" title=" " alt="" coords="188,56,308,83"/>
+<area shape="rect" title="Draw Connection." alt="" coords="5,31,140,57"/>
+<area shape="rect" href="classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title="Draw Button." alt="" coords="195,5,301,32"/>
+<area shape="rect" href="classInputBox.html#a179396a7356c64e63d66f710d4cde0e1" title="Draw InputBox." alt="" coords="188,56,308,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -275,8 +311,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_a003c4bc6425098d0a6bf945ba497016c_icgraph.png" border="0" usemap="#aclassConnection_a003c4bc6425098d0a6bf945ba497016c_icgraph" alt=""/></div>
 <map name="aclassConnection_a003c4bc6425098d0a6bf945ba497016c_icgraph" id="aclassConnection_a003c4bc6425098d0a6bf945ba497016c_icgraph">
-<area shape="rect" title=" " alt="" coords="152,5,287,32"/>
-<area shape="rect" href="classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" title="Draw Connection." alt="" coords="152,5,287,32"/>
+<area shape="rect" href="classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title="Draw Menu." alt="" coords="5,5,104,32"/>
 </map>
 </div>
 
@@ -307,13 +343,23 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="classConnection.html">Connection</a> events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td></td></tr>
+    <tr><td class="paramname">window</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>** void </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_ac3021df79decfd9f9a2753a6435fa645_cgraph.png" border="0" usemap="#aclassConnection_ac3021df79decfd9f9a2753a6435fa645_cgraph" alt=""/></div>
 <map name="aclassConnection_ac3021df79decfd9f9a2753a6435fa645_cgraph" id="aclassConnection_ac3021df79decfd9f9a2753a6435fa645_cgraph">
-<area shape="rect" title=" " alt="" coords="5,29,145,56"/>
-<area shape="rect" href="classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title=" " alt="" coords="193,29,319,56"/>
+<area shape="rect" title="Connection events." alt="" coords="5,29,145,56"/>
+<area shape="rect" href="classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title="InputBox events." alt="" coords="193,29,319,56"/>
 </map>
 </div>
 <div class="dynheader">
@@ -321,16 +367,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConnection_ac3021df79decfd9f9a2753a6435fa645_icgraph.png" border="0" usemap="#aclassConnection_ac3021df79decfd9f9a2753a6435fa645_icgraph" alt=""/></div>
 <map name="aclassConnection_ac3021df79decfd9f9a2753a6435fa645_icgraph" id="aclassConnection_ac3021df79decfd9f9a2753a6435fa645_icgraph">
-<area shape="rect" title=" " alt="" coords="359,31,499,57"/>
-<area shape="rect" href="classConnection.html#ad509e56897dbf1189752e195716b9a71" title=" " alt="" coords="156,5,311,32"/>
-<area shape="rect" href="classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,31,108,57"/>
+<area shape="rect" title="Connection events." alt="" coords="359,31,499,57"/>
+<area shape="rect" href="classConnection.html#ad509e56897dbf1189752e195716b9a71" title="Connect event." alt="" coords="156,5,311,32"/>
+<area shape="rect" href="classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,31,108,57"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a3509a036de5b9d5831e1c972ee72bf67" name="a3509a036de5b9d5831e1c972ee72bf67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3509a036de5b9d5831e1c972ee72bf67">&#9670;&nbsp;</a></span>update()</h2>
+<a id="a842607cd8e8048eed1a7dd049e570a48" name="a842607cd8e8048eed1a7dd049e570a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842607cd8e8048eed1a7dd049e570a48">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +397,13 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const bool &amp;&#160;</td>
-          <td class="paramname"><em>animationEnd</em>&#160;</td>
+          <td class="paramname"><em>animationEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>isDrawn</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -360,25 +412,37 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Update <a class="el" href="classConnection.html">Connection</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td></td></tr>
+    <tr><td class="paramname">background</td><td></td></tr>
+    <tr><td class="paramname">animationEnd</td><td></td></tr>
+    <tr><td class="paramname">isDrawn</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>** void </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classConnection_a3509a036de5b9d5831e1c972ee72bf67_cgraph.png" border="0" usemap="#aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_cgraph" alt=""/></div>
-<map name="aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_cgraph" id="aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,153,108"/>
-<area shape="rect" href="classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title=" " alt="" coords="209,5,354,32"/>
-<area shape="rect" href="classInputBox.html#a4ead1320741a5253e3c2465d122a0ec5" title=" " alt="" coords="201,56,361,83"/>
-<area shape="rect" href="classInputBox.html#a0b1707f0cb5e0383f71ece29fb832e8a" title=" " alt="" coords="215,107,348,133"/>
-<area shape="rect" href="classButton.html#a846e4181678540fba9336144e9a76392" title=" " alt="" coords="222,157,341,184"/>
+<div class="center"><img src="classConnection_a842607cd8e8048eed1a7dd049e570a48_cgraph.png" border="0" usemap="#aclassConnection_a842607cd8e8048eed1a7dd049e570a48_cgraph" alt=""/></div>
+<map name="aclassConnection_a842607cd8e8048eed1a7dd049e570a48_cgraph" id="aclassConnection_a842607cd8e8048eed1a7dd049e570a48_cgraph">
+<area shape="rect" title="Update Connection." alt="" coords="5,81,153,108"/>
+<area shape="rect" href="classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title="Set the Position object." alt="" coords="209,5,354,32"/>
+<area shape="rect" href="classInputBox.html#a4ead1320741a5253e3c2465d122a0ec5" title="Set the Position object." alt="" coords="201,56,361,83"/>
+<area shape="rect" href="classButton.html#a9e1c5274111d28e1dc408d48b9a839cc" title="Update Button." alt="" coords="222,107,341,133"/>
+<area shape="rect" href="classInputBox.html#a84649ef051d91ab18ed65a8d851131e5" title="Update InputBox." alt="" coords="215,157,348,184"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classConnection_a3509a036de5b9d5831e1c972ee72bf67_icgraph.png" border="0" usemap="#aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_icgraph" alt=""/></div>
-<map name="aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_icgraph" id="aclassConnection_a3509a036de5b9d5831e1c972ee72bf67_icgraph">
-<area shape="rect" title=" " alt="" coords="164,5,312,32"/>
-<area shape="rect" href="classMenu.html#a545497fced6951a988da7ba2ba711b44" title=" " alt="" coords="5,5,116,32"/>
+<div class="center"><img src="classConnection_a842607cd8e8048eed1a7dd049e570a48_icgraph.png" border="0" usemap="#aclassConnection_a842607cd8e8048eed1a7dd049e570a48_icgraph" alt=""/></div>
+<map name="aclassConnection_a842607cd8e8048eed1a7dd049e570a48_icgraph" id="aclassConnection_a842607cd8e8048eed1a7dd049e570a48_icgraph">
+<area shape="rect" title="Update Connection." alt="" coords="164,5,312,32"/>
+<area shape="rect" href="classMenu.html#ac0256d33ec0a94d57328cea308585422" title="Update menu." alt="" coords="5,5,116,32"/>
 </map>
 </div>
 

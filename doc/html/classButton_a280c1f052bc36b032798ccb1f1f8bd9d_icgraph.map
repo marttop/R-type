@@ -1,7 +1,7 @@
 <map id="Button::setPosition" name="Button::setPosition">
-<area shape="rect" id="node1" title=" " alt="" coords="432,56,577,83"/>
-<area shape="rect" id="node2" href="$classRoomCard.html#a32c80fdc9d3a3f49bd602e691e4d73e9" title=" " alt="" coords="164,5,384,32"/>
-<area shape="rect" id="node3" href="$classRoomCard.html#a2ff3e295a29558c5b5b23eb00d0fbc06" title=" " alt="" coords="166,56,382,83"/>
-<area shape="rect" id="node4" href="$classConnection.html#a3509a036de5b9d5831e1c972ee72bf67" title=" " alt="" coords="200,107,348,133"/>
-<area shape="rect" id="node5" href="$classMenu.html#a545497fced6951a988da7ba2ba711b44" title=" " alt="" coords="5,107,116,133"/>
+<area shape="rect" id="node1" title="Set the Position object." alt="" coords="432,56,577,83"/>
+<area shape="rect" id="node2" href="$classRoomCard.html#a32c80fdc9d3a3f49bd602e691e4d73e9" title="Decrement RoomCard position." alt="" coords="164,5,384,32"/>
+<area shape="rect" id="node3" href="$classRoomCard.html#a2ff3e295a29558c5b5b23eb00d0fbc06" title="Increment RoomCard position." alt="" coords="166,56,382,83"/>
+<area shape="rect" id="node4" href="$classConnection.html#a842607cd8e8048eed1a7dd049e570a48" title="Update Connection." alt="" coords="200,107,348,133"/>
+<area shape="rect" id="node5" href="$classMenu.html#ac0256d33ec0a94d57328cea308585422" title="Update menu." alt="" coords="5,107,116,133"/>
 </map>

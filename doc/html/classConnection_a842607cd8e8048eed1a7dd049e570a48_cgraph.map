@@ -1,0 +1,7 @@
+<map id="Connection::update" name="Connection::update">
+<area shape="rect" id="node1" title="Update Connection." alt="" coords="5,81,153,108"/>
+<area shape="rect" id="node2" href="$classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title="Set the Position object." alt="" coords="209,5,354,32"/>
+<area shape="rect" id="node3" href="$classInputBox.html#a4ead1320741a5253e3c2465d122a0ec5" title="Set the Position object." alt="" coords="201,56,361,83"/>
+<area shape="rect" id="node4" href="$classButton.html#a9e1c5274111d28e1dc408d48b9a839cc" title="Update Button." alt="" coords="222,107,341,133"/>
+<area shape="rect" id="node5" href="$classInputBox.html#a84649ef051d91ab18ed65a8d851131e5" title="Update InputBox." alt="" coords="215,157,348,184"/>
+</map>

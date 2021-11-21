@@ -1,0 +1,5 @@
+<map id="BoomBossC" name="BoomBossC">
+<area shape="rect" id="node1" title=" " alt="" coords="17,975,153,1111"/>
+<area shape="rect" id="node2" href="$classEntity.html" title=" " alt="" coords="5,380,164,927"/>
+<area shape="rect" id="node3" href="$classIClientEntity.html" title=" " alt="" coords="5,5,164,332"/>
+</map>

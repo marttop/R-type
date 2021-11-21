@@ -1,13 +1,21 @@
 <map id="src/server/entities" name="src/server/entities">
-<area shape="rect" id="node1" href="dir_dbfb8a6295d719ddb79425d31c05858b.html" title="engine" alt="" coords="195,159,267,207"/>
-<area shape="rect" id="node3" href="dir_e8942090bef0fc2432c463b3fab65fc2.html" title="BidosSlaves" alt="" coords="344,63,445,111"/>
-<area shape="rect" id="edge4-headlabel" href="dir_000014_000013.html" title="1" alt="" coords="282,152,292,166"/>
-<area shape="rect" id="node4" href="dir_2d388d5df8da4a586abf615ebfa21571.html" title="Boss" alt="" coords="248,63,320,111"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000015_000013.html" title="2" alt="" coords="255,140,265,154"/>
-<area shape="rect" id="node5" href="dir_dfd4d20c057bf47367e4fe2d222ee5c2.html" title="BossBullet" alt="" coords="133,63,224,111"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000016_000013.html" title="1" alt="" coords="212,131,221,146"/>
-<area shape="rect" id="node6" href="dir_923021b192855b241865b366b68107ba.html" title="Heal" alt="" coords="37,63,109,111"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000005_000013.html" title="1" alt="" coords="177,139,187,154"/>
-<area shape="rect" id="clust2" href="dir_63bfec15f819aa572008a41266b80c41.html" alt="" coords="27,52,552,121"/>
-<area shape="rect" id="clust1" href="dir_075bb3ff235063c77951cd176d15a741.html" title="server" alt="" coords="16,16,563,217"/>
+<area shape="rect" id="node1" href="dir_dbfb8a6295d719ddb79425d31c05858b.html" title="engine" alt="" coords="439,159,511,207"/>
+<area shape="rect" id="node3" href="dir_f59b6c841d52a87d4ba2b8a73c29cf95.html" title="Asteroids" alt="" coords="856,63,939,111"/>
+<area shape="rect" id="edge7-headlabel" href="dir_000005_000013.html" title="1" alt="" coords="525,180,534,195"/>
+<area shape="rect" id="node4" href="dir_f5d372032e91c0fb5189c27aa77652c0.html" title="BidosBullet" alt="" coords="736,63,832,111"/>
+<area shape="rect" id="edge8-headlabel" href="dir_000014_000013.html" title="1" alt="" coords="525,174,535,188"/>
+<area shape="rect" id="node5" href="dir_e8942090bef0fc2432c463b3fab65fc2.html" title="BidosSlaves" alt="" coords="611,63,712,111"/>
+<area shape="rect" id="edge5-headlabel" href="dir_000015_000013.html" title="2" alt="" coords="527,157,536,171"/>
+<area shape="rect" id="node6" href="dir_92087bfcc298c35c26c451022e99d93d.html" title="BoomBoss" alt="" coords="496,63,587,111"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000016_000013.html" title="2" alt="" coords="504,141,513,156"/>
+<area shape="rect" id="node7" href="dir_ee259c71fea15019bb70c2a879576ddd.html" title="BoomrangBullet" alt="" coords="345,63,471,111"/>
+<area shape="rect" id="edge6-headlabel" href="dir_000017_000013.html" title="1" alt="" coords="450,132,459,146"/>
+<area shape="rect" id="node8" href="dir_2d388d5df8da4a586abf615ebfa21571.html" title="Boss" alt="" coords="248,63,320,111"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000018_000013.html" title="2" alt="" coords="420,146,429,161"/>
+<area shape="rect" id="node9" href="dir_dfd4d20c057bf47367e4fe2d222ee5c2.html" title="BossBullet" alt="" coords="133,63,224,111"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000019_000013.html" title="1" alt="" coords="418,157,427,171"/>
+<area shape="rect" id="node10" href="dir_923021b192855b241865b366b68107ba.html" title="Heal" alt="" coords="37,63,109,111"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000006_000013.html" title="1" alt="" coords="416,164,426,178"/>
+<area shape="rect" id="clust2" href="dir_63bfec15f819aa572008a41266b80c41.html" alt="" coords="27,52,1045,121"/>
+<area shape="rect" id="clust1" href="dir_075bb3ff235063c77951cd176d15a741.html" title="server" alt="" coords="16,16,1056,217"/>
 </map>

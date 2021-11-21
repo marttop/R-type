@@ -1,8 +1,8 @@
 <map id="WarningBox::open" name="WarningBox::open">
-<area shape="rect" id="node1" title=" " alt="" coords="359,105,499,132"/>
-<area shape="rect" id="node2" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title=" " alt="" coords="156,29,311,56"/>
-<area shape="rect" id="node4" href="$classGame.html#af51caa24242013aeace934062fd06c89" title=" " alt="" coords="167,80,299,107"/>
-<area shape="rect" id="node5" href="$classGame.html#a6b2c64f26cdba5861fe94cdaf43aad62" title=" " alt="" coords="173,131,293,157"/>
-<area shape="rect" id="node6" href="$classMenu.html#aab40c84cbf588e60ab3052cc85fd855e" title=" " alt="" coords="175,181,292,208"/>
-<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,29,108,56"/>
+<area shape="rect" id="node1" title="Open WarningBox." alt="" coords="359,105,499,132"/>
+<area shape="rect" id="node2" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title="Connect event." alt="" coords="156,29,311,56"/>
+<area shape="rect" id="node4" href="$classGame.html#af51caa24242013aeace934062fd06c89" title="Open WarningBox." alt="" coords="167,80,299,107"/>
+<area shape="rect" id="node5" href="$classGame.html#a6b2c64f26cdba5861fe94cdaf43aad62" title="Set the Alert object." alt="" coords="173,131,293,157"/>
+<area shape="rect" id="node6" href="$classMenu.html#aab40c84cbf588e60ab3052cc85fd855e" title="Set the Alert object." alt="" coords="175,181,292,208"/>
+<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,29,108,56"/>
 </map>

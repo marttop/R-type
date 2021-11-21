@@ -1,12 +1,13 @@
 <map id="src/client/menu/RoomsList.hpp" name="src/client/menu/RoomsList.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="77,5,300,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="96,304,243,331"/>
-<area shape="rect" id="node3" title=" " alt="" coords="20,155,98,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="290,155,353,181"/>
-<area shape="rect" id="node5" href="$Button_8hpp.html" title=" " alt="" coords="172,155,266,181"/>
-<area shape="rect" id="node8" href="$RoomCard_8hpp.html" title=" " alt="" coords="81,80,200,107"/>
-<area shape="rect" id="node9" href="$SEPParsor_8hpp.html" title=" " alt="" coords="356,80,469,107"/>
-<area shape="rect" id="node6" href="$AssetManager_8hpp.html" title=" " alt="" coords="224,229,366,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="286,304,336,331"/>
-<area shape="rect" id="node10" title=" " alt="" coords="378,155,458,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="131,5,354,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="216,304,363,331"/>
+<area shape="rect" id="node3" title=" " alt="" coords="179,229,306,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="27,155,104,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="398,155,461,181"/>
+<area shape="rect" id="node6" href="$Button_8hpp.html" title=" " alt="" coords="280,155,373,181"/>
+<area shape="rect" id="node9" href="$RoomCard_8hpp.html" title=" " alt="" coords="86,80,205,107"/>
+<area shape="rect" id="node10" href="$SEPParsor_8hpp.html" title=" " alt="" coords="450,80,563,107"/>
+<area shape="rect" id="node7" href="$AssetManager_8hpp.html" title=" " alt="" coords="382,229,525,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,304,532,331"/>
+<area shape="rect" id="node11" title=" " alt="" coords="485,155,565,181"/>
 </map>

@@ -6,6 +6,5 @@ var searchData=
   ['particlesystem_3',['ParticleSystem',['../classParticleSystem.html#a9028ec8023c61773dd4a668c3ad8cc26',1,'ParticleSystem']]],
   ['playercard_4',['PlayerCard',['../classPlayerCard.html#affd1f7e6931fade642147a0c59535925',1,'PlayerCard']]],
   ['playership_5',['PlayerShip',['../classPlayerShip.html#a2168426f2f0e488d1783c8c6c7f3532e',1,'PlayerShip']]],
-  ['playgame_6',['playGame',['../classServerRoom.html#a09ac325d82194a4470d0e03c924bbc2e',1,'ServerRoom']]],
-  ['posdebug_7',['posDebug',['../classUtils.html#a712eb116620bc6328def53b5bac88c04',1,'Utils']]]
+  ['playgame_6',['playGame',['../classServerRoom.html#a09ac325d82194a4470d0e03c924bbc2e',1,'ServerRoom']]]
 ];

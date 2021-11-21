@@ -1,10 +1,10 @@
 <map id="Menu::draw" name="Menu::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,107,104,133"/>
-<area shape="rect" id="node2" href="$classConnection.html#a003c4bc6425098d0a6bf945ba497016c" title=" " alt="" coords="161,5,296,32"/>
-<area shape="rect" id="node5" href="$classRoom.html#aa249a168181dde88ff9171cdbfb98076" title=" " alt="" coords="179,56,279,83"/>
-<area shape="rect" id="node6" href="$classRoomsList.html#a39f81e0967ec5e3cdd32c36680c814fb" title=" " alt="" coords="163,107,294,133"/>
-<area shape="rect" id="node7" href="$classWarningBox.html#a7c45715d854ce78809b145f022ef32c8" title=" " alt="" coords="159,157,299,184"/>
-<area shape="rect" id="node8" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title=" " alt="" coords="152,208,305,235"/>
-<area shape="rect" id="node3" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title=" " alt="" coords="361,81,466,108"/>
-<area shape="rect" id="node4" href="$classInputBox.html#a179396a7356c64e63d66f710d4cde0e1" title=" " alt="" coords="353,5,473,32"/>
+<area shape="rect" id="node1" title="Draw Menu." alt="" coords="5,107,104,133"/>
+<area shape="rect" id="node2" href="$classConnection.html#a003c4bc6425098d0a6bf945ba497016c" title="Draw Connection." alt="" coords="161,5,296,32"/>
+<area shape="rect" id="node5" href="$classRoom.html#aa249a168181dde88ff9171cdbfb98076" title="Draw Room." alt="" coords="179,56,279,83"/>
+<area shape="rect" id="node6" href="$classRoomsList.html#a39f81e0967ec5e3cdd32c36680c814fb" title="Draw RoomsList." alt="" coords="163,107,294,133"/>
+<area shape="rect" id="node7" href="$classWarningBox.html#a7c45715d854ce78809b145f022ef32c8" title="Draw WarningBox." alt="" coords="159,157,299,184"/>
+<area shape="rect" id="node8" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title="Return WarningBox state." alt="" coords="152,208,305,235"/>
+<area shape="rect" id="node3" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title="Draw Button." alt="" coords="361,81,466,108"/>
+<area shape="rect" id="node4" href="$classInputBox.html#a179396a7356c64e63d66f710d4cde0e1" title="Draw InputBox." alt="" coords="353,5,473,32"/>
 </map>

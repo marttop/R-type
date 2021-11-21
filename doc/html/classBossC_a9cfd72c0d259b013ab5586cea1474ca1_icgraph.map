@@ -1,4 +1,4 @@
 <map id="BossC::updateHp" name="BossC::updateHp">
-<area shape="rect" id="node1" title=" " alt="" coords="168,5,301,32"/>
-<area shape="rect" id="node2" href="$classBossC.html#a6c97dda5c8460726b63f3ddc6abe1096" title=" " alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node1" title="Update the BossC hp." alt="" coords="168,5,301,32"/>
+<area shape="rect" id="node2" href="$classBossC.html#a6c97dda5c8460726b63f3ddc6abe1096" title="Update the BossC." alt="" coords="5,5,120,32"/>
 </map>

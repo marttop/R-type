@@ -1,5 +1,7 @@
 <map id="EntityLoad::loadEntityWithPath" name="EntityLoad::loadEntityWithPath">
-<area shape="rect" id="node1" title="Loads a new entity with the path and name." alt="" coords="244,31,467,57"/>
-<area shape="rect" id="node2" href="$classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="55,5,147,32"/>
-<area shape="rect" id="node3" href="$classServerRoom.html#a9f8e3131e1ec24e3a379922f21ef9821" title=" " alt="" coords="5,56,196,83"/>
+<area shape="rect" id="node1" title="Loads a new entity with the path and name." alt="" coords="244,81,467,108"/>
+<area shape="rect" id="node2" href="$classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="7,5,195,32"/>
+<area shape="rect" id="node3" href="$classBoomBoss.html#a4dbd1f68b2e51e2f870524505423df70" title=" " alt="" coords="17,56,185,83"/>
+<area shape="rect" id="node4" href="$classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="55,107,147,133"/>
+<area shape="rect" id="node5" href="$classServerRoom.html#a9f8e3131e1ec24e3a379922f21ef9821" title=" " alt="" coords="5,157,196,184"/>
 </map>

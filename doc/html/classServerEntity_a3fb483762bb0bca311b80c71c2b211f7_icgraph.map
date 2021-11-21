@@ -1,5 +1,9 @@
 <map id="ServerEntity::getId" name="ServerEntity::getId">
-<area shape="rect" id="node1" title="Get the Id object." alt="" coords="305,5,448,32"/>
-<area shape="rect" id="node2" href="$classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="160,5,257,32"/>
-<area shape="rect" id="node3" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node1" title="Get the Id object." alt="" coords="401,56,544,83"/>
+<area shape="rect" id="node2" href="$classBidosSlaves.html#a3903ffa3bbbf7d4c81cb0c7de0e87ce7" title=" " alt="" coords="208,5,353,32"/>
+<area shape="rect" id="node4" href="$classBoomBoss.html#a43cc69aa0e31dea6183cd6c6d5c3b80a" title=" " alt="" coords="213,56,348,83"/>
+<area shape="rect" id="node6" href="$classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="232,107,329,133"/>
+<area shape="rect" id="node3" href="$classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node5" href="$classBoomBoss.html#a3a627d94353bee789db9f0db83266093" title="Updates the entity." alt="" coords="11,56,155,83"/>
+<area shape="rect" id="node7" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="29,107,136,133"/>
 </map>

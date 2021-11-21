@@ -1,6 +1,8 @@
 <map id="Game::draw" name="Game::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,107,57"/>
-<area shape="rect" id="node2" href="$classWarningBox.html#a7c45715d854ce78809b145f022ef32c8" title=" " alt="" coords="161,5,301,32"/>
-<area shape="rect" id="node4" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title=" " alt="" coords="155,56,308,83"/>
-<area shape="rect" id="node3" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title=" " alt="" coords="356,5,461,32"/>
+<area shape="rect" id="node1" title="Draw Game." alt="" coords="5,56,107,83"/>
+<area shape="rect" id="node2" href="$classWarningBox.html#a7c45715d854ce78809b145f022ef32c8" title="Draw WarningBox." alt="" coords="161,5,301,32"/>
+<area shape="rect" id="node4" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title="Return WarningBox state." alt="" coords="155,56,308,83"/>
+<area shape="rect" id="node5" href="$classWarningBox.html#ad6223d6ad77ad0f697aebdbcfec571af" title="Update WarningBox." alt="" coords="155,107,308,133"/>
+<area shape="rect" id="node3" href="$classButton.html#a95773eb0a0b33ac29517eac844d23dd9" title="Draw Button." alt="" coords="363,5,468,32"/>
+<area shape="rect" id="node6" href="$classButton.html#a9e1c5274111d28e1dc408d48b9a839cc" title="Update Button." alt="" coords="356,107,475,133"/>
 </map>

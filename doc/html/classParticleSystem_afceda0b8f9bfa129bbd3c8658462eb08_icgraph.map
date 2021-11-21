@@ -1,9 +1,12 @@
 <map id="ParticleSystem::drawParticles" name="ParticleSystem::drawParticles">
-<area shape="rect" id="node1" title=" " alt="" coords="248,132,463,159"/>
-<area shape="rect" id="node2" href="$classEntity.html#a0db96afd3c1595f1aea1d765f4611995" title=" " alt="" coords="25,5,180,32"/>
-<area shape="rect" id="node3" href="$classBidosSlave.html#a5cb6831834f57ce270f6845c2f028d9d" title=" " alt="" coords="8,56,197,83"/>
-<area shape="rect" id="node4" href="$classBossBulletC.html#ac9e1edfe25a48981902b980dd888ebb5" title=" " alt="" coords="5,107,200,133"/>
-<area shape="rect" id="node5" href="$classBullet.html#a57f6232334d0bbb6c100a135783768a4" title=" " alt="" coords="25,157,180,184"/>
-<area shape="rect" id="node6" href="$classHeal.html#afa6242324c2391b650bb553dcd8a5dda" title=" " alt="" coords="37,208,168,235"/>
-<area shape="rect" id="node7" href="$classPlayerShip.html#a2243eee78f6ebeb703489f93714773cc" title=" " alt="" coords="18,259,187,285"/>
+<area shape="rect" id="node1" title=" " alt="" coords="268,208,483,235"/>
+<area shape="rect" id="node2" href="$classEntity.html#a0db96afd3c1595f1aea1d765f4611995" title="Draw the entity particles." alt="" coords="35,5,190,32"/>
+<area shape="rect" id="node3" href="$classBidosBulletC.html#aba28d90633275d49d4232db77c79cc58" title="Draw the BidosBulletC particles." alt="" coords="13,56,213,83"/>
+<area shape="rect" id="node4" href="$classBidosSlave.html#a5cb6831834f57ce270f6845c2f028d9d" title="Draw the BidosSlave particles." alt="" coords="18,107,207,133"/>
+<area shape="rect" id="node5" href="$classBullet.html#a57f6232334d0bbb6c100a135783768a4" title="Draw the Bullet particles." alt="" coords="35,157,190,184"/>
+<area shape="rect" id="node6" href="$classAsteroids.html#a5a2e613054d6d68cf82b85aa48c6edb9" title="Draw the Asteroids sprite." alt="" coords="32,208,193,235"/>
+<area shape="rect" id="node7" href="$classBoomrangBulletC.html#a1d13608e03a0b91c9ccffc8d8d543640" title=" " alt="" coords="5,259,220,285"/>
+<area shape="rect" id="node8" href="$classBossBulletC.html#aad33f2e593ad6af1b3bb51b261d5639a" title="Draw the BossBulletC sprite." alt="" coords="23,309,202,336"/>
+<area shape="rect" id="node9" href="$classHeal.html#afa6242324c2391b650bb553dcd8a5dda" title="Draw the Heal sprite." alt="" coords="47,360,178,387"/>
+<area shape="rect" id="node10" href="$classPlayerShip.html#a2243eee78f6ebeb703489f93714773cc" title="Draw the PlayerShip sprite." alt="" coords="28,411,197,437"/>
 </map>

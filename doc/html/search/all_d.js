@@ -16,6 +16,5 @@ var searchData=
   ['playership_2ecpp_13',['PlayerShip.cpp',['../PlayerShip_8cpp.html',1,'']]],
   ['playership_2ehpp_14',['PlayerShip.hpp',['../PlayerShip_8hpp.html',1,'']]],
   ['playgame_15',['playGame',['../classServerRoom.html#a09ac325d82194a4470d0e03c924bbc2e',1,'ServerRoom']]],
-  ['point_16',['point',['../structpoint.html',1,'']]],
-  ['posdebug_17',['posDebug',['../classUtils.html#a712eb116620bc6328def53b5bac88c04',1,'Utils']]]
+  ['point_16',['point',['../structpoint.html',1,'']]]
 ];

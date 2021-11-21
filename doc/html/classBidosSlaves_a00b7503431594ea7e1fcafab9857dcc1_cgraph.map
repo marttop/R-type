@@ -1,7 +1,11 @@
 <map id="BidosSlaves::update" name="BidosSlaves::update">
-<area shape="rect" id="node1" title="Updates the entity." alt="" coords="5,31,160,57"/>
-<area shape="rect" id="node2" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="208,5,391,32"/>
-<area shape="rect" id="node4" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="209,56,390,83"/>
-<area shape="rect" id="node3" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="439,5,621,32"/>
-<area shape="rect" id="node5" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="439,56,621,83"/>
+<area shape="rect" id="node1" title="Updates the entity." alt="" coords="5,81,160,108"/>
+<area shape="rect" id="node2" href="$classBidosSlaves.html#a798e9bcea550d5bbd5d7c8812d180913" title=" " alt="" coords="208,5,391,32"/>
+<area shape="rect" id="node3" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="439,107,621,133"/>
+<area shape="rect" id="node5" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="209,56,390,83"/>
+<area shape="rect" id="node7" href="$classBidosSlaves.html#a3903ffa3bbbf7d4c81cb0c7de0e87ce7" title=" " alt="" coords="227,161,372,188"/>
+<area shape="rect" id="node4" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="669,107,852,133"/>
+<area shape="rect" id="node6" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="439,56,621,83"/>
+<area shape="rect" id="node8" href="$classEntityLoad.html#a2068176fcbeae4b1a85b9cc1ffe15107" title="Create a Entity With Name object." alt="" coords="441,158,619,199"/>
+<area shape="rect" id="node9" href="$classServerEntity.html#a3fb483762bb0bca311b80c71c2b211f7" title="Get the Id object." alt="" coords="459,224,601,251"/>
 </map>

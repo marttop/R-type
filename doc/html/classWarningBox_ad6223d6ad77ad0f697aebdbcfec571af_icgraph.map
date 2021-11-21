@@ -1,0 +1,5 @@
+<map id="WarningBox::update" name="WarningBox::update">
+<area shape="rect" id="node1" title="Update WarningBox." alt="" coords="164,31,317,57"/>
+<area shape="rect" id="node2" href="$classGame.html#a6d54497ce3a66f6dd45eacfdccc8d0bd" title="Draw Game." alt="" coords="10,5,111,32"/>
+<area shape="rect" id="node3" href="$classMenu.html#ac0256d33ec0a94d57328cea308585422" title="Update menu." alt="" coords="5,56,116,83"/>
+</map>

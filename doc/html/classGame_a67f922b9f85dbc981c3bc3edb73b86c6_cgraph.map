@@ -1,6 +1,6 @@
 <map id="Game::event" name="Game::event">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,112,81"/>
-<area shape="rect" id="node2" href="$classWarningBox.html#ac52d538ffe5a93e5942b66ada4d48252" title=" " alt="" coords="164,29,309,56"/>
-<area shape="rect" id="node4" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title=" " alt="" coords="160,80,313,107"/>
-<area shape="rect" id="node3" href="$classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title=" " alt="" coords="361,29,472,56"/>
+<area shape="rect" id="node1" title="Game events." alt="" coords="5,55,112,81"/>
+<area shape="rect" id="node2" href="$classWarningBox.html#ac52d538ffe5a93e5942b66ada4d48252" title="WarningBox events." alt="" coords="164,29,309,56"/>
+<area shape="rect" id="node4" href="$classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c" title="Return WarningBox state." alt="" coords="160,80,313,107"/>
+<area shape="rect" id="node3" href="$classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title="Button events." alt="" coords="361,29,472,56"/>
 </map>

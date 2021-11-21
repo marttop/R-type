@@ -1,4 +1,4 @@
 <map id="RoomsList::disconnect" name="RoomsList::disconnect">
-<area shape="rect" id="node1" title=" " alt="" coords="156,29,324,56"/>
-<area shape="rect" id="node2" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,29,108,56"/>
+<area shape="rect" id="node1" title="Disconnect event." alt="" coords="156,29,324,56"/>
+<area shape="rect" id="node2" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,29,108,56"/>
 </map>

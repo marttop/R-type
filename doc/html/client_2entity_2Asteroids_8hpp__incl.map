@@ -1,0 +1,11 @@
+<map id="src/client/entity/Asteroids.hpp" name="src/client/entity/Asteroids.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="146,5,362,32"/>
+<area shape="rect" id="node2" href="$Entity_8hpp.html" title=" " alt="" coords="210,80,297,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="242,304,388,331"/>
+<area shape="rect" id="node4" title=" " alt="" coords="26,155,166,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="190,155,317,181"/>
+<area shape="rect" id="node6" href="$IClientEntity_8hpp.html" title=" " alt="" coords="252,229,380,256"/>
+<area shape="rect" id="node7" href="$Particles_8hpp.html" title=" " alt="" coords="393,155,498,181"/>
+<area shape="rect" id="node8" href="$Utils_8hpp.html" title=" " alt="" coords="406,229,486,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="413,304,481,331"/>
+</map>

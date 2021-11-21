@@ -76,14 +76,18 @@ Inheritance diagram for ServerEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerEntity__inherit__graph.png" border="0" usemap="#aServerEntity_inherit__map" alt="Inheritance graph"/></div>
 <map name="aServerEntity_inherit__map" id="aServerEntity_inherit__map">
-<area shape="rect" title=" " alt="" coords="383,409,522,897"/>
-<area shape="rect" href="classBidosSlaves.html" title=" " alt="" coords="5,1048,143,1155"/>
-<area shape="rect" href="classBoss.html" title=" " alt="" coords="167,1026,288,1177"/>
-<area shape="rect" href="classBossBullet.html" title=" " alt="" coords="312,1048,439,1155"/>
-<area shape="rect" href="classHeal.html" title=" " alt="" coords="463,1011,597,1191"/>
-<area shape="rect" href="classServerBullet.html" title=" " alt="" coords="622,1048,761,1155"/>
-<area shape="rect" href="classServerPlayer.html" title=" " alt="" coords="785,945,971,1257"/>
-<area shape="rect" href="classIEntity.html" title=" " alt="" coords="386,5,519,361"/>
+<area shape="rect" title=" " alt="" coords="727,409,866,897"/>
+<area shape="rect" href="classAsteroids.html" title=" " alt="" coords="5,1026,140,1206"/>
+<area shape="rect" href="classBidosBullet.html" title=" " alt="" coords="164,1063,296,1169"/>
+<area shape="rect" href="classBidosSlaves.html" title=" " alt="" coords="320,1041,457,1191"/>
+<area shape="rect" href="classBoomBoss.html" title=" " alt="" coords="481,1041,608,1191"/>
+<area shape="rect" href="classBoomrangBullet.html" title=" " alt="" coords="633,1063,795,1169"/>
+<area shape="rect" href="classBoss.html" title=" " alt="" coords="820,1041,941,1191"/>
+<area shape="rect" href="classBossBullet.html" title=" " alt="" coords="965,1063,1092,1169"/>
+<area shape="rect" href="classHeal.html" title=" " alt="" coords="1116,1026,1251,1206"/>
+<area shape="rect" href="classServerBullet.html" title=" " alt="" coords="1275,1063,1414,1169"/>
+<area shape="rect" href="classServerPlayer.html" title=" " alt="" coords="1438,945,1625,1287"/>
+<area shape="rect" href="classIEntity.html" title=" " alt="" coords="730,5,863,361"/>
 </map>
 </div>
 <div class="dynheader">
@@ -91,17 +95,12 @@ Collaboration diagram for ServerEntity:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerEntity__coll__graph.png" border="0" usemap="#aServerEntity_coll__map" alt="Collaboration graph"/></div>
 <map name="aServerEntity_coll__map" id="aServerEntity_coll__map">
-<area shape="rect" title=" " alt="" coords="379,792,517,1163"/>
-<area shape="rect" href="classIEntity.html" title=" " alt="" coords="5,359,139,715"/>
-<area shape="rect" title=" " alt="" coords="163,498,213,575"/>
-<area shape="rect" href="classCustomRect.html" title=" " alt="" coords="313,469,450,605"/>
-<area shape="rect" href="structpoint.html" title=" " alt="" coords="445,167,499,245"/>
-<area shape="rect" title=" " alt="" coords="323,5,389,83"/>
-<area shape="rect" title=" " alt="" coords="474,498,561,575"/>
-<area shape="rect" title=" " alt="" coords="524,160,663,252"/>
-<area shape="rect" title=" " alt="" coords="585,498,644,575"/>
-<area shape="rect" title=" " alt="" coords="668,498,743,575"/>
-<area shape="rect" title=" " alt="" coords="789,498,827,575"/>
+<area shape="rect" title=" " alt="" coords="163,637,301,1081"/>
+<area shape="rect" href="classIEntity.html" title=" " alt="" coords="5,204,139,560"/>
+<area shape="rect" href="classCustomRect.html" title=" " alt="" coords="163,292,301,472"/>
+<area shape="rect" href="structpoint.html" title=" " alt="" coords="205,5,259,97"/>
+<area shape="rect" title=" " alt="" coords="325,343,411,421"/>
+<area shape="rect" title=" " alt="" coords="299,5,437,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -183,8 +182,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:af6b15008690da377f9d8789fe34334e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44403be8d5bf4651dd38dcda7678020d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerEntity.html#a44403be8d5bf4651dd38dcda7678020d">_id</a></td></tr>
 <tr class="separator:a44403be8d5bf4651dd38dcda7678020d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ebdbb625ae1b6958424f7ccce4193f9"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerEntity.html#a3ebdbb625ae1b6958424f7ccce4193f9">_direction</a></td></tr>
-<tr class="separator:a3ebdbb625ae1b6958424f7ccce4193f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8eb7663020697acccd53edf2b2f7bf"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerEntity.html#aee8eb7663020697acccd53edf2b2f7bf">_direction</a></td></tr>
+<tr class="separator:aee8eb7663020697acccd53edf2b2f7bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0a66c570abc9f4a8c893a8e5d107e6f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerEntity.html#ac0a66c570abc9f4a8c893a8e5d107e6f">_ammos</a></td></tr>
 <tr class="separator:ac0a66c570abc9f4a8c893a8e5d107e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984e9b4f31ee03ce8c5813f163d10da1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerEntity.html#a984e9b4f31ee03ce8c5813f163d10da1">_speed</a></td></tr>
@@ -446,9 +445,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerEntity_a3fb483762bb0bca311b80c71c2b211f7_icgraph.png" border="0" usemap="#aclassServerEntity_a3fb483762bb0bca311b80c71c2b211f7_icgraph" alt=""/></div>
 <map name="aclassServerEntity_a3fb483762bb0bca311b80c71c2b211f7_icgraph" id="aclassServerEntity_a3fb483762bb0bca311b80c71c2b211f7_icgraph">
-<area shape="rect" title="Get the Id object." alt="" coords="305,5,448,32"/>
-<area shape="rect" href="classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="160,5,257,32"/>
-<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="5,5,112,32"/>
+<area shape="rect" title="Get the Id object." alt="" coords="401,56,544,83"/>
+<area shape="rect" href="classBidosSlaves.html#a3903ffa3bbbf7d4c81cb0c7de0e87ce7" title=" " alt="" coords="208,5,353,32"/>
+<area shape="rect" href="classBoomBoss.html#a43cc69aa0e31dea6183cd6c6d5c3b80a" title=" " alt="" coords="213,56,348,83"/>
+<area shape="rect" href="classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="232,107,329,133"/>
+<area shape="rect" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="5,5,160,32"/>
+<area shape="rect" href="classBoomBoss.html#a3a627d94353bee789db9f0db83266093" title="Updates the entity." alt="" coords="11,56,155,83"/>
+<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="29,107,136,133"/>
 </map>
 </div>
 
@@ -512,14 +515,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_icgraph.png" border="0" usemap="#aclassServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_icgraph" alt=""/></div>
 <map name="aclassServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_icgraph" id="aclassServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c_icgraph">
-<area shape="rect" title="Get the Position object." alt="" coords="720,181,903,208"/>
+<area shape="rect" title="Get the Position object." alt="" coords="720,308,903,335"/>
 <area shape="rect" href="classServerPlayer.html#ae86e5eb107298e5371a75f5c37b16d2d" title="Moves the player." alt="" coords="481,29,672,56"/>
 <area shape="rect" href="classServerPlayer.html#af9c9fecbfc466f46b13fac08d8d0425c" title="Creates a shooting entity in the player." alt="" coords="502,80,651,107"/>
 <area shape="rect" href="classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="249,105,408,132"/>
-<area shape="rect" href="classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="528,181,625,208"/>
-<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="275,207,382,233"/>
-<area shape="rect" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="499,283,654,309"/>
-<area shape="rect" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="505,333,649,360"/>
+<area shape="rect" href="classBidosSlaves.html#a3903ffa3bbbf7d4c81cb0c7de0e87ce7" title=" " alt="" coords="504,181,649,208"/>
+<area shape="rect" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="251,207,406,233"/>
+<area shape="rect" href="classBoomBoss.html#a43cc69aa0e31dea6183cd6c6d5c3b80a" title=" " alt="" coords="509,283,644,309"/>
+<area shape="rect" href="classBoomBoss.html#a3a627d94353bee789db9f0db83266093" title="Updates the entity." alt="" coords="257,308,401,335"/>
+<area shape="rect" href="classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="528,384,625,411"/>
+<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="275,409,382,436"/>
+<area shape="rect" href="classBidosBullet.html#aae6dcc67db06e835390a770fbc378d7c" title="Updates the entity." alt="" coords="502,485,651,512"/>
+<area shape="rect" href="classBoomrangBullet.html#ae4a7ab8e365805117d0d3dd537c70a00" title="Updates the entity." alt="" coords="487,536,667,563"/>
+<area shape="rect" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="505,587,649,613"/>
 <area shape="rect" href="classServerPlayer.html#aeeb880ae5fb11205daca89d4a9e4a842" title="Async recieve for the UDP user." alt="" coords="224,29,433,56"/>
 <area shape="rect" href="classServerPlayer.html#a6ab9f3f17477b8cdd42bc95b65b4934e" title="Starts udp commincation in the room." alt="" coords="5,29,176,56"/>
 </map>
@@ -903,15 +911,22 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerEntity_ae0c0dee80c1f656a9e259422ee36f169_icgraph.png" border="0" usemap="#aclassServerEntity_ae0c0dee80c1f656a9e259422ee36f169_icgraph" alt=""/></div>
 <map name="aclassServerEntity_ae0c0dee80c1f656a9e259422ee36f169_icgraph" id="aclassServerEntity_ae0c0dee80c1f656a9e259422ee36f169_icgraph">
-<area shape="rect" title="Set the Position object." alt="" coords="241,183,423,209"/>
-<area shape="rect" href="classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="5,5,193,32"/>
-<area shape="rect" href="classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="53,56,145,83"/>
-<area shape="rect" href="classBossBullet.html#acca8ecca1f90ed4454ca2bb3f20a86f9" title=" " alt="" coords="15,107,183,133"/>
-<area shape="rect" href="classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50" title="Updates the entity." alt="" coords="22,157,177,184"/>
-<area shape="rect" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="22,208,177,235"/>
-<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="46,259,153,285"/>
-<area shape="rect" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="27,309,171,336"/>
-<area shape="rect" href="classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="20,360,179,387"/>
+<area shape="rect" title="Set the Position object." alt="" coords="256,376,437,403"/>
+<area shape="rect" href="classAsteroids.html#a0e14e4bd5cd8444b31dfb5d9db65858a" title=" " alt="" coords="31,5,183,32"/>
+<area shape="rect" href="classBidosBullet.html#af33c159e61473a5272265e007e20cbb5" title=" " alt="" coords="17,56,196,83"/>
+<area shape="rect" href="classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="13,107,201,133"/>
+<area shape="rect" href="classBoomBoss.html#a4dbd1f68b2e51e2f870524505423df70" title=" " alt="" coords="23,157,191,184"/>
+<area shape="rect" href="classBoomrangBullet.html#ab7b31a392fd9ba069de2733fa7513398" title=" " alt="" coords="5,209,208,250"/>
+<area shape="rect" href="classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="61,275,153,301"/>
+<area shape="rect" href="classBossBullet.html#acca8ecca1f90ed4454ca2bb3f20a86f9" title=" " alt="" coords="23,325,191,352"/>
+<area shape="rect" href="classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50" title="Updates the entity." alt="" coords="29,376,184,403"/>
+<area shape="rect" href="classBidosBullet.html#aae6dcc67db06e835390a770fbc378d7c" title="Updates the entity." alt="" coords="32,427,181,453"/>
+<area shape="rect" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="29,477,184,504"/>
+<area shape="rect" href="classBoomBoss.html#a3a627d94353bee789db9f0db83266093" title="Updates the entity." alt="" coords="35,528,179,555"/>
+<area shape="rect" href="classBoomrangBullet.html#ae4a7ab8e365805117d0d3dd537c70a00" title="Updates the entity." alt="" coords="17,579,197,605"/>
+<area shape="rect" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="53,629,160,656"/>
+<area shape="rect" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="35,680,179,707"/>
+<area shape="rect" href="classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="27,731,186,757"/>
 </map>
 </div>
 
@@ -944,7 +959,7 @@ Here is the caller graph for this function:</div>
 
 <p>Implements <a class="el" href="classIEntity.html#a556e11eb6fa12864de1620ee3555ce58">IEntity</a>.</p>
 
-<p>Implemented in <a class="el" href="classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50">ServerBullet</a>, <a class="el" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1">BidosSlaves</a>, <a class="el" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c">Boss</a>, <a class="el" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c">BossBullet</a>, <a class="el" href="classHeal.html#a6112557307ca96c42ede67d281c7ff35">Heal</a>, <a class="el" href="classHeal.html#a74c764dbf474f0d0de69b5c86ce10377">Heal</a>, and <a class="el" href="classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40">ServerPlayer</a>.</p>
+<p>Implemented in <a class="el" href="classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50">ServerBullet</a>, <a class="el" href="classAsteroids.html#a071c6d6f1a809fc60b817121b3d083d5">Asteroids</a>, <a class="el" href="classBidosBullet.html#aae6dcc67db06e835390a770fbc378d7c">BidosBullet</a>, <a class="el" href="classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1">BidosSlaves</a>, <a class="el" href="classBoomBoss.html#a3a627d94353bee789db9f0db83266093">BoomBoss</a>, <a class="el" href="classBoomrangBullet.html#ae4a7ab8e365805117d0d3dd537c70a00">BoomrangBullet</a>, <a class="el" href="classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c">Boss</a>, <a class="el" href="classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c">BossBullet</a>, <a class="el" href="classHeal.html#a6112557307ca96c42ede67d281c7ff35">Heal</a>, <a class="el" href="classAsteroids.html#abc6f4959675ca047871aba78ca40208a">Asteroids</a>, <a class="el" href="classHeal.html#a74c764dbf474f0d0de69b5c86ce10377">Heal</a>, and <a class="el" href="classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40">ServerPlayer</a>.</p>
 
 </div>
 </div>
@@ -971,8 +986,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a3ebdbb625ae1b6958424f7ccce4193f9" name="a3ebdbb625ae1b6958424f7ccce4193f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ebdbb625ae1b6958424f7ccce4193f9">&#9670;&nbsp;</a></span>_direction</h2>
+<a id="aee8eb7663020697acccd53edf2b2f7bf" name="aee8eb7663020697acccd53edf2b2f7bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee8eb7663020697acccd53edf2b2f7bf">&#9670;&nbsp;</a></span>_direction</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -981,7 +996,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt;int, int&gt; ServerEntity::_direction</td>
+          <td class="memname">std::pair&lt;double, double&gt; ServerEntity::_direction</td>
         </tr>
       </table>
   </td>

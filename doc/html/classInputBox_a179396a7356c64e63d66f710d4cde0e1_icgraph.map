@@ -1,5 +1,5 @@
 <map id="InputBox::draw" name="InputBox::draw">
-<area shape="rect" id="node1" title=" " alt="" coords="335,5,455,32"/>
-<area shape="rect" id="node2" href="$classConnection.html#a003c4bc6425098d0a6bf945ba497016c" title=" " alt="" coords="152,5,287,32"/>
-<area shape="rect" id="node3" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title=" " alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node1" title="Draw InputBox." alt="" coords="335,5,455,32"/>
+<area shape="rect" id="node2" href="$classConnection.html#a003c4bc6425098d0a6bf945ba497016c" title="Draw Connection." alt="" coords="152,5,287,32"/>
+<area shape="rect" id="node3" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title="Draw Menu." alt="" coords="5,5,104,32"/>
 </map>

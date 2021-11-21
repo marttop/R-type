@@ -1,0 +1,4 @@
+<map id="BoomrangBulletC::drawSprite" name="BoomrangBulletC::drawSprite">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,220,32"/>
+<area shape="rect" id="node2" href="$classParticleSystem.html#afceda0b8f9bfa129bbd3c8658462eb08" title=" " alt="" coords="268,5,483,32"/>
+</map>

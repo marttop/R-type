@@ -1,13 +1,13 @@
 <map id="Connection::connect" name="Connection::connect">
-<area shape="rect" id="node1" title=" " alt="" coords="5,180,160,207"/>
-<area shape="rect" id="node2" href="$classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title=" " alt="" coords="259,29,369,56"/>
-<area shape="rect" id="node3" href="$classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title=" " alt="" coords="244,104,384,131"/>
-<area shape="rect" id="node5" href="$classInputBox.html#a97d893ae3459098f3f4dd116df717d4c" title=" " alt="" coords="224,155,404,181"/>
-<area shape="rect" id="node6" href="$classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title=" " alt="" coords="244,205,384,232"/>
-<area shape="rect" id="node10" href="$classValidateIp.html#ad6bde94c8beb54b20bb7e87f250d9f5e" title=" " alt="" coords="208,256,420,283"/>
-<area shape="rect" id="node11" href="$classValidateIp.html#adc572f4a4f8aa294e4fedec24f3f53e2" title=" " alt="" coords="227,307,401,333"/>
-<area shape="rect" id="node4" href="$classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title=" " alt="" coords="468,104,593,131"/>
-<area shape="rect" id="node7" href="$classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title=" " alt="" coords="473,205,588,232"/>
+<area shape="rect" id="node1" title="Connect event." alt="" coords="5,180,160,207"/>
+<area shape="rect" id="node2" href="$classButton.html#aa0b54c7f3541e658eb6a81b7692830f7" title="Button events." alt="" coords="259,29,369,56"/>
+<area shape="rect" id="node3" href="$classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title="Connection events." alt="" coords="244,104,384,131"/>
+<area shape="rect" id="node5" href="$classInputBox.html#a97d893ae3459098f3f4dd116df717d4c" title="Get the Input String object." alt="" coords="224,155,404,181"/>
+<area shape="rect" id="node6" href="$classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title="Open WarningBox." alt="" coords="244,205,384,232"/>
+<area shape="rect" id="node10" href="$classValidateIp.html#ad6bde94c8beb54b20bb7e87f250d9f5e" title="Check if the ip is valid." alt="" coords="208,256,420,283"/>
+<area shape="rect" id="node11" href="$classValidateIp.html#adc572f4a4f8aa294e4fedec24f3f53e2" title="Check if the port is valid." alt="" coords="227,307,401,333"/>
+<area shape="rect" id="node4" href="$classInputBox.html#a329441dc393a773c7ee67560c34f3a7f" title="InputBox events." alt="" coords="468,104,593,131"/>
+<area shape="rect" id="node7" href="$classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title="Create Button." alt="" coords="473,205,588,232"/>
 <area shape="rect" id="node8" href="$classAssetManager.html#a1fb0a1e8f46f3773f0a08f9eafb7649d" title="Get asset, if asset already load just return the asset associeted to, IMPORTANT !!..." alt="" coords="670,180,850,207"/>
 <area shape="rect" id="node9" href="$classAssetManager.html#a85998651ebed21145f82915e9c890159" title="Get the instance of the FontManager singelton." alt="" coords="641,231,879,257"/>
 </map>

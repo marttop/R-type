@@ -1,6 +1,6 @@
 <map id="InputBox::event" name="InputBox::event">
-<area shape="rect" id="node1" title=" " alt="" coords="547,31,672,57"/>
-<area shape="rect" id="node2" href="$classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title=" " alt="" coords="359,31,499,57"/>
-<area shape="rect" id="node3" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title=" " alt="" coords="156,5,311,32"/>
-<area shape="rect" id="node4" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,31,108,57"/>
+<area shape="rect" id="node1" title="InputBox events." alt="" coords="547,31,672,57"/>
+<area shape="rect" id="node2" href="$classConnection.html#ac3021df79decfd9f9a2753a6435fa645" title="Connection events." alt="" coords="359,31,499,57"/>
+<area shape="rect" id="node3" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title="Connect event." alt="" coords="156,5,311,32"/>
+<area shape="rect" id="node4" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,31,108,57"/>
 </map>

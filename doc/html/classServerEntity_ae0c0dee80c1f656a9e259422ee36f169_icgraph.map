@@ -1,11 +1,18 @@
 <map id="ServerEntity::setPosition" name="ServerEntity::setPosition">
-<area shape="rect" id="node1" title="Set the Position object." alt="" coords="241,183,423,209"/>
-<area shape="rect" id="node2" href="$classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="5,5,193,32"/>
-<area shape="rect" id="node3" href="$classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="53,56,145,83"/>
-<area shape="rect" id="node4" href="$classBossBullet.html#acca8ecca1f90ed4454ca2bb3f20a86f9" title=" " alt="" coords="15,107,183,133"/>
-<area shape="rect" id="node5" href="$classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50" title="Updates the entity." alt="" coords="22,157,177,184"/>
-<area shape="rect" id="node6" href="$classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="22,208,177,235"/>
-<area shape="rect" id="node7" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="46,259,153,285"/>
-<area shape="rect" id="node8" href="$classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="27,309,171,336"/>
-<area shape="rect" id="node9" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="20,360,179,387"/>
+<area shape="rect" id="node1" title="Set the Position object." alt="" coords="256,376,437,403"/>
+<area shape="rect" id="node2" href="$classAsteroids.html#a0e14e4bd5cd8444b31dfb5d9db65858a" title=" " alt="" coords="31,5,183,32"/>
+<area shape="rect" id="node3" href="$classBidosBullet.html#af33c159e61473a5272265e007e20cbb5" title=" " alt="" coords="17,56,196,83"/>
+<area shape="rect" id="node4" href="$classBidosSlaves.html#a95cbf4877ddb42990751d029b97e5a42" title=" " alt="" coords="13,107,201,133"/>
+<area shape="rect" id="node5" href="$classBoomBoss.html#a4dbd1f68b2e51e2f870524505423df70" title=" " alt="" coords="23,157,191,184"/>
+<area shape="rect" id="node6" href="$classBoomrangBullet.html#ab7b31a392fd9ba069de2733fa7513398" title=" " alt="" coords="5,209,208,250"/>
+<area shape="rect" id="node7" href="$classBoss.html#af287739a9fe8cb9501795656d34f3018" title=" " alt="" coords="61,275,153,301"/>
+<area shape="rect" id="node8" href="$classBossBullet.html#acca8ecca1f90ed4454ca2bb3f20a86f9" title=" " alt="" coords="23,325,191,352"/>
+<area shape="rect" id="node9" href="$classServerBullet.html#a5dc8ac595f9b44e670cd1f0290e9bf50" title="Updates the entity." alt="" coords="29,376,184,403"/>
+<area shape="rect" id="node10" href="$classBidosBullet.html#aae6dcc67db06e835390a770fbc378d7c" title="Updates the entity." alt="" coords="32,427,181,453"/>
+<area shape="rect" id="node11" href="$classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="29,477,184,504"/>
+<area shape="rect" id="node12" href="$classBoomBoss.html#a3a627d94353bee789db9f0db83266093" title="Updates the entity." alt="" coords="35,528,179,555"/>
+<area shape="rect" id="node13" href="$classBoomrangBullet.html#ae4a7ab8e365805117d0d3dd537c70a00" title="Updates the entity." alt="" coords="17,579,197,605"/>
+<area shape="rect" id="node14" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="53,629,160,656"/>
+<area shape="rect" id="node15" href="$classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="35,680,179,707"/>
+<area shape="rect" id="node16" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="27,731,186,757"/>
 </map>

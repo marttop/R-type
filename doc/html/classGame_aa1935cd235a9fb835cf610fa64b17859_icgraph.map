@@ -1,4 +1,4 @@
 <map id="Game::create" name="Game::create">
-<area shape="rect" id="node1" title=" " alt="" coords="187,5,297,32"/>
+<area shape="rect" id="node1" title="Create Game." alt="" coords="187,5,297,32"/>
 <area shape="rect" id="node2" href="$classWindow.html#afbbf6fabca06597e070b5a9488d7f8aa" title=" " alt="" coords="5,5,139,32"/>
 </map>

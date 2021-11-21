@@ -1,5 +1,5 @@
 <map id="InputBox::setPosition" name="InputBox::setPosition">
-<area shape="rect" id="node1" title=" " alt="" coords="360,5,520,32"/>
-<area shape="rect" id="node2" href="$classConnection.html#a3509a036de5b9d5831e1c972ee72bf67" title=" " alt="" coords="164,5,312,32"/>
-<area shape="rect" id="node3" href="$classMenu.html#a545497fced6951a988da7ba2ba711b44" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node1" title="Set the Position object." alt="" coords="360,5,520,32"/>
+<area shape="rect" id="node2" href="$classConnection.html#a842607cd8e8048eed1a7dd049e570a48" title="Update Connection." alt="" coords="164,5,312,32"/>
+<area shape="rect" id="node3" href="$classMenu.html#ac0256d33ec0a94d57328cea308585422" title="Update menu." alt="" coords="5,5,116,32"/>
 </map>

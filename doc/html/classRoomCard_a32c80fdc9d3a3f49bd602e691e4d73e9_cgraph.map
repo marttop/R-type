@@ -1,4 +1,4 @@
 <map id="RoomCard::decrementPosition" name="RoomCard::decrementPosition">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,225,32"/>
-<area shape="rect" id="node2" href="$classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title=" " alt="" coords="273,5,419,32"/>
+<area shape="rect" id="node1" title="Decrement RoomCard position." alt="" coords="5,5,225,32"/>
+<area shape="rect" id="node2" href="$classButton.html#a280c1f052bc36b032798ccb1f1f8bd9d" title="Set the Position object." alt="" coords="273,5,419,32"/>
 </map>

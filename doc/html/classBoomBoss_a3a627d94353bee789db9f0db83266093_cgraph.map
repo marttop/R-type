@@ -1,0 +1,11 @@
+<map id="BoomBoss::update" name="BoomBoss::update">
+<area shape="rect" id="node1" title="Updates the entity." alt="" coords="5,81,149,108"/>
+<area shape="rect" id="node2" href="$classBoomBoss.html#ae0c70d8be4082797d748742f17f91f9a" title=" " alt="" coords="201,5,375,32"/>
+<area shape="rect" id="node3" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="427,107,609,133"/>
+<area shape="rect" id="node5" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="197,56,379,83"/>
+<area shape="rect" id="node7" href="$classBoomBoss.html#a43cc69aa0e31dea6183cd6c6d5c3b80a" title=" " alt="" coords="221,161,355,188"/>
+<area shape="rect" id="node4" href="$classCustomRect.html#a40f5a601484e821bb424f4c1ee22d602" title="Get the Position object." alt="" coords="657,107,840,133"/>
+<area shape="rect" id="node6" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="427,56,609,83"/>
+<area shape="rect" id="node8" href="$classEntityLoad.html#a2068176fcbeae4b1a85b9cc1ffe15107" title="Create a Entity With Name object." alt="" coords="429,158,607,199"/>
+<area shape="rect" id="node9" href="$classServerEntity.html#a3fb483762bb0bca311b80c71c2b211f7" title="Get the Id object." alt="" coords="447,224,589,251"/>
+</map>

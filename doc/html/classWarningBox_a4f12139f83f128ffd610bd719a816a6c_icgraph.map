@@ -1,7 +1,8 @@
 <map id="WarningBox::isOpen" name="WarningBox::isOpen">
-<area shape="rect" id="node1" title=" " alt="" coords="160,93,313,120"/>
-<area shape="rect" id="node2" href="$classGame.html#a6d54497ce3a66f6dd45eacfdccc8d0bd" title=" " alt="" coords="8,5,109,32"/>
-<area shape="rect" id="node3" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title=" " alt="" coords="9,56,108,83"/>
-<area shape="rect" id="node4" href="$classGame.html#a67f922b9f85dbc981c3bc3edb73b86c6" title=" " alt="" coords="5,131,112,157"/>
-<area shape="rect" id="node5" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="7,205,110,232"/>
+<area shape="rect" id="node1" title="Return WarningBox state." alt="" coords="164,131,317,157"/>
+<area shape="rect" id="node2" href="$classGame.html#a6d54497ce3a66f6dd45eacfdccc8d0bd" title="Draw Game." alt="" coords="10,5,111,32"/>
+<area shape="rect" id="node3" href="$classMenu.html#a93888844cafd9d46a9d248a0feb956d2" title="Draw Menu." alt="" coords="11,56,110,83"/>
+<area shape="rect" id="node4" href="$classGame.html#a67f922b9f85dbc981c3bc3edb73b86c6" title="Game events." alt="" coords="7,131,114,157"/>
+<area shape="rect" id="node5" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="9,205,112,232"/>
+<area shape="rect" id="node6" href="$classMenu.html#ac0256d33ec0a94d57328cea308585422" title="Update menu." alt="" coords="5,256,116,283"/>
 </map>

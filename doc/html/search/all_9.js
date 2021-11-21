@@ -18,5 +18,6 @@ var searchData=
   ['ismousehovering_15',['isMouseHovering',['../classButton.html#a2409c2f7e593d6e24897c568d80b72a4',1,'Button']]],
   ['isopen_16',['isOpen',['../classWarningBox.html#a4f12139f83f128ffd610bd719a816a6c',1,'WarningBox']]],
   ['isplayerinroom_17',['isPlayerInRoom',['../classServerRoom.html#ada13a85421bc822dfffc157a79addc31',1,'ServerRoom']]],
-  ['isready_18',['isReady',['../classServerPlayer.html#a4f04a7d436cb95dd3c13da6680e55583',1,'ServerPlayer']]]
+  ['ispushed_18',['isPushed',['../classServerPlayer.html#a176e4ec2a0ea64ae1d6dbf681bf9e502',1,'ServerPlayer']]],
+  ['isready_19',['isReady',['../classServerPlayer.html#a4f04a7d436cb95dd3c13da6680e55583',1,'ServerPlayer']]]
 ];

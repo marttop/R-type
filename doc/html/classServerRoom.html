@@ -76,8 +76,7 @@ Collaboration diagram for ServerRoom:</div>
 <div class="dyncontent">
 <div class="center"><img src="classServerRoom__coll__graph.png" border="0" usemap="#aServerRoom_coll__map" alt="Collaboration graph"/></div>
 <map name="aServerRoom_coll__map" id="aServerRoom_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,195,531"/>
-<area shape="rect" title=" " alt="" coords="75,5,125,83"/>
+<area shape="rect" title=" " alt="" coords="5,5,195,391"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -126,9 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a01a477bb0d8d1c1270a2a52299bf3525"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerRoom.html#a01a477bb0d8d1c1270a2a52299bf3525">updateEntity</a> (std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; obj) const</td></tr>
 <tr class="memdesc:a01a477bb0d8d1c1270a2a52299bf3525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the entity.  <a href="classServerRoom.html#a01a477bb0d8d1c1270a2a52299bf3525">More...</a><br /></td></tr>
 <tr class="separator:a01a477bb0d8d1c1270a2a52299bf3525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6aee38ec27d4cb76e0e6eaa8d8a76059"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerRoom.html#a6aee38ec27d4cb76e0e6eaa8d8a76059">collideBidos</a> (std::shared_ptr&lt; <a class="el" href="classServerPlayer.html">ServerPlayer</a> &gt; player, std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; entity)</td></tr>
-<tr class="memdesc:a6aee38ec27d4cb76e0e6eaa8d8a76059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks bidos collision with player.  <a href="classServerRoom.html#a6aee38ec27d4cb76e0e6eaa8d8a76059">More...</a><br /></td></tr>
-<tr class="separator:a6aee38ec27d4cb76e0e6eaa8d8a76059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af70261d66bcdbcf09226802c3fd92ee7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerRoom.html#af70261d66bcdbcf09226802c3fd92ee7">collideAsteroids</a> (std::shared_ptr&lt; <a class="el" href="classServerPlayer.html">ServerPlayer</a> &gt; player, std::shared_ptr&lt; <a class="el" href="classIEntity.html">IEntity</a> &gt; entity)</td></tr>
+<tr class="memdesc:af70261d66bcdbcf09226802c3fd92ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks asteroids collision with player.  <a href="classServerRoom.html#af70261d66bcdbcf09226802c3fd92ee7">More...</a><br /></td></tr>
+<tr class="separator:af70261d66bcdbcf09226802c3fd92ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad55b8e3bbcc0d8091ca27e4aa60fa79c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerRoom.html#ad55b8e3bbcc0d8091ca27e4aa60fa79c">EntityAsShoot</a> ()</td></tr>
 <tr class="memdesc:ad55b8e3bbcc0d8091ca27e4aa60fa79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Who the fuck knows ? can't remember everything.  <a href="classServerRoom.html#ad55b8e3bbcc0d8091ca27e4aa60fa79c">More...</a><br /></td></tr>
 <tr class="separator:ad55b8e3bbcc0d8091ca27e4aa60fa79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -311,14 +310,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a6aee38ec27d4cb76e0e6eaa8d8a76059" name="a6aee38ec27d4cb76e0e6eaa8d8a76059"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6aee38ec27d4cb76e0e6eaa8d8a76059">&#9670;&nbsp;</a></span>collideBidos()</h2>
+<a id="af70261d66bcdbcf09226802c3fd92ee7" name="af70261d66bcdbcf09226802c3fd92ee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af70261d66bcdbcf09226802c3fd92ee7">&#9670;&nbsp;</a></span>collideAsteroids()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ServerRoom::collideBidos </td>
+          <td class="memname">bool ServerRoom::collideAsteroids </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classServerPlayer.html">ServerPlayer</a> &gt;&#160;</td>
           <td class="paramname"><em>player</em>, </td>
@@ -337,11 +336,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Checks bidos collision with player. </p>
+<p>Checks asteroids collision with player. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">player</td><td></td></tr>
-    <tr><td class="paramname">entity</td><td>(bidos) </td></tr>
+    <tr><td class="paramname">entity</td><td></td></tr>
   </table>
   </dd>
 </dl>

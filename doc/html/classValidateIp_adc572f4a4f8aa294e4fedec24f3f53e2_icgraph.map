@@ -1,5 +1,5 @@
 <map id="ValidateIp::validatePort" name="ValidateIp::validatePort">
-<area shape="rect" id="node1" title=" " alt="" coords="359,29,533,56"/>
-<area shape="rect" id="node2" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title=" " alt="" coords="156,29,311,56"/>
-<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="5,29,108,56"/>
+<area shape="rect" id="node1" title="Check if the port is valid." alt="" coords="359,29,533,56"/>
+<area shape="rect" id="node2" href="$classConnection.html#ad509e56897dbf1189752e195716b9a71" title="Connect event." alt="" coords="156,29,311,56"/>
+<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="5,29,108,56"/>
 </map>

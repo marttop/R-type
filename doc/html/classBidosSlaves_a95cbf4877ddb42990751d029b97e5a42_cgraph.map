@@ -1,5 +1,6 @@
 <map id="BidosSlaves::BidosSlaves" name="BidosSlaves::BidosSlaves">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,193,32"/>
-<area shape="rect" id="node2" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="241,5,423,32"/>
-<area shape="rect" id="node3" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="471,5,652,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,193,57"/>
+<area shape="rect" id="node2" href="$classEntityLoad.html#adfd6a095b15adc58f77df9346ed2e781" title="Loads a new entity with the path and name." alt="" coords="241,5,464,32"/>
+<area shape="rect" id="node3" href="$classServerEntity.html#ae0c0dee80c1f656a9e259422ee36f169" title="Set the Position object." alt="" coords="262,56,443,83"/>
+<area shape="rect" id="node4" href="$classCustomRect.html#ad056f18c999dbd7061f3e98fa556bb4a" title="Set the Position of the rect." alt="" coords="512,56,693,83"/>
 </map>

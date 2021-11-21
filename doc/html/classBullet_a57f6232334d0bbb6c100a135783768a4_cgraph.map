@@ -1,4 +1,4 @@
 <map id="Bullet::drawParticles" name="Bullet::drawParticles">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node1" title="Draw the Bullet particles." alt="" coords="5,5,160,32"/>
 <area shape="rect" id="node2" href="$classParticleSystem.html#afceda0b8f9bfa129bbd3c8658462eb08" title=" " alt="" coords="208,5,423,32"/>
 </map>

@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['checkclock_0',['checkClock',['../classBoss.html#aa6d1892026af94e01a9ad3fca0cee86e',1,'Boss']]],
+  ['checkclock_0',['checkClock',['../classBidosSlaves.html#a798e9bcea550d5bbd5d7c8812d180913',1,'BidosSlaves::checkClock()'],['../classBoomBoss.html#ae0c70d8be4082797d748742f17f91f9a',1,'BoomBoss::checkClock()'],['../classBoss.html#aa6d1892026af94e01a9ad3fca0cee86e',1,'Boss::checkClock()']]],
   ['clearammos_1',['clearAmmos',['../classIEntity.html#aa378ddb558c5347e62edd93b52f3f7bb',1,'IEntity::clearAmmos()'],['../classServerEntity.html#a5b5202c23b744ad8d68ca1c197b63f54',1,'ServerEntity::clearAmmos()']]],
   ['close_2',['CLOSE',['../classParallax.html#ad5d3646ef9654130f802a00dcabb2216a51527a0a91fcf04ef406a984021da50d',1,'Parallax']]],
   ['close_3',['close',['../classWarningBox.html#ac5da36dc6470530fb05aa96ab5519dca',1,'WarningBox']]],
   ['closest_4',['CLOSEST',['../classParallax.html#ad5d3646ef9654130f802a00dcabb2216a0a53f96ba92a6b730f3144972f89bee3',1,'Parallax']]],
   ['closeudp_5',['closeUDP',['../classServerPlayer.html#aa598fa15c046a353ab92bfcf1eaecd18',1,'ServerPlayer']]],
-  ['collidebidos_6',['collideBidos',['../classServerRoom.html#a6aee38ec27d4cb76e0e6eaa8d8a76059',1,'ServerRoom']]],
+  ['collideasteroids_6',['collideAsteroids',['../classServerRoom.html#af70261d66bcdbcf09226802c3fd92ee7',1,'ServerRoom']]],
   ['connect_7',['connect',['../classConnection.html#ad509e56897dbf1189752e195716b9a71',1,'Connection']]],
   ['connection_8',['Connection',['../classConnection.html',1,'Connection'],['../classConnection.html#a9de94289ca6259f94ef6aeba3b134a77',1,'Connection::Connection()']]],
   ['connection_2ecpp_9',['Connection.cpp',['../Connection_8cpp.html',1,'']]],

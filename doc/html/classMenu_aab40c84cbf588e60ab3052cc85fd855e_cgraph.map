@@ -1,7 +1,7 @@
 <map id="Menu::setAlert" name="Menu::setAlert">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,123,57"/>
-<area shape="rect" id="node2" href="$classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title=" " alt="" coords="171,31,311,57"/>
-<area shape="rect" id="node3" href="$classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title=" " alt="" coords="359,31,473,57"/>
+<area shape="rect" id="node1" title="Set the Alert object." alt="" coords="5,31,123,57"/>
+<area shape="rect" id="node2" href="$classWarningBox.html#ab0adc1943502d2f49eed779aa0fdd079" title="Open WarningBox." alt="" coords="171,31,311,57"/>
+<area shape="rect" id="node3" href="$classButton.html#a6fb77f4d8aaa28fd09d9713b64372af4" title="Create Button." alt="" coords="359,31,473,57"/>
 <area shape="rect" id="node4" href="$classAssetManager.html#a1fb0a1e8f46f3773f0a08f9eafb7649d" title="Get asset, if asset already load just return the asset associeted to, IMPORTANT !!..." alt="" coords="550,5,730,32"/>
 <area shape="rect" id="node5" href="$classAssetManager.html#a85998651ebed21145f82915e9c890159" title="Get the instance of the FontManager singelton." alt="" coords="521,56,759,83"/>
 </map>

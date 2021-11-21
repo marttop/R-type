@@ -1,5 +1,5 @@
 <map id="WarningBox::event" name="WarningBox::event">
-<area shape="rect" id="node1" title=" " alt="" coords="160,67,305,93"/>
-<area shape="rect" id="node2" href="$classGame.html#a67f922b9f85dbc981c3bc3edb73b86c6" title=" " alt="" coords="5,29,112,56"/>
-<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title=" " alt="" coords="7,104,110,131"/>
+<area shape="rect" id="node1" title="WarningBox events." alt="" coords="160,67,305,93"/>
+<area shape="rect" id="node2" href="$classGame.html#a67f922b9f85dbc981c3bc3edb73b86c6" title="Game events." alt="" coords="5,29,112,56"/>
+<area shape="rect" id="node3" href="$classMenu.html#a63b061939c2ed750c5cdd3bffb075ac9" title="Menu events." alt="" coords="7,104,110,131"/>
 </map>
