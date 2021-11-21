@@ -9,7 +9,6 @@
 #define ASIOTCPSERV_HPP
 
 #include "UserConnection.hpp"
-#include "IServer.hpp"
 #include <vector>
 #include "ServerRoom.hpp"
 
@@ -17,26 +16,55 @@ class UserConnection;
 class ServerRoom;
 typedef std::shared_ptr<UserConnection> userConnectionPointer;
 
-class AsioTcpServ : public IServer
+class AsioTcpServ
 {
 public:
     AsioTcpServ(asio::io_context& io_context, const int port, bool debug = false);
     ~AsioTcpServ();
 
-    void initServ() {};
-    void startServ() {};
-    void writeDataToUser(int userId) {};
-    void writeDataToAll() {};
-    void disconnectUser(int userId) {};
-
+    /**
+     * @brief Starts the server's TCP communication.
+     * Waits for new clients.
+     */
     void start_accept();
-    void shell_send() const;
+
+    /**
+     * @brief Add a new room in the room list.
+     *
+     * @return the id of the new room.
+     */
     int addRoom();
 
     //Not const because need to modify the getted vector.
+
+    /**
+     * @brief Get the TCP User's list.
+     *
+     * @return list of users.
+     */
     std::vector<userConnectionPointer> &getUserList();
+
+    /**
+     * @brief Get the room's list.
+     *
+     * @return list of rooms.
+     */
     std::vector<std::shared_ptr<ServerRoom>> &getRoomList();
+
+    /**
+     * @brief Get the Room By Id object
+     *
+     * @param id of the room.
+     * @return std::shared_ptr<ServerRoom> list.
+     */
     std::shared_ptr<ServerRoom> getRoomById(int id);
+
+    /**
+     * @brief Removes the room from the list by id.
+     *
+     * @param id of the room to be removed.
+     * @return id of the next room.
+     */
     int deleteRoomById(int id);
 
 protected:

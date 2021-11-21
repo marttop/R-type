@@ -1,0 +1,423 @@
+\hypertarget{classEntity}{}\doxysection{Entity Class Reference}
+\label{classEntity}\index{Entity@{Entity}}
+
+
+{\ttfamily \#include $<$Entity.\+hpp$>$}
+
+
+
+Inheritance diagram for Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEntity_ae660b2ec4d37d2eb1b1dedfb3c4ee879}{Entity}} (const sf\+::\+Texture \&texture, const sf\+::\+Vector2f \&pos, const float \&speed=0, const sf\+::\+Color \&start\+Color=sf\+::\+Color\+::\+White, const sf\+::\+Color \&end\+Color=sf\+::\+Color\+::\+White, int health=10)
+\item 
+\mbox{\hyperlink{classEntity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{$\sim$\+Entity}} ()
+\item 
+float \mbox{\hyperlink{classEntity_a87e11b5e7ee68728deea0d1c83bd92fa}{get\+Elapsed\+Time}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classEntity_accc9c0c4d3d0083c08fcd866bd1d26e6}{get\+Pos}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classEntity_a6c2cd79160cddba0b223f932c1d151f1}{get\+Size}} () const
+\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e}{get\+Global\+Bounds}} () const
+\item 
+void \mbox{\hyperlink{classEntity_a992beaebe218e29a718f7805c9b0e364}{set\+Pos}} (const sf\+::\+Vector2f \&pos)
+\item 
+void \mbox{\hyperlink{classEntity_a1e3b4c159f98c669daa9e01cc875ec97}{set\+Rotation}} (const float \&angle)
+\item 
+void \mbox{\hyperlink{classEntity_ac5987db2dd874b3df2428196513766e4}{set\+Color}} (const sf\+::\+Color \&color)
+\item 
+void \mbox{\hyperlink{classEntity_a7a82c1fe9f0eb0838437f5133ee302a0}{restart\+Clock}} ()
+\item 
+bool \mbox{\hyperlink{classEntity_abadcf5fb781cafa3a9779091e210b96f}{is\+Alive}} () const
+\item 
+void \mbox{\hyperlink{classEntity_afdd29f9911c799abbbf1cc0d768ff754}{set\+Is\+Alive}} (bool \mbox{\hyperlink{classEntity_abadcf5fb781cafa3a9779091e210b96f}{is\+Alive}})
+\item 
+bool \mbox{\hyperlink{classEntity_a25d9a35d2be7f2bd8a3409ac79cc8de9}{is\+Death\+Finish}} () const
+\item 
+void \mbox{\hyperlink{classEntity_a0db96afd3c1595f1aea1d765f4611995}{draw\+Particles}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{classEntity_a73314638228926c6cc510574ecea377e}{draw\+Sprite}} (sf\+::\+Render\+Window \&window)
+\item 
+void \mbox{\hyperlink{classEntity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}{update}} ()
+\item 
+void \mbox{\hyperlink{classEntity_a7dae281ff92be9bc98672cafe05c77ab}{set\+Health}} (int health)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Texture \mbox{\hyperlink{classEntity_a8e409f1b737a84cd895e42e4ec8c28bc}{\+\_\+texture}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{classEntity_a040bd9d02a9c5d0c7f07348bc15cc0a3}{\+\_\+sprite}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{classEntity_a70316fde8272a3b08cbdc935f61477ac}{\+\_\+pos}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classEntity_ace51d1b581f7f7992a0919a203e790ac}{\+\_\+animation\+Clock}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{classEntity_a9d07fb0bc4e2baa5ac218f2f3ee7beca}{\+\_\+death\+Clock}}
+\item 
+\mbox{\hyperlink{classParticleSystem}{Particle\+System}} \mbox{\hyperlink{classEntity_af56298c9fe871dcdd8c66127dcf653e0}{\+\_\+particle\+System}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classEntity_a2d12858c82ff226a738dd4273412ccbd}{\+\_\+start\+Color}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{classEntity_a0130b195c2c74bf84e135d3eab95eb94}{\+\_\+end\+Color}}
+\item 
+int \mbox{\hyperlink{classEntity_a5d9f213ef26f1e09ebff7fcb46634b97}{\+\_\+health}}
+\item 
+int \mbox{\hyperlink{classEntity_ab8931a040758502fbaa50010dedd54c6}{\+\_\+max\+Health}}
+\item 
+sf\+::\+Sound \mbox{\hyperlink{classEntity_a1e7e03a90c8bea2689dd08f4c5177372}{\+\_\+sound1}}
+\item 
+sf\+::\+Sound\+Buffer \mbox{\hyperlink{classEntity_aed8845158d8cec2c780a13fe2fc89142}{\+\_\+sound\+Buf1}}
+\item 
+bool \mbox{\hyperlink{classEntity_a2109c3bae235bc35fef203719c6c4258}{\+\_\+death\+Animation}}
+\item 
+bool \mbox{\hyperlink{classEntity_a5d39f2687941274489028fe2c32aaf48}{\+\_\+death\+Finish}}
+\item 
+float \mbox{\hyperlink{classEntity_affa34087931fd08b03afa12c0bd3554a}{\+\_\+speed}}
+\item 
+bool \mbox{\hyperlink{classEntity_aacf8a96c8862a9a78707cc840e3cdd6b}{\+\_\+is\+Alive}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEntity_ae660b2ec4d37d2eb1b1dedfb3c4ee879}\label{classEntity_ae660b2ec4d37d2eb1b1dedfb3c4ee879}} 
+\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const sf\+::\+Texture \&}]{texture,  }\item[{const sf\+::\+Vector2f \&}]{pos,  }\item[{const float \&}]{speed = {\ttfamily 0},  }\item[{const sf\+::\+Color \&}]{start\+Color = {\ttfamily sf\+:\+:Color\+:\+:White},  }\item[{const sf\+::\+Color \&}]{end\+Color = {\ttfamily sf\+:\+:Color\+:\+:White},  }\item[{int}]{health = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEntity_adf6d3f7cb1b2ba029b6b048a395cc8ae}\label{classEntity_adf6d3f7cb1b2ba029b6b048a395cc8ae}} 
+\index{Entity@{Entity}!````~Entity@{$\sim$Entity}}
+\index{````~Entity@{$\sim$Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{$\sim$Entity()}{~Entity()}}
+{\footnotesize\ttfamily Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEntity_a0db96afd3c1595f1aea1d765f4611995}\label{classEntity_a0db96afd3c1595f1aea1d765f4611995}} 
+\index{Entity@{Entity}!drawParticles@{drawParticles}}
+\index{drawParticles@{drawParticles}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{drawParticles()}{drawParticles()}}
+{\footnotesize\ttfamily void Entity\+::draw\+Particles (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a2ac7f999312a729b4520c4c6540e12be}{IClient\+Entity}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeal_a49fbb676aed8fe406478ded2976864d9}{Heal}}, and \mbox{\hyperlink{classPlayerShip_af238454f4d7767f601b34dc3559eb28c}{Player\+Ship}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEntity_a0db96afd3c1595f1aea1d765f4611995_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEntity_a73314638228926c6cc510574ecea377e}\label{classEntity_a73314638228926c6cc510574ecea377e}} 
+\index{Entity@{Entity}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily void Entity\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a97ff119821568d3ad29e0732ff0d4672}{IClient\+Entity}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeal_afa6242324c2391b650bb553dcd8a5dda}{Heal}}, and \mbox{\hyperlink{classPlayerShip_a2243eee78f6ebeb703489f93714773cc}{Player\+Ship}}.
+
+\mbox{\Hypertarget{classEntity_a87e11b5e7ee68728deea0d1c83bd92fa}\label{classEntity_a87e11b5e7ee68728deea0d1c83bd92fa}} 
+\index{Entity@{Entity}!getElapsedTime@{getElapsedTime}}
+\index{getElapsedTime@{getElapsedTime}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getElapsedTime()}{getElapsedTime()}}
+{\footnotesize\ttfamily float Entity\+::get\+Elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a276c1b69004cc910978109c751890db5}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e}\label{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e}} 
+\index{Entity@{Entity}!getGlobalBounds@{getGlobalBounds}}
+\index{getGlobalBounds@{getGlobalBounds}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getGlobalBounds()}{getGlobalBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Entity\+::get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_ab102618b3a7ae1cc941a6c2352175679}{IClient\+Entity}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEntity_accc9c0c4d3d0083c08fcd866bd1d26e6}\label{classEntity_accc9c0c4d3d0083c08fcd866bd1d26e6}} 
+\index{Entity@{Entity}!getPos@{getPos}}
+\index{getPos@{getPos}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Entity\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a88fb4962e5672072c16d99ce5134c6b1}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_a6c2cd79160cddba0b223f932c1d151f1}\label{classEntity_a6c2cd79160cddba0b223f932c1d151f1}} 
+\index{Entity@{Entity}!getSize@{getSize}}
+\index{getSize@{getSize}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Entity\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a0c6bc4e20438d1244ff57f32e35670dc}{IClient\+Entity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classEntity_a6c2cd79160cddba0b223f932c1d151f1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEntity_abadcf5fb781cafa3a9779091e210b96f}\label{classEntity_abadcf5fb781cafa3a9779091e210b96f}} 
+\index{Entity@{Entity}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{isAlive()}{isAlive()}}
+{\footnotesize\ttfamily bool Entity\+::is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}{IClient\+Entity}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classEntity_abadcf5fb781cafa3a9779091e210b96f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEntity_a25d9a35d2be7f2bd8a3409ac79cc8de9}\label{classEntity_a25d9a35d2be7f2bd8a3409ac79cc8de9}} 
+\index{Entity@{Entity}!isDeathFinish@{isDeathFinish}}
+\index{isDeathFinish@{isDeathFinish}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{isDeathFinish()}{isDeathFinish()}}
+{\footnotesize\ttfamily bool Entity\+::is\+Death\+Finish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a2ceec27a0d832d7c9288f33a77128a75}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_a7a82c1fe9f0eb0838437f5133ee302a0}\label{classEntity_a7a82c1fe9f0eb0838437f5133ee302a0}} 
+\index{Entity@{Entity}!restartClock@{restartClock}}
+\index{restartClock@{restartClock}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{restartClock()}{restartClock()}}
+{\footnotesize\ttfamily void Entity\+::restart\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_acfc56a9b9a54f4b9e4f4cfeb6dea7e79}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_ac5987db2dd874b3df2428196513766e4}\label{classEntity_ac5987db2dd874b3df2428196513766e4}} 
+\index{Entity@{Entity}!setColor@{setColor}}
+\index{setColor@{setColor}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily void Entity\+::set\+Color (\begin{DoxyParamCaption}\item[{const sf\+::\+Color \&}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a05fbc3364ad24350ab009caaa76497d7}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_a7dae281ff92be9bc98672cafe05c77ab}\label{classEntity_a7dae281ff92be9bc98672cafe05c77ab}} 
+\index{Entity@{Entity}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily void Entity\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{health }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_aaec5be6185d0a177e6d112313c268bfe}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_afdd29f9911c799abbbf1cc0d768ff754}\label{classEntity_afdd29f9911c799abbbf1cc0d768ff754}} 
+\index{Entity@{Entity}!setIsAlive@{setIsAlive}}
+\index{setIsAlive@{setIsAlive}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setIsAlive()}{setIsAlive()}}
+{\footnotesize\ttfamily void Entity\+::set\+Is\+Alive (\begin{DoxyParamCaption}\item[{bool}]{is\+Alive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a590c7ec5454edc074b8c9ccf1de405fa}{IClient\+Entity}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{classEntity_afdd29f9911c799abbbf1cc0d768ff754_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEntity_a992beaebe218e29a718f7805c9b0e364}\label{classEntity_a992beaebe218e29a718f7805c9b0e364}} 
+\index{Entity@{Entity}!setPos@{setPos}}
+\index{setPos@{setPos}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Entity\+::set\+Pos (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_aa4cbddeb9cd750678b4875bfe445db51}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_a1e3b4c159f98c669daa9e01cc875ec97}\label{classEntity_a1e3b4c159f98c669daa9e01cc875ec97}} 
+\index{Entity@{Entity}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void Entity\+::set\+Rotation (\begin{DoxyParamCaption}\item[{const float \&}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_a394da96330df4f8bbdb13a2fcac9a6e0}{IClient\+Entity}}.
+
+\mbox{\Hypertarget{classEntity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}\label{classEntity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}} 
+\index{Entity@{Entity}!update@{update}}
+\index{update@{update}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Entity\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIClientEntity_aed933ec470bc22847f058125442b4ac9}{IClient\+Entity}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classHeal_a6112557307ca96c42ede67d281c7ff35}{Heal}}, \mbox{\hyperlink{classHeal_a74c764dbf474f0d0de69b5c86ce10377}{Heal}}, and \mbox{\hyperlink{classPlayerShip_a618c1a8fd743a8fcbe9e60b44bd21dca}{Player\+Ship}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEntity_ace51d1b581f7f7992a0919a203e790ac}\label{classEntity_ace51d1b581f7f7992a0919a203e790ac}} 
+\index{Entity@{Entity}!\_animationClock@{\_animationClock}}
+\index{\_animationClock@{\_animationClock}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_animationClock}{\_animationClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Entity\+::\+\_\+animation\+Clock\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a2109c3bae235bc35fef203719c6c4258}\label{classEntity_a2109c3bae235bc35fef203719c6c4258}} 
+\index{Entity@{Entity}!\_deathAnimation@{\_deathAnimation}}
+\index{\_deathAnimation@{\_deathAnimation}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_deathAnimation}{\_deathAnimation}}
+{\footnotesize\ttfamily bool Entity\+::\+\_\+death\+Animation\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a9d07fb0bc4e2baa5ac218f2f3ee7beca}\label{classEntity_a9d07fb0bc4e2baa5ac218f2f3ee7beca}} 
+\index{Entity@{Entity}!\_deathClock@{\_deathClock}}
+\index{\_deathClock@{\_deathClock}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_deathClock}{\_deathClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Entity\+::\+\_\+death\+Clock\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a5d39f2687941274489028fe2c32aaf48}\label{classEntity_a5d39f2687941274489028fe2c32aaf48}} 
+\index{Entity@{Entity}!\_deathFinish@{\_deathFinish}}
+\index{\_deathFinish@{\_deathFinish}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_deathFinish}{\_deathFinish}}
+{\footnotesize\ttfamily bool Entity\+::\+\_\+death\+Finish\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a0130b195c2c74bf84e135d3eab95eb94}\label{classEntity_a0130b195c2c74bf84e135d3eab95eb94}} 
+\index{Entity@{Entity}!\_endColor@{\_endColor}}
+\index{\_endColor@{\_endColor}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_endColor}{\_endColor}}
+{\footnotesize\ttfamily sf\+::\+Color Entity\+::\+\_\+end\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a5d9f213ef26f1e09ebff7fcb46634b97}\label{classEntity_a5d9f213ef26f1e09ebff7fcb46634b97}} 
+\index{Entity@{Entity}!\_health@{\_health}}
+\index{\_health@{\_health}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_health}{\_health}}
+{\footnotesize\ttfamily int Entity\+::\+\_\+health\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_aacf8a96c8862a9a78707cc840e3cdd6b}\label{classEntity_aacf8a96c8862a9a78707cc840e3cdd6b}} 
+\index{Entity@{Entity}!\_isAlive@{\_isAlive}}
+\index{\_isAlive@{\_isAlive}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_isAlive}{\_isAlive}}
+{\footnotesize\ttfamily bool Entity\+::\+\_\+is\+Alive\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_ab8931a040758502fbaa50010dedd54c6}\label{classEntity_ab8931a040758502fbaa50010dedd54c6}} 
+\index{Entity@{Entity}!\_maxHealth@{\_maxHealth}}
+\index{\_maxHealth@{\_maxHealth}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_maxHealth}{\_maxHealth}}
+{\footnotesize\ttfamily int Entity\+::\+\_\+max\+Health\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_af56298c9fe871dcdd8c66127dcf653e0}\label{classEntity_af56298c9fe871dcdd8c66127dcf653e0}} 
+\index{Entity@{Entity}!\_particleSystem@{\_particleSystem}}
+\index{\_particleSystem@{\_particleSystem}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_particleSystem}{\_particleSystem}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classParticleSystem}{Particle\+System}} Entity\+::\+\_\+particle\+System\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a70316fde8272a3b08cbdc935f61477ac}\label{classEntity_a70316fde8272a3b08cbdc935f61477ac}} 
+\index{Entity@{Entity}!\_pos@{\_pos}}
+\index{\_pos@{\_pos}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_pos}{\_pos}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Entity\+::\+\_\+pos\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a1e7e03a90c8bea2689dd08f4c5177372}\label{classEntity_a1e7e03a90c8bea2689dd08f4c5177372}} 
+\index{Entity@{Entity}!\_sound1@{\_sound1}}
+\index{\_sound1@{\_sound1}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_sound1}{\_sound1}}
+{\footnotesize\ttfamily sf\+::\+Sound Entity\+::\+\_\+sound1\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_aed8845158d8cec2c780a13fe2fc89142}\label{classEntity_aed8845158d8cec2c780a13fe2fc89142}} 
+\index{Entity@{Entity}!\_soundBuf1@{\_soundBuf1}}
+\index{\_soundBuf1@{\_soundBuf1}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_soundBuf1}{\_soundBuf1}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer Entity\+::\+\_\+sound\+Buf1\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_affa34087931fd08b03afa12c0bd3554a}\label{classEntity_affa34087931fd08b03afa12c0bd3554a}} 
+\index{Entity@{Entity}!\_speed@{\_speed}}
+\index{\_speed@{\_speed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_speed}{\_speed}}
+{\footnotesize\ttfamily float Entity\+::\+\_\+speed\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a040bd9d02a9c5d0c7f07348bc15cc0a3}\label{classEntity_a040bd9d02a9c5d0c7f07348bc15cc0a3}} 
+\index{Entity@{Entity}!\_sprite@{\_sprite}}
+\index{\_sprite@{\_sprite}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_sprite}{\_sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Entity\+::\+\_\+sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a2d12858c82ff226a738dd4273412ccbd}\label{classEntity_a2d12858c82ff226a738dd4273412ccbd}} 
+\index{Entity@{Entity}!\_startColor@{\_startColor}}
+\index{\_startColor@{\_startColor}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_startColor}{\_startColor}}
+{\footnotesize\ttfamily sf\+::\+Color Entity\+::\+\_\+start\+Color\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classEntity_a8e409f1b737a84cd895e42e4ec8c28bc}\label{classEntity_a8e409f1b737a84cd895e42e4ec8c28bc}} 
+\index{Entity@{Entity}!\_texture@{\_texture}}
+\index{\_texture@{\_texture}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{\_texture}{\_texture}}
+{\footnotesize\ttfamily sf\+::\+Texture Entity\+::\+\_\+texture\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/entity/\mbox{\hyperlink{Entity_8hpp}{Entity.\+hpp}}\item 
+src/client/entity/\mbox{\hyperlink{Entity_8cpp}{Entity.\+cpp}}\end{DoxyCompactItemize}

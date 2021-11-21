@@ -1,0 +1,69 @@
+\hypertarget{Window_8hpp_source}{}\doxysection{Window.\+hpp}
+\label{Window_8hpp_source}\index{src/client/window/Window.hpp@{src/client/window/Window.hpp}}
+\mbox{\hyperlink{Window_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Window}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef WINDOW\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define WINDOW\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <SFML/OpenGL.hpp>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <asio.hpp>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Parallax_8hpp}{Parallax.hpp}}"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Game_8hpp}{Game.hpp}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Menu_8hpp}{Menu.hpp}}"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{RtypeException_8hpp}{RtypeException.hpp}}"{}}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classWindow}{Window}} \{}
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \textcolor{keyword}{enum} \mbox{\hyperlink{classWindow_afcb219f085606ba4a92a80e3f06b6245}{Scene}} \{}
+\DoxyCodeLine{23             \mbox{\hyperlink{classWindow_afcb219f085606ba4a92a80e3f06b6245a7fb7e089ef84e83c5ff866a2c081567f}{MENU}},}
+\DoxyCodeLine{24             \mbox{\hyperlink{classWindow_afcb219f085606ba4a92a80e3f06b6245a6803bb7d461d10580ad0612248ef330b}{GAME}},}
+\DoxyCodeLine{25         \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         \mbox{\hyperlink{classWindow_afbbf6fabca06597e070b5a9488d7f8aa}{Window}}(\textcolor{keyword}{const} std::string \&title);}
+\DoxyCodeLine{28         \mbox{\hyperlink{classWindow_a245d821e6016fa1f6970ccbbedd635f6}{\string~Window}}();}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classWindow_a2f98f462a6e05da83c44a0a0e3e61436}{gameLoop}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{33     \textcolor{keyword}{private}:}
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} event();}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} update();}
+\DoxyCodeLine{36         \textcolor{keywordtype}{void} draw();}
+\DoxyCodeLine{37         \textcolor{keywordtype}{void} readTcp();}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} readUdp();}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} switchScene();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         sf::RenderWindow \_window;}
+\DoxyCodeLine{42         sf::Event \_event;}
+\DoxyCodeLine{43         \mbox{\hyperlink{classParallax}{Parallax}} \_parallax;}
+\DoxyCodeLine{44         \mbox{\hyperlink{classMenu}{Menu}} \_menu;}
+\DoxyCodeLine{45         \mbox{\hyperlink{classGame}{Game}} \_game;}
+\DoxyCodeLine{46         \mbox{\hyperlink{classWindow_afcb219f085606ba4a92a80e3f06b6245}{Scene}} \_scene;}
+\DoxyCodeLine{47         \textcolor{keywordtype}{bool} \_lostConnection;}
+\DoxyCodeLine{48         \textcolor{keywordtype}{bool} \_gameStarted;}
+\DoxyCodeLine{49         \textcolor{keywordtype}{bool} \_closeGame;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         asio::io\_context \_io\_context;}
+\DoxyCodeLine{52         asio::ip::tcp::resolver *\_resolver;}
+\DoxyCodeLine{53         asio::ip::tcp::socket *\_tcpSocket;}
+\DoxyCodeLine{54         asio::ip::udp::socket *\_udpSocket;}
+\DoxyCodeLine{55         \textcolor{keywordtype}{char} \_tcpBuf[1024];}
+\DoxyCodeLine{56         \textcolor{keywordtype}{char} \_udpBuf[1024];}
+\DoxyCodeLine{57         asio::error\_code \_tcpError;}
+\DoxyCodeLine{58         asio::error\_code \_udpError;}
+\DoxyCodeLine{59         asio::ip::tcp::endpoint \_tcpEndpoint;}
+\DoxyCodeLine{60         asio::ip::udp::endpoint \_udpEndpoint;}
+\DoxyCodeLine{61 \};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !WINDOW\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,51 @@
+\hypertarget{MobSfml_8hpp_source}{}\doxysection{Mob\+Sfml.\+hpp}
+\label{MobSfml_8hpp_source}\index{src/client/entity/MobSfml.hpp@{src/client/entity/MobSfml.hpp}}
+\mbox{\hyperlink{MobSfml_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** Untitled (Workspace)}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** MobSfml}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef MOBSFML\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define MOBSFML\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <SFML/Graphics.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <SFML/OpenGL.hpp>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{IEntity_8hpp}{IEntity.hpp}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classMobSfml}{MobSfml}} \{}
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18         \mbox{\hyperlink{classMobSfml_a1f79c78b5c7dd94453d74b83d5b76add}{MobSfml}}(\textcolor{keyword}{const} sf::Texture \&texture, \textcolor{keyword}{const} sf::Vector2f \&pos, \textcolor{keyword}{const} \textcolor{keywordtype}{float} \&speed = 0, \textcolor{keyword}{const} sf::Color \&startColor = sf::Color::White, \textcolor{keyword}{const} sf::Color \&endColor = sf::Color::White);}
+\DoxyCodeLine{19         \mbox{\hyperlink{classMobSfml_a3969bf42ddee645d00dd28c525ffdf10}{\string~MobSfml}}();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{float} \mbox{\hyperlink{classMobSfml_acbd0dc0162a1cb9471cbf3db8109a222}{getElapsedTime}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{22         sf::Vector2f \mbox{\hyperlink{classMobSfml_ae7707af3ecb96742c3d97066af41a2f6}{getPos}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{23         sf::Vector2f \mbox{\hyperlink{classMobSfml_a01852e1a311a5f90109d601c9150b854}{getSize}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{24         sf::FloatRect \mbox{\hyperlink{classMobSfml_aee5f18763e82af03d9a88da3c9ca147c}{getGlobalBounds}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_ac8c637bf6b369c6a55b6a0a55b44eaed}{setPos}}(\textcolor{keyword}{const} sf::Vector2f \&pos);}
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_afee64871dbcbf09b518b4c3b8d2ead77}{setRotation}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} \&angle);}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_ac5eab933bfe8372361cb5b110ec7f065}{setColor}}(\textcolor{keyword}{const} sf::Color \&color);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_a7ea8109b9d47521f994df411ed369597}{restartClock}}();}
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_a8cb26293313b679afb6b818486316cb0}{draw}}(sf::RenderWindow \&window);}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMobSfml_a403cd729f32ac5ae178c644e1fc093fd}{update}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{34         sf::Texture \mbox{\hyperlink{classMobSfml_ab96b06905aafbb75dae5217e92cc24c3}{\_texture}};}
+\DoxyCodeLine{35         sf::Sprite \mbox{\hyperlink{classMobSfml_a0782f65a9acd0275da340aba0b4f3e2b}{\_sprite}};}
+\DoxyCodeLine{36         sf::Vector2f \mbox{\hyperlink{classMobSfml_a3951f14316bbc64d66a6d6c6b261a702}{\_pos}};}
+\DoxyCodeLine{37         sf::Clock \mbox{\hyperlink{classMobSfml_a813684d69250bea7216673ca6dfe3bbe}{\_clock}};}
+\DoxyCodeLine{38         sf::Color \mbox{\hyperlink{classMobSfml_a21dc5873e72a0130833068a749300a26}{\_startColor}};}
+\DoxyCodeLine{39         sf::Color \mbox{\hyperlink{classMobSfml_a0191f8571a31248394e767d88c242825}{\_endColor}};}
+\DoxyCodeLine{40         \textcolor{keywordtype}{float} \mbox{\hyperlink{classMobSfml_a7eb4ee5de0048ca7446897d89cf2dec9}{\_speed}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keyword}{private}:}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !MOBSFML\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

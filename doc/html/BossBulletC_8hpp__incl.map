@@ -1,0 +1,11 @@
+<map id="src/client/entity/BossBulletC.hpp" name="src/client/entity/BossBulletC.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="156,5,352,47"/>
+<area shape="rect" id="node2" href="$Entity_8hpp.html" title=" " alt="" coords="210,95,297,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="242,319,388,345"/>
+<area shape="rect" id="node4" title=" " alt="" coords="26,169,166,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="190,169,317,196"/>
+<area shape="rect" id="node6" href="$IClientEntity_8hpp.html" title=" " alt="" coords="252,244,380,271"/>
+<area shape="rect" id="node7" href="$Particles_8hpp.html" title=" " alt="" coords="393,169,498,196"/>
+<area shape="rect" id="node8" href="$Utils_8hpp.html" title=" " alt="" coords="406,244,486,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="413,319,481,345"/>
+</map>

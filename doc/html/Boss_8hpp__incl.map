@@ -1,0 +1,14 @@
+<map id="src/server/entities/Boss/Boss.hpp" name="src/server/entities/Boss/Boss.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="216,5,355,47"/>
+<area shape="rect" id="node2" href="$ServerEntity_8hpp.html" title=" " alt="" coords="100,169,228,196"/>
+<area shape="rect" id="node9" href="$EntityLoad_8hpp.html" title=" " alt="" coords="226,95,345,121"/>
+<area shape="rect" id="node12" title=" " alt="" coords="369,95,433,121"/>
+<area shape="rect" id="node3" href="$IEntity_8hpp.html" title=" " alt="" coords="165,244,256,271"/>
+<area shape="rect" id="node4" title=" " alt="" coords="323,393,381,420"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,393,85,420"/>
+<area shape="rect" id="node6" title=" " alt="" coords="83,319,160,345"/>
+<area shape="rect" id="node7" href="$CustomRect_8hpp.html" title=" " alt="" coords="185,319,314,345"/>
+<area shape="rect" id="node8" title=" " alt="" coords="390,319,453,345"/>
+<area shape="rect" id="node10" title=" " alt="" coords="252,169,319,196"/>
+<area shape="rect" id="node11" title=" " alt="" coords="343,169,393,196"/>
+</map>

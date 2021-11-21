@@ -1,0 +1,4 @@
+<map id="ServerEntity::isColliding" name="ServerEntity::isColliding">
+<area shape="rect" id="node1" title="Is entity colliding with another." alt="" coords="5,5,183,32"/>
+<area shape="rect" id="node2" href="$classCustomRect.html#a21fbb6a3483094e727734fe0e0f40caa" title="Check if the rect collides with the other rect." alt="" coords="231,5,408,32"/>
+</map>

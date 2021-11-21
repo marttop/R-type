@@ -19,7 +19,16 @@ class IEntity {
         IEntity() = default;
         virtual ~IEntity() = default;
 
+        /**
+         * @brief Updates the entity
+         *
+         */
         virtual void update() = 0;
+
+        /**
+         * @brief Function not used
+         *
+         */
         virtual void sendData() = 0;
 
         /**
@@ -28,20 +37,113 @@ class IEntity {
          */
         virtual void addLifeEntity(int lifeAdded) = 0;
 
+        /**
+         * @brief Is the entity alive.
+         *
+         * @return true
+         * @return false
+         */
         virtual bool isAlive() const = 0;
+
+        /**
+         * @brief Set the Alive object
+         *
+         * @param life
+         */
         virtual void setAlive(bool life) = 0;
+
+        /**
+         * @brief Is entity colliding with another.
+         *
+         * @param other
+         * @return true
+         * @return false
+         */
         virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
+
+        /**
+         * @brief Get the Rect object
+         *
+         * @return ** CustomRect
+         */
         virtual CustomRect getRect() const = 0;
+
+        /**
+         * @brief Get the Type object
+         *
+         * @return ** std::string
+         */
         virtual std::string getType() const = 0;
+
+        /**
+         * @brief Get the Id object
+         *
+         * @return ** std::string
+         */
         virtual std::string getId() const = 0;
+
+        /**
+         * @brief Set the Id object
+         *
+         * @param id
+         */
         virtual void setId(const std::string id) = 0;
+
+        /**
+         * @brief Get the Direction object
+         *
+         * @return ** std::pair<double, double> (x, y)
+         */
         virtual std::pair<double, double> getDirection() const = 0;
+
+        /**
+         * @brief Get the Position object
+         *
+         * @return std::pair<double, double> (x, y)
+         */
         virtual std::pair<double, double> getPosition() const = 0;
+
+        /**
+         * @brief Set the Position object
+         *
+         * @param x
+         * @param y
+         */
         virtual void setPosition(double x, double y) = 0;
+
+        /**
+         * @brief Set the Direction object
+         *
+         * @param x
+         * @param y
+         */
         virtual void setDirection(double x, double y) = 0;
+
+        /**
+         * @brief Get the Speed object
+         *
+         * @return ** double
+         */
         virtual double getSpeed() const = 0;
+
+        /**
+         * @brief Get the Hp object
+         *
+         * @return ** int
+         */
         virtual int getHp() const = 0;
+
+        /**
+         * @brief Get the Ammos object
+         *
+         * @return ** std::vector<std::shared_ptr<IEntity>>
+         */
         virtual std::vector<std::shared_ptr<IEntity>> getAmmos() const = 0;
+
+        /**
+         * @brief Deletes all the ammos in the list of the entity.
+         *
+         */
         virtual void clearAmmos() = 0;
 
     protected:

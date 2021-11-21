@@ -1,0 +1,236 @@
+\hypertarget{classIClientEntity}{}\doxysection{IClient\+Entity Class Reference}
+\label{classIClientEntity}\index{IClientEntity@{IClientEntity}}
+
+
+{\ttfamily \#include $<$IClient\+Entity.\+hpp$>$}
+
+
+
+Inheritance diagram for IClient\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classIClientEntity__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for IClient\+Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classIClientEntity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIClientEntity_a37b4b87641a91a57a4c6ae0761d51eb0}{IClient\+Entity}} ()=default
+\item 
+virtual \mbox{\hyperlink{classIClientEntity_aa961fe58a6949508e5fb6ea7cd4d6884}{$\sim$\+IClient\+Entity}} ()=default
+\item 
+virtual float \mbox{\hyperlink{classIClientEntity_a276c1b69004cc910978109c751890db5}{get\+Elapsed\+Time}} () const =0
+\item 
+virtual sf\+::\+Vector2f \mbox{\hyperlink{classIClientEntity_a88fb4962e5672072c16d99ce5134c6b1}{get\+Pos}} () const =0
+\item 
+virtual sf\+::\+Vector2f \mbox{\hyperlink{classIClientEntity_a0c6bc4e20438d1244ff57f32e35670dc}{get\+Size}} () const =0
+\item 
+virtual sf\+::\+Float\+Rect \mbox{\hyperlink{classIClientEntity_ab102618b3a7ae1cc941a6c2352175679}{get\+Global\+Bounds}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_aa4cbddeb9cd750678b4875bfe445db51}{set\+Pos}} (const sf\+::\+Vector2f \&pos)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_a394da96330df4f8bbdb13a2fcac9a6e0}{set\+Rotation}} (const float \&angle)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_a05fbc3364ad24350ab009caaa76497d7}{set\+Color}} (const sf\+::\+Color \&color)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_aaec5be6185d0a177e6d112313c268bfe}{set\+Health}} (int health)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_acfc56a9b9a54f4b9e4f4cfeb6dea7e79}{restart\+Clock}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_a97ff119821568d3ad29e0732ff0d4672}{draw\+Sprite}} (sf\+::\+Render\+Window \&window)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_a2ac7f999312a729b4520c4c6540e12be}{draw\+Particles}} (sf\+::\+Render\+Window \&window)=0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_aed933ec470bc22847f058125442b4ac9}{update}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}{is\+Alive}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classIClientEntity_a2ceec27a0d832d7c9288f33a77128a75}{is\+Death\+Finish}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classIClientEntity_a590c7ec5454edc074b8c9ccf1de405fa}{set\+Is\+Alive}} (bool \mbox{\hyperlink{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}{is\+Alive}})=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIClientEntity_a37b4b87641a91a57a4c6ae0761d51eb0}\label{classIClientEntity_a37b4b87641a91a57a4c6ae0761d51eb0}} 
+\index{IClientEntity@{IClientEntity}!IClientEntity@{IClientEntity}}
+\index{IClientEntity@{IClientEntity}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{IClientEntity()}{IClientEntity()}}
+{\footnotesize\ttfamily IClient\+Entity\+::\+IClient\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classIClientEntity_aa961fe58a6949508e5fb6ea7cd4d6884}\label{classIClientEntity_aa961fe58a6949508e5fb6ea7cd4d6884}} 
+\index{IClientEntity@{IClientEntity}!````~IClientEntity@{$\sim$IClientEntity}}
+\index{````~IClientEntity@{$\sim$IClientEntity}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{$\sim$IClientEntity()}{~IClientEntity()}}
+{\footnotesize\ttfamily virtual IClient\+Entity\+::$\sim$\+IClient\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIClientEntity_a2ac7f999312a729b4520c4c6540e12be}\label{classIClientEntity_a2ac7f999312a729b4520c4c6540e12be}} 
+\index{IClientEntity@{IClientEntity}!drawParticles@{drawParticles}}
+\index{drawParticles@{drawParticles}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{drawParticles()}{drawParticles()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::draw\+Particles (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a0db96afd3c1595f1aea1d765f4611995}{Entity}}, \mbox{\hyperlink{classBidosSlave_a5cb6831834f57ce270f6845c2f028d9d}{Bidos\+Slave}}, \mbox{\hyperlink{classBossBulletC_ac9e1edfe25a48981902b980dd888ebb5}{Boss\+BulletC}}, \mbox{\hyperlink{classBullet_a57f6232334d0bbb6c100a135783768a4}{Bullet}}, \mbox{\hyperlink{classHeal_a49fbb676aed8fe406478ded2976864d9}{Heal}}, and \mbox{\hyperlink{classPlayerShip_af238454f4d7767f601b34dc3559eb28c}{Player\+Ship}}.
+
+\mbox{\Hypertarget{classIClientEntity_a97ff119821568d3ad29e0732ff0d4672}\label{classIClientEntity_a97ff119821568d3ad29e0732ff0d4672}} 
+\index{IClientEntity@{IClientEntity}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a73314638228926c6cc510574ecea377e}{Entity}}, \mbox{\hyperlink{classBidosSlave_a0de27e3f6c6d338e9e910e98ab5ea78b}{Bidos\+Slave}}, \mbox{\hyperlink{classBossBulletC_aad33f2e593ad6af1b3bb51b261d5639a}{Boss\+BulletC}}, \mbox{\hyperlink{classBossC_ab202f295820b1f08be56a383443f2b21}{BossC}}, \mbox{\hyperlink{classBullet_a34aad34ef8d23a58e040997a0c114d48}{Bullet}}, \mbox{\hyperlink{classHeal_afa6242324c2391b650bb553dcd8a5dda}{Heal}}, and \mbox{\hyperlink{classPlayerShip_a2243eee78f6ebeb703489f93714773cc}{Player\+Ship}}.
+
+\mbox{\Hypertarget{classIClientEntity_a276c1b69004cc910978109c751890db5}\label{classIClientEntity_a276c1b69004cc910978109c751890db5}} 
+\index{IClientEntity@{IClientEntity}!getElapsedTime@{getElapsedTime}}
+\index{getElapsedTime@{getElapsedTime}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{getElapsedTime()}{getElapsedTime()}}
+{\footnotesize\ttfamily virtual float IClient\+Entity\+::get\+Elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a87e11b5e7ee68728deea0d1c83bd92fa}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_ab102618b3a7ae1cc941a6c2352175679}\label{classIClientEntity_ab102618b3a7ae1cc941a6c2352175679}} 
+\index{IClientEntity@{IClientEntity}!getGlobalBounds@{getGlobalBounds}}
+\index{getGlobalBounds@{getGlobalBounds}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{getGlobalBounds()}{getGlobalBounds()}}
+{\footnotesize\ttfamily virtual sf\+::\+Float\+Rect IClient\+Entity\+::get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_ac2f144301ca57dd8c4410bd1cd1c259e}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a88fb4962e5672072c16d99ce5134c6b1}\label{classIClientEntity_a88fb4962e5672072c16d99ce5134c6b1}} 
+\index{IClientEntity@{IClientEntity}!getPos@{getPos}}
+\index{getPos@{getPos}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily virtual sf\+::\+Vector2f IClient\+Entity\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_accc9c0c4d3d0083c08fcd866bd1d26e6}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a0c6bc4e20438d1244ff57f32e35670dc}\label{classIClientEntity_a0c6bc4e20438d1244ff57f32e35670dc}} 
+\index{IClientEntity@{IClientEntity}!getSize@{getSize}}
+\index{getSize@{getSize}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily virtual sf\+::\+Vector2f IClient\+Entity\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a6c2cd79160cddba0b223f932c1d151f1}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}\label{classIClientEntity_ae58d89d7d8a0a5f9e0312b558fb3d1c5}} 
+\index{IClientEntity@{IClientEntity}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{isAlive()}{isAlive()}}
+{\footnotesize\ttfamily virtual bool IClient\+Entity\+::is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_abadcf5fb781cafa3a9779091e210b96f}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a2ceec27a0d832d7c9288f33a77128a75}\label{classIClientEntity_a2ceec27a0d832d7c9288f33a77128a75}} 
+\index{IClientEntity@{IClientEntity}!isDeathFinish@{isDeathFinish}}
+\index{isDeathFinish@{isDeathFinish}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{isDeathFinish()}{isDeathFinish()}}
+{\footnotesize\ttfamily virtual bool IClient\+Entity\+::is\+Death\+Finish (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a25d9a35d2be7f2bd8a3409ac79cc8de9}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_acfc56a9b9a54f4b9e4f4cfeb6dea7e79}\label{classIClientEntity_acfc56a9b9a54f4b9e4f4cfeb6dea7e79}} 
+\index{IClientEntity@{IClientEntity}!restartClock@{restartClock}}
+\index{restartClock@{restartClock}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{restartClock()}{restartClock()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::restart\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a7a82c1fe9f0eb0838437f5133ee302a0}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a05fbc3364ad24350ab009caaa76497d7}\label{classIClientEntity_a05fbc3364ad24350ab009caaa76497d7}} 
+\index{IClientEntity@{IClientEntity}!setColor@{setColor}}
+\index{setColor@{setColor}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::set\+Color (\begin{DoxyParamCaption}\item[{const sf\+::\+Color \&}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_ac5987db2dd874b3df2428196513766e4}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_aaec5be6185d0a177e6d112313c268bfe}\label{classIClientEntity_aaec5be6185d0a177e6d112313c268bfe}} 
+\index{IClientEntity@{IClientEntity}!setHealth@{setHealth}}
+\index{setHealth@{setHealth}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{setHealth()}{setHealth()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::set\+Health (\begin{DoxyParamCaption}\item[{int}]{health }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a7dae281ff92be9bc98672cafe05c77ab}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a590c7ec5454edc074b8c9ccf1de405fa}\label{classIClientEntity_a590c7ec5454edc074b8c9ccf1de405fa}} 
+\index{IClientEntity@{IClientEntity}!setIsAlive@{setIsAlive}}
+\index{setIsAlive@{setIsAlive}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{setIsAlive()}{setIsAlive()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::set\+Is\+Alive (\begin{DoxyParamCaption}\item[{bool}]{is\+Alive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_afdd29f9911c799abbbf1cc0d768ff754}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_aa4cbddeb9cd750678b4875bfe445db51}\label{classIClientEntity_aa4cbddeb9cd750678b4875bfe445db51}} 
+\index{IClientEntity@{IClientEntity}!setPos@{setPos}}
+\index{setPos@{setPos}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::set\+Pos (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a992beaebe218e29a718f7805c9b0e364}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_a394da96330df4f8bbdb13a2fcac9a6e0}\label{classIClientEntity_a394da96330df4f8bbdb13a2fcac9a6e0}} 
+\index{IClientEntity@{IClientEntity}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::set\+Rotation (\begin{DoxyParamCaption}\item[{const float \&}]{angle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEntity_a1e3b4c159f98c669daa9e01cc875ec97}{Entity}}.
+
+\mbox{\Hypertarget{classIClientEntity_aed933ec470bc22847f058125442b4ac9}\label{classIClientEntity_aed933ec470bc22847f058125442b4ac9}} 
+\index{IClientEntity@{IClientEntity}!update@{update}}
+\index{update@{update}!IClientEntity@{IClientEntity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void IClient\+Entity\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBossC_a6c97dda5c8460726b63f3ddc6abe1096}{BossC}}, \mbox{\hyperlink{classEntity_a00b6eeaf99b35c8f8b10b5fbfc1baf4f}{Entity}}, \mbox{\hyperlink{classHeal_a6112557307ca96c42ede67d281c7ff35}{Heal}}, \mbox{\hyperlink{classBidosSlave_aa499c2c0b187acaa597fc8fdd270341b}{Bidos\+Slave}}, \mbox{\hyperlink{classBossBulletC_ab0388c450ac5518c9c132ebeaec231e3}{Boss\+BulletC}}, \mbox{\hyperlink{classBullet_a738b3fde0d24a67ea0a922cbf9693803}{Bullet}}, \mbox{\hyperlink{classHeal_a74c764dbf474f0d0de69b5c86ce10377}{Heal}}, and \mbox{\hyperlink{classPlayerShip_a618c1a8fd743a8fcbe9e60b44bd21dca}{Player\+Ship}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/interface/\mbox{\hyperlink{IClientEntity_8hpp}{IClient\+Entity.\+hpp}}\end{DoxyCompactItemize}

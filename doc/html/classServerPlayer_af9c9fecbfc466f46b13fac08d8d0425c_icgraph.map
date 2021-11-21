@@ -1,0 +1,4 @@
+<map id="ServerPlayer::shoot" name="ServerPlayer::shoot">
+<area shape="rect" id="node1" title="Creates a shooting entity in the player." alt="" coords="212,5,361,32"/>
+<area shape="rect" id="node2" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="5,5,164,32"/>
+</map>

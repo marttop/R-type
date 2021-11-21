@@ -1,0 +1,11 @@
+<map id="ServerRoom::broadCastUdp" name="ServerRoom::broadCastUdp">
+<area shape="rect" id="node1" title="Broadcast to all the players in the room." alt="" coords="1187,132,1389,159"/>
+<area shape="rect" id="node2" href="$classServerRoom.html#ada079a7a898dad497ea5273e22a94c6a" title="Create all the players." alt="" coords="940,5,1139,32"/>
+<area shape="rect" id="node3" href="$classServerRoom.html#a09ac325d82194a4470d0e03c924bbc2e" title="Launches the game." alt="" coords="715,69,892,96"/>
+<area shape="rect" id="node5" href="$classServerPlayer.html#aeeb880ae5fb11205daca89d4a9e4a842" title="Async recieve for the UDP user." alt="" coords="224,132,433,159"/>
+<area shape="rect" id="node7" href="$classServerPlayer.html#af9c9fecbfc466f46b13fac08d8d0425c" title="Creates a shooting entity in the player." alt="" coords="965,208,1114,235"/>
+<area shape="rect" id="node8" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="724,233,883,260"/>
+<area shape="rect" id="node9" href="$classServerRoom.html#abbc07051548fb4b40cf6e8abb8669a2c" title="Infinite loop of the game called by PlayGame()." alt="" coords="946,107,1133,133"/>
+<area shape="rect" id="node4" href="$classServerRoom.html#ae3c5fe48645a8393351e25b0ade8bd40" title="Returns the game thread ready to be detached." alt="" coords="481,81,667,108"/>
+<area shape="rect" id="node6" href="$classServerPlayer.html#a6ab9f3f17477b8cdd42bc95b65b4934e" title="Starts udp commincation in the room." alt="" coords="5,132,176,159"/>
+</map>

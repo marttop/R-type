@@ -1,0 +1,113 @@
+\hypertarget{classServerMobSpawnConf}{}\doxysection{Server\+Mob\+Spawn\+Conf Class Reference}
+\label{classServerMobSpawnConf}\index{ServerMobSpawnConf@{ServerMobSpawnConf}}
+
+
+this class create with conf file a spawn conf object wich let you get for room the type, the number and when you need to spawn mob  
+
+
+
+
+{\ttfamily \#include $<$Server\+Mob\+Spawn\+Conf.\+hpp$>$}
+
+
+
+Collaboration diagram for Server\+Mob\+Spawn\+Conf\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classServerMobSpawnConf__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServerMobSpawnConf_aabe6c8c1f1cb1986ef151140227c1ce8}{Server\+Mob\+Spawn\+Conf}} (const std\+::string type, int time\+Spawn, int number\+Spawn)
+\begin{DoxyCompactList}\small\item\em dedede \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServerMobSpawnConf_a0c79b9a0ec756f221a7a8a455fc3c4fa}{$\sim$\+Server\+Mob\+Spawn\+Conf}} ()
+\item 
+int \mbox{\hyperlink{classServerMobSpawnConf_a637daee9e8beb7a3910e09ed6e73fa7a}{get\+Time\+To\+Spawn}} () const
+\begin{DoxyCompactList}\small\item\em Get the Time To Spawn object in seconds. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classServerMobSpawnConf_a1bd198a2fa8b2c9e7a53f01dd6ef18c3}{get\+Type\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Get the Type Entities object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServerMobSpawnConf_a4b4be14b98b3fe2075b3bb03c8902a06}{get\+Number\+Of\+Entities}} () const
+\begin{DoxyCompactList}\small\item\em Get the Number Of Entities object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+this class create with conf file a spawn conf object wich let you get for room the type, the number and when you need to spawn mob 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServerMobSpawnConf_aabe6c8c1f1cb1986ef151140227c1ce8}\label{classServerMobSpawnConf_aabe6c8c1f1cb1986ef151140227c1ce8}} 
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\doxysubsubsection{\texorpdfstring{ServerMobSpawnConf()}{ServerMobSpawnConf()}}
+{\footnotesize\ttfamily Server\+Mob\+Spawn\+Conf\+::\+Server\+Mob\+Spawn\+Conf (\begin{DoxyParamCaption}\item[{const std\+::string}]{type,  }\item[{int}]{time\+Spawn,  }\item[{int}]{number\+Spawn }\end{DoxyParamCaption})}
+
+
+
+dedede 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & type of Mob to spawn \\
+\hline
+{\em time\+Spawn} & when the mob spawn in second \\
+\hline
+{\em number\+Spawn} & number of time the entities spawn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServerMobSpawnConf_a0c79b9a0ec756f221a7a8a455fc3c4fa}\label{classServerMobSpawnConf_a0c79b9a0ec756f221a7a8a455fc3c4fa}} 
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!````~ServerMobSpawnConf@{$\sim$ServerMobSpawnConf}}
+\index{````~ServerMobSpawnConf@{$\sim$ServerMobSpawnConf}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\doxysubsubsection{\texorpdfstring{$\sim$ServerMobSpawnConf()}{~ServerMobSpawnConf()}}
+{\footnotesize\ttfamily Server\+Mob\+Spawn\+Conf\+::$\sim$\+Server\+Mob\+Spawn\+Conf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerMobSpawnConf_a4b4be14b98b3fe2075b3bb03c8902a06}\label{classServerMobSpawnConf_a4b4be14b98b3fe2075b3bb03c8902a06}} 
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!getNumberOfEntities@{getNumberOfEntities}}
+\index{getNumberOfEntities@{getNumberOfEntities}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\doxysubsubsection{\texorpdfstring{getNumberOfEntities()}{getNumberOfEntities()}}
+{\footnotesize\ttfamily int Server\+Mob\+Spawn\+Conf\+::get\+Number\+Of\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Number Of Entities object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerMobSpawnConf_a637daee9e8beb7a3910e09ed6e73fa7a}\label{classServerMobSpawnConf_a637daee9e8beb7a3910e09ed6e73fa7a}} 
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!getTimeToSpawn@{getTimeToSpawn}}
+\index{getTimeToSpawn@{getTimeToSpawn}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\doxysubsubsection{\texorpdfstring{getTimeToSpawn()}{getTimeToSpawn()}}
+{\footnotesize\ttfamily int Server\+Mob\+Spawn\+Conf\+::get\+Time\+To\+Spawn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Time To Spawn object in seconds. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerMobSpawnConf_a1bd198a2fa8b2c9e7a53f01dd6ef18c3}\label{classServerMobSpawnConf_a1bd198a2fa8b2c9e7a53f01dd6ef18c3}} 
+\index{ServerMobSpawnConf@{ServerMobSpawnConf}!getTypeEntities@{getTypeEntities}}
+\index{getTypeEntities@{getTypeEntities}!ServerMobSpawnConf@{ServerMobSpawnConf}}
+\doxysubsubsection{\texorpdfstring{getTypeEntities()}{getTypeEntities()}}
+{\footnotesize\ttfamily std\+::string Server\+Mob\+Spawn\+Conf\+::get\+Type\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Type Entities object. 
+
+\begin{DoxyReturn}{Returns}
+$\ast$$\ast$ const std\+::string 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/engine/\mbox{\hyperlink{ServerMobSpawnConf_8hpp}{Server\+Mob\+Spawn\+Conf.\+hpp}}\item 
+src/server/engine/\mbox{\hyperlink{ServerMobSpawnConf_8cpp}{Server\+Mob\+Spawn\+Conf.\+cpp}}\end{DoxyCompactItemize}

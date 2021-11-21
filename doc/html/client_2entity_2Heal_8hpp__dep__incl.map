@@ -1,0 +1,11 @@
+<map id="src/client/entity/Heal.hpp" name="src/client/entity/Heal.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="195,5,381,32"/>
+<area shape="rect" id="node2" href="$EntityFactory_8hpp.html" title=" " alt="" coords="107,80,272,121"/>
+<area shape="rect" id="node9" href="$client_2entity_2Heal_8cpp.html" title=" " alt="" coords="296,87,480,114"/>
+<area shape="rect" id="node3" href="$EntityFactory_8cpp.html" title=" " alt="" coords="5,169,171,211"/>
+<area shape="rect" id="node4" href="$Game_8hpp.html" title=" " alt="" coords="195,177,389,203"/>
+<area shape="rect" id="node5" href="$Game_8cpp.html" title=" " alt="" coords="81,259,273,285"/>
+<area shape="rect" id="node6" href="$Window_8hpp.html" title=" " alt="" coords="297,259,516,285"/>
+<area shape="rect" id="node7" href="$client_2main_8cpp.html" title=" " alt="" coords="231,333,377,360"/>
+<area shape="rect" id="node8" href="$Window_8cpp.html" title=" " alt="" coords="401,333,618,360"/>
+</map>

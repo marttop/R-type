@@ -1,0 +1,69 @@
+\hypertarget{ServerEntity_8hpp_source}{}\doxysection{Server\+Entity.\+hpp}
+\label{ServerEntity_8hpp_source}\index{src/server/engine/ServerEntity.hpp@{src/server/engine/ServerEntity.hpp}}
+\mbox{\hyperlink{ServerEntity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/501-\/NCE-\/5-\/1-\/rtype-\/antonin.fille}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Entity}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef ENTITY\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define ENTITY\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{IEntity_8hpp}{IEntity.hpp}}"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classServerEntity}{ServerEntity}} : \textcolor{keyword}{public} \mbox{\hyperlink{classIEntity}{IEntity}} \{}
+\DoxyCodeLine{14     \textcolor{keyword}{public}:}
+\DoxyCodeLine{15         \mbox{\hyperlink{classServerEntity_aea0f8043c778331693ba8a348cd9d47e}{ServerEntity}}(\textcolor{keyword}{const} \mbox{\hyperlink{classCustomRect}{CustomRect}} \&customRect,}
+\DoxyCodeLine{16                         \textcolor{keyword}{const} std::string \&type = \textcolor{stringliteral}{"{}default"{}},}
+\DoxyCodeLine{17                         \textcolor{keyword}{const} std::string \&\textcolor{keywordtype}{id} = \textcolor{stringliteral}{"{}0"{}},}
+\DoxyCodeLine{18                         \textcolor{keywordtype}{int} speed = 5,}
+\DoxyCodeLine{19                         \textcolor{keywordtype}{int} health = 1);}
+\DoxyCodeLine{20         \mbox{\hyperlink{classServerEntity_adeeeedd0dc4d2e364d80936fc821e271}{\string~ServerEntity}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{26         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_a10ad07157f4ad9e3059496c086b0059f}{sendData}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_af1b6df8d9e414561f5ff45999ee1ec77}{update}}() = 0;}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_a1c0c32266bf4c7329d0ca397d638cb33}{setId}}(\textcolor{keyword}{const} std::string \textcolor{keywordtype}{id});}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServerEntity_a350f979b0a159b5be0a894a72689c86f}{isAlive}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_a0feab00da45d3be0a2e7b99e5bacd16d}{setAlive}}(\textcolor{keywordtype}{bool} life);}
+\DoxyCodeLine{34         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_a26a3c70ff4f34fdd9b8ca46aaacc1a77}{addLifeEntity}}(\textcolor{keywordtype}{int} lifeAdded);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         std::string \mbox{\hyperlink{classServerEntity_a3fb483762bb0bca311b80c71c2b211f7}{getId}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{37         \mbox{\hyperlink{classCustomRect}{CustomRect}} \mbox{\hyperlink{classServerEntity_ae418d986e5ec2cfcd959dd94e9531951}{getRect}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServerEntity_ae3f0682169f572d3c123974c0f961f5a}{isColliding}}(\textcolor{keyword}{const} std::shared\_ptr<IEntity> \&other) \textcolor{keyword}{const};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_afaaae4d9faa86e7712a9cb66ae99e97f}{setDirection}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y);}
+\DoxyCodeLine{42         std::pair<double, double> \mbox{\hyperlink{classServerEntity_a3de74aab9f2a934c124c5aa600b02e10}{getDirection}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{43         std::pair<double, double> \mbox{\hyperlink{classServerEntity_adb5a21f4e3a27e97e5a96e2d5281349c}{getPosition}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{44         std::string \mbox{\hyperlink{classServerEntity_ac707c11d9f28653e373a97e0e334a94a}{getType}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{45         \textcolor{keywordtype}{double} \mbox{\hyperlink{classServerEntity_a0174e2d8e065ccf36992bb5ad057435a}{getSpeed}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} \mbox{\hyperlink{classServerEntity_af5752dcde96357a5d3e76964cfb72000}{getMaxHp}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_ae0c0dee80c1f656a9e259422ee36f169}{setPosition}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y);}
+\DoxyCodeLine{49         \textcolor{keywordtype}{int} \mbox{\hyperlink{classServerEntity_a5458f0fc2a066233dc1c5d5bb177b814}{getHp}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         std::vector<std::shared\_ptr<IEntity>> \mbox{\hyperlink{classServerEntity_ae844b1c49cf3a61045afc5fbb45e9ecc}{getAmmos}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{52         \textcolor{keywordtype}{void} \mbox{\hyperlink{classServerEntity_a5b5202c23b744ad8d68ca1c197b63f54}{clearAmmos}}();}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{55         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classServerEntity_a31ec1eebc65b256a95fe59fab4d071ac}{\_isAlive}};}
+\DoxyCodeLine{56         \mbox{\hyperlink{classCustomRect}{CustomRect}} \mbox{\hyperlink{classServerEntity_abbe25a3c79c2b5857c90d7182c0091b8}{\_rect}};}
+\DoxyCodeLine{57         std::string \mbox{\hyperlink{classServerEntity_af6b15008690da377f9d8789fe34334e2}{\_type}};}
+\DoxyCodeLine{58         std::string \mbox{\hyperlink{classServerEntity_a44403be8d5bf4651dd38dcda7678020d}{\_id}};}
+\DoxyCodeLine{59         std::pair<int, int> \mbox{\hyperlink{classServerEntity_a3ebdbb625ae1b6958424f7ccce4193f9}{\_direction}};}
+\DoxyCodeLine{60         std::vector<std::shared\_ptr<IEntity>> \mbox{\hyperlink{classServerEntity_ac0a66c570abc9f4a8c893a8e5d107e6f}{\_ammos}};}
+\DoxyCodeLine{61         \textcolor{keywordtype}{double} \mbox{\hyperlink{classServerEntity_a984e9b4f31ee03ce8c5813f163d10da1}{\_speed}};}
+\DoxyCodeLine{62         \textcolor{keywordtype}{int} \mbox{\hyperlink{classServerEntity_a5fda0814e145529482ff868f669bec69}{\_health}};}
+\DoxyCodeLine{63         \textcolor{keywordtype}{int} \mbox{\hyperlink{classServerEntity_ae4a03b4fb4ce1b3e601cf23d9541157f}{\_maxHealth}};}
+\DoxyCodeLine{64     \textcolor{keyword}{private}:}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !ENTITY\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

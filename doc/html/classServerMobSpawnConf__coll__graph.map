@@ -1,0 +1,3 @@
+<map id="ServerMobSpawnConf" name="ServerMobSpawnConf">
+<area shape="rect" id="node1" title="this class create with conf file a spawn conf object wich let you get for room the type,..." alt="" coords="5,5,207,141"/>
+</map>

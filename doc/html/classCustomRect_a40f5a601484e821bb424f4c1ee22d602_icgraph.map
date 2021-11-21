@@ -1,0 +1,13 @@
+<map id="CustomRect::getPosition" name="CustomRect::getPosition">
+<area shape="rect" id="node1" title="Get the Position object." alt="" coords="951,181,1133,208"/>
+<area shape="rect" id="node2" href="$classServerEntity.html#adb5a21f4e3a27e97e5a96e2d5281349c" title="Get the Position object." alt="" coords="720,181,903,208"/>
+<area shape="rect" id="node3" href="$classServerPlayer.html#ae86e5eb107298e5371a75f5c37b16d2d" title="Moves the player." alt="" coords="481,29,672,56"/>
+<area shape="rect" id="node6" href="$classServerPlayer.html#af9c9fecbfc466f46b13fac08d8d0425c" title="Creates a shooting entity in the player." alt="" coords="502,80,651,107"/>
+<area shape="rect" id="node7" href="$classServerPlayer.html#a67b1db7a377d6f9aa4f31607f64f3d40" title="Updates the entity." alt="" coords="249,105,408,132"/>
+<area shape="rect" id="node8" href="$classBoss.html#ad52acf10bc5bb0afa8e6df9d98db5c30" title=" " alt="" coords="528,181,625,208"/>
+<area shape="rect" id="node9" href="$classBoss.html#ab3b0e756ba923f88c8afea3ed3af552c" title="Updates the entity." alt="" coords="275,207,382,233"/>
+<area shape="rect" id="node10" href="$classBidosSlaves.html#a00b7503431594ea7e1fcafab9857dcc1" title="Updates the entity." alt="" coords="499,283,654,309"/>
+<area shape="rect" id="node11" href="$classBossBullet.html#acaa5b40d7a19f79a762f5695790e8e3c" title="Updates the entity." alt="" coords="505,333,649,360"/>
+<area shape="rect" id="node4" href="$classServerPlayer.html#aeeb880ae5fb11205daca89d4a9e4a842" title="Async recieve for the UDP user." alt="" coords="224,29,433,56"/>
+<area shape="rect" id="node5" href="$classServerPlayer.html#a6ab9f3f17477b8cdd42bc95b65b4934e" title="Starts udp commincation in the room." alt="" coords="5,29,176,56"/>
+</map>
