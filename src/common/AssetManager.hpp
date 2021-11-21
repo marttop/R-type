@@ -29,7 +29,7 @@ class AssetManager {
         /**
          * @brief Get asset, if asset already load just return the asset associeted to,
          * IMPORTANT !!!
-         * if the type of asset doesn't have loadFromFile methode, there will be an error
+         * if the type of asset doesn't have loadFromFile method, there will be an error
          *
          * @param path path to the font
          * @return ** template<typename T>

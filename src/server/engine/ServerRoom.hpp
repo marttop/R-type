@@ -127,12 +127,12 @@ class ServerRoom {
         std::string updateEntity(std::shared_ptr<IEntity> obj) const;
 
         /**
-         * @brief Checks bidos collision with player
+         * @brief Checks asteroids collision with player
          *
          * @param player
-         * @param entity (bidos)
+         * @param entity
          */
-        void collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
+        bool collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
 
         /**
          * @brief Who the fuck knows ? can't remember everything.

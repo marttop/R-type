@@ -33,7 +33,7 @@ BidosSlaves::BidosSlaves()
     : ServerEntity(CustomRect(205 * 4 / 12, 18 * 4))
 {
     int x = std::rand() % 200 + 2000;
-    int y = std::rand() % 900 + 100;
+    int y = std::rand() % 1000;
     setPosition(x, y);
     _speed = -3;
     _health = 1;
@@ -54,7 +54,7 @@ void BidosSlaves::startClock()
 bool BidosSlaves::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 0.1) {
+    if (((float)t / CLOCKS_PER_SEC) > 2) {
         _shootClock = clock();
         return true;
     }

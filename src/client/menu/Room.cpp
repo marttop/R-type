@@ -39,6 +39,10 @@ void Room::create(const sf::RectangleShape &background)
 
     _counter = false;
 
+    _timerBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/timer.ogg");
+    _timer.setBuffer(_timerBuf);
+    _timer.setVolume(50);
+
     _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
 
     _playerCount.setFont(_font);
@@ -86,6 +90,7 @@ void Room::readyUpdate(std::vector<std::string> &cmdUdp)
 void Room::counterUpdate(std::vector<std::string> &cmdUdp)
 {
     if (cmdUdp.size() == 2 && cmdUdp[0] == "005") {
+        _timer.play();
         std::string sec = cmdUdp[1];
         sec.pop_back();
         _counterText.setString("Starting in " + sec + " seconds!\n");

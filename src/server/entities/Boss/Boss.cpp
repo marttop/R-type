@@ -55,7 +55,7 @@ void Boss::startClock()
 bool Boss::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 0.05) {
+    if (((float)t / CLOCKS_PER_SEC) > 1) {
         _shootClock = clock();
         return true;
     }
@@ -68,7 +68,7 @@ void Boss::shoot()
     std::shared_ptr<IEntity> bullet1 = _loader.createEntityWithName("BossBullet");
     std::shared_ptr<IEntity> bullet2 = _loader.createEntityWithName("BossBullet");
     std::shared_ptr<IEntity> bullet3 = _loader.createEntityWithName("BossBullet");
-   
+
     bullet1->setId(getId() + std::to_string(id));
     id += 1;
     bullet2->setId(getId() + std::to_string(id));

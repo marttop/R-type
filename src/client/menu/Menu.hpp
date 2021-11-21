@@ -22,14 +22,75 @@ class Menu {
         Menu();
         ~Menu();
 
-
+        /**
+         * @brief Create Menu
+         * 
+         * @param window 
+         * @param tcpBuf 
+         * @param udpBuf 
+         * @return ** void 
+         */
         void create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf);
+
+        /**
+         * @brief Draw Menu
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void draw(sf::RenderWindow &window) const;
+
+        /**
+         * @brief Menu events
+         * 
+         * @param event 
+         * @param window 
+         * @param tcpEndpoint 
+         * @param tcpSocket 
+         * @param udpSocket 
+         * @return ** void 
+         */
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
+
+        /**
+         * @brief Update menu
+         * 
+         * @param window 
+         * @param udpEndpoint 
+         * @param udpSocket 
+         * @param scene 
+         * @return ** void 
+         */
         void update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const bool &scene);
+
+        /**
+         * @brief Set the Alert object
+         * 
+         * @return ** void 
+         */
         void setAlert();
+
+        /**
+         * @brief Set the In Room object
+         * 
+         * @param inRoom 
+         * @param tcpSocket 
+         * @return ** void 
+         */
         void setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket);
+
+        /**
+         * @brief Stop the music
+         * 
+         * @return ** void 
+         */
         void stopMusic();
+
+        /**
+         * @brief Start the music
+         * 
+         * @return ** void 
+         */
         void startMusic();
 
     protected:

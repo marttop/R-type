@@ -15,17 +15,30 @@
 #include "BossC.hpp"
 #include "Heal.hpp"
 #include "BossBulletC.hpp"
+#include "Asteroids.hpp"
 #include "BidosBulletC.hpp"
 #include "BoomBossC.hpp"
 #include "BoomrangBulletC.hpp"
 
 #include <memory>
+#include <SFML/Audio.hpp>
 
 class EntityFactory {
     public:
         EntityFactory();
         ~EntityFactory();
 
+        /**
+         * @brief Get the Entity By Type object
+         * 
+         * @param type 
+         * @param pos 
+         * @param speed 
+         * @param startColor 
+         * @param endColor 
+         * @param health 
+         * @return ** std::shared_ptr<IClientEntity> 
+         */
         std::shared_ptr<IClientEntity> getEntityByType(const std::string &type,
                                                         const sf::Vector2f &pos,
                                                         const float &speed,
@@ -37,6 +50,12 @@ class EntityFactory {
     protected:
     private:
         std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        std::shared_ptr<IClientEntity> getAsteroids(const sf::Vector2f &pos,
                                                     const float &speed,
                                                     const sf::Color &startColor,
                                                     const sf::Color &endColor,

@@ -15,8 +15,27 @@ class Heal : public Entity {
         Heal(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor, int health);
         ~Heal();
 
+        /**
+         * @brief Draw the Heal sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawSprite(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Draw the Heal particles
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void drawParticles(sf::RenderWindow &window) override;
+
+        /**
+         * @brief Update the Heal
+         * 
+         * @return ** void 
+         */
         void update() override;
 
     protected:

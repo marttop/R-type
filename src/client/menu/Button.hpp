@@ -18,11 +18,60 @@ class Button {
         Button();
         ~Button();
 
+        /**
+         * @brief Create Button
+         * 
+         * @param pos 
+         * @param text 
+         * @param offset 
+         * @param factors 
+         * @return ** void 
+         */
         void create(const sf::Vector2f &pos, const std::string &text, const sf::Vector2f &offset = {0, 0}, const sf::Vector2f &factors = {1, 1});
+
+        /**
+         * @brief Draw Button
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void draw(sf::RenderWindow &window) const;
+        
+        /**
+         * @brief Button events
+         * 
+         * @param event 
+         * @param window 
+         * @return true 
+         * @return false 
+         */
         bool event(const sf::Event &event, const sf::RenderWindow &window);
+
+        /**
+         * @brief Return hovering state
+         * 
+         * @param window 
+         * @return true 
+         * @return false 
+         */
         bool isMouseHovering(const sf::RenderWindow &window) const;
+
+        /**
+         * @brief Set the Position object
+         * 
+         * @param pos 
+         * @return ** void 
+         */
         void setPosition(const sf::Vector2f &pos);
+
+        /**
+         * @brief Update Button
+         * 
+         * @param window 
+         * @param isDrawn 
+         * @return true 
+         * @return false 
+         */
         bool update(const sf::RenderWindow &window, const bool &isDrawn);
 
     protected:

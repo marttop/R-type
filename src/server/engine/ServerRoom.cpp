@@ -115,13 +115,11 @@ void ServerRoom::playGame()
             _isGameStarted = false;
             return;
         }
-        duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+        duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
     }
     loadRoomEntities("RoomConfFile/ConfTest.txt");
     broadCastUdp("006", "");
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     createPlayers();
-    std::this_thread::sleep_for(std::chrono::milliseconds(5));
     resetTimers();
     _timer = 0;
     updateLoop();
@@ -306,13 +304,16 @@ std::string ServerRoom::EntityAsShoot()
     return ss.str();
 }
 
-void ServerRoom::collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
+bool ServerRoom::collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
 {
-    if (entity->getType() == "BidosSlaves" && player->isColliding(entity)) {
+    if (entity->getType() == "Asteroids" && player->isColliding(entity)) {
         if (entity->getRect().isColliding(CustomRect(1, player->getRect()._height, player->getRect().br.x, player->getRect().br.y))) {
             player->setPosition(player->getPosition().first + entity->getSpeed(), player->getPosition().second);
+            player->setIsPushed(true);
+            return (true);
         }
     }
+    return (false);
 }
 
 std::string ServerRoom::updateEntities()
@@ -322,6 +323,17 @@ std::string ServerRoom::updateEntities()
     ss.clear();
     std::string tmp;
     static int timer = 0;
+
+    for (auto player : _playerList) {
+        bool check = false;
+        for (auto entity : _entities) {
+            bool tmp = collideAsteroids(player, entity);
+            if (tmp == true)
+                check = tmp;
+        }
+        if (!check)
+            player->setIsPushed(false);
+    }
 
     for (auto entity : _entities) {
         entity->update();
@@ -341,10 +353,10 @@ std::string ServerRoom::updateEntities()
             for (auto playerBullet : player->getAmmo()) {
                 if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "BoomrangBullet" && entity->getType() != "Heal") {
                     playerBullet->setAlive(false);
-                    entity->addLifeEntity(-1);
+                    if (entity->getType() != "Asteroids")
+                        entity->addLifeEntity(-1);
                 }
             }
-            collideBidos(player, entity);
         }
         ss << createEntityResponse(entity, "UPDATE");
     }
@@ -397,22 +409,30 @@ void ServerRoom::updateLoop()
     std::stringstream ss;
     ss.str("");
     ss.clear();
+
+    std::clock_t start;
+    double duration;
+    start = std::clock();
+
     while (_isGameStarted) {
-        ss.str("");
-        ss.clear();
+        if (duration > 17) {
+            start = std::clock();
+            ss.str("");
+            ss.clear();
 
-        if (_playerList.size() == 0) break;
+            if (_playerList.size() == 0) break;
 
-        createsEntities();
+            createsEntities();
 
-        if (_timer % 7 == 0) {
-            resetTimers();
+            if (_timer % 7 == 0) {
+                resetTimers();
+            }
+            ss << updatePlayers();
+            ss << updateEntities();
+            broadCastUdp("007", ss.str());
+            _timer++;
         }
-        ss << updatePlayers();
-        ss << updateEntities();
-        broadCastUdp("007", ss.str());
-        std::this_thread::sleep_for(std::chrono::milliseconds(17));
-        _timer++;
+        duration = (std::clock() - start) / ((double)CLOCKS_PER_SEC / 1000);
     }
     _isGameStarted = false;
     _playerList.clear();

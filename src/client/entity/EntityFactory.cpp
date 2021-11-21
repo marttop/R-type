@@ -6,8 +6,7 @@
 */
 
 #include "EntityFactory.hpp"
-#include <SFML/Audio.hpp>
-#include <iostream>
+
 EntityFactory::EntityFactory()
 {
     _cmd.emplace("player", &EntityFactory::getPlayer);
@@ -19,6 +18,7 @@ EntityFactory::EntityFactory()
     _cmd.emplace("BoomBoss", &EntityFactory::getBoomBoss);
     _cmd.emplace("BoomrangBullet", &EntityFactory::getBoomrangBullet);
     _cmd.emplace("Heal", &EntityFactory::getHeal);
+    _cmd.emplace("Asteroids", &EntityFactory::getAsteroids);
 }
 
 EntityFactory::~EntityFactory()
@@ -69,6 +69,18 @@ std::shared_ptr<IClientEntity> EntityFactory::getBidosSlaves(const sf::Vector2f 
                                                                 int health)
 {
     std::shared_ptr<IClientEntity> entity(new BidosSlave(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/BidosSlave.png"),
+    pos, speed, startColor, endColor, health));
+
+    return (entity);
+}
+
+std::shared_ptr<IClientEntity> EntityFactory::getAsteroids(const sf::Vector2f &pos,
+                                                                const float &speed,
+                                                                const sf::Color &startColor,
+                                                                const sf::Color &endColor,
+                                                                int health)
+{
+    std::shared_ptr<IClientEntity> entity(new Asteroids(AssetManager<sf::Texture>::getAssetManager().getAsset("assets/game/Asteroids.png"),
     pos, speed, startColor, endColor, health));
 
     return (entity);

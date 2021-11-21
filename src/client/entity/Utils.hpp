@@ -16,14 +16,20 @@ class Utils {
         Utils();
         ~Utils();
 
+        /**
+         * @brief Get vector magnitude
+         * 
+         * @param vector 
+         * @return ** float 
+         */
         float vectorMagnitude(const sf::Vector2f &vector) const;
-        void vectorNormalize(sf::Vector2f &vector);
-        float vectorSize(const sf::Vector2f &vector1, const sf::Vector2f &vector2) const;
-        void rotatePointAroundCenter(sf::Vector2f &point, const sf::Vector2f &center, const float &angle_rad);
+
+        /**
+         * @brief Get the Random Normalized Vector object
+         * 
+         * @return ** sf::Vector2f 
+         */
         sf::Vector2f getRandomNormalizedVector() const;
-        float dotProduct(const sf::Vector2f &vector_a, const sf::Vector2f &vector_b) const;
-        void posDebug(const sf::Vector2f &pos, sf::RenderWindow &window);
-        bool segmentIntersectsRectangle(const sf::FloatRect &rect, const sf::Vector2f &a_p1, const sf::Vector2f &a_p2) const;
 
     protected:
     private:

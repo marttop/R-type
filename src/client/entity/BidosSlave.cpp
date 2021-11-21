@@ -24,8 +24,9 @@ void BidosSlave::update()
         _deathAnimation = true;
         _deathClock.restart();
     }
-    if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() < 1500)
+    if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() < 1500) {
         _particleSystem.update(sf::Vector2f{0, 0}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Vector2f{_pos.x, _pos.y + _sprite.getGlobalBounds().height / 2}, sf::Color(255, 255, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), sf::Color(255, 0, 0, 255 / (_deathClock.getElapsedTime().asMilliseconds() + 1) * 100), 50, 1);
+    }
     else if (_deathAnimation && _deathClock.getElapsedTime().asMilliseconds() >= 1500)
         _deathFinish = true;
 

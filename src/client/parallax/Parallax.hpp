@@ -37,10 +37,43 @@ class Parallax {
         Parallax();
         ~Parallax();
 
+        /**
+         * @brief Create Parallax
+         * 
+         * @param speed 
+         * @return ** void 
+         */
         void create(const int &speed);
+
+        /**
+         * @brief Update Parallax
+         * 
+         * @return ** void 
+         */
         void update();
+
+        /**
+         * @brief Draw Parallax
+         * 
+         * @param window 
+         * @return ** void 
+         */
         void draw(sf::RenderWindow &window) const;
+
+        /**
+         * @brief Parallax events
+         * 
+         * @param event 
+         * @return ** void 
+         */
         void event(const sf::Event &event);
+
+        /**
+         * @brief Set the Direction object
+         * 
+         * @param direction 
+         * @return ** void 
+         */
         void setDirection(const std::vector<bool> &direction);
 
     protected:

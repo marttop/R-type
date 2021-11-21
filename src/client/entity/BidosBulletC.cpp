@@ -13,6 +13,11 @@ BidosBulletC::BidosBulletC(const sf::Texture &texture, const sf::Vector2f &pos, 
 {
     _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getLocalBounds().width / 8 * (std::rand() % 7 + 1), 0), sf::Vector2i(_sprite.getLocalBounds().width / 8, _sprite.getLocalBounds().height)));
     _sprite.setScale(sf::Vector2f(4, 4));
+
+    _shootBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/bidos_shoot.ogg");
+    _shoot.setBuffer(_shootBuf);
+    _shoot.setVolume(60);
+    _shoot.play();
 }
 
 BidosBulletC::~BidosBulletC()
@@ -32,8 +37,8 @@ void BidosBulletC::update()
 
     if (_animationClock.getElapsedTime().asMilliseconds() > 50) {
         _animationClock.restart();
-        if (_sprite.getTextureRect().left >= _sprite.getTextureRect().width * 7) {
-            _sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(_sprite.getTextureRect().width, _sprite.getTextureRect().height)));
+        if (_sprite.getTextureRect().left >= _sprite.getTextureRect().width * 6) {
+            _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getTextureRect().width, 0), sf::Vector2i(_sprite.getTextureRect().width, _sprite.getTextureRect().height)));
         } else {
             _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getTextureRect().left + _sprite.getTextureRect().width, 0), sf::Vector2i(_sprite.getTextureRect().width, _sprite.getTextureRect().height)));
         }

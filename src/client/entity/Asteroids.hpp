@@ -1,53 +1,51 @@
 /*
 ** EPITECH PROJECT, 2021
-** Untitled (Workspace)
+** B-CPP-501-NCE-5-1-rtype-antonin.fille
 ** File description:
-** BidosSlaves
+** Asteroids
 */
 
-#ifndef BIDOSBULLET_HPP__
-#define BIDOSBULLET_HPP__
+#ifndef ASTEROIDS_HPP_
+#define ASTEROIDS_HPP_
 
-#include "AssetManager.hpp"
 #include "Entity.hpp"
 
-class BidosBulletC : public Entity {
+class Asteroids : public Entity {
     public:
-        BidosBulletC(const sf::Texture &texture,
+        Asteroids(const sf::Texture &texture,
                     const sf::Vector2f &pos,
                     const float &speed,
                     const sf::Color &startColor,
                     const sf::Color &endColor,
                     int health);
-        ~BidosBulletC();
+        ~Asteroids();
 
         /**
-         * @brief Update the BidosBulletC
+         * @brief Update the Asteroids
          * 
          * @return ** void 
          */
         void update() override;
 
         /**
-         * @brief Draw the BidosBulletC sprite
-         * 
-         * @param window 
-         * @return ** void 
-         */
-        void drawSprite(sf::RenderWindow &window) override;
-
-        /**
-         * @brief Draw the BidosBulletC particles
+         * @brief Draw the Asteroids particles
          * 
          * @param window 
          * @return ** void 
          */
         void drawParticles(sf::RenderWindow &window) override;
 
+        /**
+         * @brief Draw the Asteroids sprite
+         * 
+         * @param window 
+         * @return ** void 
+         */
+        void drawSprite(sf::RenderWindow &window) override;
+
     protected:
     private:
-        sf::SoundBuffer _shootBuf;
-        sf::Sound _shoot;
+        int _rotationSpeed;
 };
 
-#endif /* !BIDOSBULLET_HPP__ */
+#endif /* !ASTEROIDS_HPP_ */

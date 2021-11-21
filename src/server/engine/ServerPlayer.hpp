@@ -37,6 +37,20 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         std::string getUsername() const;
 
         /**
+         * @brief Get the isPushed bool
+         *
+         * @return ** bool
+         */
+        bool isPushed() const;
+
+        /**
+         * @brief Set the isPushed bool
+         *
+         * @param isPushed
+         */
+        void setIsPushed(const bool &isPushed);
+
+        /**
          * @brief Get the Port object
          *
          * @return ** int
@@ -133,7 +147,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         int _port;
         std::vector<bool> _boolLand;
         bool _isShooting;
-
+        bool _isPushed;
 };
 
 #endif /* !PLAYER_HPP_ */
