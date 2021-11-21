@@ -31,6 +31,14 @@ void RoomCard::create(const sf::Vector2f &pos, const sf::Vector2f &size, const s
 
     _id = id;
 
+    _clickBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/button_click.ogg");
+    _click.setBuffer(_clickBuf);
+    _click.setVolume(50);
+
+    _hoverBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/menu_hover.ogg");
+    _hover.setBuffer(_hoverBuf);
+    _hover.setVolume(50);
+
     _title.setString("Room " + _id);
     _title.setScale(factors);
     _title.setFont(_font);
@@ -105,9 +113,11 @@ void RoomCard::incrementPlayer()
     _playerCount.setString(count);
 }
 
-void RoomCard::update(const sf::RenderWindow &window)
+void RoomCard::update(const sf::RenderWindow &window, const bool &isDrawn)
 {
-    if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+    if (!_delete.update(window, isDrawn) && _background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        if (isDrawn && _outline == sf::Color::White)
+            _hover.play();
         _outline = sf::Color::Yellow;
         _background.setOutlineColor(_outline);
     }
@@ -130,15 +140,20 @@ void RoomCard::join(const sf::Event &event, const sf::RenderWindow &window, asio
             _background.setFillColor(sf::Color::Black);
             _title.setFillColor(sf::Color::White);
             _playerCount.setFillColor(sf::Color::White);
-            if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+            if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+                _click.play();
                 socket.send(asio::buffer("225 " + _id + "\n"));
+            }
         }
     }
 }
 
-void RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &socket)
+bool RoomCard::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &socket)
 {
-    if (_delete.event(event, window))
+    if (_delete.event(event, window)) {
         socket.send(asio::buffer("350 " + _id + "\n"));
+        return (true);
+    }
     join(event, window, socket);
+    return (false);
 }

@@ -31,6 +31,14 @@ void Button::create(const sf::Vector2f &pos, const std::string &text, const sf::
 
     _offset = offset;
 
+    _clickBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/button_click.ogg");
+    _click.setBuffer(_clickBuf);
+    _click.setVolume(50);
+
+    _hoverBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/menu_hover.ogg");
+    _hover.setBuffer(_hoverBuf);
+    _hover.setVolume(50);
+
     _text = new sf::Text;
     _text->setString(text);
     _text->setScale(factors);
@@ -54,16 +62,21 @@ void Button::setPosition(const sf::Vector2f &pos)
     _text->setPosition(sf::Vector2f(pos.x + _offset.x, pos.y + _offset.y));
 }
 
-void Button::update(const sf::RenderWindow &window)
+bool Button::update(const sf::RenderWindow &window, const bool &isDrawn)
 {
+    bool check = false;
     if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        if (_outline == sf::Color::White && isDrawn)
+            _hover.play();
         _outline = sf::Color::Yellow;
         _background.setOutlineColor(_outline);
+        check = true;
     }
     else {
         _outline = sf::Color::White;
         _background.setOutlineColor(_outline);
     }
+    return (check);
 }
 
 bool Button::event(const sf::Event &event, const sf::RenderWindow &window)
@@ -77,8 +90,10 @@ bool Button::event(const sf::Event &event, const sf::RenderWindow &window)
     } else if (event.type == sf::Event::MouseButtonReleased) {
         _background.setFillColor(sf::Color::Black);
         _text->setFillColor(sf::Color::White);
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             clicked = true;
+            _click.play();
+        }
     }
     return (clicked);
 }

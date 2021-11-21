@@ -17,14 +17,24 @@ InputBox::~InputBox()
 
 void InputBox::create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title, const std::string &defaultInput, const bool &ip, const bool &num, const bool &alpha, const sf::Vector2f &factors)
 {
+    _outline = sf::Color::White;
+
     _background.setSize(sf::Vector2f(size.x, size.y));
     _background.setFillColor(sf::Color::Black);
-    _background.setOutlineColor(sf::Color::White);
+    _background.setOutlineColor(_outline);
     _background.setOutlineThickness(2.0);
     _background.setPosition(sf::Vector2f(pos.x, pos.y));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
     _font = AssetManager<sf::Font>::getAssetManager().getAsset("assets/fonts/OxygenMono-Regular.ttf");
+
+    _clickBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/button_click.ogg");
+    _click.setBuffer(_clickBuf);
+    _click.setVolume(50);
+
+    _hoverBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/menu_hover.ogg");
+    _hover.setBuffer(_hoverBuf);
+    _hover.setVolume(50);
 
     _title = title;
     _titleText.setString(_title);
@@ -66,8 +76,18 @@ void InputBox::setPosition(const sf::Vector2f &pos)
     _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 5, _inputText.getGlobalBounds().top + _inputText.getGlobalBounds().height / 2));
 }
 
-void InputBox::update()
+void InputBox::update(const sf::RenderWindow &window, const bool &isDrawn)
 {
+    if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        if (_outline == sf::Color::White && isDrawn)
+            _hover.play();
+        _outline = sf::Color::Yellow;
+        _background.setOutlineColor(_outline);
+    }
+    else {
+        _outline = sf::Color::White;
+        _background.setOutlineColor(_outline);
+    }
     if (_cursorClock.getElapsedTime().asSeconds() >= 0.8)
         _cursorClock.restart();
 }
@@ -75,8 +95,10 @@ void InputBox::update()
 void InputBox::event(const sf::Event &event, const sf::RenderWindow &window)
 {
     if (event.type == sf::Event::MouseButtonPressed) {
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             _isFocus = true;
+            _click.play();
+        }
         else
             _isFocus = false;
     }
@@ -94,14 +116,6 @@ void InputBox::event(const sf::Event &event, const sf::RenderWindow &window)
         _inputText.setString(_input);
         _inputText.setOrigin(sf::Vector2f(_inputText.getGlobalBounds().width / 2, _inputText.getOrigin().y));
         _cursor.setPosition(sf::Vector2f(_inputText.getGlobalBounds().left + _inputText.getGlobalBounds().width + 5, _cursor.getPosition().y));
-    }
-    if (event.type == sf::Event::MouseMoved) {
-        if (_background.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-            _background.setOutlineColor(sf::Color::Yellow);
-        }
-        else {
-            _background.setOutlineColor(sf::Color::White);
-        }
     }
 }
 

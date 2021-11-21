@@ -78,7 +78,12 @@ void Window::update()
     switchScene();
     if (_scene == MENU || _scene == GAME) {
         _parallax.update();
-        _menu.update(_window, _udpEndpoint, *_udpSocket);
+        _menu.update(_window, _udpEndpoint, *_udpSocket, _scene);
+        if (_scene == MENU) {
+            _menu.startMusic();
+        } else {
+            _menu.stopMusic();
+        }
     }
     if (_scene == GAME && !_gameStarted) {
         _udpSocket->non_blocking(false);
@@ -95,8 +100,9 @@ void Window::draw()
         _parallax.draw(_window);
     if (_scene == MENU)
         _menu.draw(_window);
-    if (_scene == GAME)
+    if (_scene == GAME) {
         _game.draw();
+    }
     _window.display();
 }
 

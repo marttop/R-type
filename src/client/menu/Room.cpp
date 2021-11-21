@@ -55,7 +55,7 @@ void Room::create(const sf::RectangleShape &background)
 
 void Room::event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket)
 {
-    if (_leaving.event(event, window))
+    if (!_counter && _leaving.event(event, window))
         tcpSocket.send(asio::buffer("235 " + _id + "\n"));
     if (_ready.event(event, window)) {
         _isReady = !_isReady;
@@ -147,10 +147,10 @@ void Room::roomLeave(std::vector<std::string> &cmdUdp)
     }
 }
 
-void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window)
+void Room::update(std::vector<std::string> &cmdUdp, const sf::RenderWindow &window, const bool &isDrawn)
 {
-    _leaving.update(window);
-    _ready.update(window);
+    _leaving.update(window, isDrawn);
+    _ready.update(window, isDrawn);
     readyUpdate(cmdUdp);
     roomJoin(cmdUdp);
     roomLeave(cmdUdp);

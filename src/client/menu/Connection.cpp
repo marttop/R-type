@@ -92,12 +92,12 @@ void Connection::event(const sf::Event &event, const sf::RenderWindow &window)
     _portBox.event(event, window);
 }
 
-void Connection::update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd)
+void Connection::update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd, const bool &isDrawn)
 {
-    _nameBox.update();
-    _connect.update(window);
-    _ipBox.update();
-    _portBox.update();
+    _nameBox.update(window, isDrawn);
+    _connect.update(window, isDrawn);
+    _ipBox.update(window, isDrawn);
+    _portBox.update(window, isDrawn);
     if (!animationEnd) {
         _nameBox.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y - background.getSize().y / 5));
         _connect.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y + background.getSize().y / 2));

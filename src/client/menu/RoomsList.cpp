@@ -32,6 +32,14 @@ void RoomsList::create(const sf::RectangleShape &background)
     _background.setPosition(sf::Vector2f(background.getPosition().x, background.getPosition().y));
     _background.setOrigin(sf::Vector2f(_background.getSize().x / 2, _background.getSize().y / 2));
 
+    _clickBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/button_click.ogg");
+    _click.setBuffer(_clickBuf);
+    _click.setVolume(50);
+
+    _hoverBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/menu_hover.ogg");
+    _hover.setBuffer(_hoverBuf);
+    _hover.setVolume(50);
+
     _scroller.setSize(sf::Vector2f(25.0, _background.getSize().y));
     _scroller.setFillColor(sf::Color(0, 0, 0, 255));
     _scroller.setOutlineColor(_outline);
@@ -174,9 +182,11 @@ void RoomsList::userLeftRoom(const std::vector<std::string> &cmd)
     }
 }
 
-void RoomsList::scrollerUpdate(const sf::RenderWindow &window)
+void RoomsList::scrollerUpdate(const sf::RenderWindow &window, const bool &isDrawn)
 {
     if (_scroller.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+        if (isDrawn && _outline == sf::Color::White)
+            _hover.play();
         _outline = sf::Color::Yellow;
         _scroller.setOutlineColor(sf::Color::Yellow);
     }
@@ -186,18 +196,18 @@ void RoomsList::scrollerUpdate(const sf::RenderWindow &window)
     }
 }
 
-void RoomsList::update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected)
+void RoomsList::update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected, const bool &isDrawn)
 {
-    scrollerUpdate(window);
-    _disconnect.update(window);
-    _create.update(window);
+    scrollerUpdate(window, isDrawn);
+    _disconnect.update(window, isDrawn);
+    _create.update(window, isDrawn);
     loadRooms(cmdTcp, connected);
     createRoom(cmdTcp);
     deleteRoom(cmdTcp);
     userJoinedRoom(cmdTcp);
     userLeftRoom(cmdTcp);
     for (auto it : _rooms)
-        it->update(window);
+        it->update(window, isDrawn);
 }
 
 void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &window)
@@ -206,6 +216,7 @@ void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &w
         if (_scroller.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
             _scroller.setFillColor(sf::Color::White);
             if (_scrollArrow[0].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+                _click.play();
                 _scrollArrow[0].setTexture(_scrollArrowTexture[1]);
                 if (_displayedIdx.first > 0) {
                     _displayedIdx.first--;
@@ -216,6 +227,7 @@ void RoomsList::scrollerEvents(const sf::Event &event, const sf::RenderWindow &w
                 }
             }
             else if (_scrollArrow[1].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+                _click.play();
                 _scrollArrow[1].setTexture(_scrollArrowTexture[1]);
                 if (_displayedIdx.second < _rooms.size()) {
                     _displayedIdx.first++;
@@ -263,7 +275,8 @@ void RoomsList::event(const sf::Event &event, const sf::RenderWindow &window, as
         tcpSocket.send(asio::buffer("300\n"));
     for (int i = 0; i < _rooms.size(); i++) {
         if (i >= _displayedIdx.first && i < _displayedIdx.second)
-            _rooms[i]->event(event, window, tcpSocket);
+            if (_rooms[i]->event(event, window, tcpSocket))
+                _click.play();
     }
     scrollerEvents(event, window);
     mouseWheelScroll(event, window);

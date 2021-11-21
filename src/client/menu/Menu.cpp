@@ -31,6 +31,9 @@ void Menu::create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf)
     _connected = false;
     _animation.restart();
 
+    _music.openFromFile("assets/sounds/menu_music.ogg");
+    _music.setLoop(true);
+
     _tcpBuf = tcpBuf;
     _udpBuf = udpBuf;
     _inRoom = false;
@@ -120,7 +123,7 @@ void Menu::setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket)
     }
 }
 
-void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket)
+void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const bool &scene)
 {
     _animationEnd = startAnimation(window);
     std::vector<std::string> cmdTcp = SEPParsor::parseCommands(_tcpBuf);
@@ -128,14 +131,26 @@ void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEn
     openAlert();
     joinRoom(cmdTcp, udpEndpoint, udpSocket);
     leaveRoom(udpSocket);
-    _connection.update(window, _background, _animationEnd);
-    _roomsList.update(cmdTcp, window, _connected);
-    _room.update(cmdUdp, window);
+    _connection.update(window, _background, _animationEnd, !_connected);
+    _roomsList.update(cmdTcp, window, _connected, _connected && !_inRoom);
+    _room.update(cmdUdp, window, _inRoom && scene != true);
 }
 
 void Menu::setAlert()
 {
     _alert.open("Lost connection with the server.", false);
+}
+
+void Menu::stopMusic()
+{
+    if (_music.getStatus() != _music.Stopped)
+        _music.stop();
+}
+
+void Menu::startMusic()
+{
+    if (_music.getStatus() != _music.Playing)
+        _music.play();
 }
 
 void Menu::draw(sf::RenderWindow &window) const
