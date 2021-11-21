@@ -29,6 +29,10 @@ void Game::create(sf::RenderWindow &window, asio::ip::udp::socket &udpSocket)
     _gameClock.restart();
     _entityMap.clear();
 
+    _music.openFromFile("assets/sounds/game_music.ogg");
+    _music.setLoop(true);
+    _music.setVolume(40);
+
     _playerCount = 0;
 }
 
@@ -89,6 +93,18 @@ bool Game::event(const sf::Event &event, asio::ip::udp::socket &udpSocket)
     return (false);
 }
 
+void Game::stopMusic()
+{
+    if (_music.getStatus() != _music.Stopped)
+        _music.stop();
+}
+
+void Game::startMusic()
+{
+    if (_music.getStatus() != _music.Playing)
+        _music.play();
+}
+
 void Game::selectPlayerColor(std::vector<std::string> &entityCmd, sf::Color &startColor, sf::Color &endColor)
 {
     if (entityCmd[1] != "player") return;
@@ -129,11 +145,17 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                                                     std::atof(entityCmd[7].c_str()), startColor,
                                                     endColor,
                                                     std::atoi(entityCmd[8].c_str()))));
-                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
+                    if (entityCmd[1] == "Asteroids")
+                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getLocalBounds().height));
+                    else
+                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "UPDATE" && _entityMap.count(entityCmd[2]) > 0) {
                     _entityMap[entityCmd[2]]->setHealth(std::atoi(entityCmd[8].c_str()));
-                    _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
+                    if (entityCmd[1] == "Asteroids")
+                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()) + _entityMap[entityCmd[2]]->getLocalBounds().width / 2, posY - _entityMap[entityCmd[2]]->getLocalBounds().height + _entityMap[entityCmd[2]]->getLocalBounds().height / 2));
+                    else
+                        _entityMap[entityCmd[2]]->setPos(sf::Vector2f(std::atof(entityCmd[3].c_str()), posY - _entityMap[entityCmd[2]]->getGlobalBounds().height));
                 }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
                     _entityMap[entityCmd[2]]->setIsAlive(false);
@@ -225,5 +247,6 @@ void Game::draw()
             ++i;
         }
     }
+    _alert.update(*_window);
     _alert.draw(*_window);
 }

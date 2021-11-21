@@ -6,13 +6,17 @@
 */
 
 #include "BossBulletC.hpp"
-#include <iostream>
 
 BossBulletC::BossBulletC(const sf::Texture &texture, const sf::Vector2f &pos, const float &speed, const sf::Color &startColor, const sf::Color &endColor, int health)
     : Entity(texture, pos, speed, startColor, endColor, health)
 {
     _sprite.setTextureRect(sf::IntRect(sf::Vector2i(_sprite.getLocalBounds().width / 3 * (std::rand() % 2 + 1), 0), sf::Vector2i(_sprite.getLocalBounds().width / 3, _sprite.getLocalBounds().height)));
     _sprite.setScale(sf::Vector2f(4, 4));
+
+    _shootBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/boss_shoot.ogg");
+    _shoot.setBuffer(_shootBuf);
+    _shoot.setVolume(20);
+    _shoot.play();
 }
 
 BossBulletC::~BossBulletC()

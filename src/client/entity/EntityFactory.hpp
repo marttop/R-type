@@ -15,8 +15,10 @@
 #include "BossC.hpp"
 #include "Heal.hpp"
 #include "BossBulletC.hpp"
+#include "Asteroids.hpp"
 
 #include <memory>
+#include <SFML/Audio.hpp>
 
 class EntityFactory {
     public:
@@ -34,6 +36,12 @@ class EntityFactory {
     protected:
     private:
         std::shared_ptr<IClientEntity> getPlayer(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        std::shared_ptr<IClientEntity> getAsteroids(const sf::Vector2f &pos,
                                                     const float &speed,
                                                     const sf::Color &startColor,
                                                     const sf::Color &endColor,

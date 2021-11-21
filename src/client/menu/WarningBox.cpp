@@ -62,6 +62,12 @@ bool WarningBox::isOpen() const
     return (_isOpen);
 }
 
+void WarningBox::update(const sf::RenderWindow &window)
+{
+    if (_isButton)
+        _close.update(window, _isOpen);
+}
+
 void WarningBox::draw(sf::RenderWindow &window) const
 {
     if (_isOpen == true) {

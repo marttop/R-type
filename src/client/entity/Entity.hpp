@@ -28,6 +28,7 @@ class Entity : public IClientEntity {
         float getElapsedTime() const;
         sf::Vector2f getPos() const;
         sf::Vector2f getSize() const;
+        sf::FloatRect getLocalBounds() const;
         sf::FloatRect getGlobalBounds() const;
         void setPos(const sf::Vector2f &pos);
         void setRotation(const float &angle);

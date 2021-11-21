@@ -52,6 +52,11 @@ sf::FloatRect Entity::getGlobalBounds() const
     return (_sprite.getGlobalBounds());
 }
 
+sf::FloatRect Entity::getLocalBounds() const
+{
+    return (_sprite.getLocalBounds());
+}
+
 float Entity::getElapsedTime() const
 {
     return (_animationClock.getElapsedTime().asSeconds());

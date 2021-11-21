@@ -13,6 +13,7 @@
 #include <map>
 #include <memory>
 #include <functional>
+#include <SFML/Audio.hpp>
 
 #include "EntityFactory.hpp"
 #include "WarningBox.hpp"
@@ -41,6 +42,8 @@ class Game {
         void handleRead(const asio::error_code &error);
         std::thread startThread(const asio::error_code &error, bool &closeGame);
         void draw();
+        void stopMusic();
+        void startMusic();
 
     protected:
     private:
@@ -62,6 +65,7 @@ class Game {
         sf::Clock _gameClock;
         bool *_closeGame;
         bool _isGameFinished;
+        sf::Music _music;
 };
 
 #endif /* !GAME_HPP_ */

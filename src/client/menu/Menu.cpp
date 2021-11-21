@@ -131,9 +131,10 @@ void Menu::update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEn
     openAlert();
     joinRoom(cmdTcp, udpEndpoint, udpSocket);
     leaveRoom(udpSocket);
-    _connection.update(window, _background, _animationEnd, !_connected);
-    _roomsList.update(cmdTcp, window, _connected, _connected && !_inRoom);
-    _room.update(cmdUdp, window, _inRoom && scene != true);
+    _connection.update(window, _background, _animationEnd, !_connected && !_alert.isOpen());
+    _roomsList.update(cmdTcp, window, _connected, _connected && !_inRoom && !_alert.isOpen());
+    _room.update(cmdUdp, window, _inRoom && scene != true && !_alert.isOpen());
+    _alert.update(window);
 }
 
 void Menu::setAlert()

@@ -1,34 +1,32 @@
 /*
 ** EPITECH PROJECT, 2021
-** Untitled (Workspace)
+** B-CPP-501-NCE-5-1-rtype-antonin.fille
 ** File description:
-** BidosSlaves
+** Asteroids
 */
 
-#ifndef BOSSBULLET_HPP__
-#define BOSSBULLET_HPP__
+#ifndef ASTEROIDS_HPP_
+#define ASTEROIDS_HPP_
 
 #include "Entity.hpp"
-#include "AssetManager.hpp"
 
-class BossBulletC : public Entity {
+class Asteroids : public Entity {
     public:
-        BossBulletC(const sf::Texture &texture,
+        Asteroids(const sf::Texture &texture,
                     const sf::Vector2f &pos,
                     const float &speed,
                     const sf::Color &startColor,
                     const sf::Color &endColor,
                     int health);
-        ~BossBulletC();
+        ~Asteroids();
 
         void update() override;
-        void drawSprite(sf::RenderWindow &window) override;
         void drawParticles(sf::RenderWindow &window) override;
+        void drawSprite(sf::RenderWindow &window) override;
 
     protected:
     private:
-        sf::SoundBuffer _shootBuf;
-        sf::Sound _shoot;
+        int _rotationSpeed;
 };
 
-#endif /* !BOSSBULLET_HPP__ */
+#endif /* !ASTEROIDS_HPP_ */

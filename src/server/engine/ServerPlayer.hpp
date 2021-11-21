@@ -24,6 +24,8 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void setUsername(const std::string &username);
 
         std::string getUsername() const;
+        bool isPushed() const;
+        void setIsPushed(const bool &isPushed);
         int getPort() const;
         asio::ip::udp::socket &getSocket();
         void startUDP();
@@ -35,6 +37,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         void closeUDP();
         void movePlayer(const std::string &direction, const std::string &action);
         std::vector<std::shared_ptr<IEntity>> getAmmo();
+        std::vector<bool> &getBoolLand();
         void shoot();
         bool _canShoot;
 
@@ -51,7 +54,7 @@ class ServerPlayer :  public ServerEntity, std::enable_shared_from_this<ServerPl
         int _port;
         std::vector<bool> _boolLand;
         bool _isShooting;
-
+        bool _isPushed;
 };
 
 #endif /* !PLAYER_HPP_ */

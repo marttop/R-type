@@ -304,13 +304,16 @@ std::string ServerRoom::EntityAsShoot()
     return ss.str();
 }
 
-void ServerRoom::collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
+bool ServerRoom::collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
 {
-    if (entity->getType() == "BidosSlaves" && player->isColliding(entity)) {
+    if (entity->getType() == "Asteroids" && player->isColliding(entity)) {
         if (entity->getRect().isColliding(CustomRect(1, player->getRect()._height, player->getRect().br.x, player->getRect().br.y))) {
             player->setPosition(player->getPosition().first + entity->getSpeed(), player->getPosition().second);
+            player->setIsPushed(true);
+            return (true);
         }
     }
+    return (false);
 }
 
 std::string ServerRoom::updateEntities()
@@ -321,6 +324,17 @@ std::string ServerRoom::updateEntities()
     std::string tmp;
     static int timer = 0;
 
+    for (auto player : _playerList) {
+        bool check = false;
+        for (auto entity : _entities) {
+            bool tmp = collideAsteroids(player, entity);
+            if (tmp == true)
+                check = tmp;
+        }
+        if (!check)
+            player->setIsPushed(false);
+    }
+
     for (auto entity : _entities) {
         entity->update();
         for (auto player : _playerList) {
@@ -328,7 +342,7 @@ std::string ServerRoom::updateEntities()
                 entity->setAlive(false);
                 player->addLifeEntity(player->getMaxHp() / 10);
             }
-            if (timer % 7 == 0 && entity->getType() == "BossBullet" && player->isColliding(entity)) {
+            if (timer % 7 == 0 && (((entity->getType() == "BossBullet" || entity->getType() == "Boss") && player->isColliding(entity) || player->getPosition().first + player->getRect()._width < 0))) {
                 timer = 0;
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
@@ -339,10 +353,10 @@ std::string ServerRoom::updateEntities()
             for (auto playerBullet : player->getAmmo()) {
                 if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "Heal") {
                     playerBullet->setAlive(false);
-                    entity->addLifeEntity(-1);
+                    if (entity->getType() != "Asteroids")
+                        entity->addLifeEntity(-1);
                 }
             }
-            collideBidos(player, entity);
         }
         ss << createEntityResponse(entity, "UPDATE");
     }

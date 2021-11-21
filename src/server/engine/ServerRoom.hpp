@@ -37,7 +37,7 @@ class ServerRoom {
 
         std::string createEntityResponse(std::shared_ptr<IEntity> obj, const std::string &action) const;
         std::string updateEntity(std::shared_ptr<IEntity> obj) const;
-        void collideBidos(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
+        bool collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity);
         std::string EntityAsShoot();
         bool IsPlayers() const;
 
@@ -53,35 +53,35 @@ class ServerRoom {
         bool _debug;
     protected:
     private:
-        
+
         /**
          * @brief load all entities write in fileConfPath, need for this room
-         * 
+         *
          * @param fileConfPath path of conf file
-         * @return ** void 
+         * @return ** void
          */
         void loadRoomEntities(const std::string &fileConfPath);
 
         /**
          * @brief creates all mobs from the vector _mobsRoomInfo and check if it's time to created it
-         * 
-         * @return ** void 
+         *
+         * @return ** void
          */
         void createsEntities();
 
         /**
          * @brief update all created mobs
-         * 
-         * @return ** std::string 
+         *
+         * @return ** std::string
          */
         std::string updateEntities();
 
         /**
          * @brief find the iterator with an if for use r
-         * 
+         *
          * @param list vector entity
          * @param id entity's id to find
-         * @return ** std::vector<std::shared_ptr<IEntity>>::iterator 
+         * @return ** std::vector<std::shared_ptr<IEntity>>::iterator
          */
         std::vector<std::shared_ptr<IEntity>>::iterator findIteratorWithId(std::vector<std::shared_ptr<IEntity>> list, const std::string &id) const;
 

@@ -81,8 +81,10 @@ void Window::update()
         _menu.update(_window, _udpEndpoint, *_udpSocket, _scene);
         if (_scene == MENU) {
             _menu.startMusic();
+            _game.stopMusic();
         } else {
             _menu.stopMusic();
+            _game.startMusic();
         }
     }
     if (_scene == GAME && !_gameStarted) {

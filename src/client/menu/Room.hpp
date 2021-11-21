@@ -47,6 +47,8 @@ class Room {
         sf::Font _font;
         int _isReady;
         bool _counter;
+        sf::Sound _timer;
+        sf::SoundBuffer _timerBuf;
 };
 
 #endif /* !ROOM_HPP_ */

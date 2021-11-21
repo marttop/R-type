@@ -21,6 +21,6 @@ void ServerBullet::update()
 {
     if (_isAlive) {
         setPosition(_rect._x + _speed, _rect._y);
-        if (_rect._x - _x >= 1200) _isAlive = false;
+        if (_rect._x - _x >= 1100) _isAlive = false;
     }
 }

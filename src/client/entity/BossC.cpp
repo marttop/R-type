@@ -25,6 +25,10 @@ BossC::BossC(const sf::Texture &texture, const sf::Vector2f &pos, const float &s
     _name.setString("BOSS");
     _name.setFont(_font);
     _name.setPosition(sf::Vector2f(1920 / 2 - _name.getGlobalBounds().width / 2, 42));
+
+    _spawnBuf = AssetManager<sf::SoundBuffer>::getAssetManager().getAsset("assets/sounds/boss_spawn.ogg");
+    _spawn.setBuffer(_spawnBuf);
+    _spawn.play();
 }
 
 BossC::~BossC()

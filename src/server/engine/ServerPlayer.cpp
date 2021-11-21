@@ -16,6 +16,7 @@ ServerPlayer::ServerPlayer(const CustomRect &rect, asio::io_context &io_context,
     _userName = "";
     std::memset(_buffer, '\0', 1024);
     _canShoot = true;
+    _isPushed = false;
     for (int i = 0; i < 5; i++) {
         _boolLand.push_back(false);
     }
@@ -40,6 +41,11 @@ bool ServerPlayer::isReady() const
 int ServerPlayer::getPort() const
 {
     return (_port);
+}
+
+std::vector<bool> &ServerPlayer::getBoolLand()
+{
+    return (_boolLand);
 }
 
 void ServerPlayer::setIsReady(bool isReady)
@@ -77,6 +83,16 @@ void ServerPlayer::startUDP()
     _socket.async_receive_from(asio::buffer(_buffer), _receiverEndpoint,
                             std::bind(&ServerPlayer::handleReceive, this,
                                     std::placeholders::_1));
+}
+
+bool ServerPlayer::isPushed() const
+{
+    return (_isPushed);
+}
+
+void ServerPlayer::setIsPushed(const bool &isPushed)
+{
+    _isPushed = isPushed;
 }
 
 void ServerPlayer::sendData(const std::string &code, const std::string &msg)
@@ -152,16 +168,16 @@ void ServerPlayer::update()
     double x = getPosition().first;
     double y = getPosition().second;
     if (_isAlive) {
-        if (_boolLand[0] == true) {
+        if (_boolLand[0] == true && y < 1000 - _rect._height) {
             setPosition(x, y += _speed);
         }
-        if (_boolLand[1] == true) {
+        if (_boolLand[1] == true && y > 0) {
             setPosition(x, y -= _speed);
         }
-        if (_boolLand[2] == true) {
+        if (_boolLand[2] == true && x > 0) {
             setPosition(x -= _speed, y);
         }
-        if (_boolLand[3] == true) {
+        if (_boolLand[3] == true && !_isPushed && x < 1920 - _rect._width) {
             setPosition(x += _speed, y);
         }
         if (_boolLand[4] == true) {

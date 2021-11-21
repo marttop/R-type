@@ -31,6 +31,8 @@ private:
     sf::RectangleShape _barRect;
     sf::Font _font;
     sf::Text _name;
+    sf::SoundBuffer _spawnBuf;
+    sf::Sound _spawn;
 };
 
 #endif /* !BOSS_HPP */
