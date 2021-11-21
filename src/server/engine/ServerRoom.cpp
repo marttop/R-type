@@ -342,7 +342,7 @@ std::string ServerRoom::updateEntities()
                 entity->setAlive(false);
                 player->addLifeEntity(player->getMaxHp() / 10);
             }
-            if (timer % 7 == 0 && (entity->getType() == "BossBullet" || entity->getType() == "BidosBullet" || entity->getType() == "BoomrangBullet")  && player->isColliding(entity)) {
+            if (timer % 7 == 0 && (((entity->getType() == "BossBullet" || entity->getType() == "BidosBullet" || entity->getType() == "BoomrangBullet")  && player->isColliding(entity)) || player->getPosition().first + player->getRect()._width < 0)) {
                 timer = 0;
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
