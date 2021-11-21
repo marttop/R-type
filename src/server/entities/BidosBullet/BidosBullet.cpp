@@ -5,12 +5,12 @@
 ** ServerBasicMob1
 */
 
-#include "BossBullet.hpp"
+#include "BidosBullet.hpp"
 
 #if defined(__linux__) || defined(__APPLE__)
 extern "C" IEntity *allocator()
 {
-    return new BossBullet;
+    return new BidosBullet;
 }
 #endif
 
@@ -29,25 +29,26 @@ extern "C" IEntity *allocator()
 // }
 // #endif
 
-BossBullet::BossBullet()
-    : ServerEntity(CustomRect(102 * 4 / 3, 34 * 4))
+BidosBullet::BidosBullet()
+    : ServerEntity(CustomRect(149 * 4 / 8, 6 * 4))
 {
     int x = 0;
     int y = 0;
     setPosition(x, y);
+    _speed = -8;
+    _health = 1;
     _maxHealth = _health;
-    _speed = 10;
-    _type = "BossBullet";
+    _type = "BidosBullet";
 }
 
-BossBullet::~BossBullet()
+BidosBullet::~BidosBullet()
 {
 }
 
-void BossBullet::update()
+void BidosBullet::update()
 {
     if (getPosition().first < -50 || getPosition().second > 1400 || getPosition().second < -50) {
         _isAlive = false;
     }
-    setPosition(getPosition().first - _direction.first * _speed, getPosition().second + _direction.second);
+    setPosition(getPosition().first + _speed, getPosition().second);
 }

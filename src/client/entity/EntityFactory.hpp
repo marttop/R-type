@@ -15,6 +15,7 @@
 #include "BossC.hpp"
 #include "Heal.hpp"
 #include "BossBulletC.hpp"
+#include "BidosBulletC.hpp"
 
 #include <memory>
 
@@ -64,6 +65,12 @@ class EntityFactory {
                                                     int health);
 
         std::shared_ptr<IClientEntity> getBossBullet(const sf::Vector2f &pos,
+                                                    const float &speed,
+                                                    const sf::Color &startColor,
+                                                    const sf::Color &endColor,
+                                                    int health);
+
+        std::shared_ptr<IClientEntity> getBidosBullet(const sf::Vector2f &pos,
                                                     const float &speed,
                                                     const sf::Color &startColor,
                                                     const sf::Color &endColor,

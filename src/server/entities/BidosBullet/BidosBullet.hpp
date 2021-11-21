@@ -5,16 +5,16 @@
 ** ServerBasicMob1
 */
 
-#ifndef BOSSBULLET_HPP__
-#define BOSSBULLET_HPP__
+#ifndef SERVERBASICMOB1_HPP_
+#define SERVERBASICMOB1_HPP_
 
 #include "ServerEntity.hpp"
 
-class BossBullet : public ServerEntity
+class BidosBullet : public ServerEntity
 {
 public:
-    BossBullet();
-    ~BossBullet();
+    BidosBullet();
+    ~BidosBullet();
 
     void update();
 
@@ -22,4 +22,4 @@ protected:
 private:
 };
 
-#endif /* !BOSSBULLET_HPP__ */
+#endif /* !SERVERBASICMOB1_HPP_ */
