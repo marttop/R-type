@@ -9,6 +9,7 @@
 #define ROOMSLIST_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <asio.hpp>
 #include <vector>
 
@@ -24,7 +25,7 @@ class RoomsList {
         void create(const sf::RectangleShape &background);
         void setIp(const std::string &ip);
         void draw(sf::RenderWindow &window) const;
-        void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected);
+        void update(std::vector<std::string> &cmdTcp, const sf::RenderWindow &window, bool &connected, const bool &isDrawn);
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
         bool disconnect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::socket &tcpSocket);
 
@@ -37,7 +38,7 @@ class RoomsList {
         void deleteRoom(const std::vector<std::string> &cmdTcp);
         void userJoinedRoom(const std::vector<std::string> &cmdTcp);
         void userLeftRoom(const std::vector<std::string> &cmdTcp);
-        void scrollerUpdate(const sf::RenderWindow &window);
+        void scrollerUpdate(const sf::RenderWindow &window, const bool &isDrawn);
 
         Button _disconnect;
         Button _create;
@@ -50,6 +51,10 @@ class RoomsList {
         sf::Sprite _scrollArrow[2];
         sf::Texture _scrollArrowTexture[2];
         sf::Color _outline;
+        sf::Sound _click;
+        sf::SoundBuffer _clickBuf;
+        sf::Sound _hover;
+        sf::SoundBuffer _hoverBuf;
 };
 
 #endif /* !ROOMSLIST_HPP_ */

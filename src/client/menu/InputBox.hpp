@@ -9,6 +9,7 @@
 #define INPUTBOX_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "AssetManager.hpp"
 
@@ -20,7 +21,7 @@ class InputBox {
         void create(const sf::Vector2f &size, const sf::Vector2f &pos, const std::string &title = "", const std::string &defaultInput = "", const bool &ip = false, const bool &num = false, const bool &alpha = true, const sf::Vector2f &factors = {1, 1});
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window);
-        void update();
+        void update(const sf::RenderWindow &window, const bool &isDrawn);
         void setPosition(const sf::Vector2f &pos);
         std::string getInputString() const;
 
@@ -34,10 +35,15 @@ class InputBox {
         std::string _input;
         sf::Text _inputText;
         sf::Font _font;
+        sf::Color _outline;
         bool _isFocus;
         bool _ip;
         bool _num;
         bool _alpha;
+        sf::Sound _click;
+        sf::SoundBuffer _clickBuf;
+        sf::Sound _hover;
+        sf::SoundBuffer _hoverBuf;
 };
 
 #endif /* !INPUTBOX_HPP_ */

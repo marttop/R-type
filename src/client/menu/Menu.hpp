@@ -9,6 +9,7 @@
 #define MENU_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <asio.hpp>
 
 #include "WarningBox.hpp"
@@ -25,9 +26,11 @@ class Menu {
         void create(const sf::RenderWindow &window, char *tcpBuf, char *udpBuf);
         void draw(sf::RenderWindow &window) const;
         void event(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &tcpEndpoint, asio::ip::tcp::socket &tcpSocket, asio::ip::udp::socket &udpSocket);
-        void update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket);
+        void update(const sf::RenderWindow &window, asio::ip::udp::endpoint &udpEndpoint, asio::ip::udp::socket &udpSocket, const bool &scene);
         void setAlert();
         void setInRoom(const bool &inRoom, asio::ip::tcp::socket &tcpSocket);
+        void stopMusic();
+        void startMusic();
 
     protected:
     private:
@@ -52,6 +55,7 @@ class Menu {
         std::string _ip;
         sf::Clock _animation;
         bool _animationEnd;
+        sf::Music _music;
 };
 
 #endif /* !MENU_HPP_ */

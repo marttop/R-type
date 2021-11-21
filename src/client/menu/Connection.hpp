@@ -26,7 +26,7 @@ class Connection {
 
     void create(const sf::RectangleShape &background);
     void event(const sf::Event &event, const sf::RenderWindow &window);
-    void update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd);
+    void update(const sf::RenderWindow &window, const sf::RectangleShape &background, const bool &animationEnd, const bool &isDrawn);
     void draw(sf::RenderWindow &window) const;
     void connect(const sf::Event &event, const sf::RenderWindow &window, asio::ip::tcp::endpoint &endpoint, asio::ip::tcp::socket &socket, WarningBox &alert);
 

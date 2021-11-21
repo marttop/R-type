@@ -9,6 +9,8 @@
 #define BUTTON_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include "AssetManager.hpp"
 
 class Button {
@@ -21,7 +23,7 @@ class Button {
         bool event(const sf::Event &event, const sf::RenderWindow &window);
         bool isMouseHovering(const sf::RenderWindow &window) const;
         void setPosition(const sf::Vector2f &pos);
-        void update(const sf::RenderWindow &window);
+        bool update(const sf::RenderWindow &window, const bool &isDrawn);
 
     protected:
     private:
@@ -30,6 +32,10 @@ class Button {
         sf::Font _font;
         sf::Color _outline;
         sf::Vector2f _offset;
+        sf::Sound _click;
+        sf::SoundBuffer _clickBuf;
+        sf::Sound _hover;
+        sf::SoundBuffer _hoverBuf;
 };
 
 #endif /* !BUTTON_HPP_ */
