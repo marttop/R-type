@@ -41,6 +41,11 @@ Boss::Boss()
     _type = "Boss";
     _loader.loadEntityWithPath("./src/server/entities/BossBullet/BossBullet.so", "BossBullet");
     startClock();
+    _hasAClock = true;
+
+    _isBoss = true;
+    _isPlayerHarmful = true;
+    _isMobHarmful = true;
 }
 
 Boss::~Boss()
@@ -55,7 +60,7 @@ void Boss::startClock()
 bool Boss::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 1) {
+    if (((float)t / CLOCKS_PER_SEC) > 1 * *_threadCount) {
         _shootClock = clock();
         return true;
     }

@@ -12,10 +12,13 @@
 #include "ServerPlayer.hpp"
 #include "EntityLoad.hpp"
 #include "ServerMobSpawnConf.hpp"
+
 #include <utility>
 #include <thread>
 #include <chrono>
-#include "fstream"
+#include <fstream>
+
+extern int threadCount;
 
 class ServerPlayer;
 

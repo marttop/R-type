@@ -41,6 +41,11 @@ BoomBoss::BoomBoss()
     _type = "BoomBoss";
     _loader.loadEntityWithPath("./src/server/entities/BoomrangBullet/BoomrangBullet.so", "BoomrangBullet");
     startClock();
+    _hasAClock = true;
+
+    _isPlayerHarmful = true;
+    _isBoss = true;
+    _isMobHarmful = true;
 }
 
 BoomBoss::~BoomBoss()
@@ -55,7 +60,7 @@ void BoomBoss::startClock()
 bool BoomBoss::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 1) {
+    if (((float)t / CLOCKS_PER_SEC) > 1 * *_threadCount) {
         _shootClock = clock();
         return true;
     }

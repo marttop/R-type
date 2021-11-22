@@ -159,7 +159,7 @@ void Game::udpUpdateEntity(std::vector<std::string> &cmdUdp)
                 }
                 else if (entityCmd[0] == "DELETE" && _entityMap.count(entityCmd[2]) > 0) {
                     _entityMap[entityCmd[2]]->setIsAlive(false);
-                    if (entityCmd[1] == "Boss") {
+                    if (entityCmd[1] == "Boss" || entityCmd[1] == "BoomBoss") {
                         _isGameFinished = true;
                         _alert.open("You and your team won! Good boy", true);
                     }

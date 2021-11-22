@@ -40,6 +40,10 @@ BidosSlaves::BidosSlaves()
     _maxHealth = _health;
     _type = "BidosSlaves";
     _loader.loadEntityWithPath("./src/server/entities/BidosBullet/BidosBullet.so", "BidosBullet");
+    _hasAClock = true;
+
+    _isDropping = true;
+    _isMobHarmful = true;
 }
 
 BidosSlaves::~BidosSlaves()
@@ -54,7 +58,7 @@ void BidosSlaves::startClock()
 bool BidosSlaves::checkClock()
 {
     clock_t t = (clock() - _shootClock);
-    if (((float)t / CLOCKS_PER_SEC) > 2) {
+    if (((float)t / CLOCKS_PER_SEC) > 2 * *_threadCount) {
         _shootClock = clock();
         return true;
     }

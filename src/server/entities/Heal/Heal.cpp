@@ -21,6 +21,8 @@ Heal::Heal()
     _type = "Heal";
     _health = -1;
     _maxHealth = _health;
+
+    _isPickable = true;
 }
 
 Heal::~Heal()

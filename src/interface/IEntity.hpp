@@ -53,6 +53,22 @@ class IEntity {
         virtual void setAlive(bool life) = 0;
 
         /**
+         * @brief Clockring
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool hasAClock() const = 0;
+
+        /**
+         * @brief Set ThreadCount
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual void setThreadCount(int *threadCount) = 0;
+
+        /**
          * @brief Is entity colliding with another.
          *
          * @param other
@@ -60,6 +76,54 @@ class IEntity {
          * @return false
          */
         virtual bool isColliding(const std::shared_ptr<IEntity> &other) const = 0;
+
+        /**
+         * @brief isBoss
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isBoss() const = 0;
+
+        /**
+         * @brief isPickable
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isPickable() const = 0;
+
+        /**
+         * @brief isPlayerHarmful
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isPlayerHarmful() const = 0;
+
+        /**
+         * @brief isDropping
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isDropping() const = 0;
+
+        /**
+         * @brief isMobHarmful
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isMobHarmful() const = 0;
+
+        /**
+         * @brief isObstacle
+         * 
+         * @return true 
+         * @return false 
+         */
+        virtual bool isObstacle() const = 0;
 
         /**
          * @brief Get the Rect object

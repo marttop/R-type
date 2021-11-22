@@ -39,6 +39,9 @@ BidosBullet::BidosBullet()
     _health = 1;
     _maxHealth = _health;
     _type = "BidosBullet";
+
+    _isPlayerHarmful = true;
+    _isMobHarmful = true;
 }
 
 BidosBullet::~BidosBullet()

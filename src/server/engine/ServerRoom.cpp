@@ -103,16 +103,16 @@ void ServerRoom::playGame()
     double duration;
     start = std::clock();
 
-    /* Your algorithm here */
     broadCastUdp("005", std::to_string(i));
     while (i > 0) {
-        if (duration >= 1) {
+        if (duration >= 1 * threadCount) {
             start = std::clock();
             i--;
             if (i != 0) broadCastUdp("005", std::to_string(i));
         }
         if (!isEveryoneReady()) {
             _isGameStarted = false;
+            threadCount--;
             return;
         }
         duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
@@ -132,6 +132,7 @@ bool ServerRoom::isGameStarted() const
 
 std::thread ServerRoom::startThread()
 {
+    threadCount++;
     return std::thread(&ServerRoom::playGame, this);
 }
 
@@ -228,6 +229,8 @@ void ServerRoom::createsEntities()
                 auto createdEntity = _loader->createEntityWithName(entity.getTypeEntities());
                 createdEntity->setId("E" + std::to_string(id));
                 id += 1;
+                if (createdEntity->hasAClock())
+                    createdEntity->setThreadCount(&threadCount);
                 _entities.push_back(createdEntity);
                 ss << createEntityResponse(createdEntity, "CREATE");
             }
@@ -259,7 +262,7 @@ std::string ServerRoom::deleteDeadEntities()
     for (auto it = _entities.begin(); it != _entities.end();) {
         if (it->get()->isAlive() == false) {
             ss << createEntityResponse(_entities.at(index), "DELETE");
-            if (it->get()->getType() == "BidosSlaves") {
+            if (it->get()->isDropping()) {
                 if (std::rand() % 100 < 25) {
                     auto createdEntity = _loader->createEntityWithName("Heal");
                     createdEntity->setPosition(it->get()->getPosition().first, it->get()->getPosition().second);
@@ -269,7 +272,7 @@ std::string ServerRoom::deleteDeadEntities()
                     ss << createEntityResponse(createdEntity, "CREATE");
                 }
             }
-            if (it->get()->getType() == "Boss" || it->get()->getType() == "BoomBoss") {
+            if (it->get()->isBoss()) {
                 _isGameStarted = false;
             }
             it = _entities.erase(it);
@@ -306,7 +309,7 @@ std::string ServerRoom::EntityAsShoot()
 
 bool ServerRoom::collideAsteroids(std::shared_ptr<ServerPlayer> player, std::shared_ptr<IEntity> entity)
 {
-    if (entity->getType() == "Asteroids" && player->isColliding(entity)) {
+    if (entity->isObstacle() && player->isColliding(entity)) {
         if (entity->getRect().isColliding(CustomRect(1, player->getRect()._height, player->getRect().br.x, player->getRect().br.y))) {
             player->setPosition(player->getPosition().first + entity->getSpeed(), player->getPosition().second);
             player->setIsPushed(true);
@@ -338,11 +341,11 @@ std::string ServerRoom::updateEntities()
     for (auto entity : _entities) {
         entity->update();
         for (auto player : _playerList) {
-            if (entity->getType() == "Heal" && player->isColliding(entity)) {
+            if (entity->isPickable() && player->isColliding(entity)) {
                 entity->setAlive(false);
                 player->addLifeEntity(player->getMaxHp() / 10);
             }
-            if (timer % 7 == 0 && (((entity->getType() == "BossBullet" || entity->getType() == "BidosBullet" || entity->getType() == "BoomrangBullet")  && player->isColliding(entity)) || player->getPosition().first + player->getRect()._width < 0)) {
+            if (timer % 7 == 0 && ((entity->isPlayerHarmful() && player->isColliding(entity)) || player->getPosition().first + player->getRect()._width < 0)) {
                 timer = 0;
                 if (player->isAlive()) {
                     player->addLifeEntity(-1);
@@ -351,9 +354,9 @@ std::string ServerRoom::updateEntities()
                 }
             }
             for (auto playerBullet : player->getAmmo()) {
-                if (entity->isColliding(playerBullet) && entity->getType() != "BossBullet" && entity->getType() != "BoomrangBullet" && entity->getType() != "Heal") {
+                if (entity->isColliding(playerBullet) && entity->isMobHarmful()) {
                     playerBullet->setAlive(false);
-                    if (entity->getType() != "Asteroids")
+                    if (!entity->isObstacle())
                         entity->addLifeEntity(-1);
                 }
             }
@@ -415,7 +418,7 @@ void ServerRoom::updateLoop()
     start = std::clock();
 
     while (_isGameStarted) {
-        if (duration > 17) {
+        if (duration > 17 * threadCount) {
             start = std::clock();
             ss.str("");
             ss.clear();
@@ -438,4 +441,5 @@ void ServerRoom::updateLoop()
     _playerList.clear();
     _entitiesRoomInfo.clear();
     _entities.clear();
+    threadCount--;
 }

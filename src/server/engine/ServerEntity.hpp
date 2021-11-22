@@ -38,9 +38,18 @@ class ServerEntity : public IEntity {
 
         bool isColliding(const std::shared_ptr<IEntity> &other) const;
 
+        bool isBoss() const;
+        bool isPickable() const;
+        bool isPlayerHarmful() const;
+        bool isMobHarmful() const;
+        bool isObstacle() const;
+        bool isDropping() const;
+
         void setDirection(double x, double y);
+        void setThreadCount(int *threadCount);
         std::pair<double, double> getDirection() const;
         std::pair<double, double> getPosition() const;
+        bool hasAClock() const;
         std::string getType() const;
         double getSpeed() const;
         int getMaxHp() const;
@@ -61,6 +70,14 @@ class ServerEntity : public IEntity {
         double _speed;
         int _health;
         int _maxHealth;
+        bool _hasAClock;
+        int *_threadCount;
+        bool _isBoss;
+        bool _isPickable;
+        bool _isPlayerHarmful;
+        bool _isMobHarmful;
+        bool _isObstacle;
+        bool _isDropping;
     private:
 };
 

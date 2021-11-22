@@ -16,10 +16,27 @@ ServerEntity::ServerEntity(const CustomRect &rect,
 {
     _maxHealth = _health;
     _direction = std::make_pair(0, 0);
+    _hasAClock = false;
+    _isBoss = false;
+    _isMobHarmful = false;
+    _isPickable = false;
+    _isPlayerHarmful = false;
+    _isObstacle = false;
+    _isDropping = false;
 }
 
 ServerEntity::~ServerEntity()
 {
+}
+
+bool ServerEntity::hasAClock() const
+{
+    return (_hasAClock);
+}
+
+void ServerEntity::setThreadCount(int *threadCount)
+{
+    _threadCount = threadCount;
 }
 
 int ServerEntity::getMaxHp() const
@@ -116,4 +133,34 @@ std::vector<std::shared_ptr<IEntity>> ServerEntity::getAmmos() const
 void ServerEntity::clearAmmos()
 {
     _ammos.clear();
+}
+
+bool ServerEntity::isBoss() const
+{
+    return (_isBoss);
+}
+
+bool ServerEntity::isPickable() const
+{
+    return (_isPickable);
+}
+
+bool ServerEntity::isPlayerHarmful() const
+{
+    return (_isPlayerHarmful);
+}
+
+bool ServerEntity::isMobHarmful() const
+{
+    return (_isMobHarmful);
+}
+
+bool ServerEntity::isObstacle() const
+{
+    return (_isObstacle);
+}
+
+bool ServerEntity::isDropping() const
+{
+    return (_isDropping);
 }

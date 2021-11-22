@@ -24,6 +24,9 @@ Asteroids::Asteroids()
     _health = 1;
     _maxHealth = _health;
     _type = "Asteroids";
+
+    _isObstacle = true;
+    _isMobHarmful = true;
 }
 
 Asteroids::~Asteroids()

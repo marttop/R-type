@@ -38,6 +38,8 @@ BossBullet::BossBullet()
     _maxHealth = _health;
     _speed = 10;
     _type = "BossBullet";
+
+    _isPlayerHarmful = true;
 }
 
 BossBullet::~BossBullet()

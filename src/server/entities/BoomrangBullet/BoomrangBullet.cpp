@@ -39,6 +39,8 @@ BoomrangBullet::BoomrangBullet()
     _health = 1;
     _maxHealth = _health;
     _type = "BoomrangBullet";
+
+    _isPlayerHarmful = true;
 }
 
 BoomrangBullet::~BoomrangBullet()

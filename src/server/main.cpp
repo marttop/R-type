@@ -11,6 +11,8 @@
 #include "ValidateIp.hpp"
 #include "ServerPlayer.hpp"
 
+int threadCount = 0;
+
 int arg_check(int ac, char *argv[])
 {
     ValidateIp validator;

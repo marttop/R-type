@@ -9,6 +9,7 @@
 #define SERVEURMOBSPAWNCONF_HPP_
 
 #include <iostream>
+
 /**
  * @brief this class create with conf file a spawn conf object wich let you 
  * get for room the type, the number and when you need to spawn mob
